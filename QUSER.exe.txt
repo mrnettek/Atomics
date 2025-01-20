@@ -5,6 +5,7 @@ QUERY USER is used to display information about user sessions on a Terminal Serv
 
 1. Syntax and Usage
 
+[Syntax]
 Display Information About User Sessions
  QUERY USER [/server:ServerName]
  QUERY USER UserName [/server:ServerName]
