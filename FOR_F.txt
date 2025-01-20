@@ -1,15 +1,13 @@
-FOR /F Command: Parsing and Processing Lines in Files or Strings
+FOR /F
 
 The FOR /F command in batch scripting allows you to iterate through a file, a command's output, or a string by parsing its content. This is especially useful for processing text files, filtering data, or extracting specific tokens (subsections of a line).
 Syntax
 
 FOR /F ["options"] %%parameter IN (filenameset) DO command
-
 FOR /F ["options"] %%parameter IN ("Text string to process") DO command
 
 
-Key Components
-
+[Key Components]
     options: Control how the lines are parsed.
         delims=xxx: Specifies the delimiter(s). Default is a space or tab.
         skip=n: Skips the first n lines of the file.
@@ -18,13 +16,10 @@ Key Components
         usebackq: Enables alternative quoting for filenames, strings, and commands.
 
     filenameset: A list of one or more text files. Use parentheses to enclose multiple filenames ((file1.txt,file2.txt)).
-
     command: The action performed for each iteration.
-
     %%parameter: A replaceable variable (%%A) that holds the current token. Use %% in scripts and % on the command line.
 
-Parsing Details
-
+[Parsing Details]
 When processing files or strings, FOR /F reads line by line, splits each line based on delimiters, and assigns tokens to variables. Adjust parsing behavior using options.
 usebackq
 
@@ -35,8 +30,7 @@ This option changes quoting behavior:
     Back quotes (``) for commands.
 
 
-skip
-
+[skip]
 Skips a specified number of lines at the beginning of the file. Blank lines are included in the count but ignored during iteration.
 eol
 
@@ -51,8 +45,7 @@ Specifies which tokens (sections of a line) to process:
     tokens=*: Reads the entire line as a single token.
 
 
-delims
-
+[delims]
 Defines the characters used to separate tokens. Multiple delimiters can be specified (delims=,;|). Consecutive delimiters are treated as one.
 
 
@@ -70,28 +63,24 @@ FOR /F "tokens=1,2,3,* delims= " %%A IN ("alpha beta gamma delta") DO (
 
 
 Example 2: Process a File Line by Line
-
 Copy files listed in a text file (files.txt) to a new directory:
 
 FOR /F "delims=" %%G IN (files.txt) DO COPY "C:\source\%%G" "D:\destination\%%G"
 
 
 Example 3: Skip Lines in a File
-
 Display every line of data.txt except the first three:
 
 FOR /F "skip=3 tokens=* delims=" %%A IN (data.txt) DO Echo %%A
 
 
 Example 4: Extract Data Using Multiple Delimiters
-
 Parse a file with mixed delimiters (, and ;):
 
 FOR /F "tokens=1,2,3 delims=,;" %%A IN (report.csv) DO Echo %%A %%B %%C
 
 
 Example 5: Process Command Output
-
 Count directories in the current folder:
 
 FOR /F "tokens=* delims=" %%A IN ('DIR /b /ad') DO SET /A count+=1
@@ -99,13 +88,12 @@ Echo Total Directories: %count%
 
 
 Example 6: Use usebackq for Special Filenames
-
 Process a file with spaces in its name:
 
 FOR /F "usebackq delims=" %%A IN ("My File.txt") DO Echo %%A
 
 
-Tips and Notes
+[Tips and Notes]
 
     Delayed Variable Expansion: Use SETLOCAL EnableDelayedExpansion when modifying variables inside a loop.
     Combining Options: Options must appear in the correct order: usebackq > skip > delims > eol > tokens.
@@ -114,7 +102,7 @@ Tips and Notes
     Edge Cases: If tokens are missing (consecutive delimiters), adjust parsing or preprocess the data.
 
 
-Advanced Use Case
+[Advanced Use Case]
 
 Handle missing data by replacing consecutive delimiters:
 
