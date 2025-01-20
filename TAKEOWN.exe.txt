@@ -1,0 +1,69 @@
+TAKEOWN.exe Help File
+
+TAKEOWN.exe is a command-line utility used to take ownership of a file or folder. This command is typically used when a user needs to assume control over a file or folder that they don't currently have ownership of, allowing them to change permissions or delete the object.
+
+[Syntax]
+TAKEOWN [/s Computer [/u [Domain\]UserName [/p [Password]]]]
+         /f FileName [/a] [/r [/d {Y|N}]]
+
+[Options]
+The name or IP address of the remote computer where the file or folder resides. Do not use backslashes. The default is the local computer.
+ /s Computer
+
+Run the command with the permissions of the specified user account. If not specified, the command runs with the system permissions.
+ /u [Domain]UserName
+
+The password associated with the user account specified in the /u parameter.
+ /p [Password]
+
+The name of the file or folder whose ownership you wish to take. It can be a file path, a UNC path, or a directory. Wildcard characters * can be used for pattern matching.
+ /f FileName
+
+Grant ownership to the Administrators group instead of the current user.
+ /a
+
+Perform a recursive operation on all files in the specified directory and its subdirectories.
+/r
+
+Suppress the confirmation prompt when the user does not have the "List Folder" permission on a specified directory. The options are:
+ /d {Y|N}
+
+ Y: Take ownership of the directory.
+ N: Skip the directory. This option is only applicable when using the /r option.
+
+
+Important Notes
+
+File/Folders in Use:
+
+If the file or folder is open or locked, it may not be possible to change ownership or permissions without closing the file locks. This can be done via Computer Management ➞ Shared Folders ➞ Open files.
+
+Ownership Transfer:
+After taking ownership of a file or folder, you can modify the file permissions or delete it as needed.
+
+No Mixed Patterns:
+TAKEOWN does not support mixed patterns such as ? and * together.
+
+
+Examples
+
+Transfer ownership of a specific file to the Administrators group:
+ takeown.exe /f D:\demo\sample.xlsx /a
+
+Take ownership of all files in a folder (recursively) and assign ownership to the Administrators group:
+ takeown.exe /f "D:\demo\*" /a /r
+
+Take ownership of a file on a remote computer:
+ takeown.exe /s 192.168.1.1 /u Administrator /p password /f "C:\files\file.txt"
+
+Take ownership of files in a folder but skip directories where permission issues exist:
+ takeown.exe /f "D:\demo\*" /r /d N
+
+Errorlevels
+ 0: Ownership successfully taken.
+ 1: Invalid parameters or failed operation (e.g., permission issues).
+ 2: The specified file or folder does not exist.
+
+See Also
+ ICACLS: Use after TAKEOWN to modify file permissions.
+ CACLS: Legacy tool for setting file permissions (now replaced by ICACLS).
