@@ -11,7 +11,7 @@ Search for a String in a File
 
 
 [Key]
- "string" - The text string to search for (must be in quotes).
+"string" - The text string to search for (must be in quotes).
  [pathname] - The drive and/or file(s) to search (wildcards accepted).
  /V - Display all lines not containing the specified string.
  /C - Count the number of lines containing the string.
