@@ -6,7 +6,7 @@ ROBOCOPY (Robust File and Folder Copy) is a powerful command-line tool used to c
 1. Syntax and Usage
 
 [Syntax]
- ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
+ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  source_folder: Path to the source folder or file(s) to be copied. Wildcards are accepted (C:\demo\*.txt).
  destination_folder: Path to the destination folder. The destination must be different from the source.
  files_to_copy: A list of files or a wildcard pattern. Defaults to copying *.*.
