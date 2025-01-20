@@ -1,0 +1,114 @@
+SCHTASKS.exe Command Guide with Examples
+
+SCHTASKS.exe is a command-line tool used to create, modify, delete, or query scheduled tasks in Windows. It can be run on local or remote systems, and provides detailed control over scheduling tasks based on specific triggers and conditions.
+
+
+1. Syntax and Usage
+
+[Syntax]
+
+Create a new scheduled task:
+ SCHTASKS /Create [Connect_Options] Create_Options /TN taskname
+
+Delete a scheduled task:
+ SCHTASKS /Delete [Connect_Options] /TN taskname [/F]
+
+Display one or all scheduled tasks:
+ SCHTASKS /Query [Connect_Options] [/FO format | /XML] [/NH] [/V] [/TN taskname]
+
+Run a scheduled task on demand:
+ SCHTASKS /Run [Connect_Options] /TN taskname
+
+Stop a currently running scheduled task:
+ SCHTASKS /End [Connect_Options] /TN taskname
+
+Change properties of a scheduled task (Enable/Disable, modify settings):
+ SCHTASKS /Change [Connect_Options] {[/RU username] [/RP password] [/TR taskrun]} /TN taskname
+   [/ST starttime] [/RI interval] [/ET endtime] [/DU duration] [/K] [/SD startdate] [/ED enddate]
+   [/ENABLE | /DISABLE] [/RL level] [/IT] [/Z]
+
+Show the security identifier (SID) corresponding to a scheduled task name:
+ SCHTASKS /ShowSID [Connect_Options] /TN taskname
+
+
+2. Key Options
+
+Connect Options:
+ /S system: The remote system on which to execute the command (defaults to the local system).
+ /U username: Run the task as a specific user.
+ /P password: Password for the specified username.
+ Create Options:
+ /TN taskname: Specifies the task name.
+ /TR taskrun: Pathname of the executable to run when the task is triggered.
+ /SC schedule: Schedule frequency for the task (e.g., DAILY, WEEKLY, MONTHLY, ONSTART, ONLOGON, ONIDLE).
+ /ST starttime: Specifies the start time for the task in HH:MM (24-hour format).
+ /RU username: Run the task as this user.
+ /RP password: Password for the user specified in /RU.
+ /MO modifier: A modifier for schedule frequency (e.g., every 5 days if /SC DAILY is selected).
+ /RI interval: Repetition interval for the task in minutes (if applicable).
+ /ET endtime: End time for the task (HH:MM 24-hour time).
+ /DU duration: Duration for which the task will run (in hours and minutes).
+ /SD startdate: Start date for the task (e.g., "MM/DD/YYYY").
+ /ED enddate: End date for the task (e.g., "MM/DD/YYYY").
+ /ENABLE: Enable the scheduled task.
+ /DISABLE: Disable the scheduled task.
+ /IT: Task will run only if the specified user is logged on interactively.
+ /Z: Delete the task after it runs for the last time.
+
+Query Options:
+ /FO format: Specifies the format for the output (TABLE, LIST, CSV).
+ /NH: No header in the output.
+ /V: Verbose output with detailed information.
+
+
+3. Example Usage
+
+1. Create a scheduled task to run a program every day at 9:00 AM:
+SCHTASKS /Create /TN "MyTask" /TR "C:\path\to\program.exe" /SC DAILY /ST 09:00
+
+
+2. Display all scheduled tasks:
+ SCHTASKS /Query
+
+
+3. Run a scheduled task on demand:
+ SCHTASKS /Run /TN "MyTask"
+
+
+4. Stop a running task:
+ SCHTASKS /End /TN "MyTask"
+
+
+5. Delete a scheduled task:
+ SCHTASKS /Delete /TN "MyTask" /F
+
+
+6. Modify a scheduled task to disable it:
+ SCHTASKS /Change /TN "MyTask" /DISABLE
+
+
+7. Display detailed information about a specific task:
+ SCHTASKS /Query /TN "MyTask" /V
+
+
+8. Set a task to run at login with a 10-minute delay:
+ SCHTASKS /Create /TN "LoginTask" /TR "C:\path\to\program.exe" /SC ONLOGON /DELAY 00:10
+
+
+4. Notes
+
+Security: To run commands on a remote machine, administrator privileges are usually required.
+
+Scheduled Task Types: The /SC option can be used to set various types of triggers for when a task runs, such as DAILY, ONSTART, ONIDLE, ONLOGON, etc.
+
+Task Security: The /RU and /RP options allow you to specify the credentials under which the task will run. These can be used to set tasks to run as specific users.
+
+Task Deletion: The /F flag is used to force the deletion of a scheduled task without a confirmation prompt.
+ 5. Error Handling and Return Codes
+ 0: Task was successfully created, modified, run, stopped, or deleted.
+ 1: Incorrect syntax or an error occurred in processing the command.
+ 5: Access denied (requires administrator privileges).
+ 87: Invalid parameter.
+ 6. Additional Information
+
+SCHTASKS.exe is a powerful utility for automating and managing scheduled tasks in Windows. It can be run both locally and remotely, making it useful for system administrators managing multiple machines. Scheduled tasks can be configured to run on specific triggers, and the command provides flexible options for security, scheduling, and task management.
