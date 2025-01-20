@@ -6,8 +6,7 @@ XCOPY is a command-line tool used to copy files and directory trees to another l
 1. Syntax and Usage
 
 [Syntax]
- XCOPY source [destination] [options]
-
+XCOPY source [destination] [options]
  source: Pathname for the file(s) to be copied. This can accept wildcards.
  destination: Pathname for the new file(s) or directory. If omitted, the source files are copied to the current directory.
  
