@@ -16,7 +16,7 @@ Call an Internal Command
 
 
 [Key]
- pathname - The batch file to execute.
+pathname - The batch file to execute.
  parameters - Any command-line arguments to pass to the batch file or subroutine.
  :label - A label within the current batch file to jump to.
  internal_cmd - A built-in command (like SET, ECHO, etc.) to run, with variables expanded.
