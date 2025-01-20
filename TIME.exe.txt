@@ -10,8 +10,7 @@ Display the Current Time
 
 Set the System Time
  TIME
-
-or
+ or
  TIME [time_now]
 
 
