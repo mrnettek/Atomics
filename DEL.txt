@@ -5,11 +5,10 @@ DEL is a command-line tool used to delete one or more files. It provides options
 1. Syntax and Usage
 
 [Syntax]
- DEL [options] [/A:file_attributes] files_to_delete
+DEL [options] [/A:file_attributes] files_to_delete
  files_to_delete: A filename or list of files to delete. Wildcards can be used.
 
 Options:
-
  /P: Prompt for confirmation before deleting each file (Yes/No prompt).
  /F: Force deletion of read-only files (ignores read-only setting).
  /S: Delete files from all subfolders (use with caution).
