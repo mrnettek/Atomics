@@ -1,67 +1,55 @@
-[EnableDelayedExpansion]
-Delayed Expansion causes variables within a batch file to be expanded at execution time rather than at parse time. This behavior can be enabled with the SETLOCAL EnableDelayedExpansion command.
+EnableDelayedExpansion Command Guide with Examples
+
+EnableDelayedExpansion is a feature in batch scripting that allows variables to be expanded at execution time rather than at parse time. Below is a detailed guide with syntax and examples.
 
 
-[Variable Expansion Overview]
-Variable expansion replaces variables (%windir%) with their values (C:\WINDOWS). By default, expansion happens once per line as it is parsed. This includes lines formatted across multiple lines using parentheses.
+1. Overview of Delayed Expansion
+
+Delayed Expansion enables real-time variable updates during script execution, particularly in loops and commands.
+
+    Default Behavior: Variables (%variable%) are expanded at parse time.
+    With Delayed Expansion: Variables (!variable!) are expanded at execution time.
 
 
-[Parse-Time Expansion]
-Parse-time expansion applies to all variables, including %errorlevel%. Within a grouped expression, changes to variables will only be visible after the group ends.
+2. Syntax and Usage
+
+[Syntax]
+
+SETLOCAL EnableDelayedExpansion
+
+Variable Expansion: Use !variable_name! for execution-time expansion.
+SET "var1=value1" & SET "var2=!var1!"
 
 
-[Execution-Time Expansion]
-When Delayed Expansion is enabled, variables can be expanded for each loop iteration or command execution. This allows real-time updates to variable values during operations like FOR loops.
-
-
-SYNTAX AND USAGE
-
-[Reading and Writing Variables]
-
-With delayed expansion enabled, variables are referenced using !variable_name!:
-
-Set two variables in one line:
-
-Set "var3=April" & set "var4=!var3!"
-
-%variable_name% will still show the value expanded at the start of the line.
-
-
-EXAMPLES
-
-Basic example without delayed expansion:
+3. Examples of Delayed Expansion
+Basic Example Without Delayed Expansion
 
 @echo off
 SETLOCAL
-Set "_var=first"
-Set "_var=second" & Echo %_var%
-
+SET "_var=first"
+SET "_var=second" & ECHO %_var%
 
 Output: first
-
-With delayed expansion:
+With Delayed Expansion
 
 @echo off
 SETLOCAL EnableDelayedExpansion
-Set "_var=first"
-Set "_var=second" & Echo %_var% !_var!
+SET "_var=first"
+SET "_var=second" & ECHO %_var% !_var!
 
-Output: first second
+[Output] first second
 
 
-
-Delayed Expansion in Loops
-
-[Default Behavior]
-Without delayed expansion, variables in a FOR loop are expanded at parse time:
+4. Delayed Expansion in Loops
+Default Behavior Without Delayed Expansion
 
 @echo off
-setlocal
-set _tst=0
-FOR /l %%G in (1,1,5) Do (echo [%_tst%] & set /a _tst+=1)
-echo Total = %_tst%
+SETLOCAL
+SET _tst=0
+FOR /L %%G IN (1,1,5) DO (ECHO [%_tst%] & SET /A _tst+=1)
+ECHO Total = %_tst%
 
-Output:
+[Output]
 
 [0]
 [0]
@@ -70,18 +58,15 @@ Output:
 [0]
 Total = 5
 
-
-
-[With Delayed Expansion]
-Using delayed expansion allows real-time updates:
+With Delayed Expansion
 
 @echo off
-setlocal EnableDelayedExpansion
-set _tst=0
-FOR /l %%G in (1,1,5) Do (echo [!_tst!] & set /a _tst+=1)
-echo Total = %_tst%
+SETLOCAL EnableDelayedExpansion
+SET _tst=0
+FOR /L %%G IN (1,1,5) DO (ECHO [!_tst!] & SET /A _tst+=1)
+ECHO Total = %_tst%
 
-Output:
+[Output]
 
 [0]
 [1]
@@ -91,23 +76,21 @@ Output:
 Total = 5
 
 
-
-ALTERNATIVE METHODS
-
-Calling a subroutine avoids the need for delayed expansion:
+5. Alternative Methods
+Using Subroutines to Avoid Delayed Expansion
 
 @echo off
-setlocal
-set _tst=0
-FOR /l %%G in (1,1,5) Do (call :sub %%G)
-echo Total = %_tst%
-goto :eof
+SETLOCAL
+SET _tst=0
+FOR /L %%G IN (1,1,5) DO (CALL :sub %%G)
+ECHO Total = %_tst%
+GOTO :EOF
 
 :sub
-echo [%1] & set /a _tst+=1
-goto :eof
+ECHO [%1] & SET /A _tst+=1
+GOTO :EOF
 
-Output:
+[Output]
 
 [1]
 [2]
@@ -117,42 +100,37 @@ Output:
 Total = 5
 
 
-
-[Working with Escaped Characters]
-Delayed expansion changes how special characters (^, >) are interpreted:
+6. Working with Special Characters
+Without Delayed Expansion
 
 @echo off
-Setlocal
-Set _html=Hello^>World
-Echo %_html%
+SETLOCAL
+SET _html=Hello^>World
+ECHO %_html%
 
-Output: A file named world is created due to redirection.
+[Output] A file named World is created due to redirection.
 
+With Delayed Expansion
 
+@echo off
+SETLOCAL EnableDelayedExpansion
+SET _html=Hello^>World
+ECHO !_html!
 
-Using delayed expansion:
-
-Setlocal EnableDelayedExpansion
-Set _html=Hello^>World
-Echo !_html!
-
-Output: Hello>World
-
+[Output] Hello>World
 
 
-[Unexpected Behaviors]
-File Names with !: Filenames containing ! can cause errors in loops.
-
+7. Unexpected Behaviors
+File Names with !: Variables with ! in file names can cause errors in loops.
 Pipes: Variables within piped commands may not expand correctly.
 
-Historical Context
-Delayed Expansion was introduced for compatibility with existing batch files, maintaining default immediate expansion. Modern scripting languages like PowerShell address these limitations:
 
-PS C:\> $demo = "First"
-PS C:\> $demo = "Second" ; echo $demo
-Second
+8. Historical Context
+Delayed Expansion was introduced for compatibility with older scripts, where default immediate expansion was sufficient. Modern scripting tools like PowerShell provide more robust alternatives.
 
+Example in PowerShell:
 
-SUMMARY
+$demo = "First"
+$demo = "Second"; echo $demo
 
-EnableDelayedExpansion is a powerful feature for dynamic variable handling in batch scripts. It allows real-time updates to variables during execution, especially within loops or complex expressions, while preserving compatibility with older scripts
+[Output] Second
