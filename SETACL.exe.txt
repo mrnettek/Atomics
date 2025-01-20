@@ -79,7 +79,7 @@ Grants read-only (R) access to Domain\User on printer Printer1.
 SetACL can modify the ownership of files, folders, or registry keys.
 
 Example: Set ownership of a file
-SetACL.exe /file "C:\example\file.txt" /setowner "Domain\User"
+ SetACL.exe /file "C:\example\file.txt" /setowner "Domain\User"
 
 Sets Domain\User as the owner of file.txt.
 
