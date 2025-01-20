@@ -59,8 +59,7 @@ Example 3: Query a Session by ID or Name
 
 To query a session using its session ID or name:
  QUERY USER SessionName
-
-or
+ or
  QUERY USER SessionID
 
 
@@ -79,6 +78,7 @@ To display help information for the QUERY USER command:
 4. Permissions Required
 
 Querying the Session: A user can always query the session to which they are currently logged on.
+
 Querying Other Sessions: To query other sessions, the user must have the Query Information special access permission.
 
 User Access Permissions grant the following special permissions:
