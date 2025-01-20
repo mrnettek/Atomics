@@ -1,0 +1,146 @@
+CERTUTIL Command Guide with Examples
+
+CERTUTIL is a command-line utility installed as part of Certificate Services in Windows. It allows you to manage certificates, certificate authorities (CA), and related configurations, as well as back up and restore CA components. 
+
+CERTUTIL also helps with verifying certificates, key pairs, and certificate chains.
+
+
+1. Syntax and Usage
+
+[Syntax]
+CERTUTIL [options]
+
+Key Options:
+ /admin: Use ICertAdmin2 for CA properties.
+ /anonymous: Use anonymous SSL credentials.
+ /cert CertId: Use a signing certificate.
+ /clientcertificate clientCertId: Use X.509 Certificate SSL credentials. For selection UI, use -clientcertificate.
+ /config Machine\CAName: Specify the Certificate Authority and computer name.
+ /csp provider: Specify the provider for the key storage (e.g., KSP, TPM, NGC, SC).
+ /dc DCName: Target a specific Domain Controller.
+ /enterprise: Use the local machine enterprise registry certificate store.
+ /f: Force overwrite.
+ /generateSSTFromWU SSTFile: Generate an SST file using the automatic update mechanism.
+ /gmt: Display times in GMT.
+ /GroupPolicy: Use the group policy certificate store.
+ /idispatch: Use IDispatch instead of COM native methods.
+ /kerberos: Use Kerberos SSL credentials.
+ /location alternatestoragelocation: Specify an alternate storage location for certificates.
+ /mt: Display machine templates.
+ /nocr: Encode text without CR characters.
+ /nocrlf: Encode text without CR-LF characters.
+ /nullsign: Use the hash of the data as a signature.
+ /oldpfx: Use old PFX encryption.
+ /out columnlist: Specify a comma-separated list of columns to output.
+ /p password: Use the specified password.
+ /pin PIN: Specify the smart card PIN.
+ /policyserver URLorID: Specify the Policy Server URL or ID.
+ /privatekey: Display password and private key data.
+ /protect: Protect keys with a password.
+ /protectto SAMnameandSIDlist: Specify a comma-separated SAM name/SID list for protection.
+ /restrict restrictionlist: Specify restrictions in a comma-separated list.
+ /reverse: Reverse Log and Queue columns.
+ /seconds: Display times with seconds and milliseconds.
+ /service: Use the service certificate store.
+ /sid SID: Specify the numeric SID.
+ /silent: Use the silent flag to acquire crypt context.
+ /split: Split embedded ASN.1 elements and save them to files.
+ /sslpolicy servername: SSL Policy matching the server name.
+ /symkeyalg symmetrickeyalgorithm[,keylength]: Specify the symmetric key algorithm and optional key length (example AES,128).
+ /syncWithWU DestinationDir: Sync with Windows Update.
+ /t timeout: Specify the URL fetch timeout in milliseconds.
+ /Unicode: Write redirected output in Unicode.
+ /UnicodeText: Write output file in Unicode.
+ /urlfetch: Retrieve and verify AIA Certs and CDP CRLs.
+ /user: Use the HKEY_CURRENT_USER keys or certificate store.
+ /username username: Use named account for SSL credentials.
+ /ut: Display user templates.
+ /v: Provide verbose information.
+ /v1: Use V1 interfaces.
+
+
+2. Hash Algorithms Supported
+
+The following hash algorithms can be used with CERTUTIL:
+ MD2
+ MD4
+ MD5
+ SHA1
+ SHA256
+ SHA384
+ SHA512
+
+
+3. Certutil Options Overview
+
+CERTUTIL is used for a variety of tasks, including:
+ Displaying Certificate Authority configuration information.
+ Configuring and managing Certificate Services.
+ Verifying certificates, certificate chains, and key pairs.
+ Backing up and restoring CA components.
+
+The command options allow you to customize its behavior in various use cases, from simple tasks like viewing certificates to more complex operations such as managing CA properties, generating certificate files, and working with policies.
+
+
+4. Example Usage
+
+Example 1: View Current CA Configuration
+
+To view the configuration of the current Certification Authority:
+ CERTUTIL -config
+
+
+Example 2: Generate an SST File Using Automatic Update Mechanism
+
+To generate an SST file from the automatic update mechanism:
+ CERTUTIL -generateSSTFromWU "C:\path\to\SSTfile.sst"
+
+
+Example 3: Export a Certificate to a File
+
+Export a certificate to a file using the PFX encryption:
+ CERTUTIL -exportPFX -p "password" -out "C:\path\to\certificate.pfx" "CertID"
+
+
+Example 4: Display Information About a Specific Certificate
+
+To display detailed information about a specific certificate:
+ CERTUTIL -dump "C:\path\to\certificate.cer"
+
+
+Example 5: Verify a Certificate
+
+To verify a certificate, use the following command:
+ CERTUTIL -verify "C:\path\to\certificate.cer"
+
+
+Example 6: Display Detailed Information (Verbose)
+
+For verbose output when displaying certificate information:
+ CERTUTIL -v -dump "C:\path\to\certificate.cer"
+
+
+Example 7: Sync Certificates with Windows Update
+
+Sync certificates with Windows Update to a specified directory:
+ CERTUTIL -syncWithWU "C:\path\to\destination"
+
+
+5. Error Levels
+
+CERTUTIL sets the following exit codes based on the outcome of the command:
+ 0: The command completed successfully.
+ 1: An invalid option was specified or the command failed.
+ 2: The specified certificate or component was not found.
+ 5: Access was denied (likely a permissions issue).
+ 32: The operation could not be completed because the directory is in use.
+ 145: The directory was not empty.
+
+
+6. Additional Notes
+
+CERTUTIL replaces the File Checksum Integrity Verifier (FCIV) found in earlier versions of Windows.
+
+It is a tool primarily used by developers and IT administrators to view and manage certificates.
+
+CERTUTIL is not recommended for production code and does not guarantee live site support or application compatibility.
