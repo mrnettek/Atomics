@@ -5,6 +5,7 @@ DSREGCMD.exe is a command-line tool used to display the device join status and m
 
 1. Syntax and Usage
 
+[Syntax]
 Display and Manage Device Join Status
  DSREGCMD options
 
