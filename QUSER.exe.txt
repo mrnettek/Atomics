@@ -1,0 +1,87 @@
+QUERY USER (QUSER.exe) Command Guide with Examples
+
+QUERY USER is used to display information about user sessions on a Terminal Server or a Remote Desktop Session Host (RD Session Host) server. This command provides details about user sessions such as their state, idle time, and logon time.
+
+
+1. Syntax and Usage
+
+Display Information About User Sessions
+ QUERY USER [/server:ServerName]
+ QUERY USER UserName [/server:ServerName]
+ QUERY USER [SessionName | SessionID] [/server:ServerName]
+
+
+[Key]
+ UserName - The logon username of the user whose sessions you want to query.
+ SessionName - The name of the session that you want to query.
+ SessionID - The ID of the session that you want to query.
+ /server:ServerName - The Remote Desktop Session Host server to query. By default, the current server is used.
+ / - Displays help information for the command.
+
+Note:
+
+QUERY USER is a synonym for QUSER.exe.
+
+Available only for 64-bit sessions; there is no 32-bit implementation of QUSER.exe.
+
+
+2. Command Output
+
+QUERY USER provides the following information about each session:
+ User Name - The name of the logged-on user.
+ Session Name - The name of the session on the RD Session Host server.
+ Session ID - The ID of the session.
+ Session State - Whether the session is Active or Disconnected.
+ Idle Time - The number of minutes since the last keystroke or mouse movement at the session.
+ Logon Time - The date and time the user logged on.
+ 
+If no specific user, session name, or session ID is provided, QUERY USER will return a list of all logged-on users. Additionally, QUERY SESSION can be used to display a list of all sessions on the server.
+
+When querying multiple users, a > symbol is used to indicate the current session.
+
+
+3. Examples
+
+Example 1: Query All User Sessions on the Current Server
+
+To display all user sessions on the current server:
+ QUERY USER
+
+
+Example 2: Query a Specific User's Session
+
+To display information about a specific user's session, replace UserName with the actual username:
+ QUERY USER UserName
+
+
+Example 3: Query a Session by ID or Name
+
+To query a session using its session ID or name:
+ QUERY USER SessionName
+
+or
+ QUERY USER SessionID
+
+
+Example 4: Query Sessions on a Remote Server
+
+To display information about sessions on a remote server, replace ServerName with the name of the server:
+ QUERY USER /server:ServerName
+
+
+Example 5: Display Help Information
+
+To display help information for the QUERY USER command:
+ QUERY USER /?
+
+
+4. Permissions Required
+
+Querying the Session: A user can always query the session to which they are currently logged on.
+Querying Other Sessions: To query other sessions, the user must have the Query Information special access permission.
+
+User Access Permissions grant the following special permissions:
+ Query Information: Allows a user to query information about a session.
+ Logon: Allows a user to log on to a session.
+ Connect: Allows a user to connect to another session.
+ Send Messages: Allows a user to send messages to other user sessions.
