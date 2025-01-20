@@ -6,36 +6,28 @@ CALL is a command-line tool used to call another batch file or a subroutine from
 1. Syntax and Usage
 
 Call a Batch File
-
 CALL [drive:][path]filename [parameters]
 
 Call a Subroutine
-
 CALL :label [parameters]
 
 Call an Internal Command
-
 CALL internal_cmd
 
 
 [Key]
 
 pathname - The batch file to execute.
-
 parameters - Any command-line arguments to pass to the batch file or subroutine.
-
 :label - A label within the current batch file to jump to.
-
 internal_cmd - A built-in command (like SET, ECHO, etc.) to run, with variables expanded.
 
 Note: The CALL command enables a parent batch file to run other scripts or subroutines while retaining control after the execution completes.
 
 
-
 2. Examples
 
 Call a Second Batch File
-
 The CALL command launches another batch file, passing any parameters provided. Execution control returns to the parent script when the second batch file ends.
 
 CALL MyScript.cmd "1234"
@@ -118,11 +110,9 @@ EXIT /B
 When CALL is used, the control remains with the calling batch file until the target batch file or subroutine completes. The return to the caller is seamless, making this a useful method for modularizing batch scripts.
 
 
-
 4. Buggy Behavior
 
 Redirection Issues with CALL
-
 Redirection via a pipe (|) does not always work as expected:
 
 CALL :function >file.txt    (works)
@@ -132,7 +122,6 @@ Additionally, the CALL command may not handle carets (^) within quoted strings c
 
 
 Using CALL with Internal Commands
-
 While CALL is commonly used with batch files, it can also be used to execute internal commands (like SET or ECHO). However, this can result in slower execution due to disk search overhead, especially when used with loops or large variables.
 
 
@@ -148,13 +137,12 @@ In this example, CALL expands the variables and executes the SET command, result
 For better performance, consider using Delayed Expansion.
 
 
-
 5. Advanced Usage
 Using CALL for Internal Commands
-
 You can also use CALL to run internal commands and expand variables dynamically. However, note that some operators like conditional execution and redirection may not work as expected.
 
 CALL SET _result=%%%_var%%%
+
 This expands _result with the value of _server, but it's slower than using SET directly. Delayed Expansion can be more efficient:
 
 @Echo Off
