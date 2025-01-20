@@ -1,0 +1,108 @@
+CACLS Command Guide with Examples
+
+CACLS (Change Access Control List) is a command-line utility used to display or modify the Access Control Lists (ACLs) for files and folders. This command is deprecated and is replaced by icacls. ACLs apply only to files stored on an NTFS-formatted drive, and they control the permissions for users and groups on those files.
+
+
+1. Syntax and Usage
+
+[Syntax]
+CACLS pathname [options]
+ pathname: The path to the file or folder whose ACLs you want to display or modify.
+
+
+2. Key Options
+ /C: Continue on access denied errors. This option will allow the command to continue execution even if some access is denied during processing. This corresponds to /CONTINUE in newer commands.
+ /D user: Deny access to the specified user. This option will explicitly deny permissions to a user or group.
+ /E: Edit the ACL. This option allows you to modify the existing ACLs without changing other rights that are already in place.
+
+ /G user:permission: Grant access rights to the specified user. You can specify the permission as:
+ R = Read
+ W = Write
+ C = Change (read/write)
+ F = Full control
+ /L: Work on the symbolic link itself instead of its target (use with symbolic links).
+
+ /M: Modify ACLs of volumes that are mounted to a directory. This option is useful when working with mounted volumes  rather than individual files or directories.
+
+ /P user:permission: Replace the existing access rights with the specified ones. Permissions can be:
+
+ R = Read
+ W = Write
+ C = Change (read/write)
+ F = Full control
+ N = None (removes all permissions)
+ /R user: Revoke the specified user's access rights. This option is valid only when used with /E.
+
+ /S: Display the SDDL (Security Descriptor Definition Language) string for the DACL (Discretionary Access Control List).
+
+ /S:sddl: Replace the ACL(s) with those specified in the SDDL string. This option is not valid when using /E, /G, /R, /P, or /D.
+
+ /T: Search the specified pathname, including all subfolders. This option allows you to modify ACLs recursively.
+
+
+3. Important Notes
+
+User and Group Names: You can specify either a user name or a group name (local or global) when using the options. If the user or group name contains spaces, you must enclose it in double quotes. For example, "Authenticated Users".
+
+Wildcard Support: Wildcards can be used to specify multiple files or directories. For example, *.txt will match all .txt files in the current directory.
+
+Deny Permissions: Setting the /D option will deny access to a user, even if the user is part of a group that grants access to the file or folder.
+
+No /Y Switch: The CACLS command does not provide a /Y switch to automatically answer 'Y' to a confirmation prompt. 
+
+However, you can pipe the 'Y' character into the command to automatically confirm:
+ ECHO Y| CACLS filename /g username:permission
+
+
+4. Limitations
+
+Open Files: If a file or folder is currently open (locked), you may not be able to change its permissions without first closing the file locks. You can manage open files in Computer Management ➞ Shared Folders ➞ Open files.
+
+Permissions Not Supported: CACLS cannot set the following permissions: Change permissions, Take ownership, Execute, and Delete. To set these permissions, you should use XCACLS.
+
+
+5. Example Usage
+
+Example 1: Display ACLs for a File
+
+To display the ACLs for a file called myfile.txt:
+ CACLS myfile.txt
+
+
+Example 2: Grant Permissions to a User
+
+To grant Read permissions to the user "JohnDoe" for a file myfile.txt:
+ CACLS myfile.txt /G "JohnDoe":R
+
+
+Example 3: Deny Permissions to a User
+
+To deny Write access to the user "JohnDoe" for a file myfile.txt:
+ CACLS myfile.txt /D "JohnDoe"
+
+
+Example 4: Replace Permissions for a User
+
+To replace the permissions for "JohnDoe" on a file myfile.txt to Full control:
+ CACLS myfile.txt /P "JohnDoe":F
+
+
+Example 5: Recurse Subfolders and Modify ACLs
+
+To modify the ACLs of all .txt files in the current directory and its subfolders to grant Full control to "JohnDoe":
+ CACLS *.txt /T /G "JohnDoe":F
+
+
+6. Error Levels
+ 0: The command completed successfully.
+ 1: Invalid option or failure to apply ACLs.
+ 2: The file or directory was not found.
+ 5: Access was denied (permission issue).
+ 145: The directory is not empty (when trying to delete a non-empty directory).
+
+
+7. Additional Notes
+
+Deprecated Command: CACLS has been deprecated, and icacls is recommended for more advanced functionality and better support.
+
+Access Control: ACLs are a key part of file system security, helping define which users and groups have access to specific files and folders.
