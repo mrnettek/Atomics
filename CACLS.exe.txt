@@ -14,19 +14,23 @@ CACLS pathname [options]
  /C: Continue on access denied errors. This option will allow the command to continue execution even if some access is denied during processing. This corresponds to /CONTINUE in newer commands.
  /D user: Deny access to the specified user. This option will explicitly deny permissions to a user or group.
  /E: Edit the ACL. This option allows you to modify the existing ACLs without changing other rights that are already in place.
- /G user:permission: Grant access rights to the specified user. You can specify the permission as:
+
+/G user:permission: Grant access rights to the specified user. You can specify the permission as:
   R = Read
   W = Write
   C = Change (read/write)
   F = Full control
+ 
  /L: Work on the symbolic link itself instead of its target (use with symbolic links).
  /M: Modify ACLs of volumes that are mounted to a directory. This option is useful when working with mounted volumes  rather than individual files or directories.
+ 
  /P user:permission: Replace the existing access rights with the specified ones. Permissions can be:
   R = Read
   W = Write
   C = Change (read/write)
   F = Full control
   N = None (removes all permissions)
+ 
  /R user: Revoke the specified user's access rights. This option is valid only when used with /E.
  /S: Display the SDDL (Security Descriptor Definition Language) string for the DACL (Discretionary Access Control List).
  /S:sddl: Replace the ACL(s) with those specified in the SDDL string. This option is not valid when using /E, /G, /R, /P, or /D.
