@@ -1,4 +1,4 @@
-FOR /F
+FOR /F Statement Guide with Examples
 
 The FOR /F command in batch scripting allows you to iterate through a file, a command's output, or a string by parsing its content. This is especially useful for processing text files, filtering data, or extracting specific tokens (subsections of a line).
 Syntax
@@ -18,6 +18,7 @@ FOR /F ["options"] %%parameter IN ("Text string to process") DO command
     filenameset: A list of one or more text files. Use parentheses to enclose multiple filenames ((file1.txt,file2.txt)).
     command: The action performed for each iteration.
     %%parameter: A replaceable variable (%%A) that holds the current token. Use %% in scripts and % on the command line.
+
 
 [Parsing Details]
 When processing files or strings, FOR /F reads line by line, splits each line based on delimiters, and assigns tokens to variables. Adjust parsing behavior using options.
