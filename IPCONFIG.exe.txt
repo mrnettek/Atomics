@@ -1,0 +1,123 @@
+IPCONFIG Command Help File
+
+The IPCONFIG command is used to configure and display the IP (Internet Protocol) configuration of the system. It is primarily used for managing the IP address settings and troubleshooting network connectivity issues.
+
+
+[Syntax]
+IPCONFIG /all
+IPCONFIG /release [adapter]
+IPCONFIG /release6 [adapter]
+IPCONFIG /renew [adapter]
+IPCONFIG /renew6 [adapter]
+IPCONFIG /flushdns
+IPCONFIG /registerdns
+IPCONFIG /displaydns
+IPCONFIG /showclassid adapter
+IPCONFIG /showclassid6 adapter
+IPCONFIG /setclassid adapter [classid]
+IPCONFIG /setclassid6 adapter [classid]
+IPCONFIG /?
+
+[Key Options]
+Displays full configuration information for all adapters.
+Shows the IP address, subnet mask, default gateway, DNS servers, DHCP status, and other network-related details for each adapter.
+ /all
+
+Releases the IPv4 address for the specified adapter.
+If no adapter is specified, it releases the IP address for all adapters.
+ /release [adapter]
+
+
+Releases the IPv6 address for the specified adapter.
+If no adapter is specified, it releases the IPv6 address for all adapters.
+ /release6 [adapter]
+
+Renews the IPv4 address for the specified adapter.
+If no adapter is specified, it renews the IPv4 address for all adapters.
+ /renew [adapter]
+
+Renews the IPv6 address for the specified adapter.
+If no adapter is specified, it renews the IPv6 address for all adapters.
+ /renew6 [adapter]
+
+Purges the DNS resolver cache, which can help resolve issues related to DNS resolution by clearing outdated or incorrect entries.
+ /flushdns
+
+Refreshes all DHCP leases and re-registers DNS names with the DNS server.
+ /registerdns
+
+Displays the contents of the DNS resolver cache, showing the cached DNS entries for quick reference.
+ /displaydns
+
+Displays all the DHCP class IDs allowed for the specified adapter.
+Useful for checking which user classes the adapter supports for DHCP.
+ /showclassid adapter
+
+Displays all the IPv6 DHCP class IDs allowed for the specified adapter.
+/showclassid6 adapter
+
+Modifies the DHCP class ID for the specified adapter.
+If no class ID is specified, the current class ID is removed.
+/setclassid adapter [classid]
+
+Modifies the IPv6 DHCP class ID for the specified adapter.
+/setclassid6 adapter [classid]
+
+Displays help information for the IPCONFIG command, listing all available options and their descriptions.
+/?
+
+
+Important Notes
+
+Adapter names with spaces: If the adapter name contains spaces, it must be enclosed in quotes (example "Local Area Connection").
+
+Wildcard support: Wildcards (* and ?) are supported for the adapter name. This allows you to specify multiple adapters with similar names (example *Ethernet* or *Con*).
+
+Releasing IP during remote sessions: If you are remotely connected to a machine and run ipconfig /release, it will disconnect your remote session.
+
+Class IDs and DHCP: The setclassid option allows the modification of DHCP class IDs, which are used to assign specific settings (examples DNS, gateway) to different groups of machines. These IDs need to be configured on the DHCP server.
+
+
+Examples
+
+Show Detailed Information
+This command will display detailed configuration information for all network adapters on the system.
+ C:\> ipconfig /all
+
+
+Release and Renew All Adapters
+
+This releases and renews the IP address for all adapters.
+ C:\> ipconfig /release
+ C:\> ipconfig /renew
+
+
+Release and Renew All Adapters in One Line
+This one-liner releases and then renews the IP addresses for all adapters.
+ C:\> ipconfig /release && ipconfig /renew
+
+
+Renew Connection Starting with "EL"
+This command renews the connection for any adapter whose name starts with "EL".
+ C:\> ipconfig /renew EL*
+
+
+Release Connections Matching "Con"
+This command releases the IP addresses for all connections with names matching "Con" (example "Local Area Connection 1").
+ C:\> ipconfig /release *Con*
+
+
+Set the DHCP Class ID
+This command sets the DHCP class ID to "TEST" for the "Local Area Connection" adapter.
+ C:\> ipconfig /setclassid "Local Area Connection" TEST
+
+
+Errorlevels
+ 0: The command was successful.
+ 1: An error occurred during the operation.
+
+
+Use Cases
+
+Network Troubleshooting: ipconfig is commonly used to view and manage network configurations, troubleshoot connectivity issues, or reset network settings.
+DHCP Configuration: setclassid can be used to adjust DHCP class IDs for devices, allowing customization of network settings based on different groups.
