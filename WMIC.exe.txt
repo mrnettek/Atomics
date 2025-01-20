@@ -7,18 +7,16 @@ Note: WMIC is deprecated as of 2021, and while it will still function for a few 
 
 1. Syntax and Usage
 
-Basic Syntax
+[Syntax]
  WMIC [global_switch(es)] Alias [options] [format]
  WMIC [global_switch(es)] Command
  WMIC [global_switch:value] [global_switch:value] Command
 
 
-Key Components:
-
+[Key Components]
 Alias: Defines the component or class of the system you want WMIC to interact with (CPU, MEMORYCHIP, DISKDRIVE).
 WHERE clause: Filters the results based on specific criteria (targeting a particular printer rather than all printers).
 
-Global Switches:
  /NODE - Specifies the remote machine(s) to query (e.g., @filename, machine_id, or a list of machine IDs).
  /APPEND - Output redirection mode: STDOUT, CLIPBOARD, or <filename>.
  /AUTHLEVEL - Specifies the client authentication level (e.g., None, Connect, Call, etc.).
