@@ -6,7 +6,6 @@ FORFILES is a command-line utility that allows you to select files or sets of fi
 1. Syntax and Usage
 
 [Syntax]
-
 FORFILES [/p Path] [/m SrchMask] [/s] [/c Command] [/d [+ | -] {date | dd}]
  /p Path: The path to search (default is the current folder).
  /m SrchMask: Select files matching the specified search mask. Wildcards can be used, e.g., *.* for all files or *.txt for text files.
@@ -107,4 +106,5 @@ To select and run a command on all hidden files:
 7. Additional Notes
 
 File Selection: FORFILES allows you to specify files using wildcards, making it a flexible tool for batch processing large sets of files.
+
 Command Execution: The /c option allows you to execute any valid command for each file, which can be useful for bulk file operations such as copying, deleting, or renaming.
