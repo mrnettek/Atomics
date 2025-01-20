@@ -51,14 +51,13 @@ Defines the characters used to separate tokens. Multiple delimiters can be speci
 EXAMPLES
 
 Example 1: Parse Tokens from a String
-
-@Echo Off
-FOR /F "tokens=1,2,3,* delims= " %%A IN ("alpha beta gamma delta") DO (
-    Echo First Token: %%A
-    Echo Second Token: %%B
-    Echo Third Token: %%C
-    Echo Remaining Tokens: %%D
-)
+ @Echo Off
+ FOR /F "tokens=1,2,3,* delims= " %%A IN ("alpha beta gamma delta") DO (
+     Echo First Token: %%A
+     Echo Second Token: %%B
+     Echo Third Token: %%C
+     Echo Remaining Tokens: %%D
+ )
 
 
 Example 2: Process a File Line by Line
@@ -94,8 +93,11 @@ Process a file with spaces in its name:
 
 [Tips and Notes]
 Delayed Variable Expansion: Use SETLOCAL EnableDelayedExpansion when modifying variables inside a loop.
+
 Combining Options: Options must appear in the correct order: usebackq > skip > delims > eol > tokens.
+
 Maximum Tokens: A single FOR /F command can process up to 31 tokens.
+
 Edge Cases: If tokens are missing (consecutive delimiters), adjust parsing or preprocess the data.
 
 
