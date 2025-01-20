@@ -6,7 +6,6 @@ WEVTUTIL is a command-line utility that allows you to manage Windows Event Logs 
 1. Syntax and Usage
 
 [Syntax]
-
 WEVTUTIL {command} [options]
 
 Commands:
