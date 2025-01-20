@@ -5,28 +5,28 @@ COPY is a command-line tool used to copy one or more files from one location to 
 
 1. Syntax and Usage
 
-Basic Syntax
+[Syntax]
  COPY [options] [/A|/B] source [/A|/B] [+ source2 [/A|/B]...] [destination [/A|/B]]
  or
  COPY source1 + source2.. destination [options]
 
 
-Key Components:
+[Key Components]
  source - Pathname for the file(s) to be copied.
  /A - Specifies that the file is an ASCII text file. It will copy up to the end-of-file (EOF) marker.
  /B - Specifies that the file is a binary file. It will copy all extended characters. This is the default for copying  
- files unless merging multiple files.
+      files unless merging multiple files.
  /D - Allows the destination file to be created decrypted (useful when copying encrypted files).
- destination - Pathname for the new file(s) or location where the file(s) will be copied to.
+      destination - Pathname for the new file(s) or location where the file(s) will be copied to.
  /V - Verifies that the destination file, once written, can be read. No comparison with the source files occurs.
  /N - When possible, create only short filenames (8.3 format) in the destination. This can be helpful when copying  
- between differently formatted disks, such as NTFS and VFAT, or when archiving data to an ISO9660 CD-ROM.
+      between differently formatted disks, such as NTFS and VFAT, or when archiving data to an ISO9660 CD-ROM.
  /L - If the source is a symbolic link, copy the link to the target instead of the actual file the source link points 
- to.
+      to.
  /Y - Suppress the confirmation prompt when overwriting files.
  /-Y - Enable the confirmation prompt when overwriting files.
  /Z - If the copy is interrupted, the process can be resumed from where it left off. It also displays a progress  
- indicator with the percentage complete.
+      indicator with the percentage complete.
  /? - Displays help information for the COPY command.
 
 
