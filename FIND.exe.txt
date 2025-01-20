@@ -6,19 +6,17 @@ FIND is a command-line tool used to search for a text string in a file and displ
 1. Syntax and Usage
 
 Search for a String in a File
-
-FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
+ FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
 
 
 [Key]
-
-"string" - The text string to search for (must be in quotes).
-[pathname] - The drive and/or file(s) to search (wildcards accepted).
-/V - Display all lines not containing the specified string.
-/C - Count the number of lines containing the string.
-/N - Display line numbers along with the matching lines.
-/I - Ignore the case of characters when searching for the string.
-/off[line] - Do not skip files that have the offline attribute set.
+ "string" - The text string to search for (must be in quotes).
+ [pathname] - The drive and/or file(s) to search (wildcards accepted).
+ /V - Display all lines not containing the specified string.
+ /C - Count the number of lines containing the string.
+ /N - Display line numbers along with the matching lines.
+ /I - Ignore the case of characters when searching for the string.
+ /off[line] - Do not skip files that have the offline attribute set.
 
 If no pathname is specified, FIND will prompt for text input or accept text piped from another command (use CTRL-Z to end manual text input).
 
@@ -30,53 +28,50 @@ If searching for a text string containing double quote characters (") in the str
 Example 1: Search for a String in a File
 
 Suppose names.txt contains the following:
-Alice
-Bob
-Charlie
-Alice Bob
+ Alice
+ Bob
+ Charlie
+ Alice Bob
 
 To search for the string Alice:
-FIND "Alice" names.txt
+ FIND "Alice" names.txt
 
 [Output]
----------- names.txt
-Alice
-Alice Bob
+ ---------- names.txt
+ Alice
+ Alice Bob
 
 
 Example 2: Count the Number of Matching Lines
 
 To count the number of lines containing the string Alice:
-FIND /C "Alice" names.txt
+ FIND /C "Alice" names.txt
 
 [Output]
-
----------- names.txt
----------- Count = 2
+ ---------- names.txt
+ ---------- Count = 2
 
 
 Example 3: Search for a String Ignoring Case
 
 To search for the string alice (case-insensitive):
-FIND /I "alice" names.txt
+ FIND /I "alice" names.txt
 
 [Output]
-
----------- names.txt
-Alice
-Alice Bob
+ ---------- names.txt
+ Alice
+ Alice Bob
 
 
 Example 4: Display Lines That Do Not Contain the String
 
 To display all lines not containing the string Alice:
-FIND /V "Alice" names.txt
+ FIND /V "Alice" names.txt
 
 [Output]
-
----------- names.txt
-Bob
-Charlie
+ ---------- names.txt
+ Bob
+ Charlie
 
 
 Example 5: Search Multiple Files Using Wildcards
@@ -85,10 +80,9 @@ To search for the string Alice in all .txt files in the current directory:
 FIND "Alice" *.txt
 
 [Output]
-
----------- names.txt
-Alice
-Alice Bob
+ ---------- names.txt
+ Alice
+ Alice Bob
 
 
 3. Limitations
@@ -102,7 +96,6 @@ For lines longer than 4091 characters, use FINDSTR, which can handle up to 8191 
 4. Errorlevel
 
 FIND will return the following ErrorLevels:
-
-0 - String found in at least one of the files.
-1 - String not found.
-2 - If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.
+ 0 - String found in at least one of the files.
+ 1 - String not found.
+ 2 - If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.
