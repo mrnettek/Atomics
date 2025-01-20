@@ -50,7 +50,7 @@ XCOPY is a command-line tool used to copy files and directory trees to another l
  /R: Overwrite read-only files.
  /T: Create a folder structure without copying files. Does not include empty folders unless /E is used.
  /K: Copy file attributes. Without this, XCOPY will reset read-only attributes.
- /N: Use short filenames (8.3 format) when possible. This is useful for copying between disks with different file systems (e.g., NTFS to VFAT).
+ /N: Use short filenames (8.3 format) when possible. This is useful for copying between disks with different file systems (NTFS to VFAT).
  /O: Copy file ownership and ACL information.
  /X: Copy file audit settings (implies /O).
 
