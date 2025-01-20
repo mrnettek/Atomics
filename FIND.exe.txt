@@ -2,6 +2,7 @@ FIND Command Guide with Examples
 
 FIND is a command-line tool used to search for a text string in a file and display all the lines where it is found. Below is a brief guide with syntax and examples.
 
+
 1. Syntax and Usage
 
 Search for a String in a File
@@ -21,7 +22,7 @@ FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
 
 If no pathname is specified, FIND will prompt for text input or accept text piped from another command (use CTRL-Z to end manual text input).
 
-If searching for a text string containing double quote characters (") in the string, escape the quotes by doubling them, e.g., "The ""main"" event".
+If searching for a text string containing double quote characters (") in the string, escape the quotes by doubling them, "The ""main"" event".
 
 
 2. Examples
@@ -29,14 +30,12 @@ If searching for a text string containing double quote characters (") in the str
 Example 1: Search for a String in a File
 
 Suppose names.txt contains the following:
-
 Alice
 Bob
 Charlie
 Alice Bob
 
 To search for the string Alice:
-
 FIND "Alice" names.txt
 
 [Output]
@@ -48,8 +47,6 @@ Alice Bob
 Example 2: Count the Number of Matching Lines
 
 To count the number of lines containing the string Alice:
-
-
 FIND /C "Alice" names.txt
 
 [Output]
@@ -61,9 +58,8 @@ FIND /C "Alice" names.txt
 Example 3: Search for a String Ignoring Case
 
 To search for the string alice (case-insensitive):
-
-
 FIND /I "alice" names.txt
+
 [Output]
 
 ---------- names.txt
@@ -74,12 +70,9 @@ Alice Bob
 Example 4: Display Lines That Do Not Contain the String
 
 To display all lines not containing the string Alice:
-
-
 FIND /V "Alice" names.txt
 
 [Output]
-
 
 ---------- names.txt
 Bob
@@ -89,11 +82,9 @@ Charlie
 Example 5: Search Multiple Files Using Wildcards
 
 To search for the string Alice in all .txt files in the current directory:
-
-
 FIND "Alice" *.txt
-Output:
 
+[Output]
 
 ---------- names.txt
 Alice
@@ -104,6 +95,7 @@ Alice Bob
 FIND does not support wildcards in the string search. For advanced searching with wildcards, use FINDSTR instead.
 FIND will not detect strings positioned more than 1070 characters along a single line with no carriage return. This makes it less useful for binary or XML files.
 Searching for an empty string ("") will normally match nothing, but using the /V flag will reverse the test to match everything (though it will fail for lines longer than 4091 characters).
+
 For lines longer than 4091 characters, use FINDSTR, which can handle up to 8191 characters per line.
 
 
