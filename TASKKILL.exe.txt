@@ -6,8 +6,6 @@ TASKKILL is a command-line utility used to terminate one or more processes, eith
 1. Syntax and Usage
 
 [Syntax]
-
-
 TASKKILL [/S system [/U username [/P [password]]]]
          { [/FI filter] [/PID processid | /IM imagename] } [/F] [/T]
 
