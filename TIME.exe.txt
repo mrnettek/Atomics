@@ -41,10 +41,10 @@ The output format of TIME /T depends on the system’s region settings. Below ar
 Country/Locale	Format	Example
 
 United States	  hh:mm   AM/PM	12:30 PM
-United Kingdom	HH:mm	  12:30
+United Kingdom	 HH:mm	  12:30
 Japan	          HH:mm	  12:30
 Germany	        HH:mm	  12:30
-France	        HH:mm	  12:30
+France	         HH:mm	  12:30
 
 
 4. Historical Context
