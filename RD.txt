@@ -75,4 +75,5 @@ To detect non-zero exit codes and handle failures, you can use conditional execu
 6. Additional Notes
 
 No Wildcards: The RD command does not support wildcards for directory names. You need to specify the exact directory name or path.
+
 Deleting System Folders: Be cautious when using RD with system or protected folders. Access may be denied if the required permissions are not granted.
