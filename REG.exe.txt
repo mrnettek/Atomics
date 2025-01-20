@@ -2,12 +2,14 @@ REG.exe Command Guide with Examples
 
 REG.exe is a command-line tool for reading, setting, deleting, and managing the Windows registry. Below is a detailed guide with syntax and examples for common operations.
 
+
 1. Query Registry Keys and Values
 
 Syntax:
 
 REG QUERY [ROOT\]RegKey /V ValueName [/s] [/F Data [/K] [/D] [/C] [/E]]
 REG QUERY [ROOT\]RegKey /VE
+
 
 Examples:
 
@@ -22,6 +24,7 @@ REG QUERY HKCU\Environment /VE
 Search for a key containing specific data:
 
 REG QUERY HKLM\System /F "SystemDrive" /D /S
+
 
 2. Add Registry Keys and Values
 
@@ -42,6 +45,7 @@ REG ADD HKCU\Environment /VE /D "Default Value" /F
 Add a DWORD value:
 
 REG ADD HKLM\Software\Example /V NumberValue /T REG_DWORD /D 1234 /F
+
 
 3. Delete Registry Keys and Values
 
@@ -65,6 +69,7 @@ Delete all values under a key:
 
 REG DELETE HKCU\Environment /VA /F
 
+
 4. Export and Import Registry Keys
 
 Syntax:
@@ -81,6 +86,7 @@ REG EXPORT HKCU\Environment Backup.reg /Y
 Import a registry key:
 
 REG IMPORT Backup.reg
+
 
 5. Save and Restore Registry Hives
 
@@ -99,6 +105,7 @@ Restore a registry key:
 
 REG RESTORE HKLM\Software\Example Example.hiv
 
+
 6. Copy Registry Keys
 
 Syntax:
@@ -110,6 +117,7 @@ Example:
 Copy a key from one location to another:
 
 REG COPY HKCU\Environment HKLM\Software\Environment
+
 
 7. Compare Registry Keys
 
@@ -126,6 +134,7 @@ REG COMPARE HKCU\Environment HKLM\Environment
 Compare a specific value:
 
 REG COMPARE HKCU\Environment HKLM\Environment /V TestValue
+
 
 8. Load and Unload Registry Keys
 
@@ -144,6 +153,7 @@ Unload a hive file:
 
 REG UNLOAD HKLM\TempHive
 
+
 9. Useful Switches
 
 /reg:32: Force 32-bit registry view.
@@ -155,6 +165,7 @@ REG UNLOAD HKLM\TempHive
 /S: Include all subkeys.
 
 /E: Return exact matches only.
+
 
 Common Roots
 
