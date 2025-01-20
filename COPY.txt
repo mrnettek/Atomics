@@ -47,8 +47,8 @@ If you are merging multiple files, the /B option is required. It ensures that th
 
 4. Copying from the Console
 You can use the COPY command interactively to create a new file by entering text from the console:
+ COPY CON filename.txt
 
-COPY CON filename.txt
 After typing the desired content, press CTRL+Z to end the input and save the file.
 
 
@@ -71,6 +71,7 @@ This command will redirect error messages (and suppress normal output) to the er
 
 
 7. Examples
+
 Example 1: Copy a File in the Current Folder
 
 To copy a file file1.txt to file2.txt in the current folder:
