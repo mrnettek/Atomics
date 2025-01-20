@@ -1,0 +1,131 @@
+iCACLS Command Guide with Examples
+
+iCACLS is a command-line utility used to display, modify, and manage Access Control Lists (ACLs) for files and folders. It resolves issues that occurred when using the older CACLS and XCACLS utilities. iCACLS allows administrators to manage file permissions with greater flexibility and security.
+
+
+1. Syntax and Usage
+
+[Syntax]
+
+iCACLS Name [/grant[:r] User:Permission[...]]
+         [/deny User:Permission[...]]
+         [/remove[:g|:d]] User[...]]
+         [/inheritance:e|d|r]
+         [/setintegritylevel Level[...]]
+         [/T] [/C] [/L] [/Q]
+ 
+ Alternatively, you can use the following options:
+  /save aclfile: Store ACLs for directories into an ACL file.
+  /restore aclfile: Restore ACLs from an ACL file.
+  /setowner user: Change the owner of the file/folder.
+  /findsid Sid: Find items with a specific SID in their ACL.
+  /verify: Verify if the ACL is valid.
+  /reset: Replace ACLs with default inherited ACLs.
+
+
+2. Key Options
+
+Name: Specifies the file(s) or folder(s) to apply the permissions to.
+ /T: Traverse all subfolders to match files and directories. This option applies permission changes to subfolders, whether they inherit permissions or not.
+ /C: Continue processing even if errors occur (example access denied). Errors will still be displayed.
+ /L: Perform the operation on a symbolic link itself, not its target.
+ /Q: Quiet mode. Suppresses success messages, making the output less verbose.
+
+
+3. Permission Options
+ 
+ /grant[:r] User:Permission: Grant access rights to the specified user. The :r option replaces any previously granted permissions for that user; otherwise, permissions are added. For example:
+  D = Delete access
+  F = Full access (includes edit permissions, create, delete, read, and write)
+  R = Read-only access
+  W = Write-only access
+  M = Modify access (includes create, delete, read, and write)
+  RX = Read and execute access
+
+ /deny User:Permission: Explicitly deny the specified user access rights. This will remove any previously granted permissions of the same type to the user.
+ /remove[:g|:d] User: Remove all occurrences of a user from the ACL. The :g flag removes granted rights, while the :d flag removes denied rights.
+
+ /inheritance:e|d|r:
+  e: Enable inheritance
+  d: Disable inheritance and copy the current ACEs (Access Control Entries) to the file
+  r: Remove all inherited ACEs
+
+ /setintegritylevel Level: Set the integrity level for files. The Level can be one of:
+  L = Low
+  M = Medium (Standard)
+  H = High (Elevated)
+
+You can use (OI) for object inherit and (CI) for container inherit with directories to control how the integrity level is applied.
+
+
+4. Other Options
+ /save aclfile: Save the ACLs of directories to a specified file (aclfile) for later use with /restore.
+ /restore aclfile: Restore ACLs from a saved ACL file.
+ /setowner user: Set the specified user as the owner of the file or directory.
+ /findsid Sid: Find items that have an ACL mentioning the specified SID (Security Identifier).
+ /verify: Verify that the ACL is correct and matches the specified file or directory.
+ /reset: Reset ACLs to the default inherited permissions for the specified file(s) or folder(s).
+
+
+5. Example Usage
+
+Example 1: Grant Read Access to a User
+
+Grant Read access to the user "JohnDoe" for the file C:\example.txt:
+ iCACLS C:\example.txt /grant "JohnDoe":R
+
+
+Example 2: Deny Write Access to a User
+
+Deny Write access to the user "JohnDoe" for the file C:\example.txt:
+ iCACLS C:\example.txt /deny "JohnDoe":W
+
+
+Example 3: Replace Permissions for a User
+
+Replace the current permissions for "JohnDoe" with Full access:
+ iCACLS C:\example.txt /P "JohnDoe":F
+
+
+Example 4: Traverse Subfolders and Change Permissions
+
+Grant Read access to "JohnDoe" for all .txt files in the directory C:\docs and its subfolders:
+ iCACLS C:\docs\*.txt /T /grant "JohnDoe":R
+
+
+Example 5: Save ACLs to a File
+
+Save the ACLs of the C:\docs directory and its subdirectories to an ACL file:
+ iCACLS C:\docs /save aclfile.txt /T
+
+
+Example 6: Restore ACLs from a File
+
+Restore ACLs from the aclfile.txt to the C:\docs directory:
+ iCACLS C:\docs /restore aclfile.txt
+
+
+Example 7: Set the Owner of a File
+
+Change the owner of the file C:\example.txt to "JohnDoe":
+ iCACLS C:\example.txt /setowner "JohnDoe"
+
+
+Example 8: Find Files with Specific SID in Their ACL
+
+Find files that have the SID S-1-5-32-544 (Administrators group SID) in their ACL:
+ iCACLS C:\docs /findsid S-1-5-32-544
+ 6. Error Levels
+ 0: The command completed successfully.
+ 1: The command failed due to invalid syntax or parameters.
+ 2: The file or directory was not found.
+ 5: Access was denied (permissions issue).
+ 145: The directory is not empty (when attempting to delete a non-empty directory).
+
+
+7. Additional Notes
+
+Symbolic Links: Use the /L option to modify the ACL of symbolic links directly, not their target.
+
+Recursive Changes: The /T option allows you to traverse subdirectories, applying changes recursively to all matching files and folders.
+Silent Mode: Use /Q for quiet mode to suppress success messages.
