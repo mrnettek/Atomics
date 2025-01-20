@@ -1,6 +1,5 @@
 SETX Command Help File
 
-
 The SETX command is used to set environment variables permanently in the Windows operating system. It can set environment variables for the current user (HKCU) or for the machine (HKLM), and changes made are written to the registry. 
 
 These changes will be reflected in future command prompt sessions, but will not affect the current session.
