@@ -5,39 +5,35 @@ TIME is a command-line tool used to display or set the system time. Below is a b
 1. Syntax and Usage
 
 Display the Current Time
-TIME /T
+ TIME /T
 
 
 Set the System Time
-TIME
+ TIME
 
 or
-TIME [time_now]
+ TIME [time_now]
 
 
 2. Examples
 
 Display the Current Time
-TIME /T
+ TIME /T
 
-Output (U.S. locale):
-
-12:30 PM
+[Output] 12:25 PM
 
 Set the Time Interactively
-TIME
+ TIME
 
-
-[Prompt]
-The current time is: 12:30:00.00
-Enter the new time (hh:mm:ss.xx): _
+ The current time is: 12:30:00.00
+ Enter the new time (hh:mm:ss.xx): _
 
 Set the Time Directly
-TIME 13:45:00
+ TIME 13:45:00 
 
 
 [Output]
-The current time is: 13:45:00.00
+ The current time is: 13:45:00.00
 
 
 3. Default Output by Locale
@@ -45,11 +41,11 @@ The output format of TIME /T depends on the system’s region settings. Below ar
 
 Country/Locale	Format	Example
 
-United States	hh:mm   AM/PM	12:30 PM
-United Kingdom	HH:mm	12:30
-Japan	HH:mm	12:30
-Germany	HH:mm	12:30
-France	HH:mm	12:30
+United States	  hh:mm   AM/PM	12:30 PM
+United Kingdom	HH:mm	  12:30
+Japan	          HH:mm	  12:30
+Germany	        HH:mm	  12:30
+France	        HH:mm	  12:30
 
 
 4. Historical Context
