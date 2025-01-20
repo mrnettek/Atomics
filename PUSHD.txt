@@ -1,0 +1,91 @@
+PUSHD Command Guide with Examples
+
+PUSHD is a command used to change the current directory or folder while storing the previous path so that it can be easily returned to using the POPD command. This is useful for navigating between directories in batch scripts or in interactive command-line use.
+
+
+1. Syntax and Usage
+
+[Syntax]
+ PUSHD [drive]path
+ PUSHD
+ drive: The drive letter to switch to.
+ path: The folder or directory to make 'current' (UNC paths are accepted).
+
+ If the drive is not specified, the current drive will be assumed.
+ If neither a drive nor a path is specified, PUSHD will display a list of previously used directories. You can return  
+ to these directories by using POPD one or more times.
+ 
+ The number of directories pushed can be displayed using the $+ variable in the prompt.
+
+
+2. Key Notes
+UNC Paths: When a UNC (Universal Naming Convention) path is specified, PUSHD will create a temporary drive map and use that new drive. Temporary drive letters are assigned in reverse alphabetical order, starting with Z:.
+
+File vs Folder: If the specified path is a file (not a folder), or if the path does not exist, PUSHD will return an ERRORLEVEL of 1.
+
+
+3. Batch File Usage
+
+When using PUSHD in a batch script, it is highly recommended to check the %ERRORLEVEL% to ensure the directory change was successful before proceeding with further commands.
+
+Example 1: Check if Directory Exists
+ PUSHD \\install_server\wsus_share
+ :: If this fails, exit the script
+ IF %ERRORLEVEL% NEQ 0 GOTO :EOF
+ :: other commands...
+
+
+Example 2: One-line Error Handling
+ PUSHD "%~1" 2>nul || GOTO sub-error-failed
+
+This approach ensures that if the directory change fails, the script will exit or handle the failure appropriately.
+
+
+4. Run as Administrator
+When a batch script is run as Administrator, the default directory is often set to C:\windows\system32\. To restore the original working directory (where the batch file is located), use the following command:
+
+
+PUSHD "%~dp0"
+This will set the current directory to the directory where the batch script is located.
+
+
+5. Error Levels
+
+The PUSHD command sets the following ERRORLEVEL values:
+ 0: If the directory was successfully changed.
+ 1: If the directory does not exist or is not accessible, or if an invalid switch was used.
+
+
+6. Examples
+ 
+Example 1: Change to a Specific Directory
+
+To change to a specific directory (C:\Program Files):
+ PUSHD C:\Program Files
+
+
+Example 2: Use PUSHD with UNC Path
+
+To map a network drive temporarily for the UNC path \\server\share:
+ PUSHD \\server\share
+
+
+Example 3: List Previously Used Paths
+
+If no path is specified, PUSHD will display a list of previously used paths:
+ PUSHD
+
+
+Example 4: Check Directory Availability and Handle Errors
+
+In a batch script, check if a network path is available before proceeding:
+ PUSHD \\server\share
+ IF %ERRORLEVEL% NEQ 0 GOTO :Error
+ :: Proceed with further commands...
+
+
+7. Additional Notes
+
+Command Extensions: If command extensions are disabled, the PUSHD command will not be able to map temporary drives to UNC paths, and POPD will not delete those drives.
+
+Drive Mapping Behavior: PUSHD maps UNC paths to available drive letters starting from Z:, and these mappings are temporary. Once POPD is used, the drive mappings are removed.
