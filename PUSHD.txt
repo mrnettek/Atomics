@@ -42,10 +42,10 @@ This approach ensures that if the directory change fails, the script will exit o
 
 
 4. Run as Administrator
+
 When a batch script is run as Administrator, the default directory is often set to C:\windows\system32\. To restore the original working directory (where the batch file is located), use the following command:
+ PUSHD "%~dp0"
 
-
-PUSHD "%~dp0"
 This will set the current directory to the directory where the batch script is located.
 
 
