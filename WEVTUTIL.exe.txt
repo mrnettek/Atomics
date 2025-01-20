@@ -1,0 +1,157 @@
+WEVTUTIL Command Guide with Examples
+
+WEVTUTIL is a command-line utility that allows you to manage Windows Event Logs and Event Publishers. You can use it to retrieve information about event logs, archive logs, clear logs, query events, and manage event publishers and manifests.
+
+
+1. Syntax and Usage
+
+[Syntax]
+
+WEVTUTIL {command} [options]
+
+Commands:
+ al | archive-log: Archive an event log.
+ cl | clear-log: Clear a specified event log.
+ el | enum-logs: Enumerate available event logs.
+ epl | export-log: Export an event log to a file.
+ ep | enum-publishers: Enumerate event publishers.
+ gl | get-log: Get the configuration of an event log.
+ gli | get-loginfo: Get the status of a log.
+ gp | get-publisher: Get event publisher configuration.
+ qe | query-events: Query events from an event log or log file.
+ sl | set-log: Modify the configuration of an event log.
+ im | install-manifest: Install event publishers and logs from a manifest.
+ um | uninstall-manifest: Uninstall event publishers and logs from a manifest.
+
+
+2. Common Options
+ /r: Run the command on a remote system. VALUE is the name of the remote system.
+ /u: Specify a user for remote login (format: domain\username).
+ /p: Password for the specified user when using /u.
+ /a: Authentication type for remote operations. Options: Default, Negotiate, Kerberos, NTLM (default is Negotiate).
+ /uni: Display output in Unicode (use /uni:true for Unicode output).
+ /q: Suppress success messages.
+ /l: Specify a log file name.
+
+
+3. Key Commands and Options
+
+1. Archive an Event Log
+
+WEVTUTIL archive-log Logpath [/l:Locale]
+ Logpath: The path of the log to be archived.
+
+
+2. Clear an Event Log
+ WEVTUTIL clear-log Logname [/bu:Backup]
+
+Logname: The name of the event log to be cleared.
+/bu:Backup: Optionally specify a backup of the log before clearing.
+
+
+3. Enumerate Event Logs
+ WEVTUTIL enum-logs
+
+Lists all event logs, including their configuration, maximum size, and storage path.
+
+
+4. Export Event Log to a File
+ WEVTUTIL export-log LogFile Exportfile [/lf | Logfile:true|false] [/sq:Structuredquery] [/q:XPathQuery]
+
+ LogFile: The event log to export.
+ Exportfile: The file to export the log to.
+ /lf | Logfile: Specify whether to provide a log file.
+ /sq | Structuredquery: Optionally, specify a structured query.
+ /q | XPathQuery: Provide an XPath query to filter events.
+
+
+5. Enumerate Event Publishers
+ WEVTUTIL enum-publishers
+
+Lists all available event publishers.
+
+
+6. Get Event Log Configuration
+WEVTUTIL get-log Logname [/f | format:[XML|Text]]
+
+Logname: The event log to get information for.
+/f | format: Specify the format for output: XML or Text (default).
+
+
+7. Get Event Log Status
+ WEVTUTIL get-loginfo LogName [/lf | Logfile:true|false]
+
+ LogName: The event log to get status for.
+
+
+8. Modify Event Log Configuration
+ WEVTUTIL set-log LogName [/e | enabled:true|false] [/fm | filemax:N]
+ 
+ LogName: The event log to modify.
+ /e | enabled: Enable or disable the log.
+ /fm | filemax: Specify the maximum file size.
+
+
+9. Install Event Manifest
+ WEVTUTIL install-manifest MANIFEST [/rf | resourceFilePath] [/mf | messageFilePath]
+
+ MANIFEST: The event manifest to install.
+ /rf | resourceFilePath: The resource file path.
+ /mf | messageFilePath: The message file path.
+
+
+10. Uninstall Event Manifest
+ WEVTUTIL uninstall-manifest MANIFEST
+
+ MANIFEST: The event manifest to uninstall.
+
+
+4. Example Usage
+
+Example 1: Archive a Log
+
+To archive the Application log:
+ WEVTUTIL archive-log Application
+
+
+Example 2: Clear an Event Log
+
+To clear the Security log and back it up:
+ WEVTUTIL clear-log Security /bu:Backup
+
+
+Example 3: Export an Event Log
+
+To export the System log to a file systemlog.evtx:
+ WEVTUTIL export-log System systemlog.evtx
+
+
+Example 4: Enumerate Event Logs
+
+To list all event logs with their configuration details:
+ WEVTUTIL enum-logs
+
+
+Example 5: Query Events from a Log
+
+To query the Application log with a structured query:
+ WEVTUTIL query-events Application /sq:"*System*"
+
+
+Example 6: Install an Event Manifest
+
+To install an event manifest from a file mymanifest.xml:
+
+WEVTUTIL install-manifest mymanifest.xml
+ 5. Error Levels
+ 0: Command completed successfully.
+ 1: Invalid syntax or missing parameters.
+ 2: The specified event log or manifest does not exist.
+ 5: Access denied (permissions issue).
+ 6. Additional Notes
+
+ Event Log Sizes: The configuration of each event log includes a maximum size and retention settings. WEVTUTIL can modify these properties.
+ 
+ Remote Operations: When working with remote systems, you need to specify the /r option to specify the remote system and /u for user credentials.
+
+ Structured Queries: You can use structured queries to filter events when exporting or querying event logs.
