@@ -1,0 +1,107 @@
+COPY Command Guide with Examples
+
+COPY is a command-line tool used to copy one or more files from one location to another. It supports a variety of options for handling different types of files, merging multiple files, and customizing the behavior of the copy operation.
+
+
+1. Syntax and Usage
+
+Basic Syntax
+ COPY [options] [/A|/B] source [/A|/B] [+ source2 [/A|/B]...] [destination [/A|/B]]
+ or
+ COPY source1 + source2.. destination [options]
+
+
+Key Components:
+ source - Pathname for the file(s) to be copied.
+ /A - Specifies that the file is an ASCII text file. It will copy up to the end-of-file (EOF) marker.
+ /B - Specifies that the file is a binary file. It will copy all extended characters. This is the default for copying  
+ files unless merging multiple files.
+ /D - Allows the destination file to be created decrypted (useful when copying encrypted files).
+ destination - Pathname for the new file(s) or location where the file(s) will be copied to.
+ /V - Verifies that the destination file, once written, can be read. No comparison with the source files occurs.
+ /N - When possible, create only short filenames (8.3 format) in the destination. This can be helpful when copying  
+ between differently formatted disks, such as NTFS and VFAT, or when archiving data to an ISO9660 CD-ROM.
+ /L - If the source is a symbolic link, copy the link to the target instead of the actual file the source link points 
+ to.
+ /Y - Suppress the confirmation prompt when overwriting files.
+ /-Y - Enable the confirmation prompt when overwriting files.
+ /Z - If the copy is interrupted, the process can be resumed from where it left off. It also displays a progress  
+ indicator with the percentage complete.
+ /? - Displays help information for the COPY command.
+
+
+2. Combining Files
+You can combine multiple files into a single destination file by specifying a single destination but multiple source files. You can list the files with a + between each (e.g., file1+file2+file3), or use wildcards to select multiple files. Note that the first file must exist for the copy to succeed.
+
+Example:
+ COPY null + file1 + file2 destination
+
+
+3. Binary Copies
+
+The /B option allows copying in binary mode, which is the default behavior when files are copied without the /A option:
+ COPY /B file1 file2
+
+If you are merging multiple files, the /B option is required. It ensures that the copy operation handles all extended characters correctly.
+
+
+4. Copying from the Console
+You can use the COPY command interactively to create a new file by entering text from the console:
+
+COPY CON filename.txt
+After typing the desired content, press CTRL+Z to end the input and save the file.
+
+
+5. Overwriting Destination Files
+
+By default, COPY will prompt you before overwriting an existing file in the destination. To suppress this prompt and automatically overwrite files, you can set the COPYCMD environment variable:
+ SET COPYCMD=/Y
+
+
+6. Error Levels
+
+The COPY command sets an ERRORLEVEL based on the success or failure of the operation:
+ 0 – The file(s) were successfully copied.
+ 1 – The file was not found or invalid parameters were given.
+
+COPY prints error messages to STDOUT instead of STDERR. To log errors, you can filter the output by looking for the parenthesis character:
+ COPY file1 file2 | FIND /v "(" > errlog.txt
+
+This command will redirect error messages (and suppress normal output) to the errlog.txt file.
+
+
+7. Examples
+Example 1: Copy a File in the Current Folder
+
+To copy a file file1.txt to file2.txt in the current folder:
+ COPY file1.txt file2.txt
+
+
+Example 2: Copy Multiple Files to a Folder
+
+To copy multiple files (file1.txt, file2.txt, and file3.txt) to the backup folder:
+ COPY file1.txt + file2.txt + file3.txt backup\
+
+
+Example 3: Copy Files with Verification
+
+To copy file1.txt to file2.txt and verify the destination file after copying:
+ COPY /V file1.txt file2.txt
+
+
+Example 4: Copy a File in Binary Mode
+
+To copy a file in binary mode, ensuring that extended characters are preserved:
+ COPY /B file1.bin file2.bin
+
+
+Example 5: Use Wildcards to Copy All .txt Files
+
+To copy all .txt files in the current directory to the text_files folder:
+ COPY *.txt text_files\
+
+
+Example 6: Suppress Overwrite Prompt
+
+To copy a file and automatically overwrite the destination without prompting:
+ COPY /Y file1.txt file2.txt
