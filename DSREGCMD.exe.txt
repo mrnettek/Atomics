@@ -28,10 +28,10 @@ Display and Manage Device Join Status
 
 The DSREGCMD command displays the device state as follows:
  AzureAdJoined	EnterpriseJoined	DomainJoined	Device State
- YES	        NO	                NO	        Azure AD Joined
- NO	        NO	                YES	        Domain Joined
- YES            NO	                YES	        Hybrid AD Joined
- NO	        YES	                YES	        On-premises DRS Joined
+ YES	          NO	              NO	        Azure AD Joined
+ NO	           NO	              YES	       Domain Joined
+ YES           NO	              YES	       Hybrid AD Joined
+ NO	           YES	             YES	       On-premises DRS Joined
  
 
 Device Details
@@ -79,19 +79,21 @@ This diagnostics section performs a check for setting up Windows Hello for Busin
 
 
 4. Azure AD Roles
-The following Azure AD roles may be displayed:
 
-Global Administrator
-Azure AD joined device local administrator
+The following Azure AD roles may be displayed:
+ Global Administrator
+ Azure AD joined device local administrator
 
 
 5. Error Levels
+
 The DSREGCMD command returns an ERRORLEVEL to indicate the success or failure of an operation:
  0 – Success
  Non-zero – Failure (specific error codes depend on the operation)
 
 
 6. Examples
+
 Example 1: Display Device Join Status
 
 To display the current device join status:
