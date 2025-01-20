@@ -1,0 +1,144 @@
+NET SHARE Command Guide with Examples
+
+The NET SHARE command is used to manage file and printer shares on a local or remote computer. It allows you to create, modify, and delete shares, set access permissions, and configure cache settings for shared folders or devices.
+
+
+1. Syntax and Usage
+
+Create a new share:
+
+[Syntax]
+NET SHARE sharename=drive:path [/GRANT:user,[READ | CHANGE | FULL]] [/USERS:number | /UNLIMITED] [/REMARK:"text"] [/CACHE:Manual | Documents | Programs | BranchCache | None]
+
+Delete a share:
+ NET SHARE sharename /DELETE
+ NET SHARE devicename /DELETE
+ NET SHARE drive:path /DELETE
+
+ To modify an existing share:
+ NET SHARE sharename ...
+
+Note: You can modify an existing share using the NET SHARE command, except for the /GRANT option.
+
+
+2. Key Options and Parameters
+ 
+ sharename: The name of the share you are creating or modifying.
+ drive:path: The path to the folder or device being shared.
+
+ /GRANT:user,[READ | CHANGE | FULL]: Specifies the permissions for a user or group. The options are:
+  READ: Read-only access.
+  CHANGE: Read and write access.
+  FULL: Full control (read, write, delete).
+
+ /USERS:number: Limits the number of users who can connect to the share. Specify the number of users.
+ /UNLIMITED: Removes the user limit and allows unlimited connections.
+ /REMARK:"text": Adds a description (remark) to the share.
+
+ /CACHE:Manual | Documents | Programs | BranchCache | None: Specifies caching options for offline access. The options are:
+  Manual: Manual caching control.
+  Documents: Caches only document files.
+  Programs: Caches programs for offline access.
+  BranchCache: Caches shared content for remote users.
+  None: No offline caching.
+
+
+3. Access-based Enumeration (ABE)
+
+Access-based Enumeration (ABE) hides the contents of shared folders from users who do not have permissions to access them. This helps improve security by showing only accessible resources.
+
+ABE is enabled by default on Windows Server but is turned off by default.
+
+Enabling ABE can add some load to the server.
+
+ABE can be enabled or disabled using PowerShell:
+
+powershell
+
+Get-SmbShare FolderName | Set-SmbShare -FolderEnumerationMode AccessBased
+Get-SmbShare FolderName | Set-SmbShare -FolderEnumerationMode Unrestricted
+For more details on enabling/disabling ABE, visit Server Manager ➞ File and Storage Services ➞ sharename ➞ Properties ➞ Settings ➞ Enable Access-based enumeration.
+
+
+4. Filename and Path Length Considerations
+
+When creating shares, be aware of the 260-character limit for filenames on Windows systems. The mapped drive will use a shorter path than the real path on the server, which may cause issues with long filenames.
+
+Example:
+
+A folder on the server named E:\workgroups\ could be mapped to X:\ for users.
+
+A legal filename created on the client could be X:\something\... (158 characters), but it may be stored as E:\workgroups\something\... (168 characters) on the server, which could cause problems with certain applications.
+
+To mitigate this issue, keep the server path as short as possible, (example E:\wg\).
+
+
+5. Creating and Modifying Shares
+
+Create a new share:
+ NET SHARE workgroups=C:\work /REMARK:"workgroups share" /CACHE:No
+
+This will create a new share called workgroups for the C:\work folder with no caching enabled.
+
+
+Limit the number of users for a share:
+ NET SHARE workgroups /USERS:15
+
+This limits the number of users who can access the workgroups share to 15.
+
+
+Remove user limits for a share:
+ NET SHARE workgroups /UNLIMITED
+
+This removes any user limit for the workgroups share.
+
+
+6. Deleting Shares
+
+Delete a share:
+ NET SHARE workgroups /DELETE
+
+This will delete the workgroups share.
+
+
+Delete an admin share (not recommended):
+ NET SHARE C$ /DELETE
+
+Note: Deleting an admin share like C$ is not recommended, and the share will reappear after a reboot unless the AutoShareServer registry key is disabled.
+
+
+7. Examples
+
+View share details:
+
+To display details of a specific share:
+ NET SHARE workgroups
+
+
+To display details of all local shares:
+ NET SHARE
+
+
+To retrieve share details from a remote machine, use WMIC:
+ WMIC SHARE
+
+
+Create a new local share with remark and cache settings:
+ NET SHARE workgroups=C:\work /REMARK:"workgroups share" /CACHE:No
+
+
+Delete a share:
+ NET SHARE workgroups /DELETE
+
+
+8. Notes and Best Practices
+
+File and Printer Sharing: Ensure that File and Printer sharing is enabled on the computer before creating shares.
+
+Admin Shares: Be cautious when deleting admin shares (e.g., C$, ADMIN$) as these are critical for remote administration.
+
+User Limits: When setting the /USERS limit, keep in mind the number of simultaneous connections that can be made to the shared resource.
+
+Access-based Enumeration: Consider enabling ABE to enhance security and control visibility for users based on their permissions.
+
+The NET SHARE command is a powerful tool for managing shared resources on local and remote systems. By creating, modifying, and deleting shares, you can control access to shared files and printers. Ensure proper configurations, especially with regard to permissions and Access-based Enumeration, to enhance security and efficiency.
