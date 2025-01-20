@@ -4,12 +4,11 @@ The NET command is used to manage open files and user sessions on a computer or 
 
 
 1. Syntax and Usage
+
+[Syntax]
  NET SESSION
-
  NET SESSION [\\computername [/DELETE] | /LIST]
-
  NET FILE
-
  NET FILE [id [/CLOSE]]
 
 [Key]
