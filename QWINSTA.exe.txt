@@ -1,0 +1,123 @@
+QUERY SESSION (Qwinsta.exe) Command Guide with Examples
+
+QUERY SESSION (also known as Qwinsta.exe) is used to display information about user sessions on a Terminal Server or Remote Desktop Session Host (RD Session Host) server. This command provides details about active, idle, and disconnected sessions, session IDs, states, and more.
+
+
+1. Syntax and Usage
+
+Display Information About User Sessions
+ QUERY SESSION [/server:ServerName] [/mode] [/flow] [/connect] [/counter]
+ QUERY SESSION UserName [/server:ServerName] [/mode] [/flow] [/connect] [/counter]
+ QUERY SESSION [SessionName | SessionID] [/server:ServerName] [/mode] [/flow] [/connect] [/counter]
+
+[Key]
+ UserName - The logon username of the user whose sessions you want to query.
+ SessionName - The name of the session you want to query.
+ SessionID - The ID of the session you want to query.
+ /server:ServerName - The Remote Desktop Session Host server to query. By default, the current server is used.
+ /mode - Display current line settings.
+ /flow - Display current flow-control settings.
+ /connect - Display current connect settings.
+ /counter - Display current counter information, including the total number of sessions created, disconnected, and reconnected.
+ / - Display help information for the command.
+
+Note:
+
+QUERY SESSION is a synonym for Qwinsta.exe.
+
+Available only for 64-bit sessions; there is no 32-bit implementation of Qwinsta.exe.
+
+
+2. Command Output
+
+QUERY SESSION provides the following information for each session:
+ SESSIONNAME - The name assigned to the session.
+ USERNAME - The username of the user connected to the session.
+ ID - The session ID.
+ STATE - The current state of the session (e.g., active, idle, listen).
+ TYPE - The session type (e.g., wdcon, wdtshare).
+ DEVICE - The device name assigned to the session, which is not present for console or network-connected sessions.
+
+
+3. Examples
+
+Example 1: Display All Active Sessions on the Current Server
+
+To display information about all active sessions on the local machine:
+ QUERY SESSION
+
+
+Example 2: Display Sessions for a Specific User
+
+To display sessions for a specific user, replace UserName with the actual username:
+ QUERY SESSION UserName
+
+
+Example 3: Display Session Information Using Session ID or Name
+
+To display information about a session using the session name or session ID, replace SessionName or SessionID with the actual name or ID:
+ QUERY SESSION SessionName
+ or
+ QUERY SESSION SessionID
+
+
+Example 4: Display Sessions on a Remote Server
+
+To display information about sessions on a remote server, replace ServerName with the name of the server:
+ QUERY SESSION /server:ServerName
+
+
+Example 5: Display Information About Current Line Settings
+
+To display the current line settings for the sessions:
+ QUERY SESSION /mode
+
+
+Example 6: Display Flow-Control Settings
+
+To display flow-control settings for the sessions:
+ QUERY SESSION /flow
+
+
+Example 7: Display Connect Settings
+
+To display connect settings for the sessions:
+ QUERY SESSION /connect
+
+
+Example 8: Display Counter Information
+
+To display information on the total number of sessions created, disconnected, and reconnected:
+ QUERY SESSION /counter
+
+
+Example 9: Display Help Information
+
+To display help information for the QUERY SESSION command:
+ QUERY SESSION /?
+
+
+4. Session States and Permissions
+
+SESSION STATE: The session state can be active, idle, listen, etc. The > symbol is displayed before the current session.
+
+Session ID or Session Name: Either the session ID or name can be used in the Reset Session and LOGOFF commands to disconnect or log off a session from the server.
+
+User Access Permissions: The following special permissions are granted under User Access:
+ Query Information: Allows a user to query information about a session.
+ Logon: Allows a user to log on to a session.
+ Connect: Allows a user to connect to another session.
+ Send Messages: Allows a user to send messages to other sessions.
+ These permissions are set in Terminal Services Configuration ➞ Connections ➞ Properties ➞ Permissions ➞ Advanced ➞ Permissions.
+
+
+5. Sample Output
+Here is an example of the output when querying the sessions:
+
+ C:\>query session
+   SESSIONNAME  USERNAME       ID  STATE   TYPE     DEVICE
+   >console     Administrator1 0   active  wdcon
+    rdp-tcp#1   User1          1   active  wdtshare
+    rdp-tcp                    2   listen  wdtshare
+                               4   idle
+                               5   idle
