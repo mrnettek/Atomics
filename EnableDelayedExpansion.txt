@@ -1,26 +1,22 @@
-EnableDelayedExpansion
-
+[EnableDelayedExpansion]
 Delayed Expansion causes variables within a batch file to be expanded at execution time rather than at parse time. This behavior can be enabled with the SETLOCAL EnableDelayedExpansion command.
 
 
-Variable Expansion Overview
-
+[Variable Expansion Overview]
 Variable expansion replaces variables (%windir%) with their values (C:\WINDOWS). By default, expansion happens once per line as it is parsed. This includes lines formatted across multiple lines using parentheses.
 
 
-Parse-Time Expansion
-
+[Parse-Time Expansion]
 Parse-time expansion applies to all variables, including %errorlevel%. Within a grouped expression, changes to variables will only be visible after the group ends.
 
 
-Execution-Time Expansion
-
+[Execution-Time Expansion]
 When Delayed Expansion is enabled, variables can be expanded for each loop iteration or command execution. This allows real-time updates to variable values during operations like FOR loops.
 
 
 SYNTAX AND USAGE
 
-Reading and Writing Variables
+[Reading and Writing Variables]
 
 With delayed expansion enabled, variables are referenced using !variable_name!:
 
@@ -50,15 +46,13 @@ SETLOCAL EnableDelayedExpansion
 Set "_var=first"
 Set "_var=second" & Echo %_var% !_var!
 
-
 Output: first second
 
 
 
 Delayed Expansion in Loops
 
-Default Behavior
-
+[Default Behavior]
 Without delayed expansion, variables in a FOR loop are expanded at parse time:
 
 @echo off
@@ -78,8 +72,7 @@ Total = 5
 
 
 
-With Delayed Expansion
-
+[With Delayed Expansion]
 Using delayed expansion allows real-time updates:
 
 @echo off
@@ -124,8 +117,8 @@ Output:
 Total = 5
 
 
-Working with Escaped Characters
 
+[Working with Escaped Characters]
 Delayed expansion changes how special characters (^, >) are interpreted:
 
 @echo off
@@ -146,14 +139,13 @@ Echo !_html!
 Output: Hello>World
 
 
-Unexpected Behaviors
 
+[Unexpected Behaviors]
 File Names with !: Filenames containing ! can cause errors in loops.
 
 Pipes: Variables within piped commands may not expand correctly.
 
 Historical Context
-
 Delayed Expansion was introduced for compatibility with existing batch files, maintaining default immediate expansion. Modern scripting languages like PowerShell address these limitations:
 
 PS C:\> $demo = "First"
