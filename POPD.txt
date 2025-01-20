@@ -44,11 +44,11 @@ Example 2: Using POPD with UNC Path
 Use PUSHD to map a UNC path temporarily (\\server\share):
  PUSHD \\server\share
 
-
 Use POPD to return to the previous directory, removing the temporary drive mapping:
  POPD
 
 5. Additional Notes
+
 Multiple POPD Usage: You can use POPD multiple times to navigate back through directories if you have used PUSHD multiple times.
 
 Command Extensions: If command extensions are disabled, POPD will not remove temporary drive mappings for UNC paths created by PUSHD.
