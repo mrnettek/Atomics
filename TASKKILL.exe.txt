@@ -41,7 +41,7 @@ Imagename: Filters by the image name of the process.
  CPUTime: Filters by CPU time.
  Time format: hh:mm:ss
  MemUsage: Filters by memory usage.
- Can be a positive integer.
+  Can be a positive integer.
  Username: Filters by the user name ([Domain]User).
  Services: Filters by service name.
  Windowtitle: Filters by the window title.
