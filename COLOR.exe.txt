@@ -5,7 +5,7 @@ The COLOR command is used to set the default console foreground and background c
 
 1. Syntax and Usage
 
-Set the Console Colors
+[Syntax]
  COLOR [background][foreground]
 
 
