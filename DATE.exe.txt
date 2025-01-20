@@ -10,8 +10,7 @@ Display the Current Date
 
 Set the System Date
  DATE
-
-or
+ or
  DATE [date_today]
 
 
