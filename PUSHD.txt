@@ -6,7 +6,7 @@ PUSHD is a command used to change the current directory or folder while storing 
 1. Syntax and Usage
 
 [Syntax]
- PUSHD [drive]path
+PUSHD [drive]path
  PUSHD
  drive: The drive letter to switch to.
  path: The folder or directory to make 'current' (UNC paths are accepted).
