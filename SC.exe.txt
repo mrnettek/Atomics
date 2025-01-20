@@ -1,0 +1,192 @@
+SC Command Help Guide
+
+The SC.exe command is used to manage Windows services. It allows users to create, start, stop, query, or delete services, and perform other service-related operations such as querying a service's status, configuration, or dependencies.
+
+
+
+1. Syntax
+
+[Syntax]
+SC [\\server] [command] [service_name] [Options]
+
+ Where:
+
+ [\server]: The machine where the service is running. This is optional; by default, the local machine is used.
+ [command]: The command to execute (e.g., start, stop, query, etc.).
+ [service_name]: The KeyName of the service. This is often the same as the DisplayName shown in the Services application.
+ [Options]: Specific options to further customize the command execution.
+
+
+2. Commands
+
+Service Control Commands
+
+Displays the status of a service.
+ query [qryOpt]
+
+Displays extended information about a service, such as the process ID (PID) and flags.
+ queryEx [qryOpt]
+
+
+Displays the DisplayName of a service.
+ GetDisplayName
+
+Displays the KeyName of a service.
+ GetKeyName
+
+Displays the dependencies of a service.
+EnumDepend
+
+Displays the configuration of a service (e.g., dependencies, full path).
+ qc
+
+Starts a service.
+ start
+
+Stops a service.
+ stop
+
+Pauses a service.
+ pause
+
+
+Resumes a paused service.
+ continue
+
+Creates a service and adds it to the registry.
+ create
+
+Changes the configuration of an existing service.
+ config
+
+Deletes a service from the registry.
+ delete
+
+Sends a control command to a service.
+ control
+
+Sends an INTERROGATE control command to a service.
+ interrogate
+
+Queries the description of a service.
+ Qdescription
+
+Changes the description of a service.
+ description
+
+Queries the failure actions for a service.
+ Qfailure
+
+Changes the failure actions for a service.
+ failure
+
+
+Displays the service's security descriptor using SDDL format.
+ sdShow
+
+
+Sets a service’s security descriptor using SDDL.
+ SdSet
+
+
+3. Query Options (qryOpt)
+You can use specific query options with SC query to filter or refine the results.
+
+Specifies the type of service to query (driver, service, or all).
+ type= driver|service|all
+
+Queries services based on their state (active, inactive, or all).
+ state= active|inactive|all
+
+Specifies the buffer size (in bytes) for the output.
+ bufsize= bytes
+
+Resumes the query from the specified index (default is 0).
+ ri= resume_index_number
+ 
+Queries services in a specific group.
+ group= groupname
+
+
+4. Miscellaneous Commands
+
+Queries the lock status for the Service Manager database. This indicates if a service request is running.
+ SC QueryLock
+
+Locks the Service Database.
+ SC Lock
+
+Configures the system to either save or not save the last restart configuration as the 'last-known-good' configuration.
+ SC BOOT
+
+
+5. Options for CREATE and CONFIG Commands
+
+Creates a new service. You can add options during creation, such as setting the startup type or configuring service parameters. Example: SC create MyService binPath= "C:\path\to\service.exe" start= auto
+ CREATE
+
+Modifies the configuration of an existing service. Example: SC config MyService start= disabled
+ CONFIG
+
+6. Service State Query Example
+
+Running SC query provides detailed information about a service, like this:
+
+ SERVICE_NAME       : messenger
+ TYPE               : 20  WIN32_SHARE_PROCESS
+ STATE              : 4  RUNNING
+                      (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+ WIN32_EXIT_CODE    : 0  (0x0)
+ SERVICE_EXIT_CODE  : 0  (0x0)
+ CHECKPOINT         : 0x0
+ WAIT_HINT          : 0x0
+
+This shows that the "messenger" service is running, and also provides additional information such as exit codes, checkpoint, and wait hint.
+
+
+7. Common SC Command Examples
+
+Start a service:
+ SC start MyService
+
+Stop a service:
+ SC stop MyService
+
+Create a new service:
+ SC create MyService binPath= "C:\path\to\myservice.exe" start= auto
+
+Delete a service:
+ SC delete MyService
+
+Query a service's status:
+ SC query MyService
+
+Query all services:
+ SC query
+
+Display extended information about a service:
+ SC queryEx MyService
+
+Change the description of a service:
+ SC description MyService "This is a test service."
+
+Modify the service configuration (example disable service):
+SC config MyService start= disabled
+
+Get the KeyName of a service:
+ SC GetKeyName "Messenger"
+ 
+
+8. Errorlevels
+ 0: The command was successful.
+ 1: The service does not exist.
+ 2: Incorrect command syntax or invalid parameters.
+
+
+9. Notes
+
+The SC command is case-sensitive. Ensure that the command and service names are entered correctly.
+
+Kernel device drivers can be managed using SC but they are not listed in the Services management tool (Control Panel > Services).
+
+For additional service management functionality, you can use NET commands or PowerShell cmdlets such as Get-Service or Start-Service.
