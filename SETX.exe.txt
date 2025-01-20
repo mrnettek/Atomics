@@ -1,0 +1,121 @@
+SETX Command Help File
+
+
+The SETX command is used to set environment variables permanently in the Windows operating system. It can set environment variables for the current user (HKCU) or for the machine (HKLM), and changes made are written to the registry. 
+
+These changes will be reflected in future command prompt sessions, but will not affect the current session.
+
+[Syntax]
+SETX [/s Computer [Credentials]] Variable Value [/m]
+SETX [/s Computer [Credentials]] [Variable] /k RegistryPath [/m]
+SETX [/s Computer [Credentials]] /f FileName {[Variable] {/a L,T | /r oL,oT "SearchString"} [/m] | /x} [/d Delimiters]
+
+
+[Key Options]
+Specifies the name or IP address of a remote computer.
+ /s Computer
+
+Do not use backslashes (\\).
+
+Default is the local computer.
+
+Credentials
+
+Specifies the username and password used to connect to the remote computer (/u [Domain\]UserName).
+
+If not provided, the script runs with the system permissions.
+
+Specifies the username to run the script with.
+ /u [Domain]UserName
+
+
+Default is the system account.
+
+Specifies the password for the username provided in /u.
+ /p [Password]
+
+Variable
+
+The name of the environment variable that you want to set.
+
+Value
+The value to which the environment variable is set.
+
+Specifies a registry path to set the variable based on information from a registry key.
+ /k RegistryPath
+
+ Format: \HIVE\KEY\...\Value
+ Example: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName
+
+
+Specifies the file you want to read for setting the environment variable.
+ /f FileName
+
+Retrieves token T from line L in the file. Both L (line) and T (token) are zero-indexed.
+/a L,T
+
+
+Searches for SearchString in the file, case insensitive.
+ /r oL,oT "SearchString"
+
+
+If the token is not found, %ERRORLEVEL% is set to 1.
+ oL (line) and oT (token) are zero-indexed offsets.
+
+
+Specifies that the variable is set in the system environment (HKLM).
+Default is user environment (HKCU).
+ /m
+
+Displays the file with coordinates for each token.
+ /x
+
+Specifies custom delimiters (such as ,, \) to be used in addition to the default delimiters: SPACE, TAB, CR, and LINEFEED.
+Maximum of 15 delimiters.
+ /d Delimiters
+
+
+
+Important Notes
+
+SETX writes variables to the system registry, meaning changes take effect only in new command prompt sessions. They do not affect the current CMD or PowerShell session.
+
+Environment variables are stored in the registry:
+ User Variables: HKEY_CURRENT_USER\Environment
+ System Variables: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
+
+ Examples
+  Set a User Environment Variable
+  This sets the environment variable MY_VAR for the current user to "SomeValue".
+   SETX MY_VAR "SomeValue"
+
+  Set a System-Wide Environment Variable
+  This sets the environment variable MY_VAR for the entire system (all users).
+   SETX MY_VAR "SomeValue" /m
+
+ Set a Variable Using Registry Path
+ This sets MY_VAR based on the registry value found at the specified path.
+  SETX MY_VAR /k "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName"
+
+
+Read from a File
+This reads from file.txt, retrieves token 2 from line 1, and sets MY_VAR to that value.
+ SETX MY_VAR /f "file.txt" /a 1,2
+
+
+
+Search File for String
+
+This searches for "SearchString" in file.txt and sets MY_VAR based on the matching token.
+ SETX MY_VAR /f "file.txt" /r 0,0 "SearchString"
+
+Errorlevels
+ 0: The command was successful.
+ 1: An error occurred during execution, such as a file or registry path not being found.
+
+
+Common Uses
+
+SETX is commonly used in scripts or batch files to set environment variables permanently.
+
+Useful for adjusting system or user settings without requiring manual changes through the control panel.
