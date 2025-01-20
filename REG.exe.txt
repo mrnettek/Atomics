@@ -6,131 +6,136 @@ REG.exe is a command-line tool for reading, setting, deleting, and managing the 
 1. Query Registry Keys and Values
 
 [Syntax]
-REG QUERY [ROOT\]RegKey /V ValueName [/s] [/F Data [/K] [/D] [/C] [/E]]
-REG QUERY [ROOT\]RegKey /VE
+ REG QUERY [ROOT\]RegKey /V ValueName [/s] [/F Data [/K] [/D] [/C] [/E]]
+ REG QUERY [ROOT\]RegKey /VE
 
 [Examples]
+
 Query a specific value:
-REG QUERY HKLM\Software\Microsoft /V Version
+ REG QUERY HKLM\Software\Microsoft /V Version
 
 Query the default value of a key:
-REG QUERY HKCU\Environment /VE
+ REG QUERY HKCU\Environment /VE
 
 Search for a key containing specific data:
-REG QUERY HKLM\System /F "SystemDrive" /D /S
+ REG QUERY HKLM\System /F "SystemDrive" /D /S
 
 
 2. Add Registry Keys and Values
 
 [Syntax]
-REG ADD [ROOT\]RegKey /V ValueName [/T DataType] [/D Data] [/F]
+ REG ADD [ROOT\]RegKey /V ValueName [/T DataType] [/D Data] [/F]
 
 [Examples]
+
 Add a string value:
-REG ADD HKCU\Environment /V TestValue /T REG_SZ /D "Test Data" /F
+ REG ADD HKCU\Environment /V TestValue /T REG_SZ /D "Test Data" /F
 
 Add a default value to a key:
-REG ADD HKCU\Environment /VE /D "Default Value" /F
+ REG ADD HKCU\Environment /VE /D "Default Value" /F
 
 Add a DWORD value:
-REG ADD HKLM\Software\Example /V NumberValue /T REG_DWORD /D 1234 /F
+ REG ADD HKLM\Software\Example /V NumberValue /T REG_DWORD /D 1234 /F
 
 
 3. Delete Registry Keys and Values
 
 [Syntax]
-REG DELETE [ROOT\]RegKey /V ValueName [/F]
-REG DELETE [ROOT\]RegKey /VE [/F]
-REG DELETE [ROOT\]RegKey /VA [/F]
+ REG DELETE [ROOT\]RegKey /V ValueName [/F]
+ REG DELETE [ROOT\]RegKey /VE [/F]
+ REG DELETE [ROOT\]RegKey /VA [/F]
 
 [Examples]
+
 Delete a specific value:
-REG DELETE HKCU\Environment /V TestValue /F
+ REG DELETE HKCU\Environment /V TestValue /F
 
 Delete the default value:
-REG DELETE HKCU\Environment /VE /F
+ REG DELETE HKCU\Environment /VE /F
 
 Delete all values under a key:
-REG DELETE HKCU\Environment /VA /F
+ REG DELETE HKCU\Environment /VA /F
 
 
 4. Export and Import Registry Keys
 
 [Syntax]
-REG EXPORT [ROOT\]RegKey FileName.reg [/Y]
-REG IMPORT FileName.reg
+ REG EXPORT [ROOT\]RegKey FileName.reg [/Y]
+ REG IMPORT FileName.reg
 
 [Examples]
+
 Export a registry key:
-REG EXPORT HKCU\Environment Backup.reg /Y
+ REG EXPORT HKCU\Environment Backup.reg /Y
 
 Import a registry key:
-REG IMPORT Backup.reg
+ REG IMPORT Backup.reg
 
 
 5. Save and Restore Registry Hives
 
 [Syntax]
-REG SAVE [ROOT\]RegKey FileName.hiv [/Y]
-REG RESTORE [ROOT\]RegKey FileName.hiv
+ REG SAVE [ROOT\]RegKey FileName.hiv [/Y]
+ REG RESTORE [ROOT\]RegKey FileName.hiv
 
 [Examples]
-Save a registry key:
-REG SAVE HKLM\Software\Example Example.hiv /Y
+ Save a registry key:
+ REG SAVE HKLM\Software\Example Example.hiv /Y
 
 Restore a registry key:
-REG RESTORE HKLM\Software\Example Example.hiv
+ REG RESTORE HKLM\Software\Example Example.hiv
 
 
 6. Copy Registry Keys
 
 [Syntax]
-REG COPY [\SourceMachine\][ROOT\]RegKey [\DestMachine\][ROOT\]RegKey
+ REG COPY [\SourceMachine\][ROOT\]RegKey [\DestMachine\][ROOT\]RegKey
 
 [Examples]
+
 Copy a key from one location to another:
-REG COPY HKCU\Environment HKLM\Software\Environment
+ REG COPY HKCU\Environment HKLM\Software\Environment
 
 
 7. Compare Registry Keys
 
 [Syntax]
-REG COMPARE [ROOT\]RegKey [ROOT\]RegKey [/V ValueName] [/s]
+ REG COMPARE [ROOT\]RegKey [ROOT\]RegKey [/V ValueName] [/s]
 
 [Examples]
+
 Compare two keys:
-REG COMPARE HKCU\Environment HKLM\Environment
+ REG COMPARE HKCU\Environment HKLM\Environment
 
 Compare a specific value:
-REG COMPARE HKCU\Environment HKLM\Environment /V TestValue
+ REG COMPARE HKCU\Environment HKLM\Environment /V TestValue
 
 
 8. Load and Unload Registry Keys
 
 [Syntax]
-REG LOAD KeyName FileName
-REG UNLOAD KeyName
+ REG LOAD KeyName FileName
+ REG UNLOAD KeyName
 
 [Examples]
+
 Load a hive file:
-REG LOAD HKLM\TempHive TempFile.hiv
+ REG LOAD HKLM\TempHive TempFile.hiv
 
 Unload a hive file:
-REG UNLOAD HKLM\TempHive
+ REG UNLOAD HKLM\TempHive
 
 
 9. Useful Switches
-
-/reg:32: Force 32-bit registry view.
-/reg:64: Force 64-bit registry view.
-/F: Force operation without prompt.
-/S: Include all subkeys.
-/E: Return exact matches only.
+ /reg:32: Force 32-bit registry view.
+ /reg:64: Force 64-bit registry view.
+ /F: Force operation without prompt.
+ /S: Include all subkeys.
+ /E: Return exact matches only.
 
 
 Common Roots
-
-HKLM: HKEY_LOCAL_MACHINE
-HKCU: HKEY_CURRENT_USER
-HKCR: HKEY_CLASSES_ROOT
-HKU: HKEY_USERS
+ HKLM: HKEY_LOCAL_MACHINE
+ HKCU: HKEY_CURRENT_USER
+ HKCR: HKEY_CLASSES_ROOT
+ HKU: HKEY_USERS
