@@ -2,6 +2,7 @@ TYPE Command Guide with Examples
 
 TYPE is a command-line utility used to display the contents of one or more text files in the command prompt. It is commonly used for viewing file contents, and in conjunction with redirection, can also be used for file manipulation.
 
+
 1. Syntax and Usage
 
 [Syntax]
