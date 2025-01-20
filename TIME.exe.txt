@@ -7,7 +7,7 @@ TIME is a command-line tool used to display or set the system time. Below is a b
 Display the Current Time
  TIME /T
 
-
+[Syntax]
 Set the System Time
  TIME
  or
