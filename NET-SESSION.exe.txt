@@ -1,0 +1,72 @@
+NET - NET SESSION and NET FILE Command Guide with Examples
+
+The NET command is used to manage open files and user sessions on a computer or network. It provides functionality for viewing and managing user sessions, as well as managing open files on a shared server.
+
+
+1. Syntax and Usage
+ NET SESSION
+
+ NET SESSION [\\computername [/DELETE] | /LIST]
+
+ NET FILE
+
+ NET FILE [id [/CLOSE]]
+
+[Key]
+ computername - A computer whose shared resources you want to view. This is usually the name of the server or remote machine.
+ domainname - The domain whose sessions you wish to view. By default, all domains in the local area network (LAN) are displayed.
+ /DELETE - End the session and close all open files associated with the session. If computername is omitted, all sessions will be ended.
+ /LIST - Display the information in a list format rather than a table.
+ id - The identification number of the file (from the NET FILE list) to close.
+ /CLOSE - Close an open file and remove the file lock. This will disconnect other users and remove the lock on the file.
+
+Note:
+
+Administrator privileges are required to run the NET SESSION command. Running this from a non-elevated session will return an ERRORLEVEL = 5 Access Denied.
+The NET SESSION command requires the Server service to be running.
+
+To create file shares, the Server service must be running, which also requires 'File and Print Sharing' to be installed.
+
+
+2. Examples
+
+Example 1: Display All Open Shared Files on the Server
+
+To display all open files and the lock IDs on the local server:
+ NET FILE
+
+
+Example 2: Close a Shared File and Remove File Locks
+
+To close a file (remove locks and disconnect other users) by its ID on the server where the file is shared:
+ NET FILE id /CLOSE
+
+
+Example 3: List All Sessions Connected to the Local Machine
+
+To list all sessions currently connected to the local machine:
+ NET SESSION
+
+Alternatively, you can filter to only show sessions from remote machines:
+ NET SESSION | FIND "\\"
+
+
+Example 4: List Sessions from a Specific Machine
+
+To list the sessions connected from a specific machine:
+  NET SESSION \\ComputerName
+
+
+Example 5: Disconnect All Sessions Connected to the Local Machine
+
+To disconnect all sessions connected to the local machine:
+ NET SESSION /DELETE
+
+To do this without being prompted for confirmation:
+ NET SESSION /DELETE /y
+
+
+Example 6: Disconnect All Sessions from a Specific Machine
+
+To disconnect all sessions from a specific machine:
+ NET SESSION \\ComputerName /DELETE
