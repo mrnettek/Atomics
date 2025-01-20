@@ -1,0 +1,89 @@
+TIMEOUT Command Guide with Examples
+
+TIMEOUT is a command-line utility that pauses the execution of a script or batch file for a specified duration. It can be used to create delays, allowing for time-based operations, or to pause until a user interaction is received.
+
+
+1. Syntax and Usage
+
+[Syntax]
+TIMEOUT [/T] delay [/nobreak]
+ delay: The number of seconds (between 0 and 100000) to wait before continuing. The value -1 will make the system wait indefinitely, waiting for a keystroke (similar to the PAUSE command).
+ /nobreak: Ignore user keystrokes. The timeout can still be interrupted with Ctrl+C, but keypresses will not cancel the timeout.
+
+
+2. Key Notes
+
+Delay: The delay argument specifies the duration in seconds that TIMEOUT should wait before continuing. A value of -1 causes the system to wait indefinitely for a user keystroke, like the PAUSE command.
+
+/nobreak: This option ignores user key presses. The timeout will continue even if a key is pressed, but it can still be interrupted with Ctrl+C.
+
+System Time-based: TIMEOUT is based on the system's time, meaning that if the system clock changes (e.g., during Daylight Savings Time), the delay may be shorter or longer than expected. If the system clock is moved forward past the expected delay time, the timeout will end immediately.
+
+
+3. Alternative Delay Method
+
+You can also use the PING command to simulate a delay, which can be more accurate in certain cases and consumes less processor time than TIMEOUT or SLEEP.
+
+For example, to create a delay of 30 seconds using PING, you can use:
+ PING -n 31 127.0.0.1 > nul
+
+This will send 31 pings to the loopback address (127.0.0.1), resulting in a delay of 30 seconds. This method is useful when you want to avoid the limitations of TIMEOUT related to system clock changes.
+
+
+To call this method from a subroutine, add the following code to the end of your batch file:
+ goto :eof
+ :timeout
+ :: Use PING to delay for the number of seconds passed as an argument
+ ping -n %1 127.0.0.1 > nul
+ ping -n 2 127.0.0.1 > nul
+ goto :eof
+
+Then you can call the subroutine like this:
+ call :timeout 30
+
+This creates a delay for the specified number of seconds (30 in this case).
+
+
+4. Error Levels
+ 0: The timeout completed successfully, and execution resumed after the specified delay.
+ 1: An invalid argument was provided (e.g., an incorrect value for the delay argument).
+
+
+5. Examples
+
+Example 1: Start Applications in Sequence with a Delay
+
+Start Microsoft Word, wait for 10 seconds, then start Excel:
+ @echo off
+ echo Start Microsoft Word, wait for 10 seconds, and then start Excel.
+ START "" "C:\Program Files\Microsoft Office\Office16\WINWORD.EXE"
+ TIMEOUT /T 10
+ START "" "C:\Program Files\Microsoft Office\Office16\EXCEL.EXE"
+
+
+Example 2: Use PING for a Delay
+
+Create a delay of 40 seconds using PING:
+ PING -n 41 127.0.0.1 > nul
+ echo Now we are ready
+
+
+Example 3: Wait for a File on a Remote Server
+
+Use a WAIT loop to check if a file appears on a remote server, waiting for up to 600 seconds:
+ Set _seconds=0
+ :waitloop
+   :: Wait for 10 seconds
+   Set /a "_seconds=_seconds+10" > nul
+   PING -n 11 127.0.0.1 > nul
+   :: If 600 seconds have elapsed, exit the loop
+  IF %_seconds% GEQ 600 GOTO :done
+   GOTO waitloop
+ :done
+
+
+6. Additional Notes
+
+Precision: The precision of the TIMEOUT command is limited to the system clock, so the delay may not always be exactly what you expect, particularly if the system time changes during the delay.
+
+Interrupting Timeout: If you do not use /nobreak, any key press will interrupt the timeout and cause the command to continue execution immediately.
