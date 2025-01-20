@@ -5,6 +5,7 @@ FIND is a command-line tool used to search for a text string in a file and displ
 
 1. Syntax and Usage
 
+[Syntax]
 Search for a String in a File
  FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
 
