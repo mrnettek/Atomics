@@ -1,0 +1,125 @@
+FINDSTR Command Guide with Examples
+
+FINDSTR is a command-line tool used to search for a string in files or input and display lines containing the string. It provides more advanced searching capabilities compared to FIND, such as support for regular expressions and multiple search strings. Below is a brief guide with syntax and examples.
+
+
+1. Syntax and Usage
+
+Search for a String in Files
+
+FINDSTR [/S] [/I] [/M] [/X] [/V] [/C] [/R] [/L] [/F:file] [string] [pathname(s)]
+
+
+[Key]
+
+[string] - The string or regular expression to search for.
+[pathname] - The drive and/or file(s) to search (wildcards accepted).
+/S - Search subdirectories.
+/I - Ignore case (case-insensitive search).
+/M - Display only the filenames that contain the string.
+/X - Match the entire line (lines must exactly match the search string).
+/V - Display all lines not containing the specified string.
+/C - Count the number of lines that contain the string.
+/R - Use regular expressions for the search string.
+/L - Search for the literal string (not a regular expression).
+/F:file - Read search strings from a file.
+
+If no pathname is specified, FINDSTR will accept text piped from another command.
+
+
+2. EXAMPLES
+
+Example 1: Search for a String in a File
+
+To search for the string apple in fruits.txt:
+FINDSTR "apple" fruits.txt
+
+[Output]
+apple
+apple pie
+pineapple
+
+
+Example 2: Search for a String in All .txt Files in the Directory
+
+To search for apple in all .txt files in the current directory:
+FINDSTR "apple" *.txt
+
+[Output]
+makefile
+
+fruits.txt:apple
+fruits.txt:apple pie
+
+
+Example 3: Case-Insensitive Search
+
+To search for apple without regard to case:
+FINDSTR /I "apple" fruits.txt
+
+[Output]
+apple
+Apple Pie
+Pineapple
+
+
+Example 4: Display Only Filenames Containing the String
+
+To display only the filenames of files containing the string apple:
+FINDSTR /M "apple" *.txt
+
+[Output]
+fruits.txt
+
+
+Example 5: Search Using Regular Expressions
+
+To search for lines containing either apple or banana using regular expressions:
+FINDSTR /R "apple|banana" fruits.txt
+
+[Output]
+apple
+banana
+
+
+Example 6: Search for Exact Matches
+
+To search for lines that exactly match the string apple:
+FINDSTR /X "apple" fruits.txt
+
+[Output]
+apple
+
+
+Example 7: Display Lines Not Containing the String
+
+To display all lines that do not contain the string apple:
+FINDSTR /V "apple" fruits.txt
+
+[Output]
+banana
+pineapple pie
+
+
+Example 8: Count the Number of Matching Lines
+
+To count how many lines contain the string apple:
+FINDSTR /C "apple" fruits.txt
+
+[Output]
+---------- fruits.txt
+---------- Count = 2
+
+
+3. Limitations
+FINDSTR does not support wildcards in the search string. To search for patterns, regular expressions must be used.
+While FINDSTR supports regular expressions, it is not as powerful as dedicated regular expression tools.
+FINDSTR will only match whole lines of text and will not match part of a line unless specifically instructed with the /R option for regular expressions.
+
+
+4. Errorlevel
+FINDSTR will return an ErrorLevel as follows:
+
+0 - String found in at least one of the files.
+1 - String not found.
+2 - If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.
