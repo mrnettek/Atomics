@@ -1,0 +1,56 @@
+TIME Command Guide with Examples
+
+TIME is a command-line tool used to display or set the system time. Below is a brief guide with syntax and examples.
+
+1. Syntax and Usage
+
+Display the Current Time
+TIME /T
+
+
+Set the System Time
+TIME
+
+or
+TIME [time_now]
+
+
+2. Examples
+
+Display the Current Time
+TIME /T
+
+Output (U.S. locale):
+
+12:30 PM
+
+Set the Time Interactively
+TIME
+
+
+[Prompt]
+The current time is: 12:30:00.00
+Enter the new time (hh:mm:ss.xx): _
+
+Set the Time Directly
+TIME 13:45:00
+
+
+[Output]
+The current time is: 13:45:00.00
+
+
+3. Default Output by Locale
+The output format of TIME /T depends on the system’s region settings. Below are examples for different locales:
+
+Country/Locale	Format	Example
+
+United States	hh:mm   AM/PM	12:30 PM
+United Kingdom	HH:mm	12:30
+Japan	HH:mm	12:30
+Germany	HH:mm	12:30
+France	HH:mm	12:30
+
+
+4. Historical Context
+The TIME command has been part of MS-DOS and Windows command-line tools for decades. It allows users to check or update the system time, which is crucial for logging events, scheduling tasks, and ensuring consistency across systems. The interactive mode and ability to set time directly make it a versatile tool in both administrative and scripting tasks.
