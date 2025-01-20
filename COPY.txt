@@ -12,7 +12,7 @@ COPY is a command-line tool used to copy one or more files from one location to 
 
 
 [Key Components]
- source - Pathname for the file(s) to be copied.
+source - Pathname for the file(s) to be copied.
  /A - Specifies that the file is an ASCII text file. It will copy up to the end-of-file (EOF) marker.
  /B - Specifies that the file is a binary file. It will copy all extended characters. This is the default for copying  
       files unless merging multiple files.
