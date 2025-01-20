@@ -6,50 +6,47 @@ DATE is a command-line tool used to display or set the system date. Below is a b
 1. Syntax and Usage
 
 Display the Current Date
-DATE /T
+ DATE /T
 
 Set the System Date
-DATE
+ DATE
 
 or
-DATE [date_today]
+ DATE [date_today]
 
 
 
 2. Examples
+
 Display the Current Date
+ DATE /T
 
-DATE /T
+[Output]
+Mon 01/20/2025
 
-Output (U.S. locale):
-
-1/17/2032
 
 Set the Date Interactively
-DATE
+ DATE
 
-[Prompt]
 The current date is: Tue 01/17/2032
-Enter the new date (mm-dd-yy): _
+ Enter the new date (mm-dd-yy): _
 
 Set the Date Directly
-DATE 01-18-2032
+ DATE 01-18-2032
 
 [Output]
 The current date is: Wed 01/18/2032
 
 
-
 3. Default Output by Locale
 
 The output format of DATE /T depends on the system’s region settings. Below are examples for different locales:
-Country/Locale	Format	Example
-United States	MM/DD/YYYY	01/17/2032
-United Kingdom	DD/MM/YYYY	17/01/2032
-Japan	YYYY/MM/DD	2032/01/17
-Germany	DD.MM.YYYY	17.01.2032
-France	DD/MM/YYYY	17/01/2032
-
+ Country/Locale	Format	Example
+ United States	MM/DD/YYYY	01/17/2032
+ United Kingdom	DD/MM/YYYY	17/01/2032
+ Japan	YYYY/MM/DD	2032/01/17
+ Germany	DD.MM.YYYY	17.01.2032
+ France	DD/MM/YYYY	17/01/2032
 
 
 4. Historical Context
