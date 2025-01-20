@@ -113,8 +113,8 @@ User Access Permissions: The following special permissions are granted under Use
 
 
 5. Sample Output
-Here is an example of the output when querying the sessions:
 
+Here is an example of the output when querying the sessions:
  C:\>query session
    SESSIONNAME  USERNAME       ID  STATE   TYPE     DEVICE
    >console     Administrator1 0   active  wdcon
