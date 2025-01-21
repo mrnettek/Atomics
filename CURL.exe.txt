@@ -1,0 +1,406 @@
+CURL.exe (Client URL)
+
+CURL is a powerful command-line tool for transferring data from or to a server, supporting various protocols such as HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP, and FILE. It was introduced in Windows 10 version 1803 and is included in Windows builds 17063 and later.
+
+
+[Syntax]
+
+curl [options...] url
+
+[Options]
+
+General Options:
+
+Connect via an abstract Unix domain socket.
+ --abstract-unix-socket path
+
+Automatically select the authentication method.
+ --anyauth
+
+Append to the target file when uploading.
+ -a, --append
+
+
+Use HTTP Basic Authentication.
+ --basic
+
+Send a custom User-Agent string to the server.
+ -A, --user-agent name
+
+Specify a CA certificate to verify peer against.
+ --cacert CA_certificate
+
+
+Specify the directory of CA certificates to verify peer against.
+ --capath dir
+
+Use ASCII/text transfer.
+ -B, --use-ascii
+
+Specify the client certificate file and password.
+ -E, --cert certificate[:password]
+
+
+Verify the server certificate status.
+ --cert-status
+
+Set the certificate file type (DER/PEM/ENG).
+ --cert-type type
+
+Specify SSL ciphers to use.
+--ciphers SSL_ciphers
+
+Request compressed response.
+--compressed
+
+Read configurations from a file.
+-K, --config file
+
+Set the maximum time to wait for a connection.
+ --connect-timeout seconds
+
+Connect to a specific host and port.
+ --connect-to HOST1:PORT1:HOST2:PORT2
+
+Resume transfer from the specified offset.
+ -C, --continue-at offset
+
+Send cookies from a string or file.
+ -b, --cookie data
+
+Write cookies to a specified file after the operation.
+ -c, --cookie-jar filename
+
+Create necessary local directories.
+--create-dirs
+
+Convert LF to CRLF in uploads.
+ --crlf
+
+Get a CRL list from the given PEM file.
+ --crlfile file
+
+Send HTTP POST data.
+ -d, --data data
+
+Send HTTP POST ASCII data.
+ --data-ascii data
+
+Send HTTP POST binary data.
+ --data-binary data
+
+Send HTTP POST data (supporting @ for file upload).
+ --data-raw data
+
+Send URL-encoded HTTP POST data.
+ --data-urlencode data
+
+Set GSS-API delegation permission.
+ --delegation LEVEL
+
+Use HTTP Digest Authentication.
+ --digest
+ 
+Disable .curlrc (config file).
+ -q, --disable
+
+Inhibit using EPRT or LPRT for FTP.
+ --disable-eprt
+
+Inhibit using EPSV for FTP.
+ --disable-epsv
+
+Specify the interface to use for DNS requests.
+ --dns-interface interface
+
+Specify an IPv4 address for DNS requests.
+ --dns-ipv4-addr address
+
+Specify an IPv6 address for DNS requests.
+ --dns-ipv6-addr address
+
+Specify DNS server addresses. 
+ --dns-servers addresses
+
+Write received headers to a specified file.
+ -D, --dump-header filename
+
+EGD socket path for random data.
+ --egd-file file
+
+Specify crypto engine to use.
+ --engine name
+
+Set how long to wait for 100-continue.
+ --expect100-timeout seconds
+
+Fail silently on HTTP errors.
+ -f, --fail
+
+Fail on the first transfer error.
+ --fail-early
+
+Specify HTTP multipart POST data.
+ -F, --form name=content
+
+Specify HTTP multipart POST data as a string.
+ --form-string name=string
+
+Specify FTP account data.
+ --ftp-account data
+
+Replace the FTP USER command.
+ --ftp-alternative-to-user command
+
+Create remote directories if not present.
+ --ftp-create-dirs
+
+Control FTP CWD usage.
+ --ftp-method method
+
+Use PASV/EPSV instead of PORT for FTP.
+ --ftp-pasv
+
+Use PORT instead of PASV for FTP.
+ -P, --ftp-port address
+
+Send FTP PRET before PASV.
+ --ftp-pret
+
+Skip the IP address for PASV in FTP.
+ --ftp-skip-pasv-ip
+
+Send FTP CCC after authenticating.
+ --ftp-ssl-ccc
+
+Set FTP CCC mode.
+ --ftp-ssl-ccc-mode active/passive
+
+Require SSL/TLS for FTP login, clear for transfer.
+ --ftp-ssl-control
+
+Use GET method with POST data in URL.
+ -G, --get
+
+Disable URL sequences using {} and [].
+ --globoff
+
+Show document info only (HTTP headers).
+ -I, --head
+
+Pass custom headers to the server.
+ -H, --header header/@file
+
+Display help text.
+ -h, --help
+
+Acceptable MD5 hash of the host public key.
+ --hostpubmd5 md5
+
+Use HTTP/1.0.
+ -0, --http1.0
+
+Use HTTP/1.1.
+ --http1.1
+
+Use HTTP/2.
+ --http2
+
+Use HTTP/2 without HTTP/1.1 upgrade.
+ --http2-prior-knowledge
+
+Ignore the content length of the remote resource.
+ --ignore-content-length
+
+Include protocol response headers in the output.
+ -i, --include
+
+Allow insecure connections when using SSL.
+ -k, --insecure
+
+Use the specified network interface.
+ --interface name
+
+Resolve names to IPv4 addresses.
+ -4, --ipv4
+
+Resolve names to IPv6 addresses.
+ -6, --ipv6
+
+Ignore session cookies read from a file.
+ -j, --junk-session-cookies
+
+Set the interval for keepalive probes.
+ --keepalive-time seconds
+
+Specify a private key file.
+ --key key
+
+Specify the private key file type.
+ --key-type type
+
+Enable Kerberos with security level.
+ --krb level
+
+Dump the libcurl equivalent code.
+ --libcurl file
+
+Limit transfer speed.
+ --limit-rate speed
+
+List only mode.
+ -l, --list-only
+
+Force use of specific local port numbers.
+ --local-port num/range
+
+Follow redirects.
+ -L, --location
+
+Like --location, but sends authentication to redirected hosts.
+ --location-trusted
+
+Set server login options.
+ --login-options options
+
+Specify the mail originator address.
+ --mail-auth address
+
+Specify the sender address for email.
+ --mail-from address
+
+Specify the recipient address for email.
+ --mail-rcpt address
+
+Display the full manual.
+ -M, --manual
+
+Set the maximum file size to download.
+ --max-filesize bytes
+
+Set the maximum number of redirects.
+ --max-redirs num
+
+Set the maximum time for the transfer.
+ -m, --max-time time
+
+Process URLs as Metalink XML files.
+ --metalink
+
+Use HTTP Negotiate (SPNEGO) authentication.
+ --negotiate
+
+Read .netrc for credentials.
+ -n, --netrc
+
+Specify a custom .netrc file.
+ --netrc-file filename
+
+Use .netrc or URL for credentials.
+ --netrc-optional
+
+Make the next URL use its separate set of options.
+ -:, --next
+
+Disable the ALPN TLS extension.
+ --no-alpn
+
+Disable output stream buffering.
+ -N, --no-buffer
+
+Disable TCP keepalive.
+ --no-keepalive
+
+Disable the NPN TLS extension.
+ --no-npn
+
+Disable SSL session-ID reuse.
+ --no-sessionid
+
+Specify a list of hosts that do not use a proxy.
+ --noproxy no-proxy-list
+ 
+Use HTTP NTLM authentication.
+ --ntlm
+
+Use OAuth 2.0 Bearer Token for authentication. 
+ --oauth2-bearer token
+
+Write output to a file instead of stdout.
+ -o, --output file
+
+Specify the passphrase for the private key.
+ --pass phrase
+
+Do not alter URL path sequences (..).
+ --path-as-is
+
+Verify peer against the public key.
+ --pinnedpubkey hashes FILE/HASHES
+
+Avoid switching to GET after following a 301 redirect.
+ --post301
+
+Avoid switching to GET after following a 302 redirect.
+ --post302
+
+Avoid switching to GET after following a 303 redirect.
+ --post303
+
+Use this proxy first.
+ --preproxy [protocol://]host[:port]
+
+Display a progress bar.
+ -#, --progress-bar
+
+Enable/disable protocols.
+ --proto protocols
+
+Use the specified protocol for unspecified URLs.
+ --proto-default protocol
+
+Enable/disable protocols on redirect.
+ --proto-redir protocols
+
+Use the specified proxy.
+ -x, --proxy [protocol://]host[:port]
+
+Pick any proxy authentication method.
+ --proxy-anyauth
+
+Use Basic authentication on the proxy.
+ --proxy-basic
+
+Specify CA certificate for proxy verification.
+ --proxy-cacert file
+
+Set client certificate for proxy.
+ --proxy-cert cert[:passwd]
+
+Use NTLM authentication for the proxy.
+ --proxy-ntlm
+
+
+
+Examples:
+
+Retrieve a web page with status code and content:
+ curl https://example.com
+
+Show only the HTTP headers of a page:
+ curl -I https://example.com
+
+Download a webpage and save it to a file:
+ curl -o testing.html https://example.com
+
+
+Upload a file to a server:
+ curl -T localfile.txt ftp://example.com/remotefile.txt
+
+Pass a custom User-Agent string:
+ curl -A "Mozilla/5.0" https://example.com
+
+
+See Also:
+
+For more advanced features and usage, refer to the official cURL documentation or use the --manual option to access detailed help.
