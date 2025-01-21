@@ -25,7 +25,6 @@ Display a List of Running Processes
 2. Examples
 
 Example 1: Display All Running Processes
-
 To display a simple list of all running processes on the local machine:
  TASKLIST
 
@@ -38,25 +37,21 @@ To display a simple list of all running processes on the local machine:
 
 
 Example 2: Display Processes on a Remote Machine
-
 To display the list of processes running on a remote machine named RemotePC:
  TASKLIST /S RemotePC
 
 
 Example 3: Display Processes with a Specific Module Loaded
-
 To list all processes that have a specific DLL (kernel32.dll) loaded:
  TASKLIST /M kernel32.dll
 
 
 Example 4: Filter Processes by Name
-
 To display only the processes named explorer.exe:
  TASKLIST /FI "IMAGENAME eq explorer.exe"
 
 
 Example 5: Display Detailed Information
-
 To display detailed information, including memory usage and user information, for all processes:
  TASKLIST /V
 
@@ -69,7 +64,6 @@ To display detailed information, including memory usage and user information, fo
 
 
 Example 6: Display Task List in CSV Format
-
 To display the task list in CSV format:
  TASKLIST /FO CSV
 
@@ -79,9 +73,7 @@ To display the task list in CSV format:
  "explorer.exe","5678","Console","1","150,000 K"
  "cmd.exe","4321","Console","1","5,000 K"
 
-
 Example 7: Display Processes with No Column Header
-
 To display processes without the column header:
  TASKLIST /NH
 
@@ -122,8 +114,6 @@ Example:
 
 
 5. Errorlevel
-
-TASKLIST will return an ErrorLevel as follows:
  0 - Successfully listed the processes.
  1 - Invalid filter or an invalid command was issued.
  2 - A specified file or process could not be found (if the specified machine is unreachable).
