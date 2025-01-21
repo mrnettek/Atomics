@@ -78,7 +78,7 @@ Releasing IP during remote sessions: If you are remotely connected to a machine 
 Class IDs and DHCP: The setclassid option allows the modification of DHCP class IDs, which are used to assign specific settings (examples DNS, gateway) to different groups of machines. These IDs need to be configured on the DHCP server.
 
 
-Examples
+[Examples]
 
 Show Detailed Information
 This command will display detailed configuration information for all network adapters on the system.
@@ -86,7 +86,6 @@ This command will display detailed configuration information for all network ada
 
 
 Release and Renew All Adapters
-
 This releases and renews the IP address for all adapters.
  C:\> ipconfig /release
  C:\> ipconfig /renew
@@ -118,6 +117,5 @@ Errorlevels
 
 
 Use Cases
-
 Network Troubleshooting: ipconfig is commonly used to view and manage network configurations, troubleshoot connectivity issues, or reset network settings.
 DHCP Configuration: setclassid can be used to adjust DHCP class IDs for devices, allowing customization of network settings based on different groups.
