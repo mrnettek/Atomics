@@ -5,13 +5,12 @@ XCOPY is a command-line tool used to copy files and directory trees to another l
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 XCOPY source [destination] [options]
  source: Pathname for the file(s) to be copied. This can accept wildcards.
  destination: Pathname for the new file(s) or directory. If omitted, the source files are copied to the current directory.
  
- [options] can be any combination of the following:
-
+ [OPTIONS] can be any combination of the following:
 
 2. Source Options
  /A: Copy files with the archive attribute set (default is Y).
@@ -22,7 +21,6 @@ XCOPY source [destination] [options]
  /S: Copy directories and subdirectories, except empty ones.
  /E: Copy all directories and subdirectories, including empty ones. Can be used with /T to copy an empty folder structure.
  /EXCLUDE:file1[+file3]...: Exclude files matching the pattern(s) specified in the file(s). The file should contain one or more full or partial pathnames to be excluded.
-
 
 3. Copy Options
  /B: Copy the symbolic link itself, not the target of the file.
@@ -37,12 +35,10 @@ XCOPY source [destination] [options]
  /Y: Suppress prompt to confirm overwriting a file. Can be preset with COPYCMD=/Y.
  /-Y: Enable confirmation prompt when overwriting files.
 
-
 4. Performance Tweaks
  /COMPRESS: Request SMB network compression during file transfer, if applicable.
  /J: Use unbuffered I/O for faster copying, recommended for very large files.
  /Z: Copy files in restartable mode. If the copy process is interrupted, it will resume from where it left off. This option significantly reduces copy performance due to additional logging.
-
 
 5. Destination Options
  /I: If the destination is a folder, assume the destination is a folder if it's ambiguous.
@@ -54,18 +50,7 @@ XCOPY source [destination] [options]
  /X: Copy file audit settings (implies /O).
 
 
-6. Special Notes
-
-Symbolic Links: If the source directory contains symbolic links, XCOPY will create a corresponding directory in the destination on the first run. However, all subsequent XCOPY operations will fail with error code 4. For this task, use Robocopy instead.
-
-Copying from CDROM: XCOPY is especially useful for copying files from CD-ROM to a hard drive as it automatically removes the read-only attribute from the files.
-
-Date/Time Granularity: The timestamp granularity is 2 seconds for FAT volumes and 0.1 microsecond for NTFS volumes.
-
-Overwrite Prompts: The default behavior is to prompt for overwriting files unless running from a batch script. Use COPYCMD=/Y to suppress this prompt.
-
-
-7. Examples
+6. Examples
 
 Example 1: Copy a Single File
 To copy a file from one location to another:
@@ -98,3 +83,14 @@ To copy files and suppress the overwrite prompt:
 Example 8: Use Network Compression During Copy
 To enable SMB network compression while copying:
  XCOPY C:\source\*.* D:\destination\ /COMPRESS
+
+
+[NOTES]
+
+Symbolic Links: If the source directory contains symbolic links, XCOPY will create a corresponding directory in the destination on the first run. However, all subsequent XCOPY operations will fail with error code 4. For this task, use Robocopy instead.
+
+Copying from CDROM: XCOPY is especially useful for copying files from CD-ROM to a hard drive as it automatically removes the read-only attribute from the files.
+
+Date/Time Granularity: The timestamp granularity is 2 seconds for FAT volumes and 0.1 microsecond for NTFS volumes.
+
+Overwrite Prompts: The default behavior is to prompt for overwriting files unless running from a batch script. Use COPYCMD=/Y to suppress this prompt.
