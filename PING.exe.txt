@@ -15,7 +15,6 @@ Timeout and Other Time Settings
  -i TTL Set the Time To Live (TTL) for the packet. TTL specifies the maximum number of hops (routers) the packet can travel through before being discarded.
  -v TOS Set the Type Of Service (TOS) for the packet, used to prioritize traffic.
 
-
 Network and Host Resolution
  -a Resolve addresses to hostnames.
   PING -a 192.168.1.1.
