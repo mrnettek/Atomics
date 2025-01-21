@@ -2,10 +2,10 @@ Manage-BDE.exe (BitLocker Drive Encryption: Configuration Tool)
 
 Manage-BDE is a command-line tool used to configure BitLocker Drive Encryption on disk volumes. It provides a set of commands for managing BitLocker encryption, including enabling or disabling encryption, managing recovery keys, and configuring automatic unlocking for data volumes.
 
-[Syntax]
+[SYNTAX]
 manage-bde [command] [arguments]
 
-[Key Parameters]
+[KEY PARAMETERS]
 Manage automatic unlocking of data volumes.
  -autounlock
 
@@ -72,7 +72,7 @@ Display complete help with all available options for each command.
 
 
 
-[Examples]
+[EXAMPLES]
 
 Exampe 1: Display the status of all BitLocker-enabled volumes:
  manage-bde -status
