@@ -3,14 +3,12 @@ SC Command Help Guide
 The SC.exe command is used to manage Windows services. It allows users to create, start, stop, query, or delete services, and perform other service-related operations such as querying a service's status, configuration, or dependencies.
 
 
-
 1. Syntax
 
 [Syntax]
 SC [\\server] [command] [service_name] [Options]
 
- Where:
-
+Where:
  [\server]: The machine where the service is running. This is optional; by default, the local machine is used.
  [command]: The command to execute (e.g., start, stop, query, etc.).
  [service_name]: The KeyName of the service. This is often the same as the DisplayName shown in the Services application.
@@ -26,7 +24,6 @@ Displays the status of a service.
 
 Displays extended information about a service, such as the process ID (PID) and flags.
  queryEx [qryOpt]
-
 
 Displays the DisplayName of a service.
  GetDisplayName
@@ -48,7 +45,6 @@ Stops a service.
 
 Pauses a service.
  pause
-
 
 Resumes a paused service.
  continue
@@ -83,7 +79,6 @@ Changes the failure actions for a service.
 
 Displays the service's security descriptor using SDDL format.
  sdShow
-
 
 Sets a service’s security descriptor using SDDL.
  SdSet
