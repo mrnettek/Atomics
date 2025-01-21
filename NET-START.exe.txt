@@ -12,7 +12,7 @@ NET CONTINUE [service]
 [Key Parameters]
 Service - The name of the service as it appears in Control Panel > Services. Service names are typically the same as the Service Name field (not the display name) in the Services window.
 
-Options
+[Options]
 
 Purpose: Start a service that is stopped or disabled.
 Syntax: NET START [service]
@@ -31,7 +31,8 @@ Syntax: NET CONTINUE [service]
  NET CONTINUE
 
 
-Examples
+[Examples]
+
 List the basic Services:
  NET HELP SERVICES
 
