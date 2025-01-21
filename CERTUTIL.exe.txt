@@ -7,10 +7,10 @@ CERTUTIL also helps with verifying certificates, key pairs, and certificate chai
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 CERTUTIL [options]
 
-[Options]
+[OPTIONS]
  /admin: Use ICertAdmin2 for CA properties.
  /anonymous: Use anonymous SSL credentials.
  /cert CertId: Use a signing certificate.
@@ -119,7 +119,7 @@ CERTUTIL sets the following exit codes based on the outcome of the command:
  145: The directory was not empty.
 
 
-6. Additional Notes
+[NOTES]
 
 CERTUTIL replaces the File Checksum Integrity Verifier (FCIV) found in earlier versions of Windows.
 
