@@ -7,8 +7,7 @@ FIND is a command-line tool used to search for a text string in a file and displ
 
 [Syntax]
 Search for a String in a File
- FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
-
+FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
 
 [Key]
 "string" - The text string to search for (must be in quotes).
@@ -88,7 +87,9 @@ FIND "Alice" *.txt
 
 3. Limitations
 FIND does not support wildcards in the string search. For advanced searching with wildcards, use FINDSTR instead.
+
 FIND will not detect strings positioned more than 1070 characters along a single line with no carriage return. This makes it less useful for binary or XML files.
+
 Searching for an empty string ("") will normally match nothing, but using the /V flag will reverse the test to match everything (though it will fail for lines longer than 4091 characters).
 
 For lines longer than 4091 characters, use FINDSTR, which can handle up to 8191 characters per line.
