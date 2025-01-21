@@ -5,7 +5,7 @@ WEVTUTIL is a command-line utility that allows you to manage Windows Event Logs 
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 WEVTUTIL {command} [options]
 
 Commands:
@@ -105,7 +105,7 @@ Logname: The event log to get information for.
  MANIFEST: The event manifest to uninstall.
 
 
-4. Example Usage
+4. Example Use
 
 Example 1: Archive a Log
 To archive the Application log:
@@ -140,7 +140,7 @@ WEVTUTIL install-manifest mymanifest.xml
  5: Access denied (permissions issue).
 
 
-6. Additional Notes
+[NOTES]
 
  Event Log Sizes: The configuration of each event log includes a maximum size and retention settings. WEVTUTIL can modify these properties.
  
