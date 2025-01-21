@@ -7,7 +7,7 @@ The NET SHARE command is used to manage file and printer shares on a local or re
 
 Create a new share:
 
-[Syntax]
+[SYNTAX]
 NET SHARE sharename=drive:path [/GRANT:user,[READ | CHANGE | FULL]] [/USERS:number | /UNLIMITED] [/REMARK:"text"] [/CACHE:Manual | Documents | Programs | BranchCache | None]
 
 Delete a share:
@@ -20,7 +20,7 @@ Delete a share:
 
 Note: You can modify an existing share using the NET SHARE command, except for the /GRANT option.
 
-[Options]
+[OPTIONS]
   sharename: The name of the share you are creating or modifying.
  drive:path: The path to the folder or device being shared.
 
@@ -118,7 +118,7 @@ Example 5: Delete a share.
  NET SHARE workgroups /DELETE
 
 
-8. Notes and Best Practices
+[NOTES]
 
 File and Printer Sharing: Ensure that File and Printer sharing is enabled on the computer before creating shares.
 
