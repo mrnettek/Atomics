@@ -3,13 +3,13 @@ NET - NET SESSION and NET FILE Command Guide with Examples
 The NET command is used to manage open files and user sessions on a computer or network. It provides functionality for viewing and managing user sessions, as well as managing open files on a shared server.
 
 
-[Syntax]
+[SYNTAX]
  NET SESSION
  NET SESSION [\\computername [/DELETE] | /LIST]
  NET FILE
  NET FILE [id [/CLOSE]]
 
-[Options]
+[OPTIONS]
  computername - A computer whose shared resources you want to view. This is usually the name of the server or remote machine.
  domainname - The domain whose sessions you wish to view. By default, all domains in the local area network (LAN) are displayed.
  /DELETE - End the session and close all open files associated with the session. If computername is omitted, all sessions will be ended.
