@@ -19,28 +19,28 @@ Options: Additional flags to modify the command's behavior.
 
 [EXAMPLES]
 
-Example 1. Rename a file in the current folder
-Unlike the REN command, this will overwrite the destination file if it already exists:
+Example 1. Rename a file in the current folder.
+Unlike the REN command, this will overwrite the destination file if it already exists.
  MOVE oldfile.wp newfile.doc
 
-Example 2. Move a file with full paths specified
-Moves a file from g:\department to c:\Files to Convert, and renames it:
+Example 2. Move a file with full paths specified.
+Moves a file from g:\department to c:\Files to Convert, and renames it.
  MOVE g:\department\oldfile.wp "c:\Files to Convert\newfile.doc"
 
-Example 3. Move a file between different drives
-This command assumes both drives are in the current folder:
+Example 3. Move a file between different drives.
+This command assumes both drives are in the current folder.
  MOVE a:oldfile.wp c:newfile.doc
 
-Example 4. Specify source only, and the file is moved to the current folder
-This moves oldfile.wp from g:\department to the current directory, keeping the same filename:
+Example 4. Specify source only, and the file is moved to the current folder.
+This moves oldfile.wp from g:\department to the current directory, keeping the same filename.
  MOVE g:\department\oldfile.wp
 
-Example 5. Quiet move (no feedback on the screen)
-This moves the file oldfile.docx to newfile.docx without any output:
+Example 5. Quiet move (no feedback on the screen).
+This moves the file oldfile.docx to newfile.docx without any output.
  MOVE oldfile.docx newfile.docx >nul
 
-Example 6. Move a file but avoid overwriting if the destination file already exists
-This ensures that the command will not overwrite the destination file:
+Example 6. Move a file but avoid overwriting if the destination file already exists.
+This ensures that the command will not overwrite the destination file.
  Echo n|MOVE /-y c:\file1.txt c:\dir\file1.txt
 
 
