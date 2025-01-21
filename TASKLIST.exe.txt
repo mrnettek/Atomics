@@ -5,10 +5,9 @@ TASKLIST is a command-line tool that provides a list of currently running proces
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 Display a List of Running Processes
  TASKLIST [/S system [/U username [/P [password]]]] [/M module] [/V] [/FI filter] [/FO format] [/NH] [/?]
-
 
 [Key]
  /S system - The name or IP address of a remote machine to query.
