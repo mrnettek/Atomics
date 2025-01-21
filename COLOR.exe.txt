@@ -5,7 +5,7 @@ The COLOR command is used to set the default console foreground and background c
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 COLOR [background][foreground]
 
 The color attributes are specified by 2 hex digits: the first digit sets the background color, and the second sets the foreground color. Each digit corresponds to a specific color code.
@@ -55,6 +55,8 @@ The color value is assigned in the following order:
 
 4. Examples
 
+[EXAMPLES]
+
 Example 1: Set the Console Color to White on Blue
 To set the console background to blue (1) and the text to white (7):
  COLOR 17
@@ -73,7 +75,7 @@ To set the console background to yellow (6) and the text to red (4):
  ERRORLEVEL = 1 – The foreground and background colors are the same (which will fail). For example, COLOR 00 will not work because the foreground and background are both black.
 
 
-6. Additional Notes
+[NOTES]
 
 ANSI Color Escapes: If you want to change the color of individual words, characters, or paragraphs, you can use ANSI color escapes. This feature is available in Windows versions greater than 1511.
 
