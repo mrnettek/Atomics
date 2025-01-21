@@ -4,6 +4,7 @@ SignTool.exe is a command-line utility that is used to digitally sign files, ver
 
 This tool is automatically installed with Visual Studio. To run it, use the Visual Studio Developer Command Prompt or Visual Studio Developer PowerShell.
 
+1. Syntax and Use
 
 [SYNTAX]
 signtool [command] [options] [file_name | ...]
@@ -100,6 +101,11 @@ signtool [command] [options] [file_name | ...]
   /o Version: Verifies the file by operating system version.
   /p7: Verifies PKCS #7 files.
 
+
+2. Example Use
+
+[EXAMPLES]
+
  Example 1: Verify the signature of a file.
   signtool verify MyFile.exe
  
@@ -108,9 +114,11 @@ signtool [command] [options] [file_name | ...]
 
  Example 3: Verify a system file signed in a specific catalog.
   signtool verify /c MyCatalog.cat SystemFile.dll
- 
 
-Exit Codes:
+
+3. Error Handling
+
+Errorlevels
  0: Execution was successful.
  1: Execution has failed.
  2: Execution completed with warnings. 
