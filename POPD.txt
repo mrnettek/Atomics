@@ -25,7 +25,6 @@ Temporary Drive Mapping: If a UNC path (\\server\share) is used with PUSHD, a te
 4. Examples
 
 Example 1: Basic Directory Navigation
-
 Use PUSHD to change to C:\utils:
  PUSHD c:\utils
 
@@ -40,12 +39,12 @@ Use POPD again to return to C:\Program Files:
 
 
 Example 2: Using POPD with UNC Path
-
 Use PUSHD to map a UNC path temporarily (\\server\share):
  PUSHD \\server\share
 
 Use POPD to return to the previous directory, removing the temporary drive mapping:
  POPD
+
 
 5. Additional Notes
 
