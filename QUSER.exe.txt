@@ -44,33 +44,25 @@ When querying multiple users, a > symbol is used to indicate the current session
 3. Examples
 
 Example 1: Query All User Sessions on the Current Server
-
 To display all user sessions on the current server:
  QUERY USER
 
-
 Example 2: Query a Specific User's Session
-
 To display information about a specific user's session, replace UserName with the actual username:
  QUERY USER UserName
 
-
 Example 3: Query a Session by ID or Name
-
 To query a session using its session ID or name:
  QUERY USER SessionName
  or
  QUERY USER SessionID
 
-
 Example 4: Query Sessions on a Remote Server
-
 To display information about sessions on a remote server, replace ServerName with the name of the server:
  QUERY USER /server:ServerName
 
 
 Example 5: Display Help Information
-
 To display help information for the QUERY USER command:
  QUERY USER /?
 
