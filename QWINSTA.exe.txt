@@ -43,57 +43,40 @@ QUERY SESSION provides the following information for each session:
 3. Examples
 
 Example 1: Display All Active Sessions on the Current Server
-
 To display information about all active sessions on the local machine:
  QUERY SESSION
 
-
 Example 2: Display Sessions for a Specific User
-
 To display sessions for a specific user, replace UserName with the actual username:
  QUERY SESSION UserName
 
-
 Example 3: Display Session Information Using Session ID or Name
-
 To display information about a session using the session name or session ID, replace SessionName or SessionID with the actual name or ID:
  QUERY SESSION SessionName
  or
  QUERY SESSION SessionID
 
-
 Example 4: Display Sessions on a Remote Server
-
 To display information about sessions on a remote server, replace ServerName with the name of the server:
  QUERY SESSION /server:ServerName
 
-
 Example 5: Display Information About Current Line Settings
-
 To display the current line settings for the sessions:
  QUERY SESSION /mode
 
-
 Example 6: Display Flow-Control Settings
-
 To display flow-control settings for the sessions:
  QUERY SESSION /flow
 
-
 Example 7: Display Connect Settings
-
 To display connect settings for the sessions:
  QUERY SESSION /connect
 
-
 Example 8: Display Counter Information
-
 To display information on the total number of sessions created, disconnected, and reconnected:
  QUERY SESSION /counter
 
-
 Example 9: Display Help Information
-
 To display help information for the QUERY SESSION command:
  QUERY SESSION /?
 
