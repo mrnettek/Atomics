@@ -28,15 +28,15 @@ General Options:
 Options:
  /ALLUSERS - List jobs for all users.
  /VERBOSE - Display additional job details.
- Monitors the copy manager.
-  /MONITOR
+ /MONITOR - Monitors the copy manager.
+  
 
 
 Options:
  /ALLUSERS - Monitor jobs for all users.
  /REFRESH sec - Set refresh interval in seconds.
- Deletes all jobs from the manager.
-  /RESET
+ /RESET - Deletes all jobs from the manager.
+
 
 
 Options:
