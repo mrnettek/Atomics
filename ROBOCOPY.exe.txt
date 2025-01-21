@@ -11,7 +11,7 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  destination_folder: Path to the destination folder. The destination must be different from the source.
  files_to_copy: A list of files or a wildcard pattern. Defaults to copying *.*.
  
- [OPTIONS]: Any combination of the options listed below.
+[OPTIONS]: Any combination of the options listed below.
 
 2. Source Options
  /S: Copy subfolders, excluding empty ones.
@@ -124,7 +124,7 @@ File and Directory Exclusion:
  /LFSM: Operate in "low free space" mode, allowing pause and resume.
 
 
-11. Examples
+11. Example Usage
 
 Example 1: Copy a Folder and Its Subdirectories
 To copy the source directory to destination, including all subdirectories and empty folders:
