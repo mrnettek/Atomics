@@ -112,6 +112,7 @@ To count how many lines contain the string apple:
 3. Limitations
 
 FINDSTR does not support wildcards in the search string. To search for patterns, regular expressions must be used.
+
 While FINDSTR supports regular expressions, it is not as powerful as dedicated regular expression tools.
 
 FINDSTR will only match whole lines of text and will not match part of a line unless specifically instructed with the /R option for regular expressions.
