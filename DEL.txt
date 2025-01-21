@@ -44,7 +44,7 @@ Note: A deletion failure does not trigger the || condition unless invalid argume
 Undeletable Files
 
 Some files may have long filenames or contain reserved names (CON, AUX, COM1, NUL), making them difficult or impossible to delete via Windows Explorer. To delete such files, use the Device Path syntax:
- DEL "\\?\C:\some folder\AZH64GT."
+ DEL "\\?\C:\some folder\FOO."
 
 Alternatively, you can reduce the path length by using SUBST to map a drive letter to the folder containing the file.
 
