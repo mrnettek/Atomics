@@ -9,7 +9,7 @@ TASKLIST is a command-line tool that provides a list of currently running proces
 Display a List of Running Processes
  TASKLIST [/S system [/U username [/P [password]]]] [/M module] [/V] [/FI filter] [/FO format] [/NH] [/?]
 
-[Key]
+[KEY]
  /S system - The name or IP address of a remote machine to query.
  /U username - The user account to connect with (for remote systems).
  /P password - The password associated with the user account (if required).
@@ -21,7 +21,7 @@ Display a List of Running Processes
  /? - Displays help information about the command.
 
 
-2. Examples
+2. Example Usage
 
 Example 1: Display All Running Processes
 To display a simple list of all running processes on the local machine:
