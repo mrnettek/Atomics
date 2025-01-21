@@ -115,16 +115,13 @@ This example programmatically grants read-only (R) access to Domain\User on file
 5. Example Scripts
 
 1. Locking and Unlocking the Registry
-
 To lock a registry key so that it cannot be modified:
  SetACL.exe /reg "HKCU\Software\MySoftware" /deny "Domain\User:F"
 
-To unlock the registry key:
+2. To unlock the registry key:
  SetACL.exe /reg "HKCU\Software\MySoftware" /remove "Domain\User"
 
-
-2. Migrating User Profiles During Domain Migration
-
+3. Migrating User Profiles During Domain Migration
 This script helps with domain migration by applying new permissions to user profiles:
  for /d %%i in (C:\Users\*) do SetACL.exe /file "%%i" /grant "Domain\User:F"
 
