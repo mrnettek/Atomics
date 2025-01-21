@@ -134,6 +134,8 @@ Unload a hive file:
  /E: Return exact matches only.
 
 
+[NOTES]
+
 Common Roots
  HKLM: HKEY_LOCAL_MACHINE
  HKCU: HKEY_CURRENT_USER
