@@ -8,7 +8,7 @@ The FOR /F command in batch scripting allows you to iterate through a file, a co
  FOR /F ["options"] %%parameter IN ("Text string to process") DO command
 
 
-[Key Components]
+[KEY COMPONENTS]
 options: Control how the lines are parsed.
  delims=xxx: Specifies the delimiter(s). Default is a space or tab.
  skip=n: Skips the first n lines of the file.
@@ -20,7 +20,7 @@ options: Control how the lines are parsed.
  %%parameter: A replaceable variable (%%A) that holds the current token. Use %% in scripts and % on the command line.
 
 
-[Parsing Details]
+[PARSING DETAILS]
 When processing files or strings, FOR /F reads line by line, splits each line based on delimiters, and assigns tokens to variables. Adjust parsing behavior using options.
 usebackq
 
@@ -30,7 +30,7 @@ This option changes quoting behavior:
  Back quotes (``) for commands.
 
 
-[skip]
+[SKIP]
 Skips a specified number of lines at the beginning of the file. Blank lines are included in the count but ignored during iteration.
 eol
 
@@ -44,7 +44,7 @@ Specifies which tokens (sections of a line) to process:
  tokens=*: Reads the entire line as a single token.
 
 
-[delims]
+[DELIMS]
 Defines the characters used to separate tokens. Multiple delimiters can be specified (delims=,;|). Consecutive delimiters are treated as one.
 
 
