@@ -1,0 +1,229 @@
+BITSADMIN.exe (Background Intelligent Transfer Service Configuration Tool)
+
+BITSADMIN is a command-line tool for managing the Background Intelligent Transfer Service (BITS). BITS is used for transferring large files across networks with minimal disruption, supporting features like throttling and asynchronous transfers. It is widely used by Windows Update, SUS, SMS, and third-party applications.
+
+[Syntax]
+BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
+
+Available Commands:
+
+General Options:
+ Displays a list of utility commands.
+  /UTIL /?
+
+ Displays a list of commands to manage Peercaching.
+  /PEERCACHING /?
+
+ Displays a list of cache management commands.
+  /CACHE /?
+
+ Displays a list of peer management commands.
+  /PEERS /?
+
+ Job Management Commands:
+ Lists all jobs.
+  /LIST
+
+
+Options:
+ /ALLUSERS - List jobs for all users.
+ /VERBOSE - Display additional job details.
+ Monitors the copy manager.
+  /MONITOR
+
+
+Options:
+ /ALLUSERS - Monitor jobs for all users.
+ /REFRESH sec - Set refresh interval in seconds.
+ Deletes all jobs from the manager.
+  /RESET
+
+
+Options:
+ /ALLUSERS - Delete jobs for all users.
+Transfers one or more files.
+ /TRANSFER job_name [type] [options] remote_url local_name
+
+
+Options:
+
+ Multiple URL/file pairs can be specified.
+  type can be /DOWNLOAD (default) or /UPLOAD.
+
+ Creates a new job.
+  /CREATE [type] job_name
+
+
+Options:
+job_name must be a unique name, not a GUID.
+ type can be /DOWNLOAD, /UPLOAD, or /UPLOAD-REPLY.
+
+Displays information about a specific job.
+ /INFO job
+
+
+Options:
+ /VERBOSE - Display detailed information.
+
+ Adds a file to a job.
+  /ADDFILE job remote_url local_name
+
+Adds multiple files to a job from a text file.
+ /ADDFILESET job textfile
+
+Each line contains a remote URL and local path, separated by a space.
+
+
+Adds files with specified byte ranges (e.g., 0:100,2000:100,5000:eof).
+ /ADDFILEWITHRANGES job remote_url local_name range_list
+
+Replaces the remote URL prefix in the job.
+ /REPLACEREMOTEPREFIX job old_prefix new_prefix
+
+Lists the files in a job.
+ /LISTFILES job
+
+Suspends a job.
+ /SUSPEND job
+
+Resumes a suspended job.
+ /RESUME job
+
+Cancels a job.
+ /CANCEL job
+
+Marks a job as complete.
+ /COMPLETE job
+
+Retrieves the job type.
+ /GETTYPE job
+
+Sets the Access Control List (ACL) flags for a job.
+ /SETACLFLAGS job ACL_flags
+
+Example: /setaclflags MyJob OGDS.
+
+
+Advanced Configuration:
+
+Sets the proxy usage for a job.
+ /SETPROXYSETTINGS job usage
+
+
+Options:
+
+ PRECONFIG, AUTODETECT, NO_PROXY, OVERRIDE.
+ Retrieves the proxy usage setting for a job.
+  /GETPROXYUSAGE job
+
+
+ Retrieves the proxy list for a job.
+  /GETPROXYLIST job
+
+
+ Retrieves the proxy bypass list for a job.
+  /GETPROXYBYPASSLIST job
+
+
+ Takes ownership of the job.
+  /TAKEOWNERSHIP job
+
+
+ Sets a program to execute for notifications.
+  /SETNOTIFYCMDLINE job program_name [program_parameters]
+
+
+ Example:
+  bitsadmin /SetNotifyCmdLine MyJob c:\windows\system32\notepad.exe NULL.
+
+ Retrieves the notification command line for a job.
+  /GETNOTIFYCMDLINE job
+
+ Adds credentials to a job for authentication.
+  /SETCREDENTIALS job target scheme username password
+
+ Example: BASIC, NTLM, DIGEST.
+
+ Removes credentials from a job.
+  /REMOVECREDENTIALS job target scheme
+
+ Retrieves custom HTTP headers for a job.
+  /GETCUSTOMHEADERS job
+
+ Sets custom HTTP headers for a job.
+  /SETCUSTOMHEADERS job header1 header2 ...
+
+ Retrieves the client certificate information for a job.
+  /GETCLIENTCERTIFICATE job
+
+ Sets a client authentication certificate for a job.
+  /SETCLIENTCERTIFICATEBYID job store_location store_name hexa-decimal_cert_id
+
+ Removes the client certificate information from the job.
+  /REMOVECLIENTCERTIFICATE job
+
+ Peercaching Options:
+ Sets flags for the job’s peercaching behavior.
+  /SETPEERCACHINGFLAGS job value
+
+ Example: Enable data download from peers.
+
+ Retrieves the flags for the job’s peercaching behavior.
+  /GETPEERCACHINGFLAGS job
+  
+
+Upload-Reply Jobs:
+
+ Retrieves the path of the file containing the server reply.
+  /GETREPLYFILENAME job
+
+ Sets the path of the file containing the server reply.
+  /SETREPLYFILENAME job path
+
+ Retrieves the size and progress of the server reply.
+  /GETREPLYPROGRESS job
+
+ Dumps the server’s reply data in hex format.
+  /GETREPLYDATA job
+
+General Options:
+
+ Return data suitable for parsing (removes new line characters).
+  /RAWRETURN
+
+ Wrap output around the console (default).
+  /WRAP
+
+ Prevent output from wrapping.
+  /NOWRAP
+
+
+Examples:
+
+Create a download job:
+ bitsadmin /create /download MrNetTek
+
+Add a file to a job:
+ bitsadmin /addfile MrNetTek https://download.sysinternals.com/files/SysinternalsSuite.zip c:\downloads\PSTools.zip
+
+Suspend a job:
+ bitsadmin /suspend MrNetTek
+
+Set proxy settings for a job:
+ bitsadmin /setproxysettings MyJob PRECONFIG
+
+Set notification command line for a job:
+ bitsadmin /SetNotifyCmdLine MyJob c:\windows\system32\notepad.exe NULL
+
+
+Error Handling:
+ 0: Success
+ 1: General error
+ 2: Invalid parameter or incorrect command
+ 3010: Restart required to apply changes
+ 32768: Access denied (insufficient privileges)
+
+
+See Also:
+
+For further details, consider using PowerShell cmdlets for BITS administration, as BITSADMIN is deprecated.
