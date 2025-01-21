@@ -52,7 +52,6 @@ This creates a delay for the specified number of seconds (30 in this case).
 5. Examples
 
 Example 1: Start Applications in Sequence with a Delay
-
 Start Microsoft Word, wait for 10 seconds, then start Excel:
  @echo off
  echo Start Microsoft Word, wait for 10 seconds, and then start Excel.
@@ -60,16 +59,12 @@ Start Microsoft Word, wait for 10 seconds, then start Excel:
  TIMEOUT /T 10
  START "" "C:\Program Files\Microsoft Office\Office16\EXCEL.EXE"
 
-
 Example 2: Use PING for a Delay
-
 Create a delay of 40 seconds using PING:
  PING -n 41 127.0.0.1 > nul
  echo Now we are ready
 
-
 Example 3: Wait for a File on a Remote Server
-
 Use a WAIT loop to check if a file appears on a remote server, waiting for up to 600 seconds:
  Set _seconds=0
  :waitloop
