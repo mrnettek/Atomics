@@ -115,7 +115,7 @@ Remove the group from 'guests':
  NET LOCALGROUP guests LocalScanningGroup /DELETE
 
 Delete the local group 'LocalScanningGroup':
-NET LOCALGROUP LocalScanningGroup /DELETE
+ NET LOCALGROUP LocalScanningGroup /DELETE
 
 
 4. Additional Notes
