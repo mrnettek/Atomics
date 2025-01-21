@@ -7,7 +7,7 @@ TYPE is a command-line utility used to display the contents of one or more text 
 
 [Syntax]
 TYPE [drive:]pathname(s)
- [drive:]pathname(s): Specifies the file or files whose contents you want to display. Wildcards (*) can be used to match multiple files. If multiple files are specified, their filenames will be included in the output.
+[drive:]pathname(s): Specifies the file or files whose contents you want to display. Wildcards (*) can be used to match multiple files. If multiple files are specified, their filenames will be included in the output.
 
 If you use a wildcard to match files, the filenames are displayed even if only one file matches. The filenames are printed to the error stream and can be hidden by redirecting to NUL like so:
  TYPE * 2>nul
@@ -17,11 +17,13 @@ In Windows 1909 or newer, if the text file contains ANSI color escape codes, TYP
 2. Error Levels
  0: The file(s) were successfully displayed.
  1: The file was not found, or invalid parameters were given.
- 3. Key Notes
+
+
+3. Key Notes
 
 Internal Command: TYPE is an internal command in Windows. It works directly within the command prompt and does not require any external executables.
 
-No Locking: TYPE does not lock the file while displaying its contents, making it useful for monitoring files (e.g., during a download) without interfering with the process.
+No Locking: TYPE does not lock the file while displaying its contents, making it useful for monitoring files (example: during a download) without interfering with the process.
 
 Text Encoding: When working with text files that require different encoding (example ASCII to Unicode), TYPE can be used in combination with other commands like CHCP and CMD.EXE to handle conversions.
 
