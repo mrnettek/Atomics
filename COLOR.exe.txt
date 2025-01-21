@@ -6,11 +6,11 @@ The COLOR command is used to set the default console foreground and background c
 1. Syntax and Usage
 
 [Syntax]
- COLOR [background][foreground]
+COLOR [background][foreground]
 
 The color attributes are specified by 2 hex digits: the first digit sets the background color, and the second sets the foreground color. Each digit corresponds to a specific color code.
-Available Colors:
 
+[Available Colors]
  0 = Black
  1 = Blue
  2 = Green
@@ -47,18 +47,13 @@ Full 24-bit Color Support: Windows 10 also introduced full 24-bit color support 
 
 3. Color Assignment Order
 The color value is assigned in the following order:
- The DefaultColor registry value.
- The CMD /T command-line switch.
- The current color settings when cmd.exe was launched.
- The COLOR command settings.
+ 1-The DefaultColor registry value.
+ 2-The CMD /T command-line switch.
+ 3-The current color settings when cmd.exe was launched.
+ 4-The COLOR command settings.
 
 
-4. Errorlevels
- ERRORLEVEL = 0 – The color was successfully changed.
- ERRORLEVEL = 1 – The foreground and background colors are the same (which will fail). For example, COLOR 00 will not work because the foreground and background are both black.
-
-
-5. Examples
+4. Examples
 
 Example 1: Set the Console Color to White on Blue
 To set the console background to blue (1) and the text to white (7):
@@ -71,6 +66,11 @@ To set the console background to black (0) and the text to green (2):
 Example 3: Set the Console Color to Red on Yellow
 To set the console background to yellow (6) and the text to red (4):
  COLOR 64
+
+
+5. Errorlevels
+ ERRORLEVEL = 0 – The color was successfully changed.
+ ERRORLEVEL = 1 – The foreground and background colors are the same (which will fail). For example, COLOR 00 will not work because the foreground and background are both black.
 
 
 6. Additional Notes
