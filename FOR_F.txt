@@ -4,8 +4,8 @@ The FOR /F command in batch scripting allows you to iterate through a file, a co
 
 
 [SYNTAX]
- FOR /F ["options"] %%parameter IN (filenameset) DO command
- FOR /F ["options"] %%parameter IN ("Text string to process") DO command
+FOR /F ["options"] %%parameter IN (filenameset) DO command
+FOR /F ["options"] %%parameter IN ("Text string to process") DO command
 
 
 [KEY COMPONENTS]
