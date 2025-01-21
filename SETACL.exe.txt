@@ -6,26 +6,21 @@ SetACL is a powerful command-line tool used to modify security descriptors for f
 1. Overview
 
 SetACL allows users to:
-
-Set or modify file system permissions (DACL).
-
-Set or modify registry key permissions.
-
-Configure permissions on printers, services, and shares.
-
-Retrieve or set ownership and auditing for files, directories, and registry keys.
-
-Perform these tasks locally or remotely.
+ Set or modify file system permissions (DACL).
+ Set or modify registry key permissions.
+ Configure permissions on printers, services, and shares.
+ Retrieve or set ownership and auditing for files, directories, and registry keys.
+ Perform these tasks locally or remotely.
 
 
 2. Basic Syntax
 
 [Syntax]
 SetACL.exe /[Operation] [Object] [Permissions] [Options]
- Operation: The operation you want to perform (e.g., /set, /get, /remove).
- Object: The object to modify (file path, registry path, printer, service, etc.).
- Permissions: Specifies the permissions you want to set (e.g., F for Full, R for Read).
- Options: Additional options for specific commands (e.g., /recursive to apply permissions to subfolders).
+ Operation: The operation you want to perform (examples: /set, /get, /remove).
+ Object: The object to modify (examples: file path, registry path, printer, service, etc.).
+ Permissions: Specifies the permissions you want to set (examples: F for Full, R for Read).
+ Options: Additional options for specific commands (examples: /recursive to apply permissions to subfolders).
 
 
 3. Key Operations
@@ -33,13 +28,13 @@ SetACL.exe /[Operation] [Object] [Permissions] [Options]
 1. Managing File System Permissions
 You can modify file system permissions on a file or folder using SetACL.
 
-Example: Set full control permissions on a file
+Set full control permissions on a file
  SetACL.exe /file "C:\example\file.txt" /grant "Domain\User:F"
 
 Grants Full control (F) permission to Domain\User on file.txt.
 
 
-Example: Remove all permissions for a user
+Remove all permissions for a user
  SetACL.exe /file "C:\example\file.txt" /remove "Domain\User"
 
 Removes all permissions for Domain\User on file.txt.
@@ -48,12 +43,13 @@ Removes all permissions for Domain\User on file.txt.
 2. Managing Registry Permissions
 SetACL can be used to modify permissions on registry keys.
 
-Example: Set read access on a registry key
+Set read access on a registry key
  SetACL.exe /reg "HKCU\Software\MySoftware" /grant "Domain\User:R"
+
 Grants read-only (R) access to Domain\User on the registry key HKCU\Software\MySoftware.
 
 
-Example: Remove permissions on a registry key
+Remove permissions on a registry key
  SetACL.exe /reg "HKCU\Software\MySoftware" /remove "Domain\User"
 
 Removes all permissions for Domain\User on the registry key HKCU\Software\MySoftware.
@@ -63,13 +59,13 @@ Removes all permissions for Domain\User on the registry key HKCU\Software\MySoft
 
 SetACL can also modify permissions for printers, services, and shared folders.
 
-Example: Grant full control over a shared folder
+Grant full control over a shared folder
  SetACL.exe /share "\\Server\SharedFolder" /grant "Domain\User:F"
 
 Grants Full control (F) permission to Domain\User on the shared folder \\Server\SharedFolder.
 
 
-Example: Grant read access to a printer
+Grant read access to a printer
  SetACL.exe /printer "Printer1" /grant "Domain\User:R"
 
 Grants read-only (R) access to Domain\User on printer Printer1.
@@ -90,7 +86,7 @@ Sets Domain\User as the owner of file.txt.
 
 To apply permissions to all files and subfolders within a directory, use the /recursive option.
 
-Example: Set permissions recursively on a folder
+Set permissions recursively on a folder
  SetACL.exe /file "C:\example\folder" /grant "Domain\User:F" /recursive
 
 Grants Full control (F) permission to Domain\User on all files and subfolders within folder.
@@ -100,7 +96,7 @@ Grants Full control (F) permission to Domain\User on all files and subfolders wi
 
 You can modify multiple files by using wildcards (*) or specifying multiple files.
 
-Example: Set permissions on all .txt files in a directory
+Set permissions on all .txt files in a directory
  SetACL.exe /file "C:\example\*.txt" /grant "Domain\User:R"
 
 Grants read-only (R) permission to Domain\User on all .txt files in C:\example\.
@@ -109,7 +105,7 @@ Grants read-only (R) permission to Domain\User on all .txt files in C:\example\.
 3. Using the COM Version of SetACL
 SetACL also provides a COM version (SetACL.dll), which allows you to interact with the tool programmatically from programs and scripts.
 
-Example: Set permissions using C#
+Set permissions using C#
  using SetACL;
  SetACL.SetACL("C:\\example\\file.txt", "Domain\\User", "R");
 
