@@ -1,0 +1,134 @@
+SignTool.exe Help File
+
+SignTool.exe is a command-line utility that is used to digitally sign files, verify digital signatures, and timestamp files. This tool is important for ensuring that files are authentic and haven't been tampered with, especially for software distribution, updates, and other security-sensitive activities.
+
+This tool is automatically installed with Visual Studio. To run it, use the Visual Studio Developer Command Prompt or Visual Studio Developer PowerShell.
+
+
+[Syntax]
+signtool [command] [options] [file_name | ...]
+
+ Command Options:
+  catdb: Manages catalog files in the catalog database.
+  sign: Digitally signs files with a specified certificate.
+  Timestamp: Adds a timestamp to signed files.
+  Verify: Verifies the digital signature of files.
+
+ Global Options
+  /q: Quiet mode. Suppresses output when the command succeeds and shows minimal output for failures.
+  /v: Verbose mode. Provides detailed output, including warnings.
+  /debug: Displays debugging information.
+ 
+ catdb Command Options
+ 
+ The catdb command is used to add or remove catalog files from a catalog database.
+
+ catdb Options:
+  /d: Updates the default catalog database.
+  /g GUID: Specifies a catalog database identified by the provided GUID.
+  /r: Removes the specified catalog from the catalog database.
+  /u: Automatically generates a unique name for the added catalog files, preventing conflicts with existing catalogs.
+
+ Example:
+ 
+ Add a catalog file to the system component and driver database:
+  signtool catdb /v /u MyCatalogFileName.cat
+ 
+ sign Command Options
+
+ The sign command is used to digitally sign files.
+
+ sign Options:
+  /a: Automatically selects the best signing certificate.
+  /ac file: Adds an additional certificate from a file to the signature block.
+  /as: Appends the signature to an existing signature block.
+  /c CertTemplateName: Specifies the Certificate Template Name for the signing certificate.
+  /csp CSPName: Specifies the cryptographic service provider (CSP) that contains the private key container.
+  /d Desc: Adds a description to the signed content.
+  /du URL: Adds a URL for the expanded description of the signed content.
+  /f SignCertFile: Specifies the signing certificate file. If the file is password-protected, use the /p option to provide the password.
+  /fd: Specifies the file digest algorithm to use for file signature.
+  /i IssuerName: Specifies the name of the issuer of the signing certificate.
+  /n SubjectName: Specifies the subject name of the signing certificate.
+  /p Password: Specifies the password to use when opening a PFX file.
+  /sha1 Hash: Specifies the SHA1 hash of the signing certificate.
+  /t URL: Specifies the URL of the timestamp server to add a timestamp.
+  /tr URL: Specifies the URL of the RFC 3161 time-stamp server.
+  /td alg: Specifies the digest algorithm to use for timestamping.
+
+
+ Example 1:
+ Sign a file automatically by selecting the best certificate:
+  signtool sign /a /fd SHA256 MyFile.exe
+
+ Example 2:
+ Sign a file using a certificate stored in a password-protected PFX file:
+  signtool sign /f MyCert.pfx /p MyPassword /fd SHA256 MyFile.exe
+
+ Example 3:
+ Sign a file and add a timestamp:
+  signtool sign /f MyCert.pfx /t http://timestamp.digicert.com /fd SHA256 MyFile.exe
+
+
+ TimeStamp Command Options
+ 
+ The Timestamp command is used to add a timestamp to a file.
+
+ Timestamp Options:
+  /p7: Time stamps PKCS #7 files.
+  /t URL: Specifies the URL of the time-stamp server.
+  /td alg: Specifies the digest algorithm to use for timestamping.
+  /tp index: Time stamps the signature at a specific index.
+  /tr URL: Specifies the URL of the RFC 3161 time-stamp server.
+
+ Example:
+ Time-stamp a previously signed file:
+   signtool timestamp /t http://timestamp.digicert.com MyFile.exe
+ 
+ 
+ Example:
+ Time-stamp a file using an RFC 3161 timestamp server:
+  signtool timestamp /tr http://timestamp.digicert.com /td SHA256 MyFile.exe
+
+
+ Verify Command Options
+
+ The Verify command is used to verify the digital signature of a file.
+
+ Verify Options:
+  /a: Verifies a file using all methods available.
+  /ad: Uses the default catalog database for verification.
+  /ag CatDBGUID: Uses a specific catalog database identified by the CatDBGUID for verification.
+  /all: Verifies all signatures in a file.
+  /as: Uses the system component (driver) catalog database for verification.
+  /c CatFile: Specifies the catalog file by name.
+  /d: Prints the description and URL of the signed content.
+  /ds Index: Verifies the signature at a specified position.
+  /hash (SHA1|SHA256): Specifies the hash algorithm to use when searching for a file in a catalog.
+  /o Version: Verifies the file by operating system version.
+  /p7: Verifies PKCS #7 files.
+
+ Example 1:  
+ Verify the signature of a file:
+  signtool verify MyFile.exe
+
+ 
+ Example 2:
+ Verify a system file that may be signed in a catalog:
+  signtool verify /a SystemFile.dll
+
+
+ Example 3:
+ Verify a system file signed in a specific catalog:
+  signtool verify /c MyCatalog.cat SystemFile.dll
+ 
+
+Exit Codes:
+ 0: Execution was successful.
+ 1: Execution has failed.
+ 2: Execution completed with warnings. 
+
+
+[NOTES]
+
+SignTool is an essential utility for signing, timestamping, and verifying the authenticity of files. It is used widely for software distribution, system integrity checks, and ensuring the validity of files. The tool supports various file formats and allows administrators and developers to manage digital certificates efficiently.
