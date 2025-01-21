@@ -25,7 +25,7 @@ FINDSTR [/S] [/I] [/M] [/X] [/V] [/C] [/R] [/L] [/F:file] [string] [pathname(s)]
 If no pathname is specified, FINDSTR will accept text piped from another command.
 
 
-2. Examples
+2. Example Usage
 
 Example 1: Search for a String in a File
 To search for the string apple in fruits.txt:
@@ -40,7 +40,7 @@ Example 2: Search for a String in All .txt Files in the Directory
 To search for apple in all .txt files in the current directory:
  FINDSTR "apple" *.txt
 
-[Output]
+|output|
  makefile
  fruits.txt:apple
  fruits.txt:apple pie
@@ -49,7 +49,7 @@ Example 3: Case-Insensitive Search
 To search for apple without regard to case:
  FINDSTR /I "apple" fruits.txt
 
-[Output]
+|output|
  apple
  Apple Pie
  Pineapple
@@ -58,14 +58,14 @@ Example 4: Display Only Filenames Containing the String
 To display only the filenames of files containing the string apple:
  FINDSTR /M "apple" *.txt
 
-[Output]
+|output|
  fruits.txt
 
 Example 5: Search Using Regular Expressions
 To search for lines containing either apple or banana using regular expressions:
  FINDSTR /R "apple|banana" fruits.txt
 
-[Output]
+|output|
  apple
  banana
 
@@ -73,14 +73,14 @@ Example 6: Search for Exact Matches
 To search for lines that exactly match the string apple:
  FINDSTR /X "apple" fruits.txt
 
-[Output]
+|output|
  apple
 
 Example 7: Display Lines Not Containing the String
 To display all lines that do not contain the string apple:
  FINDSTR /V "apple" fruits.txt
 
-[Output]
+|output|
  banana
  pineapple pie
 
@@ -88,7 +88,7 @@ Example 8: Count the Number of Matching Lines
 To count how many lines contain the string apple:
  FINDSTR /C "apple" fruits.txt
 
-[Output]
+|output|
  ---------- fruits.txt
  ---------- Count = 2
 
