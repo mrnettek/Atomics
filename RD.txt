@@ -49,7 +49,7 @@ To delete a directory C:\docs\Jan along with all of its files and subdirectories
 
 Example 3: Quiet Deletion (No Confirmation Prompt)
 
-To delete a directory and its contents without any confirmation prompt:
+To delete a directory and its contents without any confirmation prompt (DANGERZONE):
  RD /S /Q C:\docs\Jan
 
 
