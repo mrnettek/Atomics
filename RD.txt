@@ -36,25 +36,18 @@ Windows Explorer may not allow the deletion of a directory that has a trailing s
 4. Example Usage
 
 Example 1: Delete an Empty Directory
-
 To delete an empty directory C:\docs\Jan:
  RD C:\docs\Jan
 
-
 Example 2: Delete a Directory and Its Contents
-
 To delete a directory C:\docs\Jan along with all of its files and subdirectories:
  RD /S C:\docs\Jan
 
-
 Example 3: Quiet Deletion (No Confirmation Prompt)
-
 To delete a directory and its contents without any confirmation prompt (DANGERZONE):
  RD /S /Q C:\docs\Jan
 
-
 Example 4: Delete Multiple Directories
-
 To delete multiple directories in one command:
  RD C:\docs\Jan "C:\My Documents\Mar"
 
