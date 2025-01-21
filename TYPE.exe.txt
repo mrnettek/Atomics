@@ -31,44 +31,31 @@ Text Encoding: When working with text files that require different encoding (exa
 4. Example Usage
 
 Example 1: Redirect Output to a New File
-
 To display the contents of file.txt and redirect it into a new file Newfile.txt:
  TYPE file.txt > Newfile.txt
 
-
 Example 2: Append Output to an Existing File
-
 To append the contents of file.txt to an existing file ExistingFile.txt:
  TYPE file.txt >> ExistingFile.txt
 
-
 Example 3: Display Console Input and Save to File
-
 To capture user input and save it into a file, use the CON (console) input and redirect it into Newfile.txt. This will require you to type CTRL-Z to indicate the end of input:
  TYPE CON > Newfile.txt
 
-
 Example 4: Using TYPE Implicitly with SORT
-
 When using the SORT command, TYPE is used internally to display the file contents:
  SORT < MyFile.txt
 
-
 Example 5: Create an Empty File
-
 To create an empty (zero byte) file:
  TYPE nul > filename.log
 
-
 Example 6: Monitor File Size During Download
-
 You can use TYPE to check the size of a file during a download, as it won't lock the file:
  TYPE file_being_downloaded > NUL
  DIR file_being_downloaded
 
-
 Example 7: Convert an ASCII File to Unicode
-
 To convert an ASCII (Windows-1252) file into a Unicode (UCS-2 little-endian) text file, use the following commands:
  For /f "tokens=2 delims=:" %%G in ('CHCP') do Set _codepage=%%G
  CHCP 1252 > NUL
