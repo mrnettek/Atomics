@@ -17,14 +17,14 @@ Set the System Date
 
 2. Examples
 
-Display the Current Date
+Example 1: Display the Current Date
  DATE /T
 
 [Output]
  Mon 01/20/2025
 
 
-Set the Date Interactively
+Example 2: Set the Date Interactively
  DATE
 
 The current date is: Tue 01/17/2032
