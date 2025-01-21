@@ -8,7 +8,7 @@ DEL is a command-line tool used to delete one or more files. It provides options
 DEL [options] [/A:file_attributes] files_to_delete
  files_to_delete: A filename or list of files to delete. Wildcards can be used.
 
-Options:
+[Options]
  /P: Prompt for confirmation before deleting each file (Yes/No prompt).
  /F: Force deletion of read-only files (ignores read-only setting).
  /S: Delete files from all subfolders (use with caution).
@@ -23,9 +23,9 @@ Options:
  X: No scrub file attribute
  V: Integrity attribute
 
-Wildcards:
- *: Match any characters.
- ?: Match exactly one character.
+ Wildcards:
+  *: Match any characters.
+  ?: Match exactly one character.
 
 If a folder is specified, only the files inside will be deleted, but the folder itself will not be removed.
 
@@ -63,43 +63,30 @@ For a permanent fix, you can disable thumbnail caching via the registry.
 4. Examples
 
 Example 1: Delete a Single File
-
 To delete a specific file (file1.txt):
  DEL file1.txt
 
-
 Example 2: Delete All .txt Files in a Directory
-
 To delete all .txt files in the current directory:
  DEL *.txt
 
-
 Example 3: Delete Files Without Confirmation Prompt
-
 To delete all files in the directory without being prompted for confirmation:
  DEL *.* /Q
 
-
 Example 4: Delete All .log Files in Subdirectories
-
 To delete all .log files in the current directory and all subdirectories:
  DEL *.log /S
 
-
 Example 5: Force Deletion of Read-only Files
-
 To force deletion of a read-only file (readonlyfile.txt):
  DEL readonlyfile.txt /F
 
-
 Example 6: Delete Files Based on Attributes
-
 To delete all hidden files in the directory:
  DEL *.* /A:H
 
-
 Example 7: Delete a File with a Long Path Using Device Path
-
 To delete a file with a long path that is otherwise undeletable:
  DEL "\\?\C:\some folder\longfilename.txt"
 
