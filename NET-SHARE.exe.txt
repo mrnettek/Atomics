@@ -22,7 +22,7 @@ Note: You can modify an existing share using the NET SHARE command, except for t
 
 [OPTIONS]
   sharename: The name of the share you are creating or modifying.
- drive:path: The path to the folder or device being shared.
+  drive:path: The path to the folder or device being shared.
 
  /GRANT:user,[READ | CHANGE | FULL]: Specifies the permissions for a user or group. The options are:
   READ: Read-only access.
