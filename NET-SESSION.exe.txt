@@ -30,19 +30,16 @@ To create file shares, the Server service must be running, which also requires '
 2. Examples
 
 Example 1: Display All Open Shared Files on the Server
-
 To display all open files and the lock IDs on the local server:
  NET FILE
 
 
 Example 2: Close a Shared File and Remove File Locks
-
 To close a file (remove locks and disconnect other users) by its ID on the server where the file is shared:
  NET FILE id /CLOSE
 
 
 Example 3: List All Sessions Connected to the Local Machine
-
 To list all sessions currently connected to the local machine:
  NET SESSION
 
@@ -51,13 +48,11 @@ Alternatively, you can filter to only show sessions from remote machines:
 
 
 Example 4: List Sessions from a Specific Machine
-
 To list the sessions connected from a specific machine:
   NET SESSION \\ComputerName
 
 
 Example 5: Disconnect All Sessions Connected to the Local Machine
-
 To disconnect all sessions connected to the local machine:
  NET SESSION /DELETE
 
@@ -66,6 +61,5 @@ To do this without being prompted for confirmation:
 
 
 Example 6: Disconnect All Sessions from a Specific Machine
-
 To disconnect all sessions from a specific machine:
  NET SESSION \\ComputerName /DELETE
