@@ -63,23 +63,19 @@ The NET USER command is used to manage user accounts. You can add, delete, modif
  /DOMAIN: Applies the changes to the domain.
 
 
-Examples
+[Examples]
 
 Create a new user account 'LocalUser64' with the password 'Secr3t':
  NET USER LocalUser64 Secr3t /ADD
 
-
 View details of user account 'Ella':
  NET USER Ella
-
 
 Change the password of user 'LocalUser64':
  NET USER LocalUser64 NewPassword
 
-
 Delete user account 'Ella':
  NET USER Ella /DELETE
-
 
 View and set user logon times for 'LocalUser64':
  NET USER LocalUser64 /TIMES:ALL
