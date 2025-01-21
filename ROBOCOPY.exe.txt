@@ -5,14 +5,13 @@ ROBOCOPY (Robust File and Folder Copy) is a powerful command-line tool used to c
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  source_folder: Path to the source folder or file(s) to be copied. Wildcards are accepted (C:\demo\*.txt).
  destination_folder: Path to the destination folder. The destination must be different from the source.
  files_to_copy: A list of files or a wildcard pattern. Defaults to copying *.*.
  
- [options]: Any combination of the options listed below.
-
+ [OPTIONS]: Any combination of the options listed below.
 
 2. Source Options
  /S: Copy subfolders, excluding empty ones.
@@ -24,7 +23,6 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  /MINAGE:n: Exclude files newer than n days or a specific date (YYYYMMDD).
  /FFT: Assume FAT file times with 2-second date/time granularity. Useful for copying to non-Windows file systems like Linux NAS.
  /256: Turn off long path support (files with paths longer than 256 characters).
-
 
 3. Copy Options
 /COPY:copyflags: Specifies what to copy for files. Default is /COPY:DAT. Flags include:
@@ -53,7 +51,6 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  /SJ: Copy junctions as junctions instead of the target.
  /SL: Copy symbolic links instead of their target.
 
-
 4. Performance Tweaks
  /COMPRESS: Request SMB network compression during file transfer, if applicable.
  /J: Use unbuffered I/O (recommended for large files).
@@ -62,7 +59,6 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  /MT[:n]: Multithreaded copying. Use n threads (default is 8, range 1-128). Not compatible with /IPG or /EFSRAW.
  /REG: Save /R:n and /W:n (retry and wait time) settings in the registry as default.
  /TBD: Wait for share names to be defined (retry error 67).
-
 
 5. Destination Options
  /A+:[RASHCNET]: Add file attributes to destination files (read-only, system).
@@ -76,7 +72,6 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  /XJ: Exclude junction points from source.
  /XJD: Exclude junction points from source directories.
  /XJF: Exclude junction points from source files.
-
 
 6. Logging Options
  /L: List only, don’t copy, timestamp, or delete any files.
@@ -97,7 +92,6 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  /X: Report all extra files (files not selected or copied).
  /V: Verbose logging, showing skipped files.
 
-
 7. Job Options
  /JOB:jobname: Read parameters from the specified job file (/XF files, /XD directories).
  /SAVE:jobname: Save parameters to a job file, but don’t run the command. The .RCJ file is an editable text file.
@@ -106,13 +100,11 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
  /QUIT: Quit after processing the command line to view parameters.
  /IF: Include the following files.
 
-
 8. Repeated Copy Options
 /MON:n: Monitor source directory and run again when more than n changes are detected.
 /MOT:m: Monitor source directory and run again in m minutes if any changes are detected.
 /RH:hhmm-hhmm: Specify run hours (e.g., /RH:1800-0200).
 /PF: Check run hours on a per-file basis.
-
 
 9. Exclude/Include Options
  /XO: Exclude older files; don’t overwrite files that are the same date or newer than the source.
@@ -124,7 +116,6 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
 File and Directory Exclusion:
  /XF file1 file2...: Exclude files matching given names/paths.
  /XD dirs...: Exclude directories matching given names/paths.
-
 
 10. Advanced Options
  /BYTES: Print file sizes in bytes.
