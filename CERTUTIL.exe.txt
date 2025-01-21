@@ -10,7 +10,7 @@ CERTUTIL also helps with verifying certificates, key pairs, and certificate chai
 [Syntax]
 CERTUTIL [options]
 
-Key Options:
+[Options]
  /admin: Use ICertAdmin2 for CA properties.
  /anonymous: Use anonymous SSL credentials.
  /cert CertId: Use a signing certificate.
@@ -85,43 +85,30 @@ The command options allow you to customize its behavior in various use cases, fr
 4. Example Usage
 
 Example 1: View Current CA Configuration
-
 To view the configuration of the current Certification Authority:
  CERTUTIL -config
 
-
 Example 2: Generate an SST File Using Automatic Update Mechanism
-
 To generate an SST file from the automatic update mechanism:
  CERTUTIL -generateSSTFromWU "C:\path\to\SSTfile.sst"
 
-
 Example 3: Export a Certificate to a File
-
 Export a certificate to a file using the PFX encryption:
  CERTUTIL -exportPFX -p "password" -out "C:\path\to\certificate.pfx" "CertID"
 
-
 Example 4: Display Information About a Specific Certificate
-
 To display detailed information about a specific certificate:
  CERTUTIL -dump "C:\path\to\certificate.cer"
 
-
 Example 5: Verify a Certificate
-
 To verify a certificate, use the following command:
  CERTUTIL -verify "C:\path\to\certificate.cer"
 
-
 Example 6: Display Detailed Information (Verbose)
-
 For verbose output when displaying certificate information:
  CERTUTIL -v -dump "C:\path\to\certificate.cer"
 
-
 Example 7: Sync Certificates with Windows Update
-
 Sync certificates with Windows Update to a specified directory:
  CERTUTIL -syncWithWU "C:\path\to\destination"
 
