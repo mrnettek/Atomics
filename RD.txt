@@ -54,8 +54,9 @@ To delete multiple directories in one command:
 
 [RETURN CODES]
 
-5. Errorlevels
-RD does not return a standard error level to the shell, but it sets an exit code based on the result of the command:
+RD does not return a standard error level to the shell, but it sets an exit code based on the result of the command.
+
+Errorlevels
  0: Directory deleted successfully.
  1: Invalid option.
  2: Directory not found.
