@@ -47,28 +47,23 @@ Internal Command: FOR is an internal command, meaning it is executed within the 
 5. Example Usage
 
 Example 1: List Subdirectories Starting with "User"
+This command searches recursively (/r) in the C:\Work directory for folders that start with "User" and echoes their names.
 To list every subdirectory in C:\Work\ that starts with "User":
  @Echo Off
  CD \Work
  FOR /D /r %%G in ("User*") DO Echo We found %%~nxG
 
-This command searches recursively (/r) in the C:\Work directory for folders that start with "User" and echoes their names.
-
-
 Example 2: Rename a Folder if It Matches "version 1"
+This command recursively checks every folder under C:\demo, and if the folder is named "version 1," it renames it to "version 2."
 To loop through all directories under C:\demo and rename any folder named "version 1" to "version 2":
  @Echo Off
  FOR /D /R %%a in (C:\demo) DO if "%~Na" equ "version 1" ren "%%a" "version 2"
 
-This command recursively checks every folder under C:\demo, and if the folder is named "version 1," it renames it to "version 2."
-
-
 Example 3: List All Folders in a Directory (Without Recursion)
+This lists the directories in the current directory without searching subdirectories.
 To list all folders in the current directory (without recursion), you can omit the /r option:
  @Echo Off
  FOR /D %%G in (*) DO Echo %%~nxG
-
-This lists the directories in the current directory without searching subdirectories.
 
 
 [Notes]
