@@ -66,7 +66,6 @@ FORFILES will return an error level (%ERRORLEVEL%) based on the success or failu
 6. Examples
 
 Example 1: Execute a Command on All Files in the Current Directory
-
 To run a command on all files in the current directory (no subfolders):
  FORFILES /c "cmd /c echo @file"
 
@@ -74,31 +73,26 @@ This will print the name of each file in the current directory.
 
 
 Example 2: Execute a Command on Files with a Specific Extension
-
 To run a command on all .txt files in the current directory:
  FORFILES /m *.txt /c "cmd /c echo @file"
 
 
 Example 3: Delete Files Older Than 30 Days
-
 To delete files that were last modified more than 30 days ago:
  FORFILES /d -30 /c "cmd /c del @file"
 
 
 Example 4: Execute a Command in Subfolders
-
 To run a command on all .log files in the current directory and all subdirectories:
  FORFILES /s /m *.log /c "cmd /c del @file"
 
 
 Example 5: Execute a Command on Files Modified After a Specific Date
-
 To run a command on files modified on or after 01/01/2023:
  FORFILES /d +01/01/2023 /c "cmd /c echo @file"
 
 
 Example 6: Execute a Command Based on File Attributes
-
 To select and run a command on all hidden files:
  FORFILES /A:H /c "cmd /c echo @file"
 
