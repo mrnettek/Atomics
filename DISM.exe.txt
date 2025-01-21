@@ -2,11 +2,11 @@ DISM.exe (Deployment Image Servicing and Management)
 
 The DISM.exe (Deployment Image Servicing and Management) tool is used to service Windows images, including the installation, configuration, and updating of features, drivers, and packages. It can be used to manage both online and offline Windows images.
 
-[Syntax]
+[SYNTAX]
 DISM.exe [dism_options] {Imaging_command} [Imaging_arguments]
 DISM.exe {/Image:path_to_offline_image | /Online} [dism_options] {servicing_command} [servicing_arguments]
 
-[Key]
+[KEY]
  /Online: Target the running operating system.
  /Image: Specify the path to the root directory of an offline Windows image.
  
@@ -94,7 +94,7 @@ Provisioning Package Servicing Options
  /Remove-ProvisionedAppxPackage: Remove app packages (.appx or .appxbundle) from the image.
 
 
-[Examples]
+[EXAMPLES]
 
 Example 1: List Available Options
  DISM.exe /Online /Get-ImageInfo
