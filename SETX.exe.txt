@@ -4,13 +4,14 @@ The SETX command is used to set environment variables permanently in the Windows
 
 These changes will be reflected in future command prompt sessions, but will not affect the current session.
 
-[Syntax]
+1. Syntax and Use
+
+[SYNTAX]
 SETX [/s Computer [Credentials]] Variable Value [/m]
 SETX [/s Computer [Credentials]] [Variable] /k RegistryPath [/m]
 SETX [/s Computer [Credentials]] /f FileName {[Variable] {/a L,T | /r oL,oT "SearchString"} [/m] | /x} [/d Delimiters]
 
-
-[Key Options]
+[OPTIONS]
 Specifies the name or IP address of a remote computer.
  /s Computer
 
@@ -73,9 +74,39 @@ Specifies custom delimiters (such as ,, \) to be used in addition to the default
 Maximum of 15 delimiters.
  /d Delimiters
 
+2. Examples
+
+[EXAMPLES]
+
+Example 1: Set a User Environment Variable
+  This sets the environment variable MY_VAR for the current user to "SomeValue".
+   SETX MY_VAR "SomeValue"
+
+Example 2: Set a System-Wide Environment Variable
+  This sets the environment variable MY_VAR for the entire system (all users).
+   SETX MY_VAR "SomeValue" /m
+
+Example 3: Set a Variable Using Registry Path
+ This sets MY_VAR based on the registry value found at the specified path.
+  SETX MY_VAR /k "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName"
+
+Example 4: Read from a File
+This reads from file.txt, retrieves token 2 from line 1, and sets MY_VAR to that value.
+ SETX MY_VAR /f "file.txt" /a 1,2
+
+Example 5: Search File for String
+This searches for "SearchString" in file.txt and sets MY_VAR based on the matching token.
+ SETX MY_VAR /f "file.txt" /r 0,0 "SearchString"
 
 
-Important Notes
+2. Return Codes
+
+Errorlevels
+ 0: The command was successful.
+ 1: An error occurred during execution, such as a file or registry path not being found.
+
+
+[NOTES]
 
 SETX writes variables to the system registry, meaning changes take effect only in new command prompt sessions. They do not affect the current CMD or PowerShell session.
 
@@ -83,34 +114,7 @@ Environment variables are stored in the registry:
  User Variables: HKEY_CURRENT_USER\Environment
  System Variables: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
 
- Examples
-  Set a User Environment Variable
-  This sets the environment variable MY_VAR for the current user to "SomeValue".
-   SETX MY_VAR "SomeValue"
 
-  Set a System-Wide Environment Variable
-  This sets the environment variable MY_VAR for the entire system (all users).
-   SETX MY_VAR "SomeValue" /m
-
- Set a Variable Using Registry Path
- This sets MY_VAR based on the registry value found at the specified path.
-  SETX MY_VAR /k "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName"
-
-
-Read from a File
-This reads from file.txt, retrieves token 2 from line 1, and sets MY_VAR to that value.
- SETX MY_VAR /f "file.txt" /a 1,2
-
-
-
-Search File for String
-
-This searches for "SearchString" in file.txt and sets MY_VAR based on the matching token.
- SETX MY_VAR /f "file.txt" /r 0,0 "SearchString"
-
-Errorlevels
- 0: The command was successful.
- 1: An error occurred during execution, such as a file or registry path not being found.
 
 
 Common Uses
