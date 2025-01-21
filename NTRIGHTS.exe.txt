@@ -6,8 +6,8 @@ NTRIGHTS.exe is a command-line tool that allows you to edit user account privile
 NTRIGHTS +r Right -u UserOrGroup [-m \\Computer] [-e Entry]
 NTRIGHTS -r Right -u UserOrGroup [-m \\Computer] [-e Entry]
 
+[Options]
 
-[Key Parameters]
 Grant (+r) or revoke (-r) a specific privilege or right.
  +/-r Right
 
@@ -88,26 +88,25 @@ When applying changes remotely (using the -m option), you must have administrato
 
 [Examples]
 
-Grant "Log on Locally" right to the 'Users' group:
+Example 1: Grant "Log on Locally" right to the 'Users' group.
  NTRIGHTS -u Users +r SeInteractiveLogonRight
 
-
-Grant "Logon via Remote Desktop" right to 'Admin-RDP' group on remote server:
+Example 2: Grant "Logon via Remote Desktop" right to 'Admin-RDP' group on remote server.
  NTRIGHTS -u ss64Dom\Admin-RDP +r SeRemoteInteractiveLogonRight -m \\server64 -e "Added RDP rights for Admin-RDP"
 
-Grant the user 'Ashley' the right to run a batch job on Server64:
+Example 3: Grant the user 'Ashley' the right to run a batch job on Server64.
  NTRIGHTS -u ss64Dom\Ashley +r SeBatchLogonRight -m \\server64
 
-Grant the 'Admin-Local' group the ability to shut down the computer:
+Example 4: Grant the 'Admin-Local' group the ability to shut down the computer.
  NTRIGHTS -u ss64Dom\Admin-Local +r SeShutdownPrivilege
  
-Allow the user 'JDoe' to shut down 'Server64':
+Example 5: Allow the user 'JDoe' to shut down 'Server64'.
  NTRIGHTS -u ss64Dom\JDoe +r SeShutdownPrivilege -m \\Server64
 
-Grant all Interactive users the right to change the system time:
+Example 6: Grant all Interactive users the right to change the system time.
  NTRIGHTS -u INTERACTIVE +r SeSystemTimePrivilege
 
-Deny local logon rights to the user 'Henry':
+Example 7: Deny local logon rights to the user 'Henry'.
  NTRIGHTS -u Henry +r SeDenyInteractiveLogonRight
 
 
