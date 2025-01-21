@@ -3,10 +3,10 @@ VER Command Help File
 The VER command is used to display the current version of the Windows Operating System. It outputs the major and minor version numbers, as well as the build number.
 
 
-[Syntax]
+[SYNTAX]
 VER
 
-[Key Information]
+[KEY INFORMATION]
 
 The VER command is very simple, providing the version information for the currently running Windows OS.
 
@@ -16,7 +16,7 @@ It returns the version in the format:
 This is often used in batch scripts to check the version of Windows and make decisions based on that.
 
 
-[Limitations]
+[LIMITATIONS]
 
 The VER command does not return the full version or release information like "Version ID" or "Release ID" as displayed in Settings > About.
 
@@ -43,12 +43,13 @@ To pipe the version information to FIND for searching:
 
 This checks if the version matches "6.1", useful for batch scripts.
 
+
 Errorlevels
  0: Success (Command executed successfully, version information displayed).
  1: Error (In case of an incorrect command or issues with the output).
 
 
-Notes
+[NOTES]
 
 The VER command is primarily used for checking the version number of the operating system in scripts or command-line operations.
 
