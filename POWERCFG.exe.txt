@@ -132,6 +132,8 @@ Example 9: Generate an energy efficiency report.
  powercfg /energy
 
 
+[RETURN CODES]
+
 Errorlevels
  0: Command executed successfully.
  1: Command failed due to incorrect syntax or parameters.
