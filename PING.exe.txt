@@ -85,7 +85,7 @@ Timeouts and Delays: When pinging an offline host, the timeout for the request i
 Performance: PING, Get-CIMInstance, PSPING, and Test-Connection (PowerShell) all provide comparable performance for network testing. The only difference is that PING and Get-CIMInstance allow modifications to the ICMP timeout.
 
 
-5. Examples
+5. Example Usage
 
 [EXAMPLES]
 
