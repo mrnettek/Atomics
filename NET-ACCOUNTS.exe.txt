@@ -8,11 +8,11 @@ These commands allow administrators to manage user accounts and groups on both l
 
 The NET ACCOUNTS command allows you to manage password policies and user account restrictions.
 
-[Syntax]
+[SYNTAX]
 NET ACCOUNTS [/FORCELOGOFF:{minutes | NO}] [/MINPWLENGTH:length]
        [/MAXPWAGE:{days | UNLIMITED}] [/MINPWAGE:days] [/UNIQUEPW:number] [/DOMAIN]
 
-[Options]
+[OPTIONS]
  /FORCELOGOFF:minutes: Specifies the number of minutes a user has before being forced to log off when the account expires or valid logon hours expire. If set to NO, no logoff is forced.
  /MINPWLENGTH:length: Specifies the minimum password length. The default is 6 characters, with a range of 0-14.
  /MAXPWAGE:days: Specifies the maximum password age in days. A value of UNLIMITED prevents passwords from expiring. The default is 90 days.
@@ -53,7 +53,7 @@ The NET USER command is used to manage user accounts. You can add, delete, modif
  NET USER username [/TIMES:{times | ALL}]
  NET USER username [/ACTIVE:{YES | NO}]
 
-[Options]
+[OPTIONS]
  username: The name of the user account.
  password: Specifies the password for the user account. If * is specified, the system will prompt for a password.
  /ADD: Adds a new user account.
@@ -63,7 +63,7 @@ The NET USER command is used to manage user accounts. You can add, delete, modif
  /DOMAIN: Applies the changes to the domain.
 
 
-[Examples]
+[EXAMPLES]
 
 Example 1: Create a new user account 'LocalUser64' with the password 'Secr3t'.
  NET USER LocalUser64 Secr3t /ADD
@@ -85,13 +85,13 @@ Example 5: View and set user logon times for 'LocalUser64'.
 
 The NET GROUP command is used to manage domain groups, and NET LOCALGROUP is used to manage local groups. You can add or remove users from groups, create or delete groups, and modify group properties.
 
-[Syntax]
+[SYNTAX]
  NET GROUP groupname {/ADD [/COMMENT:"text"] | /DELETE} [/DOMAIN]
  NET LOCALGROUP groupname {/ADD [/COMMENT:"text"] | /DELETE} [/DOMAIN]
  NET GROUP groupname Username [...] {/ADD | /DELETE} [/DOMAIN]
  NET LOCALGROUP groupname Username [...] {/ADD | /DELETE} [/DOMAIN]
 
-[Options]
+[OPTIONS]
  groupname: The name of the group.
  /ADD: Adds a new group or a new user to a group.
  /DELETE: Deletes an existing group or removes a user from a group.
@@ -99,7 +99,7 @@ The NET GROUP command is used to manage domain groups, and NET LOCALGROUP is use
  /DOMAIN: Applies the changes to the domain.
 
 
-[Examples]
+[EXAMPLES]
 
 Example 1: Create a new local group 'LocalScanningGroup'.
  NET LOCALGROUP LocalScanningGroup /ADD
@@ -114,7 +114,7 @@ Example 3: Delete the local group 'LocalScanningGroup'.
  NET LOCALGROUP LocalScanningGroup /DELETE
 
 
-4. Additional Notes
+[NOTES]
 
 GROUP TYPES: NET GROUP applies to domain-wide groups, while NET LOCALGROUP applies to local groups on a single computer.
 
