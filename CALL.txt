@@ -15,7 +15,7 @@ Call a Subroutine
 Call an Internal Command
  CALL internal_cmd
 
-[Key]
+[KEY]
 pathname - The batch file to execute.
  parameters - Any command-line arguments to pass to the batch file or subroutine.
  :label - A label within the current batch file to jump to.
@@ -24,7 +24,7 @@ pathname - The batch file to execute.
 Note: The CALL command enables a parent batch file to run other scripts or subroutines while retaining control after the execution completes.
 
 
-2. Examples
+2. Example Usage
 
 [EXAMPLES]
 
