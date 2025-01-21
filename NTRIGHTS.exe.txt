@@ -1,0 +1,118 @@
+NTRIGHTS.exe (2003 Resource Kit)
+
+NTRIGHTS.exe is a command-line tool that allows you to edit user account privileges in a Windows system. It can be used to grant or revoke user rights such as logon rights, system administrator privileges, and other service or system-level permissions.
+
+[Syntax]
+NTRIGHTS +r Right -u UserOrGroup [-m \\Computer] [-e Entry]
+NTRIGHTS -r Right -u UserOrGroup [-m \\Computer] [-e Entry]
+
+
+[Key Parameters]
+Grant (+r) or revoke (-r) a specific privilege or right.
+ +/-r Right
+
+Specify the user or group to whom the right is being granted or revoked. The input must be in the pre-Windows 2000 logon name format (up to 20 characters).
+ -u UserOrGroup
+
+Specify the remote computer where the operation will be performed. The default is the local computer.
+ -m \Computer
+
+Add a custom text string to the event log to describe the action.
+ -e Entry
+
+
+Available Rights to Grant or Revoke:
+
+Logon Rights:
+ SeBatchLogonRight: Log on as a batch job.
+ SeDenyBatchLogonRight: Deny logon as a batch job.
+ SeInteractiveLogonRight: Log on locally.
+ SeDenyInteractiveLogonRight: Deny local logon.
+ SeServiceLogonRight: Log on as a service.
+ SeDenyServiceLogonRight: Deny logon as a service.
+ SeNetworkLogonRight: Access this computer from the network.
+ SeDenyNetworkLogonRight: Deny network access.
+ SeRemoteInteractiveLogonRight: Allow logon via Remote Desktop/Terminal Services.
+ SeDenyRemoteInteractiveLogonRight: Deny RDP/Terminal Services logon.
+
+System Administrator Privileges:
+ SeAuditPrivilege: Generate security audits.
+ SeSecurityPrivilege: Manage auditing and security logs.
+ SeBackupPrivilege: Backup files and directories.
+ SeCreateSymbolicLinkPrivilege: Create symbolic links.
+ SeMachineAccountPrivilege: Add workstations to the domain.
+ SeShutdownPrivilege: Shut down the system.
+ SeRemoteShutdownPrivilege: Force shutdown remotely.
+ SeCreatePagefilePrivilege: Create a pagefile.
+ SeIncreaseQuotaPrivilege: Increase quotas.
+ SeRestorePrivilege: Restore files and directories.
+ SeSystemTimePrivilege: Change the system time.
+ SeTimeZonePrivilege: Change the time zone.
+ SeTakeOwnershipPrivilege: Take ownership of files/objects.
+ SeEnableDelegationPrivilege: Enable delegation for accounts.
+ SeUndockPrivilege: Remove computer from docking station.
+
+Service Privileges:
+ SeCreatePermanentPrivilege: Create permanent shared objects.
+ SeCreateTokenPrivilege: Create a token object.
+ SeAssignPrimaryTokenPrivilege: Replace a process-level token.
+ SeImpersonatePrivilege: Impersonate a client after authentication.
+ SeIncreaseBasePriorityPrivilege: Increase scheduling priority.
+ SeTcbPrivilege: Act as part of the operating system.
+ SeProfileSingleProcessPrivilege: Profile a single process.
+ SeLoadDriverPrivilege: Load and unload device drivers.
+ SeLockMemoryPrivilege: Lock pages in memory.
+ SeCreateGlobalPrivilege: Create global objects.
+
+Miscellaneous Privileges:
+ SeDebugPrivilege: Debug programs.
+ SeChangeNotifyPrivilege: Bypass traverse checking.
+ SeIncreaseWorkingSetPrivilege: Increase a process’s working set.
+ SeRelabelPrivilege: Modify an object’s label.
+ SeDelegateSessionUserImpersonatePrivilege: Obtain an impersonation token for a user in the same session.
+ SeSyncAgentPrivilege: Sync directory service data.
+ SeSystemEnvironmentPrivilege: Edit firmware environment values.
+ SeTrustedCredManAccessPrivilege: Access Credential Manager as a trusted caller.
+ SeManageVolumePrivilege: Perform volume maintenance tasks.
+ SeSystemProfilePrivilege: Profile system performance.
+
+
+[Important Notes]
+
+Se_Deny rights will override corresponding rights and prevent users from logging on or using particular system features.
+
+To run NTRIGHTS, you must be an administrator.
+
+When applying changes remotely (using the -m option), you must have administrator rights on the target machine.
+
+
+[Examples]
+
+Grant "Log on Locally" right to the 'Users' group:
+ NTRIGHTS -u Users +r SeInteractiveLogonRight
+
+
+Grant "Logon via Remote Desktop" right to 'Admin-RDP' group on remote server:
+ NTRIGHTS -u ss64Dom\Admin-RDP +r SeRemoteInteractiveLogonRight -m \\server64 -e "Added RDP rights for Admin-RDP"
+
+Grant the user 'Ashley' the right to run a batch job on Server64:
+ NTRIGHTS -u ss64Dom\Ashley +r SeBatchLogonRight -m \\server64
+
+Grant the 'Admin-Local' group the ability to shut down the computer:
+ NTRIGHTS -u ss64Dom\Admin-Local +r SeShutdownPrivilege
+ 
+Allow the user 'JDoe' to shut down 'Server64':
+ NTRIGHTS -u ss64Dom\JDoe +r SeShutdownPrivilege -m \\Server64
+
+Grant all Interactive users the right to change the system time:
+ NTRIGHTS -u INTERACTIVE +r SeSystemTimePrivilege
+
+Deny local logon rights to the user 'Henry':
+ NTRIGHTS -u Henry +r SeDenyInteractiveLogonRight
+
+
+Additional Information:
+
+Group Policy Editor: You can use the Group Policy Editor to grant similar rights to a user, which may be easier than using the command line for some users.
+
+Using NTRIGHTS Remotely: To modify rights on a remote computer, ensure that you have administrative access and use the -m parameter for specifying the target machine.
