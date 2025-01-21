@@ -4,7 +4,7 @@ NETSH.exe (Network Shell) Help File
 NETSH (Network Shell) is a command-line utility used for configuring network interfaces, Windows Firewall, routing, remote access, and other network-related settings. It provides a wide range of commands for managing networking features in Windows.
 
 
-[Syntax]
+[SYNTAX]
 NETSH [Context] [sub-Context] command
 
  Where:
@@ -107,7 +107,7 @@ Errorlevels
  1: Command failed due to incorrect syntax or parameters.
 
 
-Additional Information
+[NOTES]
 
 NETSH can be run in interactive mode, which allows you to explore various contexts and sub-contexts by typing netsh and then using the help command.
 
