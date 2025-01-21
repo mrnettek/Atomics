@@ -18,7 +18,7 @@ IPCONFIG /setclassid adapter [classid]
 IPCONFIG /setclassid6 adapter [classid]
 IPCONFIG /?
 
-[Key Options]
+[Options]
 Displays full configuration information for all adapters.
 Shows the IP address, subnet mask, default gateway, DNS servers, DHCP status, and other network-related details for each adapter.
  /all
@@ -26,7 +26,6 @@ Shows the IP address, subnet mask, default gateway, DNS servers, DHCP status, an
 Releases the IPv4 address for the specified adapter.
 If no adapter is specified, it releases the IP address for all adapters.
  /release [adapter]
-
 
 Releases the IPv6 address for the specified adapter.
 If no adapter is specified, it releases the IPv6 address for all adapters.
@@ -54,20 +53,20 @@ Useful for checking which user classes the adapter supports for DHCP.
  /showclassid adapter
 
 Displays all the IPv6 DHCP class IDs allowed for the specified adapter.
-/showclassid6 adapter
+ /showclassid6 adapter
 
 Modifies the DHCP class ID for the specified adapter.
 If no class ID is specified, the current class ID is removed.
-/setclassid adapter [classid]
+ /setclassid adapter [classid]
 
 Modifies the IPv6 DHCP class ID for the specified adapter.
-/setclassid6 adapter [classid]
+ /setclassid6 adapter [classid]
 
 Displays help information for the IPCONFIG command, listing all available options and their descriptions.
 /?
 
 
-Important Notes
+[Important Notes]
 
 Adapter names with spaces: If the adapter name contains spaces, it must be enclosed in quotes (example "Local Area Connection").
 
@@ -80,33 +79,28 @@ Class IDs and DHCP: The setclassid option allows the modification of DHCP class 
 
 [Examples]
 
-Show Detailed Information
+Exampe 1: Show Detailed Information
 This command will display detailed configuration information for all network adapters on the system.
  C:\> ipconfig /all
 
-
-Release and Renew All Adapters
+Exampe 2: Release and Renew All Adapters
 This releases and renews the IP address for all adapters.
  C:\> ipconfig /release
  C:\> ipconfig /renew
 
-
-Release and Renew All Adapters in One Line
+Exampe 3: Release and Renew All Adapters in One Line
 This one-liner releases and then renews the IP addresses for all adapters.
  C:\> ipconfig /release && ipconfig /renew
 
-
-Renew Connection Starting with "EL"
+Exampe 4: Renew Connection Starting with "EL"
 This command renews the connection for any adapter whose name starts with "EL".
  C:\> ipconfig /renew EL*
 
-
-Release Connections Matching "Con"
+Exampe 5: Release Connections Matching "Con"
 This command releases the IP addresses for all connections with names matching "Con" (example "Local Area Connection 1").
  C:\> ipconfig /release *Con*
 
-
-Set the DHCP Class ID
+Exampe 6: Set the DHCP Class ID
 This command sets the DHCP class ID to "TEST" for the "Local Area Connection" adapter.
  C:\> ipconfig /setclassid "Local Area Connection" TEST
 
@@ -116,6 +110,8 @@ Errorlevels
  1: An error occurred during the operation.
 
 
-Use Cases
+[Notes]
+
 Network Troubleshooting: ipconfig is commonly used to view and manage network configurations, troubleshoot connectivity issues, or reset network settings.
+
 DHCP Configuration: setclassid can be used to adjust DHCP class IDs for devices, allowing customization of network settings based on different groups.
