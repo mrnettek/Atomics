@@ -33,7 +33,7 @@ Displays the KeyName of a service.
 Displays the dependencies of a service.
 EnumDepend
 
-Displays the configuration of a service (e.g., dependencies, full path).
+Displays the configuration of a service (examples: dependencies, full path).
  qc
 
 Starts a service.
