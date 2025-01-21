@@ -15,7 +15,7 @@ SetACL allows users to:
 
 2. Basic Syntax
 
-[Syntax]
+[SYNTAX]
 SetACL.exe /[Operation] [Object] [Permissions] [Options]
  Operation: The operation you want to perform (examples: /set, /get, /remove).
  Object: The object to modify (examples: file path, registry path, printer, service, etc.).
@@ -112,16 +112,16 @@ Set permissions using C#
 This example programmatically grants read-only (R) access to Domain\User on file.txt.
 
 
-5. Example Scripts
+5. Example Use
 
-1. Locking and Unlocking the Registry
+Example 1: Locking and Unlocking the Registry
 To lock a registry key so that it cannot be modified:
  SetACL.exe /reg "HKCU\Software\MySoftware" /deny "Domain\User:F"
 
-2. To unlock the registry key:
+Example 2: To unlock the registry key:
  SetACL.exe /reg "HKCU\Software\MySoftware" /remove "Domain\User"
 
-3. Migrating User Profiles During Domain Migration
+Example 3: Migrating User Profiles During Domain Migration
 This script helps with domain migration by applying new permissions to user profiles:
  for /d %%i in (C:\Users\*) do SetACL.exe /file "%%i" /grant "Domain\User:F"
 
@@ -138,7 +138,7 @@ SetACL will return the following error codes:
  10: Invalid security descriptor 
 
 
-7. Additional Notes
+[NOTES]
 
 SetACL is a powerful tool, and using it without caution can affect system security. Always verify permissions before applying changes.
 
