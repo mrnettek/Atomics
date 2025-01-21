@@ -2,10 +2,10 @@ TZUTIL.exe Help File
 
 TZUTIL.exe is a command-line utility used to display or set the time zone for the current user. It can display the current time zone, list all available time zones, or change the time zone to a specified value.
 
-[Syntax]
+[SYNTAX]
 TZUTIL /g | /l | /s "TimeZoneValue[_dstoff]" | /?
 
-[Options]
+[OPTIONS]
 Displays the current time zone value (the name of the time zone currently in use).
  /g
 
@@ -19,7 +19,7 @@ Displays help information about the TZUTIL command and its available options.
  /?
 
 
-Important Notes
+[IMPORTANT]
 
 No Elevation Required
 
@@ -29,30 +29,28 @@ DST Adjustment
 The _dstoff suffix can be used when setting a time zone to disable Daylight Saving Time adjustments. This may not apply to all time zones.
 
 
-Examples
+[EXAMPLES]
 
-Display the current time zone ID:
+Example 1: Display the current time zone ID.
+ %SYSTEMROOT%\System32\tzutil.exe /g
 
-%SYSTEMROOT%\System32\tzutil.exe /g
-
-
-List all valid time zones with their corresponding names:
+Example 2: List all valid time zones with their corresponding names.
  tzutil /l
 
-Set the current time zone to Pacific Standard Time:
+Example 3: Set the current time zone to Pacific Standard Time.
  tzutil /s "Pacific Standard Time"
 
-
-Set the current time zone to Pacific Standard Time and disable Daylight Saving Time:
-tzutil /s "Pacific Standard Time_dstoff"
+Example 3: Set the current time zone to Pacific Standard Time and disable Daylight Saving Time.
+ tzutil /s "Pacific Standard Time_dstoff"
 
 
 Errorlevels
  0: The operation was successful.
  1: Invalid time zone value or incorrect command syntax.
+ 2: An error occurred while attempting to set the time zone.
 
 
-2: An error occurred while attempting to set the time zone.
+[NOTES]
 
-See Also
+Also see
  Date and Time Settings in Control Panel: Manual configuration of time zone settings. 
