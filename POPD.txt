@@ -3,7 +3,6 @@ POPD Command Guide with Examples
 POPD is a command used to change the current directory back to the path most recently stored by the PUSHD command. It also removes any temporary drive mappings created by PUSHD. This command allows you to navigate back through directories in a "stack" (LIFO—last in, first out) order, making it easier to return to previous directories.
 
 
-
 1. Syntax and Usage
 
 [Syntax]
@@ -37,7 +36,6 @@ Use POPD to return to C:\utils:
 Use POPD again to return to C:\Program Files:
  POPD
 
-
 Example 2: Using POPD with UNC Path
 Use PUSHD to map a UNC path temporarily (\\server\share):
  PUSHD \\server\share
@@ -46,7 +44,7 @@ Use POPD to return to the previous directory, removing the temporary drive mappi
  POPD
 
 
-5. Additional Notes
+[NOTES]
 
 Multiple POPD Usage: You can use POPD multiple times to navigate back through directories if you have used PUSHD multiple times.
 
