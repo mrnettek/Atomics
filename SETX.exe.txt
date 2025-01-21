@@ -28,25 +28,21 @@ If not provided, the script runs with the system permissions.
 Specifies the username to run the script with.
  /u [Domain]UserName
 
-
 Default is the system account.
 
 Specifies the password for the username provided in /u.
  /p [Password]
 
-Variable
-
 The name of the environment variable that you want to set.
+ Variable
 
-Value
 The value to which the environment variable is set.
+ Value
 
 Specifies a registry path to set the variable based on information from a registry key.
  /k RegistryPath
-
- Format: \HIVE\KEY\...\Value
- Example: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName
-
+  Format: \HIVE\KEY\...\Value
+   Example: HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName
 
 Specifies the file you want to read for setting the environment variable.
  /f FileName
@@ -54,14 +50,11 @@ Specifies the file you want to read for setting the environment variable.
 Retrieves token T from line L in the file. Both L (line) and T (token) are zero-indexed.
 /a L,T
 
-
 Searches for SearchString in the file, case insensitive.
  /r oL,oT "SearchString"
 
-
 If the token is not found, %ERRORLEVEL% is set to 1.
  oL (line) and oT (token) are zero-indexed offsets.
-
 
 Specifies that the variable is set in the system environment (HKLM).
 Default is user environment (HKCU).
@@ -74,21 +67,22 @@ Specifies custom delimiters (such as ,, \) to be used in addition to the default
 Maximum of 15 delimiters.
  /d Delimiters
 
+
 2. Examples
 
 [EXAMPLES]
 
 Example 1: Set a User Environment Variable
-  This sets the environment variable MY_VAR for the current user to "SomeValue".
-   SETX MY_VAR "SomeValue"
+This sets the environment variable MY_VAR for the current user to "SomeValue".
+ SETX MY_VAR "SomeValue"
 
 Example 2: Set a System-Wide Environment Variable
-  This sets the environment variable MY_VAR for the entire system (all users).
-   SETX MY_VAR "SomeValue" /m
+This sets the environment variable MY_VAR for the entire system (all users).
+ SETX MY_VAR "SomeValue" /m
 
 Example 3: Set a Variable Using Registry Path
- This sets MY_VAR based on the registry value found at the specified path.
-  SETX MY_VAR /k "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName"
+This sets MY_VAR based on the registry value found at the specified path.
+ SETX MY_VAR /k "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation\StandardName"
 
 Example 4: Read from a File
 This reads from file.txt, retrieves token 2 from line 1, and sets MY_VAR to that value.
