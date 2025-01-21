@@ -5,14 +5,13 @@ QUERY USER is used to display information about user sessions on a Terminal Serv
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 Display Information About User Sessions
  QUERY USER [/server:ServerName]
  QUERY USER UserName [/server:ServerName]
  QUERY USER [SessionName | SessionID] [/server:ServerName]
 
-
-[Key]
+[KEY]
  UserName - The logon username of the user whose sessions you want to query.
  SessionName - The name of the session that you want to query.
  SessionID - The ID of the session that you want to query.
@@ -20,7 +19,6 @@ Display Information About User Sessions
  / - Displays help information for the command.
 
 Note:
-
 QUERY USER is a synonym for QUSER.exe.
 
 Available only for 64-bit sessions; there is no 32-bit implementation of QUSER.exe.
@@ -60,7 +58,6 @@ To query a session using its session ID or name:
 Example 4: Query Sessions on a Remote Server
 To display information about sessions on a remote server, replace ServerName with the name of the server:
  QUERY USER /server:ServerName
-
 
 Example 5: Display Help Information
 To display help information for the QUERY USER command:
