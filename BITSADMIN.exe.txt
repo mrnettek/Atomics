@@ -2,10 +2,10 @@ BITSADMIN.exe Help File
 
 BITSADMIN.exe is a command-line tool for managing the Background Intelligent Transfer Service (BITS), which is used for transferring large files over networks with minimal disruption. BITS supports features like throttling and asynchronous transfers and is used by services such as Windows Update, SUS, SMS, and third-party applications.
 
-[Syntax]
+[SYNTAX]
 BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
 
-[Available Commands]
+[AVAILABLE COMMANDS]
 
 1. General Commands
  /UTIL /?: Display utility commands available in BITSADMIN.
@@ -34,7 +34,6 @@ BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
    job_name: A unique name for the job (not a GUID).
    type: /DOWNLOAD, /UPLOAD, or /UPLOAD-REPLY.
 
-
 4. File Management Commands
  /INFO job: Displays information about a specific job.
   Options:
@@ -45,7 +44,6 @@ BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
  /REPLACEREMOTEPREFIX job old_prefix new_prefix: Replace the remote URL prefix in the job.
  /LISTFILES job: List the files in the job.
 
-
 5. Job Control Commands
  /SUSPEND job: Suspend a job.
  /RESUME job: Resume a suspended job.
@@ -53,7 +51,6 @@ BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
  /COMPLETE job: Mark a job as complete.
  /GETTYPE job: Retrieve the job type.
  /SETACLFLAGS job ACL_flags: Set the Access Control List (ACL) flags for the job.
-
 
 6. Advanced Configuration Commands
 
@@ -74,12 +71,10 @@ BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
  /SETCLIENTCERTIFICATEBYID job store_location store_name hexa-decimal_cert_id: Set a client authentication certificate for a job.
  /REMOVECLIENTCERTIFICATE job: Remove the client certificate information from the job.
 
-
 7. Peercaching Options
  /SETPEERCACHINGFLAGS job value: Set flags for the job’s peercaching behavior.
   Enable data download from peers:
  /GETPEERCACHINGFLAGS job: Retrieve the flags for the job’s peercaching behavior.
-
 
 8. Upload-Reply Jobs
  /GETREPLYFILENAME job: Retrieve the path of the file containing the server reply.
@@ -95,31 +90,33 @@ General Options
 
 [EXAMPLES]
 
-1. Creating a Job
+Example 1: Creating a Job
 Create a download job:
  bitsadmin /create /download MyDownloadJob
 
-2. Adding Files to a Job
+Example 2: Adding Files to a Job
 Add a file to a job:
  bitsadmin /addfile MyDownloadJob https://example.com/file.zip c:\downloads\file.zip
 
-3. Suspending and Resuming Jobs
+Example 3: Suspending and Resuming Jobs
 Suspend a job:
  bitsadmin /suspend MyDownloadJob
 
 Resume a job:
  bitsadmin /resume MyDownloadJob
 
-4. Setting Proxy Settings
+Example 4: Setting Proxy Settings
 Set proxy settings for a job:
  bitsadmin /setproxysettings MyJob PRECONFIG
 
-5. Setting Notification Command Line
+Example 5: Setting Notification Command Line
 Set notification command line for a job:
  bitsadmin /SetNotifyCmdLine MyJob c:\windows\system32\notepad.exe NULL
 
 
-Error Handling
+[RETURN CODES]
+
+Errorlevels
  0: Success
  1: General error
  2: Invalid parameter or incorrect command
