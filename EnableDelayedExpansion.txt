@@ -14,7 +14,7 @@ With Delayed Expansion: Variables (!variable!) are expanded at execution time.
 
 2. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
  SETLOCAL EnableDelayedExpansion
 
 Variable Expansion: Use !variable_name! for execution-time expansion.
