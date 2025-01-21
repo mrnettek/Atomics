@@ -23,7 +23,7 @@ If no pathname is specified, FIND will prompt for text input or accept text pipe
 If searching for a text string containing double quote characters (") in the string, escape the quotes by doubling them, "The ""main"" event".
 
 
-2. Examples
+2. Example Usage
 
 Example 1: Search for a String in a File
 Suppose names.txt contains the following:
