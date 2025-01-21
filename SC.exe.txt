@@ -172,7 +172,9 @@ Get the KeyName of a service:
  SC GetKeyName "Messenger"
  
 
-8. Errorlevels
+[RETURN CODES]
+
+ Errorlevels
  0: The command was successful.
  1: The service does not exist.
  2: Incorrect command syntax or invalid parameters.
