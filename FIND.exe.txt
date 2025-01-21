@@ -77,7 +77,7 @@ To display all lines not containing the string Alice:
 Example 5: Search Multiple Files Using Wildcards
 
 To search for the string Alice in all .txt files in the current directory:
-FIND "Alice" *.txt
+ FIND "Alice" *.txt
 
 [Output]
  ---------- names.txt
