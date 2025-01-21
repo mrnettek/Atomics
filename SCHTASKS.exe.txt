@@ -88,6 +88,15 @@ Example 8: Set a task to run at login with a 10-minute delay.
    SCHTASKS /Create /TN "LoginTask" /TR "C:\path\to\program.exe" /SC ONLOGON /DELAY 00:10
 
 
+4. Error Handling and Return Codes
+
+ 0: Task was successfully created, modified, run, stopped, or deleted.
+ 1: Incorrect syntax or an error occurred in processing the command.
+ 5: Access denied (requires administrator privileges).
+ 87: Invalid parameter.
+ 6. Additional Information
+
+
 [NOTES]
 
 Security: To run commands on a remote machine, administrator privileges are usually required.
@@ -97,11 +106,5 @@ Scheduled Task Types: The /SC option can be used to set various types of trigger
 Task Security: The /RU and /RP options allow you to specify the credentials under which the task will run. These can be used to set tasks to run as specific users.
 
 Task Deletion: The /F flag is used to force the deletion of a scheduled task without a confirmation prompt.
- 5. Error Handling and Return Codes
- 0: Task was successfully created, modified, run, stopped, or deleted.
- 1: Incorrect syntax or an error occurred in processing the command.
- 5: Access denied (requires administrator privileges).
- 87: Invalid parameter.
- 6. Additional Information
 
 SCHTASKS.exe is a powerful utility for automating and managing scheduled tasks in Windows. It can be run both locally and remotely, making it useful for system administrators managing multiple machines. Scheduled tasks can be configured to run on specific triggers, and the command provides flexible options for security, scheduling, and task management.
