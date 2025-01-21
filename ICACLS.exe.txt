@@ -73,36 +73,29 @@ Example 1: Grant Read Access to a User
 Grant Read access to the user "JohnDoe" for the file C:\example.txt:
  iCACLS C:\example.txt /grant "JohnDoe":R
 
-
 Example 2: Deny Write Access to a User
 Deny Write access to the user "JohnDoe" for the file C:\example.txt:
  iCACLS C:\example.txt /deny "JohnDoe":W
-
 
 Example 3: Replace Permissions for a User
 Replace the current permissions for "JohnDoe" with Full access:
  iCACLS C:\example.txt /P "JohnDoe":F
 
-
 Example 4: Traverse Subfolders and Change Permissions
 Grant Read access to "JohnDoe" for all .txt files in the directory C:\docs and its subfolders:
  iCACLS C:\docs\*.txt /T /grant "JohnDoe":R
-
 
 Example 5: Save ACLs to a File
 Save the ACLs of the C:\docs directory and its subdirectories to an ACL file:
  iCACLS C:\docs /save aclfile.txt /T
 
-
 Example 6: Restore ACLs from a File
 Restore ACLs from the aclfile.txt to the C:\docs directory:
  iCACLS C:\docs /restore aclfile.txt
 
-
 Example 7: Set the Owner of a File
 Change the owner of the file C:\example.txt to "JohnDoe":
  iCACLS C:\example.txt /setowner "JohnDoe"
-
 
 Example 8: Find Files with Specific SID in Their ACL
 Find files that have the SID S-1-5-32-544 (Administrators group SID) in their ACL:
