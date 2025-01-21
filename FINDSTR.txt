@@ -31,7 +31,7 @@ Example 1: Search for a String in a File
 To search for the string apple in fruits.txt:
  FINDSTR "apple" fruits.txt
 
-[Output]
+|output|
  apple
  apple pie
  pineapple
@@ -102,7 +102,9 @@ While FINDSTR supports regular expressions, it is not as powerful as dedicated r
 FINDSTR will only match whole lines of text and will not match part of a line unless specifically instructed with the /R option for regular expressions.
 
 
-4. Errorlevel
+[RETURN CODES]
+
+Errorlevels
  0 - String found in at least one of the files.
  1 - String not found.
  2 - If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.
