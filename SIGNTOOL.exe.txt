@@ -110,12 +110,10 @@ signtool [command] [options] [file_name | ...]
  Example 1:  
  Verify the signature of a file:
   signtool verify MyFile.exe
-
  
  Example 2:
  Verify a system file that may be signed in a catalog:
   signtool verify /a SystemFile.dll
-
 
  Example 3:
  Verify a system file signed in a specific catalog:
