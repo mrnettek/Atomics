@@ -5,7 +5,7 @@ The GOTO command is used in batch programming to jump to a specific label within
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 GOTO label
 
 Special Label Syntax:
@@ -101,7 +101,7 @@ Non-existent Label: If the label specified by GOTO does not exist, %ERRORLEVEL% 
 
 6. Examples
 
-Exampe 1. Simple Jump to Label:
+Exampe 1: Simple Jump to Label.
  @echo off
  GOTO :end
 
@@ -111,7 +111,7 @@ Exampe 1. Simple Jump to Label:
  echo "We've reached the end of the script!"
 
 
-Exampe 2. Using GOTO:eof to Exit Subroutine:
+Exampe 2: Using GOTO:eof to Exit Subroutine.
  @echo off
  CALL :subroutine
  GOTO:eof
@@ -121,7 +121,7 @@ Exampe 2. Using GOTO:eof to Exit Subroutine:
   GOTO:eof
 
 
-Exampe 3. Example with Conditional Execution:
+Exampe 3: Example with Conditional Execution.
  @echo off
  SET condition=true
  IF %condition%==true GOTO :success
