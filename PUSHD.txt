@@ -5,7 +5,7 @@ PUSHD is a command used to change the current directory or folder while storing 
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 PUSHD [drive]path
  PUSHD
  drive: The drive letter to switch to.
@@ -76,7 +76,7 @@ In a batch script, check if a network path is available before proceeding:
  :: Proceed with further commands...
 
 
-7. Additional Notes
+[NOTES]
 
 Command Extensions: If command extensions are disabled, the PUSHD command will not be able to map temporary drives to UNC paths, and POPD will not delete those drives.
 
