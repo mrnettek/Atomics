@@ -5,13 +5,13 @@ COPY is a command-line tool used to copy one or more files from one location to 
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
  COPY [options] [/A|/B] source [/A|/B] [+ source2 [/A|/B]...] [destination [/A|/B]]
  or
  COPY source1 + source2.. destination [options]
 
 
-[Options]
+[OPTIONS]
  /A - Specifies that the file is an ASCII text file. It will copy up to the end-of-file (EOF) marker.
  /B - Specifies that the file is a binary file. It will copy all extended characters. This is the default for copying  
       files unless merging multiple files.
@@ -58,6 +58,8 @@ By default, COPY will prompt you before overwriting an existing file in the dest
 
 
 6. Examples
+
+[EXAMPLES]
 
 Example 1: Copy a File in the Current Folder
 To copy a file file1.txt to file2.txt in the current folder:
