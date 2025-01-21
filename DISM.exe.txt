@@ -96,19 +96,19 @@ Provisioning Package Servicing Options
 
 [Examples]
 
-List available options:
+Example 1: List available options:
  DISM.exe /Online /Get-ImageInfo
 
-Apply a WIM image:
+Example 2: Apply a WIM image:
  DISM.exe /Apply-Image /Image: "C:\Image" /Apply-Image /Destination:C:\Mounted
 
-Capture an image of a drive:
+Example 3: Capture an image of a drive:
  DISM.exe /Capture-Image /Capture-Image /Source:C: /Destination:D:\Backup.wim
 
-Get information about a mounted WIM:
+Example 4: Get information about a mounted WIM:
  DISM.exe /Get-MountedImageInfo
 
-Optimize image by removing unused components:
+Example 5: Optimize image by removing unused components:
  DISM.exe /Online /Cleanup-Image /StartComponentCleanup
 
 
