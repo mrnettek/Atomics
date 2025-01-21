@@ -6,7 +6,9 @@ EnableDelayedExpansion is a feature in batch scripting that allows variables to 
 1. Overview of Delayed Expansion
 
 Delayed Expansion enables real-time variable updates during script execution, particularly in loops and commands.
+
 Default Behavior: Variables (%variable%) are expanded at parse time.
+
 With Delayed Expansion: Variables (!variable!) are expanded at execution time.
 
 
