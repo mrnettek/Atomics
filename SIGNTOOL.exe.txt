@@ -5,7 +5,7 @@ SignTool.exe is a command-line utility that is used to digitally sign files, ver
 This tool is automatically installed with Visual Studio. To run it, use the Visual Studio Developer Command Prompt or Visual Studio Developer PowerShell.
 
 
-[Syntax]
+[SYNTAX]
 signtool [command] [options] [file_name | ...]
 
  Command Options:
@@ -55,17 +55,13 @@ signtool [command] [options] [file_name | ...]
   /tr URL: Specifies the URL of the RFC 3161 time-stamp server.
   /td alg: Specifies the digest algorithm to use for timestamping.
 
-
- Example 1:
- Sign a file automatically by selecting the best certificate:
+ Example 1: Sign a file automatically by selecting the best certificate.
   signtool sign /a /fd SHA256 MyFile.exe
 
- Example 2:
- Sign a file using a certificate stored in a password-protected PFX file:
+ Example 2: Sign a file using a certificate stored in a password-protected PFX file.
   signtool sign /f MyCert.pfx /p MyPassword /fd SHA256 MyFile.exe
 
- Example 3:
- Sign a file and add a timestamp:
+ Example 3: Sign a file and add a timestamp.
   signtool sign /f MyCert.pfx /t http://timestamp.digicert.com /fd SHA256 MyFile.exe
 
 
@@ -80,12 +76,10 @@ signtool [command] [options] [file_name | ...]
   /tp index: Time stamps the signature at a specific index.
   /tr URL: Specifies the URL of the RFC 3161 time-stamp server.
 
- Example 1:
- Time-stamp a previously signed file:
+ Example 1: Time-stamp a previously signed file.
    signtool timestamp /t http://timestamp.digicert.com MyFile.exe
  
- Example 2:
- Time-stamp a file using an RFC 3161 timestamp server:
+ Example 2: Time-stamp a file using an RFC 3161 timestamp server.
   signtool timestamp /tr http://timestamp.digicert.com /td SHA256 MyFile.exe
 
 
@@ -106,16 +100,13 @@ signtool [command] [options] [file_name | ...]
   /o Version: Verifies the file by operating system version.
   /p7: Verifies PKCS #7 files.
 
- Example 1:  
- Verify the signature of a file:
+ Example 1: Verify the signature of a file.
   signtool verify MyFile.exe
  
- Example 2:
- Verify a system file that may be signed in a catalog:
+ Example 2: Verify a system file that may be signed in a catalog.
   signtool verify /a SystemFile.dll
 
- Example 3:
- Verify a system file signed in a specific catalog:
+ Example 3: Verify a system file signed in a specific catalog.
   signtool verify /c MyCatalog.cat SystemFile.dll
  
 
