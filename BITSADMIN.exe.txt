@@ -93,7 +93,7 @@ General Options
  /NOWRAP: Prevent output from wrapping.
 
 
-[Examples]
+[EXAMPLES]
 
 1. Creating a Job
 Create a download job:
@@ -127,6 +127,6 @@ Error Handling
  32768: Access denied (insufficient privileges)
 
 
-[Notes]
+[NOTES]
 
 BITSADMIN is deprecated in Windows 7 and later. For modern usage, consider using PowerShell cmdlets for BITS administration.
