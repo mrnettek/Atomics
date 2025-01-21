@@ -4,7 +4,7 @@ The FOR command in Windows batch scripting allows you to perform a command sever
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 FOR-Files (or a list of folders)
  FOR %%parameter IN (set) DO command
  
@@ -127,7 +127,14 @@ Example 11: Count files in a directory.
  echo There are !count! files in the directory.
 
 
-7. Notes and Best Practices
+7. Error Handling
+
+If no files match the wildcard, the command will not execute.
+
+The FOR command does not set the %ERRORLEVEL% on its own, but you can use error handling mechanisms such as IF statements to catch errors.
+
+
+[NOTES]
 
 Wildcard Characters: The FOR command supports wildcards (* and ?) in the IN clause for selecting files or folders.
 
@@ -136,12 +143,5 @@ Recursive Directory Search: Use the /R option to process files in all subdirecto
 Variable Expansion: Use SETLOCAL ENABLEDELAYEDEXPANSION when updating variables during a loop.
 
 File Processing: Use the /F flag for reading file contents or processing command output line by line.
-
-
-8. Error Handling
-
-If no files match the wildcard, the command will not execute.
-
-The FOR command does not set the %ERRORLEVEL% on its own, but you can use error handling mechanisms such as IF statements to catch errors.
 
 
