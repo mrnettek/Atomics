@@ -3,6 +3,25 @@ CURL.exe (Client URL)
 CURL is a powerful command-line tool for transferring data from or to a server, supporting various protocols such as HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP, and FILE. It was introduced in Windows 10 version 1803 and is included in Windows builds 17063 and later.
 
 
+Examples:
+
+Example 1: Retrieve a web page with status code and content:
+ curl https://example.com
+
+Example 2: Show only the HTTP headers of a page:
+ curl -I https://example.com
+
+Example 3: Download a webpage and save it to a file:
+ curl -o testing.html https://example.com
+
+Example 4: Upload a file to a server:
+ curl -T localfile.txt ftp://example.com/remotefile.txt
+
+Example 5: Pass a custom User-Agent string:
+ curl -A "Mozilla/5.0" https://example.com
+
+
+
 [Syntax]
 
 curl [options...] url
@@ -379,26 +398,6 @@ Set client certificate for proxy.
 
 Use NTLM authentication for the proxy.
  --proxy-ntlm
-
-
-
-Examples:
-
-Retrieve a web page with status code and content:
- curl https://example.com
-
-Show only the HTTP headers of a page:
- curl -I https://example.com
-
-Download a webpage and save it to a file:
- curl -o testing.html https://example.com
-
-
-Upload a file to a server:
- curl -T localfile.txt ftp://example.com/remotefile.txt
-
-Pass a custom User-Agent string:
- curl -A "Mozilla/5.0" https://example.com
 
 
 See Also:
