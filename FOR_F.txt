@@ -48,7 +48,7 @@ Specifies which tokens (sections of a line) to process:
 Defines the characters used to separate tokens. Multiple delimiters can be specified (delims=,;|). Consecutive delimiters are treated as one.
 
 
-EXAMPLES
+[Examples]
 
 Example 1: Parse Tokens from a String
  @Echo Off
@@ -92,6 +92,7 @@ Process a file with spaces in its name:
 
 
 [Tips and Notes]
+
 Delayed Variable Expansion: Use SETLOCAL EnableDelayedExpansion when modifying variables inside a loop.
 
 Combining Options: Options must appear in the correct order: usebackq > skip > delims > eol > tokens.
