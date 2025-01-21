@@ -5,24 +5,24 @@ The FOR command in Windows batch scripting allows you to perform a command sever
 1. Syntax and Usage
 
 [Syntax]
- FOR-Files (or a list of folders)
-  FOR %%parameter IN (set) DO command
+FOR-Files (or a list of folders)
+ FOR %%parameter IN (set) DO command
  
- FOR-Files-Rooted at Path
-  FOR /R [drive:]path %%parameter IN (set) DO command
+FOR-Files-Rooted at Path
+ FOR /R [drive:]path %%parameter IN (set) DO command
 
- FOR-Folders
-  FOR /D %%parameter IN (folder_set) DO command
+FOR-Folders
+ FOR /D %%parameter IN (folder_set) DO command
   
- FOR-List of numbers
-  FOR /L %%parameter IN (start, step, end) DO command
+FOR-List of numbers
+ FOR /L %%parameter IN (start, step, end) DO command
  
- FOR-File Contents 
-  FOR /F ["options"] %%parameter IN (filenameset) DO command
-  FOR /F ["options"] %%parameter IN ("Text string to process") DO command
+FOR-File Contents 
+ FOR /F ["options"] %%parameter IN (filenameset) DO command
+ FOR /F ["options"] %%parameter IN ("Text string to process") DO command
  
- FOR-Command Results
-  FOR /F ["options"] %%parameter IN ('command to process') DO command
+FOR-Command Results
+ FOR /F ["options"] %%parameter IN ('command to process') DO command
 
 
 2. How the FOR Command Works
