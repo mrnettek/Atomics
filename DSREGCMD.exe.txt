@@ -96,42 +96,29 @@ The DSREGCMD command returns an ERRORLEVEL to indicate the success or failure of
 6. Examples
 
 Example 1: Display Device Join Status
-
 To display the current device join status:
  C:\> DSREGCMD /status
  
-
 Example 2: Display Device Join Status in the Old Format
-
 To display the device join status in the old format:
  C:\> DSREGCMD /status_old
 
-
 Example 3: Hybrid Join the Device
-
 To schedule and monitor the Autojoin task to Hybrid Join the device:
  C:\> DSREGCMD /join
 
-
 Example 4: Perform Hybrid Unjoin
-
 To unjoin the device from Azure AD and schedule a rejoin on the next delta sync:
  C:\> DSREGCMD /leave
 
-
 Example 5: Force Recovery on an Azure AD Joined Device
-
 To force a sign out and sign back in for an Azure AD-joined device:
  C:\> DSREGCMD /forcerecovery
 
-
 Example 6: Refresh the Primary Refresh Token (PRT)
-
 To refresh the PRT in the cloudAP cache:
  C:\> DSREGCMD /refreshprt
 
-
 Example 7: Display Debug Messages
-
 To display detailed debug information for DSREGCMD:
  C:\> DSREGCMD /debug
