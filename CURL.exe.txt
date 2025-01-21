@@ -3,7 +3,7 @@ CURL.exe (Client URL)
 CURL is a powerful command-line tool for transferring data from or to a server, supporting various protocols such as HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP, and FILE. It was introduced in Windows 10 version 1803 and is included in Windows builds 17063 and later.
 
 
-Examples:
+[EXAMPLES]
 
 Example 1: Retrieve a web page with status code and content.
  curl https://example.com
@@ -22,13 +22,12 @@ Example 5: Pass a custom User-Agent string.
 
 
 
-[Syntax]
+[SYNTAX]
 
 curl [options...] url
 
-[Options]
 
-General Options:
+[OPTIONS]
 
 Connect via an abstract Unix domain socket.
  --abstract-unix-socket path
