@@ -102,7 +102,7 @@ signtool [command] [options] [file_name | ...]
   /p7: Verifies PKCS #7 files.
 
 
-2. Example Use
+2. Example Usage
 
 [EXAMPLES]
 
