@@ -20,10 +20,8 @@ Delete a share:
 
 Note: You can modify an existing share using the NET SHARE command, except for the /GRANT option.
 
-
-2. Key Options and Parameters
- 
- sharename: The name of the share you are creating or modifying.
+[Options]
+  sharename: The name of the share you are creating or modifying.
  drive:path: The path to the folder or device being shared.
 
  /GRANT:user,[READ | CHANGE | FULL]: Specifies the permissions for a user or group. The options are:
@@ -43,7 +41,7 @@ Note: You can modify an existing share using the NET SHARE command, except for t
   None: No offline caching.
 
 
-3. Access-based Enumeration (ABE)
+2. Access-based Enumeration (ABE)
 
 Access-based Enumeration (ABE) hides the contents of shared folders from users who do not have permissions to access them. This helps improve security by showing only accessible resources.
 
@@ -52,15 +50,13 @@ ABE is enabled by default on Windows Server but is turned off by default.
 Enabling ABE can add some load to the server.
 
 ABE can be enabled or disabled using PowerShell:
+ Get-SmbShare FolderName | Set-SmbShare -FolderEnumerationMode AccessBased
+ Get-SmbShare FolderName | Set-SmbShare -FolderEnumerationMode Unrestricted
 
-powershell
-
-Get-SmbShare FolderName | Set-SmbShare -FolderEnumerationMode AccessBased
-Get-SmbShare FolderName | Set-SmbShare -FolderEnumerationMode Unrestricted
 For more details on enabling/disabling ABE, visit Server Manager ➞ File and Storage Services ➞ sharename ➞ Properties ➞ Settings ➞ Enable Access-based enumeration.
 
 
-4. Filename and Path Length Considerations
+3. Filename and Path Length Considerations
 
 When creating shares, be aware of the 260-character limit for filenames on Windows systems. The mapped drive will use a shorter path than the real path on the server, which may cause issues with long filenames.
 
@@ -73,57 +69,52 @@ A legal filename created on the client could be X:\something\... (158 characters
 To mitigate this issue, keep the server path as short as possible, (example E:\wg\).
 
 
-5. Creating and Modifying Shares
+4. Creating and Modifying Shares
 
-Create a new share:
+Example 1: Create a New Share
+This will create a new share called workgroups for the C:\work folder with no caching enabled.
  NET SHARE workgroups=C:\work /REMARK:"workgroups share" /CACHE:No
 
-This will create a new share called workgroups for the C:\work folder with no caching enabled.
-
-
-Limit the number of users for a share:
+Example 2: Limit Number of Users for Share
+This limits the number of users who can access the workgroups share to 15.
  NET SHARE workgroups /USERS:15
 
-This limits the number of users who can access the workgroups share to 15.
-
-
-Remove user limits for a share:
+Example 3: Remove User Limits for Share
+This removes any user limit for the workgroups share.
  NET SHARE workgroups /UNLIMITED
 
-This removes any user limit for the workgroups share.
 
+5. Deleting Shares
 
-6. Deleting Shares
-
-Delete a share:
+Example 1: Delete Share
+This will delete the workgroups share.
  NET SHARE workgroups /DELETE
 
-This will delete the workgroups share.
-
-
-Delete an admin share (not recommended):
+Example 2: Delete Admin Share (Not Recommended)
  NET SHARE C$ /DELETE
 
 Note: Deleting an admin share like C$ is not recommended, and the share will reappear after a reboot unless the AutoShareServer registry key is disabled.
 
 
-7. Examples
+6. Examples
+
+[EXAMPLES]
 
 View share details:
 
-To display details of a specific share:
+Example 1: To display details of a specific share.
  NET SHARE workgroups
 
-To display details of all local shares:
+Example 2: To display details of all local shares.
  NET SHARE
 
-To retrieve share details from a remote machine, use WMIC:
+Example 3: To retrieve share details from a remote machine, use WMIC.
  WMIC SHARE
 
-Create a new local share with remark and cache settings:
+Example 4: Create a new local share with remark and cache settings.
  NET SHARE workgroups=C:\work /REMARK:"workgroups share" /CACHE:No
 
-Delete a share:
+Example 5: Delete a share.
  NET SHARE workgroups /DELETE
 
 
