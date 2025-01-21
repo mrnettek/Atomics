@@ -5,14 +5,13 @@ The SC.exe command is used to manage Windows services. It allows users to create
 
 1. Syntax
 
-[Syntax]
+[SYNTAX]
 SC [\\server] [command] [service_name] [Options]
 
-Where:
- [\server]: The machine where the service is running. This is optional; by default, the local machine is used.
- [command]: The command to execute (e.g., start, stop, query, etc.).
- [service_name]: The KeyName of the service. This is often the same as the DisplayName shown in the Services application.
- [Options]: Specific options to further customize the command execution.
+   [\server]: The machine where the service is running. This is optional; by default, the local machine is used.
+   [command]: The command to execute (e.g., start, stop, query, etc.).
+   [service_name]: The KeyName of the service. This is often the same as the DisplayName shown in the Services application.
+   [Options]: Specific options to further customize the command execution.
 
 
 2. Commands
@@ -123,6 +122,7 @@ Creates a new service. You can add options during creation, such as setting the 
 Modifies the configuration of an existing service. Example: SC config MyService start= disabled
  CONFIG
 
+
 6. Service State Query Example
 
 Running SC query provides detailed information about a service, like this:
@@ -178,7 +178,7 @@ Get the KeyName of a service:
  2: Incorrect command syntax or invalid parameters.
 
 
-9. Notes
+[NOTES]
 
 The SC command is case-sensitive. Ensure that the command and service names are entered correctly.
 
