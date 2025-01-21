@@ -5,11 +5,11 @@ TASKKILL is a command-line utility used to terminate one or more processes, eith
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 TASKKILL [/S system [/U username [/P [password]]]]
          { [/FI filter] [/PID processid | /IM imagename] } [/F] [/T]
 
-Options:
+[OPTIONS]
  /S system: Specifies the remote system to connect to.
  /U [domain]user: Specifies the user context under which the command should execute.
  /P [password]: Specifies the password for the user context. If omitted, it prompts for input.
@@ -48,7 +48,7 @@ Imagename: Filters by the image name of the process.
 If you use /FI, the image name must include the file extension, or a wildcard *. If multiple processes match the filter, all matching processes will be terminated.
 
 
-3. Example Usage
+3. Example Use
 
 Example 1: Kill a Single Process by Image Name
 To forcefully kill all instances of notepad.exe:
@@ -85,7 +85,7 @@ To kill all processes started by the user JohnDoe:
   32: The process is in use or being accessed by another process.
 
 
-5. Additional Notes
+[NOTES]
 
 Permissions: In order to terminate processes on a remote machine, you must have appropriate access permissions. You can use /U and /P options to specify credentials.
 
