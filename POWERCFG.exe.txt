@@ -3,11 +3,10 @@ POWERCFG.exe Help File
 POWERCFG is a command-line utility used to control and configure power settings, such as sleep, hibernate, and standby modes. It allows users to modify, query, and delete power schemes, as well as manage device wake-up settings.
 
 
-[Syntax]
+[SYNTAX]
 POWERCFG [Options]
 
-
-[Options]
+[OPTIONS]
 
 General Commands
 
@@ -103,33 +102,33 @@ Set the specified power scheme as the active one.
 /SetActive Scheme_GUID
 
 
-[Examples]
+[EXAMPLES]
 
-Display all available sleep states:
+Example 1: Display all available sleep states.
  powercfg /availableSleepStates
 
-Generate a battery report:
+Example 2: Generate a battery report.
  powercfg /batteryreport
 
-Change the monitor timeout on AC power to 10 minutes:
+Example 3: Change the monitor timeout on AC power to 10 minutes.
  powercfg /change monitor-timeout-ac 10
 
-List all power schemes:
+Example 4: List all power schemes.
  powercfg /list
 
-Set the active power scheme to a specific GUID:
+Example 5: Set the active power scheme to a specific GUID.
 powercfg /setactive SCHEME_GUID
 
-Export a power scheme to a file:
+Example 6: Export a power scheme to a file.
  powercfg /export "C:\power_scheme.xml" SCHEME_GUID
 
-Enable the hibernate feature:
+Example 7: Enable the hibernate feature.
  powercfg /hibernate on
 
-Disable a device from waking the computer from sleep:
+Example 8: Disable a device from waking the computer from sleep.
  powercfg /DeviceDisableWake "Network Adapter"
 
-Generate an energy efficiency report:
+Example 9: Generate an energy efficiency report.
  powercfg /energy
 
 
@@ -138,7 +137,7 @@ Errorlevels
  1: Command failed due to incorrect syntax or parameters.
 
 
-Additional Information
+[NOTES]
 
 POWERCFG is useful for managing power settings in Windows systems, including sleep and hibernation modes.
 
