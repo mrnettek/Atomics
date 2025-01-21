@@ -3,7 +3,7 @@ FOR /F Statement Guide with Examples
 The FOR /F command in batch scripting allows you to iterate through a file, a command's output, or a string by parsing its content. This is especially useful for processing text files, filtering data, or extracting specific tokens (subsections of a line).
 
 
-[Syntax]
+[SYNTAX]
  FOR /F ["options"] %%parameter IN (filenameset) DO command
  FOR /F ["options"] %%parameter IN ("Text string to process") DO command
 
@@ -48,7 +48,7 @@ Specifies which tokens (sections of a line) to process:
 Defines the characters used to separate tokens. Multiple delimiters can be specified (delims=,;|). Consecutive delimiters are treated as one.
 
 
-[Examples]
+[EXAMPLES]
 
 Example 1: Parse Tokens from a String
  @Echo Off
@@ -81,18 +81,7 @@ Process a file with spaces in its name:
  FOR /F "usebackq delims=" %%A IN ("My File.txt") DO Echo %%A
 
 
-[Tips and Notes]
-
-Delayed Variable Expansion: Use SETLOCAL EnableDelayedExpansion when modifying variables inside a loop.
-
-Combining Options: Options must appear in the correct order: usebackq > skip > delims > eol > tokens.
-
-Maximum Tokens: A single FOR /F command can process up to 31 tokens.
-
-Edge Cases: If tokens are missing (consecutive delimiters), adjust parsing or preprocess the data.
-
-
-[Advanced Use Case]
+[ADVANCED]
 
 Handle missing data by replacing consecutive delimiters:
  FOR /F "tokens=1-3 delims=," %%A IN ('TYPE data.csv') DO (
@@ -101,3 +90,14 @@ Handle missing data by replacing consecutive delimiters:
  )
 
 This ensures robust handling of irregular input formats.
+
+
+[NOTES]
+
+Delayed Variable Expansion: Use SETLOCAL EnableDelayedExpansion when modifying variables inside a loop.
+
+Combining Options: Options must appear in the correct order: usebackq > skip > delims > eol > tokens.
+
+Maximum Tokens: A single FOR /F command can process up to 31 tokens.
+
+Edge Cases: If tokens are missing (consecutive delimiters), adjust parsing or preprocess the data.
