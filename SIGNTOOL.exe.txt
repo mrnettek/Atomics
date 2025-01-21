@@ -80,12 +80,11 @@ signtool [command] [options] [file_name | ...]
   /tp index: Time stamps the signature at a specific index.
   /tr URL: Specifies the URL of the RFC 3161 time-stamp server.
 
- Example:
+ Example 1:
  Time-stamp a previously signed file:
    signtool timestamp /t http://timestamp.digicert.com MyFile.exe
  
- 
- Example:
+ Example 2:
  Time-stamp a file using an RFC 3161 timestamp server:
   signtool timestamp /tr http://timestamp.digicert.com /td SHA256 MyFile.exe
 
