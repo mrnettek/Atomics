@@ -71,6 +71,6 @@ To list all folders in the current directory (without recursion), you can omit t
 This lists the directories in the current directory without searching subdirectories.
 
 
-6. Conclusion
+[Notes]
 
 The FOR /D command is a powerful tool for working with directories in batch scripts. By combining it with wildcards and recursion, you can automate various tasks, such as searching, renaming, and processing directories. Understanding how to properly use wildcards and handle paths with spaces or periods will ensure that your FOR /D commands work reliably in all scenarios.
