@@ -5,15 +5,15 @@ WMIC (Windows Management Instrumentation Command-line) is a command-line tool us
 Note: WMIC is deprecated as of 2021, and while it will still function for a few more years, no new features will be added, and it may eventually be removed. WMIC is a Feature on Demand (FoD) preinstalled by default in Windows 11 versions 23H2 and 22H2. In the next Windows release, the WMIC FoD will be disabled by default.
 
 
-1. Syntax and Usage
+1. Syntax and Use
 
-[Syntax]
+[SYNTAX]
 WMIC [global_switch(es)] Alias [options] [format]
 WMIC [global_switch(es)] Command
 WMIC [global_switch:value] [global_switch:value] Command
 
 
-[Key Components]
+[KEY COMPONENTS]
 Alias: Defines the component or class of the system you want WMIC to interact with (CPU, MEMORYCHIP, DISKDRIVE).
 WHERE clause: Filters the results based on specific criteria (targeting a particular printer rather than all printers).
 
@@ -63,22 +63,18 @@ You can interact with WMI objects using several commands:
  CREATE: Creates a new WMI object.
  DELETE: Deletes a WMI object.
  ASSOC: Returns associated objects for a specific object class.
- Example 1: List All Processes
 
-
-WMIC PROCESS LIST
+Example 1: List All Processes
+ WMIC PROCESS LIST
 
 Example 2: Get CPU Information
  WMIC CPU GET Caption, DeviceID, NumberOfCores
 
-
 Example 3: Modify a Service
  WMIC SERVICE WHERE "Name='wuauserv'" CALL StopService
 
-
 Example 4: List All Network Interfaces
-WMIC NIC LIST
-
+ WMIC NIC LIST
 
 Example 5: Get System Information
  WMIC COMPUTERSYSTEM GET Name, Manufacturer
@@ -111,28 +107,23 @@ The WMIC command sets an ERRORLEVEL based on the success or failure of a command
 Example 1: List All Running Processes
  WMIC PROCESS LIST
 
-
 Example 2: Get Disk Drive Information
  WMIC DISKDRIVE GET Caption, Size
-
 
 Example 3: Retrieve System Information
  WMIC COMPUTERSYSTEM GET Name, Manufacturer, Model
 
-
 Example 4: Get CPU Information
  WMIC CPU GET Name, NumberOfCores, MaxClockSpeed
 
-
 Example 5: Retrieve Network Adapter Information
  WMIC NIC GET Name, MACAddress, Speed
-
 
 Example 6: Stop a Service
  WMIC SERVICE WHERE "Name='wuauserv'" CALL StopService
 
 
-7. Additional Notes
+[NOTES]
 
 WMIC interacts with WMI objects, which are components of the Windows Management Instrumentation infrastructure.
 
