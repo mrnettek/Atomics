@@ -9,7 +9,7 @@ FIND is a command-line tool used to search for a text string in a file and displ
 Search for a String in a File
 FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
 
-[Key]
+[Options]
 "string" - The text string to search for (must be in quotes).
  [pathname] - The drive and/or file(s) to search (wildcards accepted).
  /V - Display all lines not containing the specified string.
@@ -26,7 +26,6 @@ If searching for a text string containing double quote characters (") in the str
 2. Examples
 
 Example 1: Search for a String in a File
-
 Suppose names.txt contains the following:
  Alice
  Bob
@@ -41,9 +40,7 @@ To search for the string Alice:
  Alice
  Alice Bob
 
-
 Example 2: Count the Number of Matching Lines
-
 To count the number of lines containing the string Alice:
  FIND /C "Alice" names.txt
 
@@ -51,9 +48,7 @@ To count the number of lines containing the string Alice:
  ---------- names.txt
  ---------- Count = 2
 
-
 Example 3: Search for a String Ignoring Case
-
 To search for the string alice (case-insensitive):
  FIND /I "alice" names.txt
 
@@ -62,9 +57,7 @@ To search for the string alice (case-insensitive):
  Alice
  Alice Bob
 
-
 Example 4: Display Lines That Do Not Contain the String
-
 To display all lines not containing the string Alice:
  FIND /V "Alice" names.txt
 
@@ -73,9 +66,7 @@ To display all lines not containing the string Alice:
  Bob
  Charlie
 
-
 Example 5: Search Multiple Files Using Wildcards
-
 To search for the string Alice in all .txt files in the current directory:
  FIND "Alice" *.txt
 
@@ -86,6 +77,7 @@ To search for the string Alice in all .txt files in the current directory:
 
 
 3. Limitations
+
 FIND does not support wildcards in the string search. For advanced searching with wildcards, use FINDSTR instead.
 
 FIND will not detect strings positioned more than 1070 characters along a single line with no carriage return. This makes it less useful for binary or XML files.
