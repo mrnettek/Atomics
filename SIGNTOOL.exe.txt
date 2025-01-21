@@ -30,7 +30,6 @@ signtool [command] [options] [file_name | ...]
   /u: Automatically generates a unique name for the added catalog files, preventing conflicts with existing catalogs.
 
  Example:
- 
  Add a catalog file to the system component and driver database:
   signtool catdb /v /u MyCatalogFileName.cat
  
