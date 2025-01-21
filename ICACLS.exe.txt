@@ -128,4 +128,5 @@ Find files that have the SID S-1-5-32-544 (Administrators group SID) in their AC
 Symbolic Links: Use the /L option to modify the ACL of symbolic links directly, not their target.
 
 Recursive Changes: The /T option allows you to traverse subdirectories, applying changes recursively to all matching files and folders.
+
 Silent Mode: Use /Q for quiet mode to suppress success messages.
