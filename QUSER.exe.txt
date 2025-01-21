@@ -11,7 +11,7 @@ Display Information About User Sessions
  QUERY USER UserName [/server:ServerName]
  QUERY USER [SessionName | SessionID] [/server:ServerName]
 
-[KEY]
+[OPTIONS]
  UserName - The logon username of the user whose sessions you want to query.
  SessionName - The name of the session that you want to query.
  SessionID - The ID of the session that you want to query.
