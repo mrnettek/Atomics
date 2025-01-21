@@ -96,8 +96,6 @@ For lines longer than 4091 characters, use FINDSTR, which can handle up to 8191 
 
 
 4. Errorlevel
-
-FIND will return the following ErrorLevels:
  0 - String found in at least one of the files.
  1 - String not found.
  2 - If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.
