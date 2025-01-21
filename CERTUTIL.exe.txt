@@ -84,27 +84,27 @@ The command options allow you to customize its behavior in various use cases, fr
 
 4. Example Usage
 
-Example 1: View current CA configuration.
+Example 1: View current CA Configuration
 To view the configuration of the current Certification Authority:
  CERTUTIL -config
 
 Example 2: Generate an SST file using automatic update mechanism.
  CERTUTIL -generateSSTFromWU "C:\path\to\SSTfile.sst"
 
-Example 3: Export a certificate to a file.
+Example 3: Export a Certificate to a File
 Export a certificate to a file using the PFX encryption:
  CERTUTIL -exportPFX -p "password" -out "C:\path\to\certificate.pfx" "CertID"
 
-Example 4: Display information about a specific certificate.
+Example 4: Display Information About a Specific Certificate
  CERTUTIL -dump "C:\path\to\certificate.cer"
 
-Example 5: Verify a certificate.
+Example 5: Verify a Certificate
  CERTUTIL -verify "C:\path\to\certificate.cer"
 
-Example 6: Display detailed information (verbose).
+Example 6: Display Detailed Information (Verbose)
  CERTUTIL -v -dump "C:\path\to\certificate.cer"
 
-Example 7: Sync certificates with Windows Update.
+Example 7: Sync Certificates with Windows Update
  CERTUTIL -syncWithWU "C:\path\to\destination"
 
 
