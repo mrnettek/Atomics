@@ -105,7 +105,7 @@ Logname: The event log to get information for.
  MANIFEST: The event manifest to uninstall.
 
 
-4. Example Use
+4. Example Usage
 
 Example 1: Archive a Log
 To archive the Application log:
