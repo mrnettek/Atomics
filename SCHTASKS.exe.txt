@@ -88,8 +88,9 @@ Example 8: Set a task to run at login with a 10-minute delay.
    SCHTASKS /Create /TN "LoginTask" /TR "C:\path\to\program.exe" /SC ONLOGON /DELAY 00:10
 
 
-4. Error Handling and Return Codes
+[RETURN CODES]
 
+Errorlevels
  0: Task was successfully created, modified, run, stopped, or deleted.
  1: Incorrect syntax or an error occurred in processing the command.
  5: Access denied (requires administrator privileges).
