@@ -5,12 +5,11 @@ DSREGCMD.exe is a command-line tool used to display the device join status and m
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 Display and Manage Device Join Status
  DSREGCMD options
 
-
-[Key]
+[KEY]
  /status - Display the device join status.
  /status_old - Display the device join status in the old format.
  /join - Schedule and monitor the Autojoin task to Hybrid Join the device.
