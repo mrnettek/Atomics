@@ -101,7 +101,7 @@ Non-existent Label: If the label specified by GOTO does not exist, %ERRORLEVEL% 
 
 6. Examples
 
-1. Simple Jump to Label:
+Exampe 1. Simple Jump to Label:
  @echo off
  GOTO :end
 
@@ -111,7 +111,7 @@ Non-existent Label: If the label specified by GOTO does not exist, %ERRORLEVEL% 
  echo "We've reached the end of the script!"
 
 
-2. Using GOTO:eof to Exit Subroutine:
+Exampe 2. Using GOTO:eof to Exit Subroutine:
  @echo off
  CALL :subroutine
  GOTO:eof
@@ -121,7 +121,7 @@ Non-existent Label: If the label specified by GOTO does not exist, %ERRORLEVEL% 
   GOTO:eof
 
 
-3. Example with Conditional Execution:
+Exampe 3. Example with Conditional Execution:
  @echo off
  SET condition=true
  IF %condition%==true GOTO :success
