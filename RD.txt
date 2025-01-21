@@ -52,7 +52,9 @@ To delete multiple directories in one command:
  RD C:\docs\Jan "C:\My Documents\Mar"
 
 
-5. Exit Codes / Error Levels
+[RETURN CODES]
+
+5. Errorlevels
 RD does not return a standard error level to the shell, but it sets an exit code based on the result of the command:
  0: Directory deleted successfully.
  1: Invalid option.
