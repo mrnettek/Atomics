@@ -4,11 +4,11 @@ DEL is a command-line tool used to delete one or more files. It provides options
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 DEL [options] [/A:file_attributes] files_to_delete
  files_to_delete: A filename or list of files to delete. Wildcards can be used.
 
-[Options]
+[OPTIONS]
  /P: Prompt for confirmation before deleting each file (Yes/No prompt).
  /F: Force deletion of read-only files (ignores read-only setting).
  /S: Delete files from all subfolders (use with caution).
@@ -62,6 +62,8 @@ For a permanent fix, you can disable thumbnail caching via the registry.
 
 4. Examples
 
+[EXAMPLES]
+
 Example 1: Delete a Single File
 To delete a specific file (file1.txt):
  DEL file1.txt
@@ -91,7 +93,7 @@ To delete a file with a long path that is otherwise undeletable:
  DEL "\\?\C:\some folder\longfilename.txt"
 
 
-5. Additional Notes
+[NOTES]
 
 Quiet Mode: The /Q option suppresses prompts, making the DEL command run silently, which is useful for automated scripts.
 
