@@ -5,19 +5,19 @@ CURL is a powerful command-line tool for transferring data from or to a server, 
 
 Examples:
 
-Example 1: Retrieve a web page with status code and content:
+Example 1: Retrieve a web page with status code and content.
  curl https://example.com
 
-Example 2: Show only the HTTP headers of a page:
+Example 2: Show only the HTTP headers of a page.
  curl -I https://example.com
 
-Example 3: Download a webpage and save it to a file:
+Example 3: Download a webpage and save it to a file.
  curl -o testing.html https://example.com
 
-Example 4: Upload a file to a server:
+Example 4: Upload a file to a server.
  curl -T localfile.txt ftp://example.com/remotefile.txt
 
-Example 5: Pass a custom User-Agent string:
+Example 5: Pass a custom User-Agent string.
  curl -A "Mozilla/5.0" https://example.com
 
 
