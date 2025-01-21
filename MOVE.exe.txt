@@ -5,14 +5,14 @@ The MOVE command is used to move a file or folder from one location to another o
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 MOVE [options] [Source] [Target]
  Source: The path and filename of the file(s) to move.
  Target: The path and filename to move file(s) to.
 
 Options: Additional flags to modify the command's behavior.
 
-[Options]
+[OPTIONS]
  /Y: Suppress confirmation prompt when overwriting files.
  /-Y: Enable confirmation prompt when overwriting files. By default, confirmation is enabled unless the command is executed in a batch script.
 
@@ -50,16 +50,14 @@ This ensures that the command will not overwrite the destination file:
 %ERRORLEVEL% = 1: The file was not found, could not be moved/renamed, or bad parameters were used.
 
 
-4. Notes
+[NOTES]
 
 The source can include wildcards (* or ?), but the target cannot.
+
 By default, Windows prompts for confirmation if the destination file already exists, unless the MOVE command is executed in a batch file or the /Y option is used.
 
 You can suppress confirmation prompts globally by setting the COPYCMD environment variable:
  SET COPYCMD=/Y
-
-
-5. Additional Information
 
 The MOVE command is a built-in command in Windows, useful for quickly moving or renaming files across directories or drives. It's more flexible than the REN (rename) command because it allows for moving files to new locations as well. 
 
