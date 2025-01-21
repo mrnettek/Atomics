@@ -23,7 +23,7 @@ Grant ownership to the Administrators group instead of the current user.
  /a
 
 Perform a recursive operation on all files in the specified directory and its subdirectories.
-/r
+ /r
 
 Suppress the confirmation prompt when the user does not have the "List Folder" permission on a specified directory. The options are:
  /d {Y|N}
