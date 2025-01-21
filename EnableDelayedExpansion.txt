@@ -120,7 +120,8 @@ File Names with !: Variables with ! in file names can cause errors in loops.
 Pipes: Variables within piped commands may not expand correctly.
 
 
-8. Historical Context
+[NOTES]
+
 Delayed Expansion was introduced for compatibility with older scripts, where default immediate expansion was sufficient. Modern scripting tools like PowerShell provide more robust alternatives.
 
 Example in PowerShell:
