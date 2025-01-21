@@ -99,11 +99,18 @@ This searches for "SearchString" in file.txt and sets MY_VAR based on the matchi
  SETX MY_VAR /f "file.txt" /r 0,0 "SearchString"
 
 
-2. Return Codes
+2. Error Handling
 
 Errorlevels
  0: The command was successful.
  1: An error occurred during execution, such as a file or registry path not being found.
+
+
+3. Common Uses
+
+SETX is commonly used in scripts or batch files to set environment variables permanently.
+
+Useful for adjusting system or user settings without requiring manual changes through the control panel.
 
 
 [NOTES]
@@ -113,12 +120,3 @@ SETX writes variables to the system registry, meaning changes take effect only i
 Environment variables are stored in the registry:
  User Variables: HKEY_CURRENT_USER\Environment
  System Variables: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment
-
-
-
-
-Common Uses
-
-SETX is commonly used in scripts or batch files to set environment variables permanently.
-
-Useful for adjusting system or user settings without requiring manual changes through the control panel.
