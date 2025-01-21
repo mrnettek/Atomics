@@ -61,31 +61,26 @@ Permissions Not Supported: CACLS cannot set the following permissions: Change pe
 5. Example Usage
 
 Example 1: Display ACLs for a File
-
 To display the ACLs for a file called myfile.txt:
  CACLS myfile.txt
 
 
 Example 2: Grant Permissions to a User
-
 To grant Read permissions to the user "JohnDoe" for a file myfile.txt:
  CACLS myfile.txt /G "JohnDoe":R
 
 
 Example 3: Deny Permissions to a User
-
 To deny Write access to the user "JohnDoe" for a file myfile.txt:
  CACLS myfile.txt /D "JohnDoe"
 
 
 Example 4: Replace Permissions for a User
-
 To replace the permissions for "JohnDoe" on a file myfile.txt to Full control:
  CACLS myfile.txt /P "JohnDoe":F
 
 
 Example 5: Recurse Subfolders and Modify ACLs
-
 To modify the ACLs of all .txt files in the current directory and its subfolders to grant Full control to "JohnDoe":
  CACLS *.txt /T /G "JohnDoe":F
 
