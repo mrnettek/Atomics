@@ -31,7 +31,7 @@ The DSREGCMD command displays the device state as follows:
  AzureAdJoined	EnterpriseJoined	DomainJoined	Device State
  YES	          NO	              NO	        Azure AD Joined
  NO	           NO	              YES	       Domain Joined
- YES           NO	              YES	       Hybrid AD Joined
+ YES	          NO	              YES	       Hybrid AD Joined
  NO	           YES	             YES	       On-premises DRS Joined
  
 
