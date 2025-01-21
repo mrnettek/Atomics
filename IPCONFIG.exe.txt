@@ -3,7 +3,7 @@ IPCONFIG Command Help File
 The IPCONFIG command is used to configure and display the IP (Internet Protocol) configuration of the system. It is primarily used for managing the IP address settings and troubleshooting network connectivity issues.
 
 
-[Syntax]
+[SYNTAX]
 IPCONFIG /all
 IPCONFIG /release [adapter]
 IPCONFIG /release6 [adapter]
@@ -18,7 +18,7 @@ IPCONFIG /setclassid adapter [classid]
 IPCONFIG /setclassid6 adapter [classid]
 IPCONFIG /?
 
-[Options]
+[OPTIONS]
 Displays full configuration information for all adapters.
 Shows the IP address, subnet mask, default gateway, DNS servers, DHCP status, and other network-related details for each adapter.
  /all
@@ -77,7 +77,7 @@ Releasing IP during remote sessions: If you are remotely connected to a machine 
 Class IDs and DHCP: The setclassid option allows the modification of DHCP class IDs, which are used to assign specific settings (examples DNS, gateway) to different groups of machines. These IDs need to be configured on the DHCP server.
 
 
-[Examples]
+[EXAMPLES]
 
 Exampe 1: Show Detailed Information
 This command will display detailed configuration information for all network adapters on the system.
@@ -110,7 +110,7 @@ Errorlevels
  1: An error occurred during the operation.
 
 
-[Notes]
+[NOTES]
 
 Network Troubleshooting: ipconfig is commonly used to view and manage network configurations, troubleshoot connectivity issues, or reset network settings.
 
