@@ -57,7 +57,6 @@ The code structure is maintained in a predictable order, making it easier to fol
 4. Bugs and Limitations
 
 1. Using GOTO within Parentheses
-
 Using GOTO inside parentheses, such as within IF or FOR loops, may break the context and cause issues with the flow of the script. It’s best to replace GOTO with CALL inside parentheses.
 
 Example (with issue):
@@ -83,12 +82,10 @@ Fixed with CALL:
 
 
 2. GOTO with Redirection Operators
-
 The GOTO command breaks the & and && conditional operators in batch scripting.
 
 
 3. GOTO with Non-existent Labels
-
 If a GOTO command is used with a non-existent label, the batch file will terminate and set the %ERRORLEVEL% to 1.
 
 Example:
