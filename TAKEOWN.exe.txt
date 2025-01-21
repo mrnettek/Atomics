@@ -32,7 +32,7 @@ Suppress the confirmation prompt when the user does not have the "List Folder" p
  N: Skip the directory. This option is only applicable when using the /r option.
 
 
-Important Notes
+[Important Notes]
 
 File/Folders in Use:
 
@@ -45,7 +45,7 @@ No Mixed Patterns:
 TAKEOWN does not support mixed patterns such as ? and * together.
 
 
-Examples
+[Examples]
 
 Transfer ownership of a specific file to the Administrators group:
  takeown.exe /f D:\demo\sample.xlsx /a
