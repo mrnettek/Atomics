@@ -3,7 +3,7 @@ NET START/STOP/PAUSE/CONTINUE Help File
 The NET START, NET STOP, NET PAUSE, and NET CONTINUE commands are used to manage services on a Windows machine. These commands allow you to start, stop, pause, or resume services that are listed in Control Panel > Services.
 
 
-[Syntax]
+[SYNTAX]
 NET START [service]
 NET STOP [service]
 NET PAUSE [service]
@@ -11,7 +11,7 @@ NET CONTINUE [service]
 
 Service - The name of the service as it appears in Control Panel > Services. Service names are typically the same as the Service Name field (not the display name) in the Services window.
 
-[Options]
+[OPTIONS]
 
 Start a service that is stopped or disabled.
 Syntax: NET START [service]
@@ -30,7 +30,7 @@ Syntax: NET CONTINUE [service]
  NET CONTINUE
 
 
-[Examples]
+[EXAMPLES]
 
 Example 1: List the basic services.
  NET HELP SERVICES
