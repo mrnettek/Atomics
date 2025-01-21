@@ -5,7 +5,7 @@ CALL is a command-line tool used to call another batch file or a subroutine from
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 Call a Batch File
  CALL [drive:][path]filename [parameters]
 
@@ -14,7 +14,6 @@ Call a Subroutine
 
 Call an Internal Command
  CALL internal_cmd
-
 
 [Key]
 pathname - The batch file to execute.
@@ -26,6 +25,8 @@ Note: The CALL command enables a parent batch file to run other scripts or subro
 
 
 2. Examples
+
+[EXAMPLES]
 
 Call a Second Batch File
 The CALL command launches another batch file, passing any parameters provided. Execution control returns to the parent script when the second batch file ends.
