@@ -59,27 +59,27 @@ By default, COPY will prompt you before overwriting an existing file in the dest
 
 6. Examples
 
-Example 1: Copy a File in the Current Folder.
+Example 1: Copy a File in the Current Folder
 To copy a file file1.txt to file2.txt in the current folder:
  COPY file1.txt file2.txt
 
-Example 2: Copy Multiple Files to a Folder.
+Example 2: Copy Multiple Files to a Folder
 To copy multiple files (file1.txt, file2.txt, and file3.txt) to the backup folder:
  COPY file1.txt + file2.txt + file3.txt backup\
 
-Example 3: Copy Files with Verification.
+Example 3: Copy Files with Verification
 To copy file1.txt to file2.txt and verify the destination file after copying:
  COPY /V file1.txt file2.txt
 
-Example 4: Copy a File in Binary Mode.
+Example 4: Copy a File in Binary Mode
 To copy a file in binary mode, ensuring that extended characters are preserved:
  COPY /B file1.bin file2.bin
 
-Example 5: Use Wildcards to Copy All .txt Files.
+Example 5: Use Wildcards to Copy All .txt Files
 To copy all .txt files in the current directory to the text_files folder:
  COPY *.txt text_files\
 
-Example 6: Suppress Overwrite Prompt.
+Example 6: Suppress Overwrite Prompt
 To copy a file and automatically overwrite the destination without prompting:
  COPY /Y file1.txt file2.txt
 
