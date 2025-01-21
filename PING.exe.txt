@@ -6,12 +6,9 @@ The PING command is used to test the network connection between your computer an
 
 [SYNTAX]
  PING [options] destination_host
-
- Where:
  destination_host: The hostname or IP address of the remote system you want to test connectivity with.
 
 [OPTIONS]
-
 Timeout and Other Time Settings
  -w timeout Sets the timeout in milliseconds for each reply (default is 4000ms).
   -w 5000 (Wait 5 seconds before timing out).
@@ -27,7 +24,6 @@ Network and Host Resolution
 -t Pings the destination host continuously until interrupted.
 To stop, press Ctrl-C.
 To view statistics, press Control-Break.
-
 
 Packet Size and Behavior
  -l size Specifies the buffer size (default is 32 bytes).
