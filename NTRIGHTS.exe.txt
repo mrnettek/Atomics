@@ -2,11 +2,11 @@ NTRIGHTS.exe (2003 Resource Kit)
 
 NTRIGHTS.exe is a command-line tool that allows you to edit user account privileges in a Windows system. It can be used to grant or revoke user rights such as logon rights, system administrator privileges, and other service or system-level permissions.
 
-[Syntax]
+[SYNTAX]
 NTRIGHTS +r Right -u UserOrGroup [-m \\Computer] [-e Entry]
 NTRIGHTS -r Right -u UserOrGroup [-m \\Computer] [-e Entry]
 
-[Options]
+[OPTIONS]
 
 Grant (+r) or revoke (-r) a specific privilege or right.
  +/-r Right
@@ -77,7 +77,7 @@ Miscellaneous Privileges:
  SeSystemProfilePrivilege: Profile system performance.
 
 
-[Important Notes]
+[IMPORTANT NOTES]
 
 Se_Deny rights will override corresponding rights and prevent users from logging on or using particular system features.
 
@@ -86,7 +86,7 @@ To run NTRIGHTS, you must be an administrator.
 When applying changes remotely (using the -m option), you must have administrator rights on the target machine.
 
 
-[Examples]
+[EXAMPLES]
 
 Example 1: Grant "Log on Locally" right to the 'Users' group.
  NTRIGHTS -u Users +r SeInteractiveLogonRight
@@ -110,7 +110,7 @@ Example 7: Deny local logon rights to the user 'Henry'.
  NTRIGHTS -u Henry +r SeDenyInteractiveLogonRight
 
 
-Additional Information:
+[NOTES]
 
 Group Policy Editor: You can use the Group Policy Editor to grant similar rights to a user, which may be easier than using the command line for some users.
 
