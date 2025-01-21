@@ -5,7 +5,7 @@ TIMEOUT is a command-line utility that pauses the execution of a script or batch
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 TIMEOUT [/T] delay [/nobreak]
  delay: The number of seconds (between 0 and 100000) to wait before continuing. The value -1 will make the system wait indefinitely, waiting for a keystroke (similar to the PAUSE command).
  /nobreak: Ignore user keystrokes. The timeout can still be interrupted with Ctrl+C, but keypresses will not cancel the timeout.
@@ -77,7 +77,7 @@ Use a WAIT loop to check if a file appears on a remote server, waiting for up to
  :done
 
 
-6. Additional Notes
+[NOTES]
 
 Precision: The precision of the TIMEOUT command is limited to the system clock, so the delay may not always be exactly what you expect, particularly if the system time changes during the delay.
 
