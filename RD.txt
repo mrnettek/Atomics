@@ -5,7 +5,7 @@ RD (Remove Directory) is a command-line tool used to delete an empty directory o
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 RD pathname
  RD /S pathname
  RD /S /Q pathname
@@ -65,7 +65,7 @@ To detect non-zero exit codes and handle failures, you can use conditional execu
  RD NonExistentFolder || Echo This failed!
 
 
-6. Additional Notes
+[NOTES]
 
 No Wildcards: The RD command does not support wildcards for directory names. You need to specify the exact directory name or path.
 
