@@ -8,9 +8,9 @@ Note: WMIC is deprecated as of 2021, and while it will still function for a few 
 1. Syntax and Usage
 
 [Syntax]
- WMIC [global_switch(es)] Alias [options] [format]
- WMIC [global_switch(es)] Command
- WMIC [global_switch:value] [global_switch:value] Command
+WMIC [global_switch(es)] Alias [options] [format]
+WMIC [global_switch(es)] Command
+WMIC [global_switch:value] [global_switch:value] Command
 
 
 [Key Components]
