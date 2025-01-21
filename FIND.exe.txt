@@ -5,11 +5,11 @@ FIND is a command-line tool used to search for a text string in a file and displ
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 Search for a String in a File
 FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
 
-[Options]
+[OPTIONS]
 "string" - The text string to search for (must be in quotes).
  [pathname] - The drive and/or file(s) to search (wildcards accepted).
  /V - Display all lines not containing the specified string.
