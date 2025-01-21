@@ -58,39 +58,39 @@ Examples:
 4. Types of FOR Loops
 
 FOR with File or Folder Set
-This command will echo the names of all .txt files in the current directory.
 Example 1: To loop through a set of files or directories, you can specify a wildcard in the set.
+This command will echo the names of all .txt files in the current directory.
  FOR %%G IN (*.txt) DO echo %%G
 
 FOR with Recursive Search (/R)
-This will loop through all .txt files in the current directory and all subdirectories.
 Example 2: You can also use the /R flag to recursively process files or directories in subfolders.
+This will loop through all .txt files in the current directory and all subdirectories.
  FOR /R %%G IN (*.txt) DO echo %%G
 
 FOR with Folders
-This will loop through all folders in C:\Projects and echo their names.
 Example 3: To loop through directories, use the /D flag.
+This will loop through all folders in C:\Projects and echo their names.
  FOR /D %%G IN (C:\Projects\*) DO echo %%G
 
 FOR with Number List (/L)
-This loops from 1 to 10 with a step of 1.
 Example 4: You can loop through a range of numbers using the /L flag.
+This loops from 1 to 10 with a step of 1.
  FOR /L %%G IN (1, 1, 10) DO echo %%G
 
 FOR with File Contents (/F)
+Example 5: You can read the contents of a file or pocess command output line by line with the /F flag.
 This will echo each line from file.txt.
-Example 5: You can read the contents of a file or process command output line by line with the /F flag.
  FOR /F %%G IN (file.txt) DO echo %%G
 
-This will echo the output of the dir /b command (a list of filenames).
 Example 6: Reading command output.
+This will echo the output of the dir /b command (a list of filenames).
  FOR /F %%G IN ('dir /b') DO echo %%G
 
 
 5. Working with Variables Inside FOR Loops
 
-When using variables inside a FOR loop, you may need to use Delayed Variable Expansion to update the variable within each iteration. Without delayed expansion, the variable value won’t update until the entire loop finishes.
 Example 7: Without Delayed Expansion
+When using variables inside a FOR loop, you may need to use Delayed Variable Expansion to update the variable within each iteration. Without delayed expansion, the variable value won’t update until the entire loop finishes.
  @echo off
  SET count=1
  FOR /f "tokens=*" %%G IN ('dir /b') DO (
@@ -98,9 +98,9 @@ Example 7: Without Delayed Expansion
      set /a count+=1
  )
 
+Example 8: With Delayed Expansion
 In this example, %count% will always print 1 because variables aren’t updated during the loop iteration.
 Here, !count! will update for each iteration and show the correct incremented value.
-Example 8: With Delayed Expansion
  @echo off
  SET count=1
  SETLOCAL ENABLEDELAYEDEXPANSION
