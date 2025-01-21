@@ -35,7 +35,7 @@ Suppose names.txt contains the following:
 To search for the string Alice:
  FIND "Alice" names.txt
 
-[Output]
+|output|
  ---------- names.txt
  Alice
  Alice Bob
@@ -44,7 +44,7 @@ Example 2: Count the Number of Matching Lines
 To count the number of lines containing the string Alice:
  FIND /C "Alice" names.txt
 
-[Output]
+|output|
  ---------- names.txt
  ---------- Count = 2
 
@@ -52,7 +52,7 @@ Example 3: Search for a String Ignoring Case
 To search for the string alice (case-insensitive):
  FIND /I "alice" names.txt
 
-[Output]
+|output|
  ---------- names.txt
  Alice
  Alice Bob
@@ -61,7 +61,7 @@ Example 4: Display Lines That Do Not Contain the String
 To display all lines not containing the string Alice:
  FIND /V "Alice" names.txt
 
-[Output]
+|output|
  ---------- names.txt
  Bob
  Charlie
@@ -70,7 +70,7 @@ Example 5: Search Multiple Files Using Wildcards
 To search for the string Alice in all .txt files in the current directory:
  FIND "Alice" *.txt
 
-[Output]
+|output|
  ---------- names.txt
  Alice
  Alice Bob
