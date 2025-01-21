@@ -112,7 +112,7 @@ Set permissions using C#
 This example programmatically grants read-only (R) access to Domain\User on file.txt.
 
 
-5. Example Use
+5. Example Usage
 
 Example 1: Locking and Unlocking the Registry
 To lock a registry key so that it cannot be modified:
