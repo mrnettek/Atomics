@@ -77,25 +77,20 @@ Note: A "Reply" message in the output doesn't necessarily mean a successful ping
 4. Common Use Cases
 
 1. Verify Local TCP/IP Configuration
-
 Ping the loopback address to ensure TCP/IP is correctly installed:
  PING 127.0.0.1
-
 
 2. Verify Local Network Configuration
 Ping the IP address of your local machine to verify it is correctly configured:
  PING 192.168.1.100
 
-
 3. Verify Connectivity to Default Gateway
 Ping the default gateway to ensure the local network can access external networks:
  PING 192.168.1.1
 
-
 4. Test Connectivity to a Remote Host
 Ping a remote server or host to verify connectivity through a router:
  PING 8.8.8.8
-
 
 5. Use PING to Create a Delay
 Ping the loopback address multiple times to create a delay. For example, a delay of 5 seconds can be created by pinging 6 times:
@@ -111,24 +106,20 @@ Performance: PING, Get-CIMInstance, PSPING, and Test-Connection (PowerShell) all
 6. Examples
 
 1. Ping with Custom Timeout
-
 Set the timeout for each reply to 5 seconds:
  PING -w 5000 192.168.1.1
 
 
 2. Continuous Ping
-
 Ping a host until manually stopped, displaying the statistics:
  PING -t 192.168.1.1
 
 
 3. Ping with Custom Packet Size
-
 Ping a host with a buffer size of 64 bytes:
  PING -l 64 192.168.1.1
 
 
 4. Ping with Multiple Requests
-
 Send 5 ping requests to a host:
  PING -n 5 192.168.1.1
