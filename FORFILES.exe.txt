@@ -64,8 +64,8 @@ FORFILES will return an error level (%ERRORLEVEL%) based on the success or failu
 
 5. Examples
 
-This will print the name of each file in the current directory.
 Example 1: Execute a Command on All Files in the Current Directory
+This will print the name of each file in the current directory.
 To run a command on all files in the current directory (no subfolders):
  FORFILES /c "cmd /c echo @file"
 
