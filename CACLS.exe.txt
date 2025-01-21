@@ -5,12 +5,11 @@ CACLS (Change Access Control List) is a command-line utility used to display or 
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 CACLS pathname [options]
  pathname: The path to the file or folder whose ACLs you want to display or modify.
 
-
-2. Key Options
+[OPTIONS]
  /C: Continue on access denied errors. This option will allow the command to continue execution even if some access is denied during processing. This corresponds to /CONTINUE in newer commands.
  /D user: Deny access to the specified user. This option will explicitly deny permissions to a user or group.
  /E: Edit the ACL. This option allows you to modify the existing ACLs without changing other rights that are already in place.
@@ -37,7 +36,7 @@ CACLS pathname [options]
  /T: Search the specified pathname, including all subfolders. This option allows you to modify ACLs recursively.
 
 
-3. Important Notes
+2. Important Notes
 
 User and Group Names: You can specify either a user name or a group name (local or global) when using the options. If the user or group name contains spaces, you must enclose it in double quotes. For example, "Authenticated Users".
 
@@ -51,14 +50,16 @@ However, you can pipe the 'Y' character into the command to automatically confir
  ECHO Y| CACLS filename /g username:permission
 
 
-4. Limitations
+3. Limitations
 
 Open Files: If a file or folder is currently open (locked), you may not be able to change its permissions without first closing the file locks. You can manage open files in Computer Management ➞ Shared Folders ➞ Open files.
 
 Permissions Not Supported: CACLS cannot set the following permissions: Change permissions, Take ownership, Execute, and Delete. To set these permissions, you should use XCACLS.
 
 
-5. Example Usage
+4. Example Usage
+
+[EXAMPLES]
 
 Example 1: Display ACLs for a File
 To display the ACLs for a file called myfile.txt:
@@ -85,7 +86,7 @@ To modify the ACLs of all .txt files in the current directory and its subfolders
  CACLS *.txt /T /G "JohnDoe":F
 
 
-6. Error Levels
+5. Error Levels
  0: The command completed successfully.
  1: Invalid option or failure to apply ACLs.
  2: The file or directory was not found.
@@ -93,7 +94,7 @@ To modify the ACLs of all .txt files in the current directory and its subfolders
  145: The directory is not empty (when trying to delete a non-empty directory).
 
 
-7. Additional Notes
+[NOTES]
 
 Deprecated Command: CACLS has been deprecated, and icacls is recommended for more advanced functionality and better support.
 
