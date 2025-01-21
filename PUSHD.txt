@@ -34,7 +34,6 @@ Example 1: Check if Directory Exists
  IF %ERRORLEVEL% NEQ 0 GOTO :EOF
  :: other commands...
 
-
 Example 2: One-line Error Handling
  PUSHD "%~1" 2>nul || GOTO sub-error-failed
 
@@ -59,25 +58,18 @@ The PUSHD command sets the following ERRORLEVEL values:
 6. Examples
  
 Example 1: Change to a Specific Directory
-
 To change to a specific directory (C:\Program Files):
  PUSHD C:\Program Files
 
-
 Example 2: Use PUSHD with UNC Path
-
 To map a network drive temporarily for the UNC path \\server\share:
  PUSHD \\server\share
 
-
 Example 3: List Previously Used Paths
-
 If no path is specified, PUSHD will display a list of previously used paths:
  PUSHD
 
-
 Example 4: Check Directory Availability and Handle Errors
-
 In a batch script, check if a network path is available before proceeding:
  PUSHD \\server\share
  IF %ERRORLEVEL% NEQ 0 GOTO :Error
