@@ -5,11 +5,11 @@ FINDSTR is a command-line tool used to search for a string in files or input and
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 Search for a String in Files
 FINDSTR [/S] [/I] [/M] [/X] [/V] [/C] [/R] [/L] [/F:file] [string] [pathname(s)]
 
-[Options]
+[OPTIONS]
  [string] - The string or regular expression to search for.
  [pathname] - The drive and/or file(s) to search (wildcards accepted).
  /S - Search subdirectories.
