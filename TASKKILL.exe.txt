@@ -51,44 +51,31 @@ If you use /FI, the image name must include the file extension, or a wildcard *.
 3. Example Usage
 
 Example 1: Kill a Single Process by Image Name
-
 To forcefully kill all instances of notepad.exe:
  TASKKILL /F /IM notepad.exe
 
-
 Example 2: Kill a Process and Restart Windows Explorer
-
 To kill explorer.exe and then restart it:
  TASKKILL /F /IM explorer.exe
  START explorer.exe
 
-
 Example 3: Kill a Process by PID
-
 To kill processes with PIDs 1230, 1241, and 1253:
  TASKKILL /PID 1230 /PID 1241 /PID 1253
 
-
 Example 4: Kill a Process and All Its Child Processes
-
 To kill notepad.exe and any child processes it has started:
  TASKKILL /IM notepad.exe /T /F
 
-
 Example 5: Kill a Process on a Remote System
-
 To kill notepad.exe on a remote system (specified by /S system) under the user admin:
  TASKKILL /S remotePC /U admin /P password /IM notepad.exe /F
 
-
 Example 6: Kill Processes Based on a Filter
-
 To kill all processes with a memory usage greater than 100,000 KB:
  TASKKILL /FI "MemUsage gt 100000" /F
 
-
 Example 7: Kill Processes by User Name
-
 To kill all processes started by the user JohnDoe:
  TASKKILL /FI "Username eq JohnDoe" /F
   4. Error Levels
