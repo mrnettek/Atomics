@@ -136,24 +136,17 @@ File and Directory Exclusion:
 11. Examples
 
 Example 1: Copy a Folder and Its Subdirectories
-
 To copy the source directory to destination, including all subdirectories and empty folders:
  ROBOCOPY C:\source D:\destination /E
 
-
 Example 2: Copy Files with Logging
-
 To copy files and generate a log file:
  ROBOCOPY C:\source D:\destination /E /LOG:copylog.txt
 
-
 Example 3: Mirror a Directory Tree
-
 To mirror a directory tree, including deleting files in the destination that no longer exist in the source:
  ROBOCOPY C:\source D:\destination /MIR
 
-
 Example 4: Copy Files Using Multithreading
-
 To copy files with 16 threads for faster performance:
  ROBOCOPY C:\source D:\destination /MT:16
