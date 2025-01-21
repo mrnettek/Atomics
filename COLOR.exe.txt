@@ -47,7 +47,6 @@ Full 24-bit Color Support: Windows 10 also introduced full 24-bit color support 
 
 
 3. Color Assignment Order
-
 The color value is assigned in the following order:
  The DefaultColor registry value.
  The CMD /T command-line switch.
@@ -63,18 +62,15 @@ The color value is assigned in the following order:
 5. Examples
 
 Example 1: Set the Console Color to White on Blue
-
 To set the console background to blue (1) and the text to white (7):
  COLOR 17
 
 Example 2: Set the Console Color to Green on Black
-
 To set the console background to black (0) and the text to green (2):
  COLOR 02
 
 
 Example 3: Set the Console Color to Red on Yellow
-
 To set the console background to yellow (6) and the text to red (4):
  COLOR 64
 
