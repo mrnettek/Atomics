@@ -49,7 +49,7 @@ This creates a delay for the specified number of seconds (30 in this case).
  1: An invalid argument was provided (e.g., an incorrect value for the delay argument).
 
 
-5. Examples
+5. Example Usage
 
 Example 1: Start Applications in Sequence with a Delay
 Start Microsoft Word, wait for 10 seconds, then start Excel:
