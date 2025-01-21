@@ -5,13 +5,12 @@ WMIC (Windows Management Instrumentation Command-line) is a command-line tool us
 Note: WMIC is deprecated as of 2021, and while it will still function for a few more years, no new features will be added, and it may eventually be removed. WMIC is a Feature on Demand (FoD) preinstalled by default in Windows 11 versions 23H2 and 22H2. In the next Windows release, the WMIC FoD will be disabled by default.
 
 
-1. Syntax and Use
+1. Syntax and Usage
 
 [SYNTAX]
 WMIC [global_switch(es)] Alias [options] [format]
 WMIC [global_switch(es)] Command
 WMIC [global_switch:value] [global_switch:value] Command
-
 
 [KEY COMPONENTS]
 Alias: Defines the component or class of the system you want WMIC to interact with (CPU, MEMORYCHIP, DISKDRIVE).
@@ -94,15 +93,7 @@ Example of formatting output:
  WMIC CPU GET Caption /FORMAT:LIST
 
 
-5. Error Levels
-
-The WMIC command sets an ERRORLEVEL based on the success or failure of a command:
- 0 – Command executed successfully.
- 1 – Invalid arguments or syntax.
- 2 – General failure (e.g., inability to access remote system).
-
-
-6. Examples
+6. Example Usage
 
 Example 1: List All Running Processes
  WMIC PROCESS LIST
@@ -121,6 +112,16 @@ Example 5: Retrieve Network Adapter Information
 
 Example 6: Stop a Service
  WMIC SERVICE WHERE "Name='wuauserv'" CALL StopService
+
+
+[RETURN CODES]
+
+The WMIC command sets an ERRORLEVEL based on the success or failure of a command:
+
+Errorlevels
+ 0 – Command executed successfully.
+ 1 – Invalid arguments or syntax.
+ 2 – General failure (e.g., inability to access remote system).
 
 
 [NOTES]
