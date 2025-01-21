@@ -5,7 +5,7 @@ SCHTASKS.exe is a command-line tool used to create, modify, delete, or query sch
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 
 Create a new scheduled task:
  SCHTASKS /Create [Connect_Options] Create_Options /TN taskname
@@ -63,39 +63,32 @@ Query Options:
 
 3. Example Usage
 
-1. Create a scheduled task to run a program every day at 9:00 AM:
+Example 1: Create a scheduled task to run a program every day at 9:00 AM.
    SCHTASKS /Create /TN "MyTask" /TR "C:\path\to\program.exe" /SC DAILY /ST 09:00
 
-
-2. Display all scheduled tasks:
+Example 2: Display all scheduled tasks.
    SCHTASKS /Query
 
-
-3. Run a scheduled task on demand:
+Example 3: Run a scheduled task on demand.
    SCHTASKS /Run /TN "MyTask"
 
-
-4. Stop a running task:
+Example 4: Stop a running task.
    SCHTASKS /End /TN "MyTask"
 
-
-5. Delete a scheduled task:
+Example 5: Delete a scheduled task.
    SCHTASKS /Delete /TN "MyTask" /F
 
-
-6. Modify a scheduled task to disable it:
+Example 6:  Modify a scheduled task to disable it.
    SCHTASKS /Change /TN "MyTask" /DISABLE
 
-
-7. Display detailed information about a specific task:
+Example 7:  Display detailed information about a specific task.
    SCHTASKS /Query /TN "MyTask" /V
 
-
-8. Set a task to run at login with a 10-minute delay:
+Example 8: Set a task to run at login with a 10-minute delay.
    SCHTASKS /Create /TN "LoginTask" /TR "C:\path\to\program.exe" /SC ONLOGON /DELAY 00:10
 
 
-4. Notes
+[NOTES]
 
 Security: To run commands on a remote machine, administrator privileges are usually required.
 
