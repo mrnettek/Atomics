@@ -83,13 +83,12 @@ Process a file with spaces in its name:
 
 [ADVANCED]
 
+This ensures robust handling of irregular input formats.
 Handle missing data by replacing consecutive delimiters:
  FOR /F "tokens=1-3 delims=," %%A IN ('TYPE data.csv') DO (
      IF "%%B"=="" (SET FieldB=N/A)
      Echo %%A %%FieldB%% %%C
  )
-
-This ensures robust handling of irregular input formats.
 
 
 [NOTES]
