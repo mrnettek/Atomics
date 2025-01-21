@@ -21,24 +21,24 @@ NET ACCOUNTS [/FORCELOGOFF:{minutes | NO}] [/MINPWLENGTH:length]
  /DOMAIN: Applies the changes to the domain rather than the local computer.
 
 
-[Examples]
+[EXAMPLES]
 
-View the current password and logon restrictions for the local machine:
+Example 1: View the current password and logon restrictions for the local machine.
  NET ACCOUNTS
 
-View the password and logon restrictions for the domain:
+Example 2: View the password and logon restrictions for the domain.
  NET ACCOUNTS /DOMAIN
 
-Set the minimum password length to 8 characters:
+Example 3: Set the minimum password length to 8 characters.
  NET ACCOUNTS /MINPWLENGTH:8 /DOMAIN
 
-Set the maximum password age to 60 days:
+Example 4: Set the maximum password age to 60 days.
  NET ACCOUNTS /MAXPWAGE:60 /DOMAIN
 
-Prevent forced logoff when user accounts expire:
+Example 5: Prevent forced logoff when user accounts expire.
  NET ACCOUNTS /FORCELOGOFF:NO /DOMAIN
 
-Set passwords to never expire:
+Example 6: Set passwords to never expire.
  NET ACCOUNTS /MAXPWAGE:UNLIMITED /DOMAIN
 
 
@@ -65,19 +65,19 @@ The NET USER command is used to manage user accounts. You can add, delete, modif
 
 [Examples]
 
-Create a new user account 'LocalUser64' with the password 'Secr3t':
+Example 1: Create a new user account 'LocalUser64' with the password 'Secr3t'.
  NET USER LocalUser64 Secr3t /ADD
 
-View details of user account 'Ella':
+Example 2: View details of user account 'Ella'.
  NET USER Ella
 
-Change the password of user 'LocalUser64':
+Example 3: Change the password of user 'LocalUser64'.
  NET USER LocalUser64 NewPassword
 
-Delete user account 'Ella':
+Example 4: Delete user account 'Ella'.
  NET USER Ella /DELETE
 
-View and set user logon times for 'LocalUser64':
+Example 5: View and set user logon times for 'LocalUser64'.
  NET USER LocalUser64 /TIMES:ALL
 
 
@@ -101,16 +101,16 @@ The NET GROUP command is used to manage domain groups, and NET LOCALGROUP is use
 
 [Examples]
 
-Create a new local group 'LocalScanningGroup':
+Example 1: Create a new local group 'LocalScanningGroup'.
  NET LOCALGROUP LocalScanningGroup /ADD
  
-Add the new group to 'guests':
+Example 2: Add the new group to 'guests'.
  NET LOCALGROUP guests LocalScanningGroup /ADD
 
-Remove the group from 'guests':
+Example 3: Remove the group from 'guests'.
  NET LOCALGROUP guests LocalScanningGroup /DELETE
 
-Delete the local group 'LocalScanningGroup':
+Example 3: Delete the local group 'LocalScanningGroup'.
  NET LOCALGROUP LocalScanningGroup /DELETE
 
 
