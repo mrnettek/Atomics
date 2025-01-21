@@ -28,7 +28,7 @@ No Locking: TYPE does not lock the file while displaying its contents, making it
 Text Encoding: When working with text files that require different encoding (example ASCII to Unicode), TYPE can be used in combination with other commands like CHCP and CMD.EXE to handle conversions.
 
 
-4. Example Use
+4. Example Usage
 
 Example 1: Redirect Output to a New File
 To display the contents of file.txt and redirect it into a new file Newfile.txt:
