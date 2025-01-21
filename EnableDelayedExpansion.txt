@@ -15,7 +15,7 @@ With Delayed Expansion: Variables (!variable!) are expanded at execution time.
 2. Syntax and Usage
 
 [SYNTAX]
- SETLOCAL EnableDelayedExpansion
+SETLOCAL EnableDelayedExpansion
 
 Variable Expansion: Use !variable_name! for execution-time expansion.
  SET "var1=value1" & SET "var2=!var1!"
@@ -29,7 +29,7 @@ Basic Example Without Delayed Expansion
  SET "_var=first"
  SET "_var=second" & ECHO %_var%
 
-[Output] first
+|output| first
 
 With Delayed Expansion
  @echo off
@@ -37,7 +37,7 @@ With Delayed Expansion
  SET "_var=first"
  SET "_var=second" & ECHO %_var% !_var!
 
-[Output] first second
+|output| first second
 
 
 4. Delayed Expansion in Loops
@@ -49,7 +49,7 @@ Default Behavior Without Delayed Expansion
  FOR /L %%G IN (1,1,5) DO (ECHO [%_tst%] & SET /A _tst+=1)
  ECHO Total = %_tst%
 
-[Output]
+|output|
  [0]
  [0]
  [0]
@@ -64,7 +64,7 @@ With Delayed Expansion
  FOR /L %%G IN (1,1,5) DO (ECHO [!_tst!] & SET /A _tst+=1)
  ECHO Total = %_tst%
 
-[Output]
+|output|
  [0]
  [1]
  [2]
@@ -87,7 +87,7 @@ Using Subroutines to Avoid Delayed Expansion
  ECHO [%1] & SET /A _tst+=1
  GOTO :EOF
 
-[Output]
+|output|
  [1]
  [2]
  [3]
@@ -104,7 +104,7 @@ Without Delayed Expansion
  SET _html=Hello^>World
  ECHO %_html%
 
-[Output] A file named World is created due to redirection.
+|output| A file named World is created due to redirection.
 
 With Delayed Expansion
  @echo off
@@ -112,7 +112,7 @@ With Delayed Expansion
  SET _html=Hello^>World
  ECHO !_html!
 
-[Output] Hello>World
+|output| Hello>World
 
 
 7. Unexpected Behaviors
@@ -127,4 +127,4 @@ Example in PowerShell:
  $demo = "First"
  $demo = "Second"; echo $demo
 
-[Output] Second
+|output| Second
