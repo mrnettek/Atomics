@@ -3,15 +3,13 @@ NET - NET SESSION and NET FILE Command Guide with Examples
 The NET command is used to manage open files and user sessions on a computer or network. It provides functionality for viewing and managing user sessions, as well as managing open files on a shared server.
 
 
-1. Syntax and Usage
-
 [Syntax]
  NET SESSION
  NET SESSION [\\computername [/DELETE] | /LIST]
  NET FILE
  NET FILE [id [/CLOSE]]
 
-[Key]
+[Options]
  computername - A computer whose shared resources you want to view. This is usually the name of the server or remote machine.
  domainname - The domain whose sessions you wish to view. By default, all domains in the local area network (LAN) are displayed.
  /DELETE - End the session and close all open files associated with the session. If computername is omitted, all sessions will be ended.
@@ -19,15 +17,8 @@ The NET command is used to manage open files and user sessions on a computer or 
  id - The identification number of the file (from the NET FILE list) to close.
  /CLOSE - Close an open file and remove the file lock. This will disconnect other users and remove the lock on the file.
 
-Note:
 
-Administrator privileges are required to run the NET SESSION command. Running this from a non-elevated session will return an ERRORLEVEL = 5 Access Denied.
-The NET SESSION command requires the Server service to be running.
-
-To create file shares, the Server service must be running, which also requires 'File and Print Sharing' to be installed.
-
-
-2. Examples
+[EXAMPLES]
 
 Example 1: Display All Open Shared Files on the Server
 To display all open files and the lock IDs on the local server:
@@ -58,3 +49,11 @@ To do this without being prompted for confirmation:
 Example 6: Disconnect All Sessions from a Specific Machine
 To disconnect all sessions from a specific machine:
  NET SESSION \\ComputerName /DELETE
+
+
+[NOTES]
+
+Administrator privileges are required to run the NET SESSION command. Running this from a non-elevated session will return an ERRORLEVEL = 5 Access Denied.
+The NET SESSION command requires the Server service to be running.
+
+To create file shares, the Server service must be running, which also requires 'File and Print Sharing' to be installed.
