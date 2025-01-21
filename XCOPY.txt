@@ -68,47 +68,33 @@ Overwrite Prompts: The default behavior is to prompt for overwriting files unles
 7. Examples
 
 Example 1: Copy a Single File
-
 To copy a file from one location to another:
  XCOPY C:\source\file1.txt D:\destination\
 
-
 Example 2: Copy Multiple Files and Subdirectories
-
 To copy multiple files and subdirectories (excluding empty ones):
  XCOPY C:\source\*.* D:\destination\ /S
 
-
 Example 3: Copy All Files Including Empty Subdirectories
-
 To copy files and include empty subdirectories:
  XCOPY C:\source\*.* D:\destination\ /E
 
-
 Example 4: Copy Files Modified After a Specific Date
-
 To copy only files modified after a specific date:
  XCOPY C:\source\*.* D:\destination\ /D:12-25-2023
 
-
 Example 5: Exclude Specific Files During Copy
-
 To exclude specific files from being copied:
  XCOPY C:\source\*.* D:\destination\ /EXCLUDE:C:\exclude.txt
 
-
 Example 6: Copy a Folder Structure Only (No Files)
-
 To create the folder structure but not copy any files:
  XCOPY C:\source\*.* D:\destination\ /T
-
 
 Example 7: Overwrite Files Without Prompting
 To copy files and suppress the overwrite prompt:
  XCOPY C:\source\*.* D:\destination\ /Y
 
-
 Example 8: Use Network Compression During Copy
-
 To enable SMB network compression while copying:
  XCOPY C:\source\*.* D:\destination\ /COMPRESS
