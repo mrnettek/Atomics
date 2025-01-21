@@ -5,7 +5,7 @@ iCACLS is a command-line utility used to display, modify, and manage Access Cont
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 
 iCACLS Name [/grant[:r] User:Permission[...]]
          [/deny User:Permission[...]]
@@ -108,7 +108,7 @@ Find files that have the SID S-1-5-32-544 (Administrators group SID) in their AC
  145: The directory is not empty (when attempting to delete a non-empty directory).
 
 
-7. Additional Notes
+[NOTES]
 
 Symbolic Links: Use the /L option to modify the ACL of symbolic links directly, not their target.
 
