@@ -9,40 +9,39 @@ NET STOP [service]
 NET PAUSE [service]
 NET CONTINUE [service]
 
-[Key Parameters]
 Service - The name of the service as it appears in Control Panel > Services. Service names are typically the same as the Service Name field (not the display name) in the Services window.
 
 [Options]
 
-Purpose: Start a service that is stopped or disabled.
+Start a service that is stopped or disabled.
 Syntax: NET START [service]
  NET START
 
-Purpose: Stop a running service.
+Stop a running service.
 Syntax: NET STOP [service]
  NET STOP
 
-Purpose: Temporarily pause a running service (if supported by the service).
+Temporarily pause a running service (if supported by the service).
 Syntax: NET PAUSE [service]
  NET PAUSE
 
-Purpose: Resume a paused service (if supported by the service).
+Resume a paused service (if supported by the service).
 Syntax: NET CONTINUE [service]
  NET CONTINUE
 
 
 [Examples]
 
-List the basic Services:
+Example 1: List the basic services.
  NET HELP SERVICES
 
-List the running Services:
+Example 2: List the running services.
  NET START
 
-Stop the print spooler service and restart it:
+Example 3: Stop the print spooler service and restart it.
  NET STOP spooler && NET START spooler
 
-Stop a service with a long service name (use quotes):
+Example 4: Stop a service with a long service name (use quotes).
  NET STOP "HomeGroup Listener"
 
 
