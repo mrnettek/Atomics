@@ -78,7 +78,9 @@ To kill all processes with a memory usage greater than 100,000 KB:
 Example 7: Kill Processes by User Name
 To kill all processes started by the user JohnDoe:
  TASKKILL /FI "Username eq JohnDoe" /F
-  4. Error Levels
+
+
+4. Error Levels
   0: The command completed successfully.
   128: Invalid or incorrect command syntax.
   5: Access denied (due to insufficient permissions).
