@@ -14,7 +14,7 @@ FOR-Files-Rooted at Path
 FOR-Folders
  FOR /D %%parameter IN (folder_set) DO command
   
-FOR-List of numbers
+FOR-List of Numbers
  FOR /L %%parameter IN (start, step, end) DO command
  
 FOR-File Contents 
