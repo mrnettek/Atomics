@@ -11,118 +11,118 @@ REG QUERY [ROOT\]RegKey /VE
 
 [EXAMPLES]
 
-Query a specific value:
+Example 1: Query a specific value.
  REG QUERY HKLM\Software\Microsoft /V Version
 
-Query the default value of a key:
+Example 2: Query the default value of a key.
  REG QUERY HKCU\Environment /VE
 
-Search for a key containing specific data:
+Example 3: Search for a key containing specific data.
  REG QUERY HKLM\System /F "SystemDrive" /D /S
 
 
 2. Add Registry Keys and Values
 
-[Syntax]
+[SYNTAX]
 REG ADD [ROOT\]RegKey /V ValueName [/T DataType] [/D Data] [/F]
 
 [EXAMPLES]
 
-Add a string value:
+Example 1: Add a string value.
  REG ADD HKCU\Environment /V TestValue /T REG_SZ /D "Test Data" /F
 
-Add a default value to a key:
+Example 2: Add a default value to a key.
  REG ADD HKCU\Environment /VE /D "Default Value" /F
 
-Add a DWORD value:
+Example 3: Add a DWORD value.
  REG ADD HKLM\Software\Example /V NumberValue /T REG_DWORD /D 1234 /F
 
 
 3. Delete Registry Keys and Values
 
-[Syntax]
+[SYNTAX]
 REG DELETE [ROOT\]RegKey /V ValueName [/F]
 REG DELETE [ROOT\]RegKey /VE [/F]
 REG DELETE [ROOT\]RegKey /VA [/F]
 
 [EXAMPLES]
 
-Delete a specific value:
+Example 1: Delete a specific value.
  REG DELETE HKCU\Environment /V TestValue /F
 
-Delete the default value:
+Example 2: Delete the default value.
  REG DELETE HKCU\Environment /VE /F
 
-Delete all values under a key:
+Example 3: Delete all values under a key.
  REG DELETE HKCU\Environment /VA /F
 
 
 4. Export and Import Registry Keys
 
-[Syntax]
+[SYNTAX]
 REG EXPORT [ROOT\]RegKey FileName.reg [/Y]
 REG IMPORT FileName.reg
 
 [EXAMPLES]
 
-Export a registry key:
+Example 1: Export a registry key.
  REG EXPORT HKCU\Environment Backup.reg /Y
 
-Import a registry key:
+Example 2: Import a registry key.
  REG IMPORT Backup.reg
 
 
 5. Save and Restore Registry Hives
 
-[Syntax]
+[SYNTAX]
 REG SAVE [ROOT\]RegKey FileName.hiv [/Y]
 REG RESTORE [ROOT\]RegKey FileName.hiv
 
 [EXAMPLES]
 
-Save a registry key:
+Example 1: Save a registry key.
  REG SAVE HKLM\Software\Example Example.hiv /Y
 
-Restore a registry key:
+Example 2: Restore a registry key.
  REG RESTORE HKLM\Software\Example Example.hiv
 
 
 6. Copy Registry Keys
 
-[Syntax]
+[SYNTAX]
 REG COPY [\SourceMachine\][ROOT\]RegKey [\DestMachine\][ROOT\]RegKey
 
 [EXAMPLES]
-Copy a key from one location to another:
+Example 1: Copy a key from one location to another.
  REG COPY HKCU\Environment HKLM\Software\Environment
 
 
 7. Compare Registry Keys
 
-[Syntax]
+[SYNTAX]
 REG COMPARE [ROOT\]RegKey [ROOT\]RegKey [/V ValueName] [/s]
 
 [EXAMPLES]
 
-Compare two keys:
+Example 1: Compare two keys.
  REG COMPARE HKCU\Environment HKLM\Environment
 
-Compare a specific value:
+Example 2: Compare a specific value.
  REG COMPARE HKCU\Environment HKLM\Environment /V TestValue
 
 
 8. Load and Unload Registry Keys
 
-[Syntax]
+[SYNTAX]
 REG LOAD KeyName FileName
 REG UNLOAD KeyName
 
 [EXAMPLES]
 
-Load a hive file:
+Example 1: Load a hive file.
  REG LOAD HKLM\TempHive TempFile.hiv
 
-Unload a hive file:
+Example 2: Unload a hive file.
  REG UNLOAD HKLM\TempHive
 
 
