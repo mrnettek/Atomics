@@ -13,8 +13,7 @@ FORFILES [/p Path] [/m SrchMask] [/s] [/c Command] [/d [+ | -] {date | dd}]
  /c Command: The command to execute for each file. The command should be wrapped in double quotes. The default is "cmd /c echo @file".
  /d [+ | -] {date | dd}: Select files with a last modified date greater than or equal to the specified date (+), or less than or equal to (-) the specified date.
 
-
-2. Key Options
+[Options]
  /p Path: Specifies the directory to search. If no path is given, it defaults to the current directory.
  /m SrchMask: Specifies the search pattern for files. You can use wildcards:
  * matches any string of characters.
@@ -32,7 +31,7 @@ FORFILES [/p Path] [/m SrchMask] [/s] [/c Command] [/d [+ | -] {date | dd}]
  date: You can specify an exact date in the format relevant to your region (example MM/DD/YYYY or DD/MM/YYYY).
 
 
-3. Command Variables
+2. Command Variables
 
 When defining the command to execute, you can use the following special variables to refer to properties of each file:
  @file: The name of the file.
@@ -48,14 +47,14 @@ When defining the command to execute, you can use the following special variable
 You can include special characters in the command line by using their hexadecimal code, (example 0x09 for a tab).
 
 
-4. Date Formats
+3. Date Formats
 
 Date Format: The date used for /d is region-specific. It is typically in the format MM/DD/YYYY or DD/MM/YYYY depending on your locale.
 
 Last Modified Date: The last modified date is taken to be midnight (00:00), so using /D +[current date] will find files modified today.
 
 
-5. Error Levels
+4. Error Levels
 
 FORFILES will return an error level (%ERRORLEVEL%) based on the success or failure of the command:
  0: The command executed successfully.
@@ -63,41 +62,35 @@ FORFILES will return an error level (%ERRORLEVEL%) based on the success or failu
  2: Invalid command or arguments were provided.
 
 
-6. Examples
+5. Examples
 
+This will print the name of each file in the current directory.
 Example 1: Execute a Command on All Files in the Current Directory
 To run a command on all files in the current directory (no subfolders):
  FORFILES /c "cmd /c echo @file"
-
-This will print the name of each file in the current directory.
-
 
 Example 2: Execute a Command on Files with a Specific Extension
 To run a command on all .txt files in the current directory:
  FORFILES /m *.txt /c "cmd /c echo @file"
 
-
 Example 3: Delete Files Older Than 30 Days
 To delete files that were last modified more than 30 days ago:
  FORFILES /d -30 /c "cmd /c del @file"
-
 
 Example 4: Execute a Command in Subfolders
 To run a command on all .log files in the current directory and all subdirectories:
  FORFILES /s /m *.log /c "cmd /c del @file"
 
-
 Example 5: Execute a Command on Files Modified After a Specific Date
 To run a command on files modified on or after 01/01/2023:
  FORFILES /d +01/01/2023 /c "cmd /c echo @file"
-
 
 Example 6: Execute a Command Based on File Attributes
 To select and run a command on all hidden files:
  FORFILES /A:H /c "cmd /c echo @file"
 
 
-7. Additional Notes
+6. Additional Notes
 
 File Selection: FORFILES allows you to specify files using wildcards, making it a flexible tool for batch processing large sets of files.
 
