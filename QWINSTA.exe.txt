@@ -5,13 +5,13 @@ QUERY SESSION (also known as Qwinsta.exe) is used to display information about u
 
 1. Syntax and Usage
 
-[Syntax]
+[SYNTAX]
 Display Information About User Sessions
  QUERY SESSION [/server:ServerName] [/mode] [/flow] [/connect] [/counter]
  QUERY SESSION UserName [/server:ServerName] [/mode] [/flow] [/connect] [/counter]
  QUERY SESSION [SessionName | SessionID] [/server:ServerName] [/mode] [/flow] [/connect] [/counter]
 
-[Key]
+[OPTIONS]
  UserName - The logon username of the user whose sessions you want to query.
  SessionName - The name of the session you want to query.
  SessionID - The ID of the session you want to query.
