@@ -27,7 +27,6 @@ ROBOCOPY Source_folder Destination_folder [files_to_copy] [options]
 
 
 3. Copy Options
-
 /COPY:copyflags: Specifies what to copy for files. Default is /COPY:DAT. Flags include:
  D = Data
  A = Attributes
