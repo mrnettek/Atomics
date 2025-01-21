@@ -21,7 +21,7 @@ Temporary Drive Mapping: If a UNC path (\\server\share) is used with PUSHD, a te
  1: The stack is empty, or the previous directory cannot be accessed.
 
 
-4. Examples
+4. Example Usage
 
 Example 1: Basic Directory Navigation
 Use PUSHD to change to C:\utils:
