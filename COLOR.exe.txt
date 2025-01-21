@@ -82,4 +82,5 @@ To set the console background to yellow (6) and the text to red (4):
 6. Additional Notes
 
 ANSI Color Escapes: If you want to change the color of individual words, characters, or paragraphs, you can use ANSI color escapes. This feature is available in Windows versions greater than 1511.
+
 Command Extensions: If command extensions are disabled, the COLOR command will not function.
