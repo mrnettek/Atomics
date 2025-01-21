@@ -55,15 +55,15 @@ The color value is assigned in the following order:
 
 4. Examples
 
-Example 1: Set the Console Color to White on Blue.
+Example 1: Set the Console Color to White on Blue
 To set the console background to blue (1) and the text to white (7):
  COLOR 17
 
-Example 2: Set the Console Color to Green on Black.
+Example 2: Set the Console Color to Green on Black
 To set the console background to black (0) and the text to green (2):
  COLOR 02
 
-Example 3: Set the Console Color to Red on Yellow.
+Example 3: Set the Console Color to Red on Yellow
 To set the console background to yellow (6) and the text to red (4):
  COLOR 64
 
