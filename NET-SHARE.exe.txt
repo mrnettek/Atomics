@@ -114,18 +114,14 @@ View share details:
 To display details of a specific share:
  NET SHARE workgroups
 
-
 To display details of all local shares:
  NET SHARE
-
 
 To retrieve share details from a remote machine, use WMIC:
  WMIC SHARE
 
-
 Create a new local share with remark and cache settings:
  NET SHARE workgroups=C:\work /REMARK:"workgroups share" /CACHE:No
-
 
 Delete a share:
  NET SHARE workgroups /DELETE
