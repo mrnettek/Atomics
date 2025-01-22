@@ -1,0 +1,67 @@
+IF-ELSE Command Guide with Examples
+
+The IF-ELSE statement in Batch scripting allows you to execute different commands based on whether a condition is true or false. It's used for decision-making in scripts, enabling conditional execution of code blocks. Batch scripts often use IF for checking file existence, variable values, or system properties, and ELSE provides an alternative action if the condition is not met.
+
+
+[SYNTAX]
+IF condition (
+    command_to_execute_if_true
+) ELSE (
+    command_to_execute_if_false
+)
+
+condition: The expression to test. It can be a comparison, a check for file existence, or even an environment variable check.
+
+command_to_execute_if_true: This command is executed if the condition evaluates to true.
+command_to_execute_if_false: This command is executed if the condition evaluates to false.
+
+
+[EXAMPLES]
+
+
+Comparison Operators: You can use operators like ==, NEQ, LSS, LEQ, GTR, and GEQ for comparisons. Example:
+
+IF %variable% == value (
+    echo Variable matches value.
+) ELSE (
+    echo Variable does not match value.
+)
+
+
+File Existence: The EXIST keyword checks whether a file or directory exists:
+
+IF EXIST "C:\myfolder" (
+    echo Folder exists.
+) ELSE (
+    echo Folder does not exist.
+)
+
+
+String Comparison: The IF statement can also be used for string comparisons:
+
+IF "%variable%" == "value" (
+    echo String matches.
+) ELSE (
+    echo String does not match.
+)
+
+
+Case Sensitivity: Batch scripting is case-insensitive for strings. However, to perform a case-sensitive comparison, you can use IF /I.
+
+
+Nested IF Statements: You can nest IF statements inside each other for more complex conditions:
+
+IF %var1% == value (
+    IF %var2% == another_value (
+        echo Both conditions are true.
+    ) ELSE (
+        echo Second condition is false.
+    )
+) ELSE (
+    echo First condition is false.
+)
+
+
+
+[NOTES]
+
