@@ -61,7 +61,7 @@ Query Options:
  /V: Verbose output with detailed information.
 
 
-3. Example Usage
+[EXAMPLES]
 
 Example 1: Create a scheduled task to run a program every day at 9:00 AM.
    SCHTASKS /Create /TN "MyTask" /TR "C:\path\to\program.exe" /SC DAILY /ST 09:00
