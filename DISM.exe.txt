@@ -112,7 +112,9 @@ Example 5: Optimize Image By Removing Unused Components
  DISM.exe /Online /Cleanup-Image /StartComponentCleanup
 
 
-Return Codes
+[RETURN CODES]
+
+Errorlevels
  0: Successful execution.
  1: Error occurred during execution.
  3010: Restart required.
