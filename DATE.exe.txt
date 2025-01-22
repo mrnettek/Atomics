@@ -14,30 +14,7 @@ Set the System Date
  DATE [date_today]
 
 
-
-2. Examples
-
-Example 1: Display the Current Date
- DATE /T
-
-[Output]
- Mon 01/20/2025
-
-
-Example 2: Set the Date Interactively
- DATE
-
-The current date is: Tue 01/17/2032
- Enter the new date (mm-dd-yy): _
-
-Set the Date Directly
- DATE 01-18-2032
-
-[Output]
- The current date is: Wed 01/18/2032
-
-
-3. Default Output by Locale
+2. Default Output by Locale
 
 The output format of DATE /T depends on the system’s region settings. Below are examples for different locales:
  Country/Locale	Format	Example
@@ -48,6 +25,32 @@ The output format of DATE /T depends on the system’s region settings. Below ar
  France	DD/MM/YYYY	17/01/2032
 
 
-4. Historical Context
+[EXAMPLES]
+
+Example 1: Display the Current Date
+ DATE /T
+
+| output |
+ Mon 01/20/2025
+
+
+Example 2: Set the Date Interactively
+ DATE
+
+| output |
+The current date is: Tue 01/17/2032
+ Enter the new date (mm-dd-yy): _
+
+Set the Date Directly
+ DATE 01-18-2032
+
+| output |
+ The current date is: Wed 01/18/2032
+
+
+
+
+
+[NOTES]
 
 The DATE command has been part of MS-DOS and Windows command-line tools for decades. It provides a straightforward way to check or update the system date, ensuring compatibility with scripts and administrative tasks.
