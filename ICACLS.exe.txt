@@ -67,7 +67,7 @@ You can use (OI) for object inherit and (CI) for container inherit with director
  /reset: Reset ACLs to the default inherited permissions for the specified file(s) or folder(s).
 
 
-5. Example Usage
+[EXAMPLES]
 
 Example 1: Grant Read Access to a User
 Grant Read access to the user "JohnDoe" for the file C:\example.txt:
