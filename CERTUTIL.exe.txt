@@ -108,9 +108,9 @@ Example 7: Sync Certificates with Windows Update
  CERTUTIL -syncWithWU "C:\path\to\destination"
 
 
-5. Error Levels
+[RETURN CODES]
 
-CERTUTIL sets the following exit codes based on the outcome of the command:
+Errorlevels
  0: The command completed successfully.
  1: An invalid option was specified or the command failed.
  2: The specified certificate or component was not found.
