@@ -293,7 +293,6 @@ foreach ($line in $configLines) {
 
 
 
-
 --------------------------------------------------------------------------------
 12) Escaping Whitespace Characters  
 
@@ -375,12 +374,114 @@ $Matches[0]  # "Résumé"
 
 
 --------------------------------------------------------------------------------
-
 21) Extract Subdomains  
 
 $domain = "sub.example.com"  
 $domain -match "^(\w+)\."  
 $Matches[1]  # "sub"  
+
+
+
+--------------------------------------------------------------------------------
+22) DETECTING REPEATED WORDS
+
+22.1) Finding Consecutive Duplicate Words
+
+$text = "This is is a sample text text for testing."
+[regex]::Matches($text, "\b(?<word>\w+)\s+\k<word>\b") | ForEach-Object {
+    "Repeated word: " + $_.Groups["word"].Value
+}
+
+# Explanation:
+# \b          Word boundary
+# (?<word>\w+)   Named capturing group "word"
+# \s+            One or more whitespace characters
+# \k<word>       Backreference to the named group "word"
+# This finds instances like "is is" or "text text".
+
+
+
+--------------------------------------------------------------------------------
+23) VALIDATING A PHONE NUMBER FORMAT
+
+23.1) Simple US Phone Number
+
+function Is-ValidPhoneNumber($phone) {
+    # Pattern: (###) ###-#### or ###-###-####
+    $pattern = '^\(?\d{3}\)?[-\s]?\d{3}-\d{4}$'
+    return $phone -match $pattern
+}
+
+Is-ValidPhoneNumber "(555) 123-4567"   # True
+Is-ValidPhoneNumber "555-123-4567"     # True
+Is-ValidPhoneNumber "55-123-4567"      # False
+
+
+
+--------------------------------------------------------------------------------
+24) MATCHING A DATE FORMAT
+
+24.1) Validate a Date in MM/DD/YYYY Format
+
+function Is-ValidDate($input) {
+    $pattern = '^(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01])/\d{4}$'
+    return $input -match $pattern
+}
+
+Is-ValidDate "04/30/2022"  # True
+Is-ValidDate "13/15/2022"  # False (13 is not a valid month, 15 is valid as day but month fails)
+
+
+
+--------------------------------------------------------------------------------
+25) IGNORING WHITESPACE IN PATTERNS (?x)
+
+25.1) Use (?x) for Readable Regex
+
+$pattern = @'
+(?x)         # Turn on extended (ignore-whitespace) mode
+    ^        # Start of string
+    (?<area>\d{3})  # Area code
+    -        # Dash
+    (?<main>\d{4})  # Main number
+    $        # End of string
+'@
+
+"123-4567" -match $pattern
+$Matches["area"]  # 123
+$Matches["main"]  # 4567
+
+# Explanation:
+# (?x) allows spacing and comments inside the pattern without affecting the matching.
+
+
+
+--------------------------------------------------------------------------------
+26) MATCHING BALANCED PARENTHESES (ADVANCED)
+
+26.1) Capture Text with Properly Paired Parentheses
+
+$text = "Function(my(arg), value), anotherFunc(123)"
+$pattern = '
+    \(          # Opening parenthesis
+    (?>         # Atomic grouping to prevent backtracking
+      [^()]+    # Any characters except parentheses
+      |         # OR
+      \( (?<depth>)  # If we see an opening parenthesis, increase depth
+      |         # OR
+      \) (?<-depth>) # If we see a closing parenthesis, decrease depth
+    )*          # Repeat as needed
+    (?(depth)(?!))  # If depth is not zero, fail (i.e. parentheses not balanced)
+    \)
+'
+
+[regex]::Matches($text, $pattern, "IgnorePatternWhitespace") | ForEach-Object {
+    "Balanced parentheses match: " + $_.Value
+}
+
+# Explanation:
+# - This uses .NET's balancing group syntax (?<depth>) and (?<-depth>) to track nesting.
+# - If any parentheses remain "open" (depth != 0), the pattern fails.
 
 
 
