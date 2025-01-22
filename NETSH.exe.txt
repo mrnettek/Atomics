@@ -7,8 +7,6 @@ NETSH (Network Shell) is a command-line utility used for configuring network int
 [SYNTAX]
 NETSH [Context] [sub-Context] command
 
- Where:
-
  Context: The area of configuration (example firewall, routing).
  sub-Context: The specific part of the context being modified (example configuring a specific service).
  command: The action to be performed (example add, delete, show).
