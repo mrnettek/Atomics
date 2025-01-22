@@ -59,6 +59,9 @@ Example 3: Take ownership of a file on a remote computer.
 Example 4: Take ownership of files in a folder but skip directories where permission issues exist.
  takeown.exe /f "D:\demo\*" /r /d N
 
+
+[RETURN CODES]
+
 Errorlevels
  0: Ownership successfully taken.
  1: Invalid parameters or failed operation (e.g., permission issues).
