@@ -68,7 +68,12 @@ Maximum of 15 delimiters.
  /d Delimiters
 
 
-2. Examples
+3. Common Uses
+
+SETX is commonly used in scripts or batch files to set environment variables permanently.
+
+Useful for adjusting system or user settings without requiring manual changes through the control panel.
+
 
 [EXAMPLES]
 
@@ -93,18 +98,11 @@ This searches for "SearchString" in file.txt and sets MY_VAR based on the matchi
  SETX MY_VAR /f "file.txt" /r 0,0 "SearchString"
 
 
-2. Error Handling
+[RETURN CODES]
 
 Errorlevels
  0: The command was successful.
  1: An error occurred during execution, such as a file or registry path not being found.
-
-
-3. Common Uses
-
-SETX is commonly used in scripts or batch files to set environment variables permanently.
-
-Useful for adjusting system or user settings without requiring manual changes through the control panel.
 
 
 [NOTES]
