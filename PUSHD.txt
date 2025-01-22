@@ -48,14 +48,8 @@ When a batch script is run as Administrator, the default directory is often set 
 This will set the current directory to the directory where the batch script is located.
 
 
-5. Error Levels
 
-The PUSHD command sets the following ERRORLEVEL values:
- 0: If the directory was successfully changed.
- 1: If the directory does not exist or is not accessible, or if an invalid switch was used.
-
-
-6. Examples
+[EXAMPLES]
  
 Example 1: Change to a Specific Directory
 To change to a specific directory (C:\Program Files):
@@ -74,6 +68,13 @@ In a batch script, check if a network path is available before proceeding:
  PUSHD \\server\share
  IF %ERRORLEVEL% NEQ 0 GOTO :Error
  :: Proceed with further commands...
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: If the directory was successfully changed.
+ 1: If the directory does not exist or is not accessible, or if an invalid switch was used.
 
 
 [NOTES]
