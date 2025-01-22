@@ -96,8 +96,6 @@ Example 2: Delete Admin Share (Not Recommended)
 Note: Deleting an admin share like C$ is not recommended, and the share will reappear after a reboot unless the AutoShareServer registry key is disabled.
 
 
-6. Examples
-
 [EXAMPLES]
 
 View share details:
