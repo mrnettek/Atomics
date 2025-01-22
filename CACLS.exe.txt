@@ -86,7 +86,9 @@ To modify the ACLs of all .txt files in the current directory and its subfolders
  CACLS *.txt /T /G "JohnDoe":F
 
 
-5. Error Levels
+[RETURN CODES]
+
+Errorlevels
  0: The command completed successfully.
  1: Invalid option or failure to apply ACLs.
  2: The file or directory was not found.
