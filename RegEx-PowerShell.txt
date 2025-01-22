@@ -1,0 +1,395 @@
+--------------------------------------------------------------------------------
+POWERSELL REGEX EXAMPLES
+--------------------------------------------------------------------------------
+
+1) BASIC MATCHING
+
+1.1) Using -match for Boolean Checks
+
+# Returns True if "Hello" is found in the string
+"Hello World" -match "Hello"
+
+# Returns False if "Bye" is not found in the string
+"Hello World" -match "Bye"
+
+- The -match operator returns $true or $false depending on whether the pattern is found.
+- PowerShell stores captured submatches in $Matches if your pattern has parentheses (capturing groups).
+
+
+1.2) Case-Insensitive Matching
+
+# By default, -match is case-insensitive
+"Hello World" -match "hello"    # returns True
+
+# For case-sensitive matching
+"Hello World" -cmatch "hello"   # returns False
+
+
+1.3) Using -notmatch
+
+# Returns True if "Bye" is NOT found
+"Hello World" -notmatch "Bye"   # returns True
+
+
+
+--------------------------------------------------------------------------------
+2) CAPTURING GROUPS
+
+2.1) Simple Capturing Group
+
+$string = "Contact: name@example.com"
+$string -match "([\w-\.]+)@([\w-\.]+)"
+
+# Explanation:
+#   ([\w-\.]+)  Capture group 1: word chars, dashes, dots
+#   @           Literal "@"
+#   ([\w-\.]+)  Capture group 2: word chars, dashes, dots
+
+$Matches[0]  # The entire match: "name@example.com"
+$Matches[1]  # Capture group 1: "name"
+$Matches[2]  # Capture group 2: "example.com"
+
+
+2.2) Named Capturing Groups
+
+$string = "Contact: name@example.com"
+$string -match "(?<username>[\w-\.]+)@(?<domain>[\w-\.]+)"
+
+$Matches["username"]  # "name"
+$Matches["domain"]    # "example.com"
+
+
+--------------------------------------------------------------------------------
+3) SPLITTING STRINGS WITH REGEX
+
+3.1) -split with a Simple Delimiter
+
+# Split by non-alphanumeric characters
+$data = "John,Doe;25|Developer"
+$parts = $data -split "\W+"
+$parts  # Result: ["John", "Doe", "25", "Developer"]
+
+
+3.2) Capturing Separators (Advanced)
+
+$data = "Key1=Value1;Key2=Value2;Key3=Value3"
+$pieces = $data -split '([=;])'
+# This includes '=' and ';' in the result array:
+# Key1
+# =
+# Value1
+# ;
+# Key2
+# =
+# Value2
+# ;
+# Key3
+# =
+# Value3
+
+
+
+--------------------------------------------------------------------------------
+4) REPLACING TEXT
+
+4.1) Using -replace Operator
+
+# Replace spaces with underscores
+"Hello World Powershell" -replace " ", "_"
+# Result: "Hello_World_Powershell"
+
+# Remove all digits from a string
+"File123Name456" -replace "\d", ""
+# Result: "FileName"
+
+
+4.2) Using Capture Groups with -replace
+
+# Reorder data in a string: "Doe, John" => "John Doe"
+$name = "Doe, John"
+$name -replace '(\w+), (\w+)', '$2 $1'
+
+# Explanation:
+# (\w+) = capture group 1 (Doe)
+# ,     = literal comma
+#  (\w+) = capture group 2 (John)
+# '$2 $1' rearranges the captures
+
+
+4.3) Adding a Counter or Complex Logic in Replacement
+
+$text = "Item: A, Item: B, Item: C"
+$counter = 0
+$regex = [regex]"Item: ([A-Z])"
+
+$result = $regex.Replace($text, {
+    param($match)
+    $counter++
+    "Item$($counter): $($match.Groups[1].Value)"
+})
+
+# Result: "Item1: A, Item2: B, Item3: C"
+
+
+
+--------------------------------------------------------------------------------
+5) VALIDATING PATTERNS
+
+5.1) Using [regex]::IsMatch()
+
+if ([regex]::IsMatch("Hello123", "^[A-Za-z]+\d+$")) {
+    "String starts with letters and ends with digits."
+} else {
+    "Pattern not matched."
+}
+
+- [regex]::IsMatch() returns $true or $false, similar to -match.
+- Typically used if you need to interact with .NET features directly.
+
+
+
+--------------------------------------------------------------------------------
+6) SELECT-STRING FOR FILE SEARCHES
+
+# Search for lines containing "Error" in log.txt
+Select-String -Path "log.txt" -Pattern "Error"
+
+# Search for lines matching an IP address in multiple .log files
+Select-String -Path "*.log" -Pattern "\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
+
+# Case-sensitive search
+Select-String -Path "log.txt" -Pattern "ERROR" -CaseSensitive
+
+- Select-String returns match objects with line numbers, matched text, etc.
+
+
+
+--------------------------------------------------------------------------------
+7) USING switch -Regex
+
+$textLines = @(
+    "INFO: This is an info line",
+    "WARN: This is a warning",
+    "ERROR: This is an error",
+    "DEBUG: Debug details here",
+    "INFO: Another info line"
+)
+
+switch -Regex ($textLines) {
+    "^INFO:"  { "Found an INFO line: $_" }
+    "^WARN:"  { "Found a WARN line: $_" }
+    "^ERROR:" { "Found an ERROR line: $_" }
+    default   { "No special match for: $_" }
+}
+
+
+
+--------------------------------------------------------------------------------
+8) LOOKAROUNDS (ADVANCED)
+
+8.1) Positive Lookbehind
+
+$string = "Secret: 12345"
+$string -match "(?<=Secret:\s)\d+"
+$Matches[0]  # "12345"
+
+- (?<=Secret:\s) asserts that "Secret: " appears before the digits, but doesn't include it in the match.
+
+
+8.2) Negative Lookahead
+
+$lines = @(
+    "UserA: Operation1",
+    "UserB: Operation2",
+    "Guest: Operation3"
+)
+
+foreach ($line in $lines) {
+    if ($line -match "Guest(?!: Admin)") {
+        "Line matched negative lookahead: $line"
+    }
+}
+
+- (?! ) is a negative lookahead, asserting "Guest" is NOT followed by ": Admin".
+
+
+
+--------------------------------------------------------------------------------
+9) MULTILINE AND SINGLELINE MODES
+
+9.1) Singleline Mode (?s)
+
+$text = "Line1`nLine2`nLine3"
+$text -match "(?s)Line1.*Line3"
+# Without (?s), "." does not match across newlines.
+
+
+9.2) Multiline Mode (?m)
+
+$text = "Line1`nLine2`nLine3"
+$text -match "(?m)^Line2$"
+# ^ and $ match the start and end of each line in multiline mode.
+
+
+
+--------------------------------------------------------------------------------
+10) ESCAPING SPECIAL CHARACTERS
+
+# To match a literal asterisk "*"
+"Test*String" -match "\*"
+
+# Safely escape arbitrary user input
+$userInput = "Test*String"
+$escapedInput = [regex]::Escape($userInput)
+"Test*String" -match $escapedInput  # True
+
+
+
+--------------------------------------------------------------------------------
+11) PRACTICAL EXAMPLES
+
+11.1) Extract All URLs from Text
+
+$text = "Check out https://example.com/page and http://another.com."
+$urlPattern = "https?://\S+"
+
+if ($text -match $urlPattern) {
+    "Found URL: $Matches[0]"
+}
+
+# To find all matches:
+[regex]::Matches($text, $urlPattern) | ForEach-Object {
+    $_.Value
+}
+
+
+11.2) Validate an IPv4 Address
+
+function Is-ValidIPv4($address) {
+    $pattern = '^(25[0-5]|2[0-4]\d|[01]?\d?\d)\.' +
+               '(25[0-5]|2[0-4]\d|[01]?\d?\d)\.' +
+               '(25[0-5]|2[0-4]\d|[01]?\d?\d)\.' +
+               '(25[0-5]|2[0-4]\d|[01]?\d?\d)$'
+    return $address -match $pattern
+}
+
+Is-ValidIPv4 "192.168.1.1"       # True
+Is-ValidIPv4 "999.999.999.999"   # False
+
+
+11.3) Scrape Values from a Config File
+
+$configLines = @(
+    "server=production",
+    "port=443",
+    "timeout=30"
+)
+
+foreach ($line in $configLines) {
+    if ($line -match '^(?<key>[^=]+)=(?<value>.+)$') {
+        "Key: $($Matches['key']), Value: $($Matches['value'])"
+    }
+}
+
+
+
+
+--------------------------------------------------------------------------------
+12) Escaping Whitespace Characters  
+
+# Match a string with tabs or spaces  
+"Text with tabs	 and spaces" -match "\s+"  
+$Matches[0]  # "tabs   "  
+
+
+
+--------------------------------------------------------------------------------
+13) Extract Domain from URL  
+
+$url = "https://www.example.com/path/page"  
+$url -match "https?://([\w\.]+)"  
+$Matches[1]  # "www.example.com"  
+
+
+
+--------------------------------------------------------------------------------
+14) Extract Numeric Ranges  
+
+$input = "Pages 12-34, 45-67"  
+$input -match "\d{1,5}-\d{1,5}"  
+$Matches[0]  # "12-34"  
+
+
+
+--------------------------------------------------------------------------------
+15) Match Hexadecimal Values  
+
+$data = "Color: #FFAABB and #123456"  
+$data -match "#[0-9A-Fa-f]{6}"  
+$Matches[0]  # "#FFAABB"  
+
+
+
+--------------------------------------------------------------------------------
+16) Validate Email Format  
+
+$email = "user@example.com"  
+$email -match "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"  
+$true  
+
+
+
+--------------------------------------------------------------------------------
+17) Extract Numbers from a String  
+
+$text = "Order 123, Ref 456"  
+[regex]::Matches($text, "\d+") | ForEach-Object { $_.Value }  
+# Result: ["123", "456"]  
+
+
+
+--------------------------------------------------------------------------------
+18) Match Word Boundaries  
+
+"hello_world" -match "\bworld\b"  # False (underscore not a boundary)  
+"hello world" -match "\bworld\b"  # True  
+
+
+
+--------------------------------------------------------------------------------
+19) Remove Leading Zeros  
+
+$text = "007, 010, 001"  
+$text -replace "\b0+", ""  
+# Result: "7, 10, 1"  
+
+
+
+--------------------------------------------------------------------------------
+20) Match Non-ASCII Characters  
+
+$string = "Résumé, café, jalapeño"  
+$string -match "[^\x00-\x7F]+"  
+$Matches[0]  # "Résumé"  
+
+
+
+--------------------------------------------------------------------------------
+
+21) Extract Subdomains  
+
+$domain = "sub.example.com"  
+$domain -match "^(\w+)\."  
+$Matches[1]  # "sub"  
+
+
+
+--------------------------------------------------------------------------------  
+SUMMARY  
+
+- -match, -notmatch: Quick Boolean checks for single strings.  
+- -replace: Transform strings by regex patterns.  
+- -split: Split strings into arrays using regex.  
+- Select-String: Search files for matching patterns, returning match info.  
+- switch -Regex: Branch logic based on regex patterns.  
+- [regex]::IsMatch(), [regex]::Match(), [regex]::Replace(): Direct .NET usage for advanced scenarios like lookbehind/lookahead, delegates, etc.
