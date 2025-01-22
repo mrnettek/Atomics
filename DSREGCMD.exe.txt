@@ -85,14 +85,7 @@ The following Azure AD roles may be displayed:
  Azure AD joined device local administrator
 
 
-5. Error Levels
-
-The DSREGCMD command returns an ERRORLEVEL to indicate the success or failure of an operation:
- 0 – Success
- Non-zero – Failure (specific error codes depend on the operation)
-
-
-6. Examples
+[EXAMPLES]
 
 Example 1: Display Device Join Status
 To display the current device join status:
@@ -121,3 +114,10 @@ To refresh the PRT in the cloudAP cache:
 Example 7: Display Debug Messages
 To display detailed debug information for DSREGCMD:
  C:\> DSREGCMD /debug
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0 – Success
+ Non-zero – Failure (specific error codes depend on the operation)
