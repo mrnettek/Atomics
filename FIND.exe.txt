@@ -23,59 +23,6 @@ If no pathname is specified, FIND will prompt for text input or accept text pipe
 If searching for a text string containing double quote characters (") in the string, escape the quotes by doubling them, "The ""main"" event".
 
 
-2. Example Usage
-
-Example 1: Search for a String in a File
-Suppose names.txt contains the following:
- Alice
- Bob
- Charlie
- Alice Bob
-
-To search for the string Alice:
- FIND "Alice" nadmes.txt
- 
- |output|
-  ---------- names.txt
-  Alice
-  Alice Bob
-
-Example 2: Count the Number of Matching Lines
-To count the number of lines containing the string Alice:
- FIND /C "Alice" names.txt
-
- |output|
-  ---------- names.txt
-  ---------- Count = 2
-
-Example 3: Search for a String Ignoring Case
-To search for the string alice (case-insensitive):
- FIND /I "alice" names.txt
-
- |output|
-  ---------- names.txt
-  Alice
-  Alice Bob
-
-Example 4: Display Lines That Do Not Contain the String
-To display all lines not containing the string Alice:
- FIND /V "Alice" names.txt
-
- |output|
-  ---------- names.txt
-  Bob
-  Charlie
-
-Example 5: Search Multiple Files Using Wildcards
-To search for the string Alice in all .txt files in the current directory:
- FIND "Alice" *.txt
-
- |output|
-  ---------- names.txt
-  Alice
-  Alice Bob
-
-
 3. Limitations
 
 FIND does not support wildcards in the string search. For advanced searching with wildcards, use FINDSTR instead.
@@ -87,7 +34,62 @@ Searching for an empty string ("") will normally match nothing, but using the /V
 For lines longer than 4091 characters, use FINDSTR, which can handle up to 8191 characters per line.
 
 
-4. Errorlevel
- 0 - String found in at least one of the files.
- 1 - String not found.
- 2 - If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.
+[EXAMPLES]
+
+Example 1: Search for a String in a File
+Suppose names.txt contains the following:
+ Alice
+ Bob
+ Charlie
+ Alice Bob
+
+To search for the string Alice:
+ FIND "Alice" nadmes.txt
+ 
+| output |
+  ---------- names.txt
+  Alice
+  Alice Bob
+
+Example 2: Count the Number of Matching Lines
+To count the number of lines containing the string Alice:
+ FIND /C "Alice" names.txt
+
+| output |
+  ---------- names.txt
+  ---------- Count = 2
+
+Example 3: Search for a String Ignoring Case
+To search for the string alice (case-insensitive):
+ FIND /I "alice" names.txt
+
+| output |
+  ---------- names.txt
+  Alice
+  Alice Bob
+
+Example 4: Display Lines That Do Not Contain the String
+To display all lines not containing the string Alice:
+ FIND /V "Alice" names.txt
+
+| output |
+  ---------- names.txt
+  Bob
+  Charlie
+
+Example 5: Search Multiple Files Using Wildcards
+To search for the string Alice in all .txt files in the current directory:
+ FIND "Alice" *.txt
+
+| output |
+  ---------- names.txt
+  Alice
+  Alice Bob
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: String found in at least one of the files.
+ 1: String not found.
+ 2: If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.
