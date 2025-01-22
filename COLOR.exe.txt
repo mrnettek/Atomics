@@ -10,7 +10,7 @@ COLOR [background][foreground]
 
 The color attributes are specified by 2 hex digits: the first digit sets the background color, and the second sets the foreground color. Each digit corresponds to a specific color code.
 
-[Available Colors]
+[AVAILABLE COLORS]
  0 = Black
  1 = Blue
  2 = Green
