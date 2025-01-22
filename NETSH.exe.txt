@@ -102,6 +102,8 @@ This command displays all wireless network profiles saved on the system.
  netsh wlan show profiles
 
 
+[RETURN CODES]
+
 Errorlevels
  0: Command was successful.
  1: Command failed due to incorrect syntax or parameters.
