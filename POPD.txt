@@ -6,7 +6,7 @@ POPD is a command used to change the current directory back to the path most rec
 1. Syntax and Usage
 
 [Syntax]
- POPD
+POPD
 
 
 2. Key Notes
