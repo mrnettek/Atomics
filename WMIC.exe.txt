@@ -93,7 +93,7 @@ Example of formatting output:
  WMIC CPU GET Caption /FORMAT:LIST
 
 
-6. Example Usage
+[EXAMPLES]
 
 Example 1: List All Running Processes
  WMIC PROCESS LIST
@@ -119,9 +119,9 @@ Example 6: Stop a Service
 The WMIC command sets an ERRORLEVEL based on the success or failure of a command:
 
 Errorlevels
- 0 – Command executed successfully.
- 1 – Invalid arguments or syntax.
- 2 – General failure (e.g., inability to access remote system).
+ 0: Command executed successfully.
+ 1: Invalid arguments or syntax.
+ 2: General failure (e.g., inability to access remote system).
 
 
 [NOTES]
