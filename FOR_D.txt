@@ -44,7 +44,7 @@ No Errorlevel Change: The FOR command itself does not set or clear the %ERRORLEV
 Internal Command: FOR is an internal command, meaning it is executed within the Command Prompt and does not require any external tools.
 
 
-5. Example Usage
+[EXAMPLES]
 
 Example 1: List Subdirectories Starting with "User"
 This command searches recursively (/r) in the C:\Work directory for folders that start with "User" and echoes their names.
