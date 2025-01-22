@@ -1,0 +1,123 @@
+NET ACCOUNTS, NET USER, NET GROUP Help Guide
+
+These commands allow administrators to manage user accounts and groups on both local and remote systems, set password policies, and configure logon restrictions.
+
+
+
+1. NET ACCOUNTS
+
+The NET ACCOUNTS command allows you to manage password policies and user account restrictions.
+
+[SYNTAX]
+NET ACCOUNTS [/FORCELOGOFF:{minutes | NO}] [/MINPWLENGTH:length]
+       [/MAXPWAGE:{days | UNLIMITED}] [/MINPWAGE:days] [/UNIQUEPW:number] [/DOMAIN]
+
+[OPTIONS]
+ /FORCELOGOFF:minutes: Specifies the number of minutes a user has before being forced to log off when the account expires or valid logon hours expire. If set to NO, no logoff is forced.
+ /MINPWLENGTH:length: Specifies the minimum password length. The default is 6 characters, with a range of 0-14.
+ /MAXPWAGE:days: Specifies the maximum password age in days. A value of UNLIMITED prevents passwords from expiring. The default is 90 days.
+ /MINPWAGE:days: Specifies the minimum number of days that must pass before a user can change their password.
+ /UNIQUEPW:number: Requires that new passwords be different from the specified number of previous passwords (1-24).
+ /DOMAIN: Applies the changes to the domain rather than the local computer.
+
+
+[EXAMPLES]
+
+Example 1: View the current password and logon restrictions for the local machine.
+ NET ACCOUNTS
+
+Example 2: View the password and logon restrictions for the domain.
+ NET ACCOUNTS /DOMAIN
+
+Example 3: Set the minimum password length to 8 characters.
+ NET ACCOUNTS /MINPWLENGTH:8 /DOMAIN
+
+Example 4: Set the maximum password age to 60 days.
+ NET ACCOUNTS /MAXPWAGE:60 /DOMAIN
+
+Example 5: Prevent forced logoff when user accounts expire.
+ NET ACCOUNTS /FORCELOGOFF:NO /DOMAIN
+
+Example 6: Set passwords to never expire.
+ NET ACCOUNTS /MAXPWAGE:UNLIMITED /DOMAIN
+
+
+2. NET USER
+
+The NET USER command is used to manage user accounts. You can add, delete, modify, and view user account properties.
+
+[Syntax]
+ NET USER username {password | *} /ADD [options] [/DOMAIN]
+ NET USER [username [password | *] [options]] [/DOMAIN]
+ NET USER username [/DELETE] [/DOMAIN]
+ NET USER username [/TIMES:{times | ALL}]
+ NET USER username [/ACTIVE:{YES | NO}]
+
+[OPTIONS]
+ username: The name of the user account.
+ password: Specifies the password for the user account. If * is specified, the system will prompt for a password.
+ /ADD: Adds a new user account.
+ /DELETE: Deletes an existing user account.
+ /TIMES:{times | ALL}: Specifies the valid logon times for the user. Use ALL to allow the user to log in at any time.
+ /ACTIVE:{YES | NO}: Sets the account as active or inactive.
+ /DOMAIN: Applies the changes to the domain.
+
+
+[EXAMPLES]
+
+Example 1: Create a new user account 'LocalUser64' with the password 'Secr3t'.
+ NET USER LocalUser64 Secr3t /ADD
+
+Example 2: View details of user account 'Ella'.
+ NET USER Ella
+
+Example 3: Change the password of user 'LocalUser64'.
+ NET USER LocalUser64 NewPassword
+
+Example 4: Delete user account 'Ella'.
+ NET USER Ella /DELETE
+
+Example 5: View and set user logon times for 'LocalUser64'.
+ NET USER LocalUser64 /TIMES:ALL
+
+
+3. NET GROUP / NET LOCALGROUP
+
+The NET GROUP command is used to manage domain groups, and NET LOCALGROUP is used to manage local groups. You can add or remove users from groups, create or delete groups, and modify group properties.
+
+[SYNTAX]
+ NET GROUP groupname {/ADD [/COMMENT:"text"] | /DELETE} [/DOMAIN]
+ NET LOCALGROUP groupname {/ADD [/COMMENT:"text"] | /DELETE} [/DOMAIN]
+ NET GROUP groupname Username [...] {/ADD | /DELETE} [/DOMAIN]
+ NET LOCALGROUP groupname Username [...] {/ADD | /DELETE} [/DOMAIN]
+
+[OPTIONS]
+ groupname: The name of the group.
+ /ADD: Adds a new group or a new user to a group.
+ /DELETE: Deletes an existing group or removes a user from a group.
+ /COMMENT:"text": Adds a comment for the group.
+ /DOMAIN: Applies the changes to the domain.
+
+
+[EXAMPLES]
+
+Example 1: Create a new local group 'LocalScanningGroup'.
+ NET LOCALGROUP LocalScanningGroup /ADD
+ 
+Example 2: Add the new group to 'guests'.
+ NET LOCALGROUP guests LocalScanningGroup /ADD
+
+Example 3: Remove the group from 'guests'.
+ NET LOCALGROUP guests LocalScanningGroup /DELETE
+
+Example 3: Delete the local group 'LocalScanningGroup'.
+ NET LOCALGROUP LocalScanningGroup /DELETE
+
+
+[NOTES]
+
+GROUP TYPES: NET GROUP applies to domain-wide groups, while NET LOCALGROUP applies to local groups on a single computer.
+
+PASSWORD MANAGEMENT: You can set various password-related properties using NET ACCOUNTS and NET USER, such as password expiration policies and minimum password length.
+
+ADMIN RIGHTS REQUIRED: Some operations, especially those involving user creation or deletion, require administrative privileges.

@@ -1,0 +1,133 @@
+WMIC.exe Command Guide with Examples
+
+WMIC (Windows Management Instrumentation Command-line) is a command-line tool used to retrieve a wide range of information about local or remote computers, manage system configurations, and perform administrative tasks. It interacts with the Windows Management Instrumentation (WMI) to query system components, such as disk drives, printers, network interfaces, and more.
+
+Note: WMIC is deprecated as of 2021, and while it will still function for a few more years, no new features will be added, and it may eventually be removed. WMIC is a Feature on Demand (FoD) preinstalled by default in Windows 11 versions 23H2 and 22H2. In the next Windows release, the WMIC FoD will be disabled by default.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+WMIC [global_switch(es)] Alias [options] [format]
+WMIC [global_switch(es)] Command
+WMIC [global_switch:value] [global_switch:value] Command
+
+[KEY COMPONENTS]
+Alias: Defines the component or class of the system you want WMIC to interact with (CPU, MEMORYCHIP, DISKDRIVE).
+WHERE clause: Filters the results based on specific criteria (targeting a particular printer rather than all printers).
+
+ /NODE - Specifies the remote machine(s) to query (e.g., @filename, machine_id, or a list of machine IDs).
+ /APPEND - Output redirection mode: STDOUT, CLIPBOARD, or <filename>.
+ /AUTHLEVEL - Specifies the client authentication level (e.g., None, Connect, Call, etc.).
+ /AGGREGATE - Set to ON or OFF to include column titles.
+ /AUTHORITY - Specifies the connection's authority type.
+ /FAILFAST - Set connection timeout mode: ON or OFF.
+ /IMPLEVEL - Client impersonation level, such as Anonymous, Identify, Impersonate, Delegate.
+ /INTERACTIVE - Prompt before changes to WMI schema (e.g., ON or OFF).
+ /LOCALE - Sets the language ID (e.g., ms_409 for US English).
+ /NAMESPACE - Specifies the WMI namespace to operate against.
+ /OUTPUT - Output redirection mode (e.g., STDOUT, CLIPBOARD, or <filename>).
+ /PASSWORD - Password for session login.
+ /USER - Specifies the username for the session.
+ /TRACE - Output debugging information to stderr. Set to ON or OFF.
+ /RECORD - Log all input and output commands to a specified file.
+
+
+2. Aliases
+WMIC uses aliases to interact with system components. Below are some common aliases:
+ BASEBOARD - Baseboard management (motherboard/system board).
+ BIOS - BIOS management.
+ CDROM - CD-ROM devices.
+ COMPUTERSYSTEM - Computer system information.
+ CPU - CPU information.
+ DISKDRIVE - Physical disk drive information.
+ LOGICALDISK - Local storage devices.
+ MEMORYCHIP - Memory chip information.
+ NIC - Network Interface Controller (NIC).
+ OS - Operating System details.
+ PROCESS - Running processes.
+ PRINTER - Printer devices.
+ SERVICE - Services and applications.
+
+To get more detailed information about a specific alias, use the following command:
+ WMIC alias /?
+
+
+3. Commands and Options
+You can interact with WMI objects using several commands:
+ LIST: Displays a list of items for an alias (list all processes).
+ GET: Retrieves specific properties of an alias (get the CPU model).
+ CALL: Executes a method on the WMI object (start or stop a service).
+ SET: Modifies the properties of the WMI object (change a disk's label).
+ CREATE: Creates a new WMI object.
+ DELETE: Deletes a WMI object.
+ ASSOC: Returns associated objects for a specific object class.
+
+Example 1: List All Processes
+ WMIC PROCESS LIST
+
+Example 2: Get CPU Information
+ WMIC CPU GET Caption, DeviceID, NumberOfCores
+
+Example 3: Modify a Service
+ WMIC SERVICE WHERE "Name='wuauserv'" CALL StopService
+
+Example 4: List All Network Interfaces
+ WMIC NIC LIST
+
+Example 5: Get System Information
+ WMIC COMPUTERSYSTEM GET Name, Manufacturer
+
+
+4. Output Formats
+
+You can control the output format of the WMIC command with the /FORMAT switch:
+ BRIEF: Minimal output.
+ FULL: Detailed output.
+ INSTANCE: Instance-level details.
+ STATUS: Status information.
+ SYSTEM: System-level information.
+ WRITEABLE: Writable properties.
+
+Example of formatting output:
+ WMIC CPU GET Caption /FORMAT:LIST
+
+
+6. Example Usage
+
+Example 1: List All Running Processes
+ WMIC PROCESS LIST
+
+Example 2: Get Disk Drive Information
+ WMIC DISKDRIVE GET Caption, Size
+
+Example 3: Retrieve System Information
+ WMIC COMPUTERSYSTEM GET Name, Manufacturer, Model
+
+Example 4: Get CPU Information
+ WMIC CPU GET Name, NumberOfCores, MaxClockSpeed
+
+Example 5: Retrieve Network Adapter Information
+ WMIC NIC GET Name, MACAddress, Speed
+
+Example 6: Stop a Service
+ WMIC SERVICE WHERE "Name='wuauserv'" CALL StopService
+
+
+[RETURN CODES]
+
+The WMIC command sets an ERRORLEVEL based on the success or failure of a command:
+
+Errorlevels
+ 0 – Command executed successfully.
+ 1 – Invalid arguments or syntax.
+ 2 – General failure (e.g., inability to access remote system).
+
+
+[NOTES]
+
+WMIC interacts with WMI objects, which are components of the Windows Management Instrumentation infrastructure.
+
+You can manage remote machines by specifying the /NODE switch with a machine name or IP address.
+
+WMIC is a powerful tool for system administrators to automate system management tasks across multiple machines.

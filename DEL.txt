@@ -1,0 +1,100 @@
+DEL Command Guide with Examples
+
+DEL is a command-line tool used to delete one or more files. It provides options for controlling the deletion behavior, including file attributes, prompts, and recursion for subfolders.
+
+1. Syntax and Usage
+
+[SYNTAX]
+DEL [options] [/A:file_attributes] files_to_delete
+ files_to_delete: A filename or list of files to delete. Wildcards can be used.
+
+[OPTIONS]
+ /P: Prompt for confirmation before deleting each file (Yes/No prompt).
+ /F: Force deletion of read-only files (ignores read-only setting).
+ /S: Delete files from all subfolders (use with caution).
+ /Q: Quiet mode, suppresses prompts.
+ /A:file_attributes: Delete files based on file attributes. You can use the following file attributes:
+ R: Read-only
+ A: Archive
+ S: System
+ H: Hidden
+ I: Not content indexed
+ L: Reparse points
+ X: No scrub file attribute
+ V: Integrity attribute
+
+ Wildcards:
+  *: Match any characters.
+  ?: Match exactly one character.
+
+If a folder is specified, only the files inside will be deleted, but the folder itself will not be removed.
+
+
+2. Special Deletion Cases
+
+Undeletable Files
+
+Some files may have long filenames or contain reserved names (CON, AUX, COM1, NUL), making them difficult or impossible to delete via Windows Explorer. To delete such files, use the Device Path syntax:
+ DEL "\\?\C:\some folder\FOO."
+
+Alternatively, you can reduce the path length by using SUBST to map a drive letter to the folder containing the file.
+
+RoboCopy for Long Paths
+If you encounter issues with long paths, you can use RoboCopy to move the file to a temporary folder and delete it there. However, be cautious as RoboCopy may follow symbolic links and affect files outside the intended source.
+
+Thumbs.db
+If you cannot delete thumbs.db while Windows Explorer is open, it may be due to a bug in the thumbnail view. To resolve this issue:
+
+Open Explorer.
+Go to View ➞ Options ➞ View tab.
+Uncheck Display file icon on thumbnails.
+For a permanent fix, you can disable thumbnail caching via the registry.
+
+
+3. Example Usage
+
+[EXAMPLES]
+
+Example 1: Delete a Single File
+To delete a specific file (file1.txt):
+ DEL file1.txt
+
+Example 2: Delete All .txt Files in a Directory
+To delete all .txt files in the current directory:
+ DEL *.txt
+
+Example 3: Delete Files Without Confirmation Prompt
+To delete all files in the directory without being prompted for confirmation:
+ DEL *.* /Q
+
+Example 4: Delete All .log Files in Subdirectories
+To delete all .log files in the current directory and all subdirectories:
+ DEL *.log /S
+
+Example 5: Force Deletion of Read-only Files
+To force deletion of a read-only file (readonlyfile.txt):
+ DEL readonlyfile.txt /F
+
+Example 6: Delete Files Based on Attributes
+To delete all hidden files in the directory:
+ DEL *.* /A:H
+
+Example 7: Delete a File with a Long Path Using Device Path
+To delete a file with a long path that is otherwise undeletable:
+ DEL "\\?\C:\some folder\longfilename.txt"
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: The command executed successfully (whether or not the files were deleted).
+ 1: Invalid parameters or other failure (such as the file not being found).
+
+Note: A deletion failure does not trigger the || condition unless invalid arguments are given.
+
+
+[NOTES]
+
+Quiet Mode: The /Q option suppresses prompts, making the DEL command run silently, which is useful for automated scripts.
+
+Recursive Deletion: The /S option will delete files from subfolders, but if you want to delete empty subfolders as well, use /E with XCOPY instead.

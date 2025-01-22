@@ -1,0 +1,96 @@
+TASKKILL Command Guide with Examples
+
+TASKKILL is a command-line utility used to terminate one or more processes, either by process ID (PID) or by image name (process name). It can be used to stop processes on both local and remote systems.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+TASKKILL [/S system [/U username [/P [password]]]]
+         { [/FI filter] [/PID processid | /IM imagename] } [/F] [/T]
+
+[OPTIONS]
+ /S system: Specifies the remote system to connect to.
+ /U [domain]user: Specifies the user context under which the command should execute.
+ /P [password]: Specifies the password for the user context. If omitted, it prompts for input.
+ /F: Forces the termination of the process(es), without asking for confirmation.
+ /FI filter: Filters the processes based on criteria specified by the filter (examples: based on the process name, memory usage, etc.).
+ /PID processid: Terminates the process with the specified process ID.
+ /IM imagename: Terminates the process with the specified image name. Wildcards (*) can be used to specify all image names.
+ /T: Tree kill—terminates the specified process and any child processes that were started by it.
+
+
+2. Filters
+When using the /FI filter option, the following filters can be applied:
+Imagename: Filters by the image name of the process.
+ eq = equals
+ ne = not equal
+
+ PID: Filters by the process ID.
+ eq = equals
+ ne = not equal
+ gt = greater than
+ lt = less than
+ ge = greater than or equal to
+ le = less than or equal to
+
+ Session: Filters by session number.
+ Status: Filters by process status (RUNNING, NOT RESPONDING).
+ CPUTime: Filters by CPU time.
+ Time format: hh:mm:ss
+ MemUsage: Filters by memory usage.
+  Can be a positive integer.
+ Username: Filters by the user name ([Domain]User).
+ Services: Filters by service name.
+ Windowtitle: Filters by the window title.
+ Modules: Filters by the DLL name.
+
+If you use /FI, the image name must include the file extension, or a wildcard *. If multiple processes match the filter, all matching processes will be terminated.
+
+
+3. Example Use
+
+Example 1: Kill a Single Process by Image Name
+To forcefully kill all instances of notepad.exe:
+ TASKKILL /F /IM notepad.exe
+
+Example 2: Kill a Process and Restart Windows Explorer
+To kill explorer.exe and then restart it:
+ TASKKILL /F /IM explorer.exe
+ START explorer.exe
+
+Example 3: Kill a Process by PID
+To kill processes with PIDs 1230, 1241, and 1253:
+ TASKKILL /PID 1230 /PID 1241 /PID 1253
+
+Example 4: Kill a Process and All Its Child Processes
+To kill notepad.exe and any child processes it has started:
+ TASKKILL /IM notepad.exe /T /F
+
+Example 5: Kill a Process on a Remote System
+To kill notepad.exe on a remote system (specified by /S system) under the user admin:
+ TASKKILL /S remotePC /U admin /P password /IM notepad.exe /F
+
+Example 6: Kill Processes Based on a Filter
+To kill all processes with a memory usage greater than 100,000 KB:
+ TASKKILL /FI "MemUsage gt 100000" /F
+
+Example 7: Kill Processes by User Name
+To kill all processes started by the user JohnDoe:
+ TASKKILL /FI "Username eq JohnDoe" /F
+
+
+4. Error Levels
+  0: The command completed successfully.
+  128: Invalid or incorrect command syntax.
+  5: Access denied (due to insufficient permissions).
+  32: The process is in use or being accessed by another process.
+
+
+[NOTES]
+
+Permissions: In order to terminate processes on a remote machine, you must have appropriate access permissions. You can use /U and /P options to specify credentials.
+
+Force Termination: Use /F to forcefully terminate processes that may not otherwise close through normal termination methods.
+
+Tree Kill (/T): When using /T, be careful as this will terminate not only the specified process but also any child processes that it has created.

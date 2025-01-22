@@ -1,0 +1,135 @@
+GOTO Command Guide with Examples
+
+The GOTO command is used in batch programming to jump to a specific label within the script. Labels are defined within the script and serve as points where the batch file execution can jump to.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+GOTO label
+
+Special Label Syntax:
+ GOTO:eof
+ label: A predefined label in the batch program. Labels must be defined on a line by themselves, starting with a colon (:) and optionally ending with either a space, colon, or a newline character (CR/LF).
+ :eof: A predefined label that exits the current subroutine or script. When used with GOTO:eof, the execution will jump to the end of the current script or subroutine.
+
+
+2. Key Concepts
+
+Label Syntax
+A label is defined by a colon followed by the label name, (example :MyLabel).
+
+Each label must be on a separate line.
+
+Using :eof
+The GOTO:eof command is a special case. It always jumps to the end of the current batch file or subroutine.
+Note: GOTO:eof and GOTO :eof both work. The space is optional.
+
+EOF Special Behavior
+The :eof label is treated as a way to exit the script or subroutine. However, if a label named eof is created, the command GOTO:eof will still exit the routine/script, not jump to the label.
+
+
+3. Best Practices
+
+Using CALL Instead of GOTO for Subroutines
+While GOTO can be used for jumping to subroutines, it is generally better to use CALL to ensure the flow is more predictable.
+
+Example:
+
+ @Echo Off
+ :: Main Routine
+ CALL subroutine1
+ CALL subroutine2
+ GOTO:eof
+ :: End of Main Routine
+
+ :subroutine1
+   REM Commands for subroutine1
+   GOTO :eof
+
+ :subroutine2
+   REM Commands for subroutine2
+   GOTO :eof
+
+The code structure is maintained in a predictable order, making it easier to follow. It also reduces the chance of creating spaghetti code.
+
+
+4. Bugs and Limitations
+
+1. Using GOTO within Parentheses
+Using GOTO inside parentheses, such as within IF or FOR loops, may break the context and cause issues with the flow of the script. It’s best to replace GOTO with CALL inside parentheses.
+
+Example (with issue):
+ @Echo Off
+ IF A equ A (
+   GOTO :EXAMPLE_LABEL
+   :EXAMPLE_LABEL
+   REM Commands here
+ ) ELSE (
+   Echo You didn’t expect to see this, did you?
+ )
+ 
+Fixed with CALL:
+ @Echo Off
+ IF A equ A (
+   CALL :EXAMPLE_LABEL
+ ) ELSE (
+   Echo You didn’t expect to see this, did you?
+ )
+
+ :EXAMPLE_LABEL
+  REM Commands here
+
+
+2. GOTO with Redirection Operators
+The GOTO command breaks the & and && conditional operators in batch scripting.
+
+
+3. GOTO with Non-existent Labels
+If a GOTO command is used with a non-existent label, the batch file will terminate and set the %ERRORLEVEL% to 1.
+
+Example:
+ GOTO :non_existent_label || Echo This line will run
+
+
+5. Errorlevels
+
+Successful Jump: %ERRORLEVEL% remains unchanged after a successful GOTO jump, typically set to 0.
+
+Non-existent Label: If the label specified by GOTO does not exist, %ERRORLEVEL% will be set to 1.
+
+
+6. Examples
+
+Exampe 1: Simple Jump to Label.
+ @echo off
+ GOTO :end
+
+ :: Some commands before the jump
+
+ :end
+ echo "We've reached the end of the script!"
+
+
+Exampe 2: Using GOTO:eof to Exit Subroutine.
+ @echo off
+ CALL :subroutine
+ GOTO:eof
+
+ :subroutine
+  echo "This is a subroutine."
+  GOTO:eof
+
+
+Exampe 3: Example with Conditional Execution.
+ @echo off
+ SET condition=true
+ IF %condition%==true GOTO :success
+
+ :failure
+  echo "The condition was false."
+  GOTO :eof
+
+ :success
+  echo "The condition was true!"
+  GOTO :eof

@@ -1,0 +1,150 @@
+
+CALL Command Guide with Examples
+
+CALL is a command-line tool used to call another batch file or a subroutine from within a batch script. It allows for the execution of additional commands or scripts without terminating the calling script. Below is a brief guide with syntax and examples.
+
+1. Syntax and Usage
+
+[SYNTAX]
+Call a Batch File
+ CALL [drive:][path]filename [parameters]
+
+Call a Subroutine
+ CALL :label [parameters]
+
+Call an Internal Command
+ CALL internal_cmd
+
+[KEY]
+pathname - The batch file to execute.
+ parameters - Any command-line arguments to pass to the batch file or subroutine.
+ :label - A label within the current batch file to jump to.
+ internal_cmd - A built-in command (like SET, ECHO, etc.) to run, with variables expanded.
+
+Note: The CALL command enables a parent batch file to run other scripts or subroutines while retaining control after the execution completes.
+
+
+2. Example Usage
+
+[EXAMPLES]
+
+Call a Second Batch File
+The CALL command launches another batch file, passing any parameters provided. Execution control returns to the parent script when the second batch file ends.
+ CALL MyScript.cmd "1234"
+ CALL OtherScript.cmd %_MyVariable%
+
+Example:
+
+ ::----------start main.cmd-----------
+ @Echo off
+ CALL function.cmd 10 first
+ Echo %_description% - %_number% 
+
+ CALL function.cmd 15 second
+ Echo %_description% - %_number%
+ ::----------end main.cmd-------------
+
+ ::----------start function.cmd---------
+ @Echo off
+ :: Add 25 to %1
+ SET /a _number=%1 + 25
+ :: Store %2
+ SET _description=[%2]
+ ::----------end function.cmd-----------
+
+In this example, function.cmd is called twice, passing different parameters. Each call modifies variables and then returns control to main.cmd.
+
+
+Subroutine Call
+You can define a subroutine in the same batch file using labels and CALL to jump to specific parts of the script. EXIT /B returns control after execution.
+
+ @Echo Off
+ CALL :sub_display 123
+ CALL :sub_display 456
+ ECHO All Done
+ GOTO :eof
+
+ :sub_display
+ ECHO The result is %1
+ EXIT /B
+
+
+Call and Continue Conditionally
+To call a second batch file or subroutine and continue only if the previous command was successful, you can use the following syntax:
+ CALL SecondScript.cmd || goto :eof
+
+This will go to :eof (end of the file) if SecondScript.cmd exits with an error level greater than zero.
+
+
+Passing Variables by Reference
+You can pass variables by reference using the CALL command. This is helpful when passing strings that may contain special characters.
+
+ @Echo Off
+ Echo.
+ Set "var1=Red Pippin"
+ Set "var2=St Edmunds Pippin"
+ Set "var3=Egremont Russet"
+
+ Echo. before: var1=%var1%  var2=%var2% var3=%var3%
+ call :myGetFunc var1 var2 var3
+ Echo. after: var1=%var1%  var2=%var2% var3=%var3%
+
+ Echo. & pause & goto :eof
+
+ ::----------------------------------------------
+ ::-- Function section starts below
+ ::----------------------------------------------
+
+ :myGetFunc    - passing a variable by reference
+ Set "%~1=return64"
+ Set "%~3=return65"
+ EXIT /B
+
+
+3. Default Behavior
+
+When CALL is used, the control remains with the calling batch file until the target batch file or subroutine completes. The return to the caller is seamless, making this a useful method for modularizing batch scripts.
+
+
+4. Buggy Behavior
+
+Redirection Issues with CALL
+Redirection via a pipe (|) does not always work as expected:
+ CALL :function >file.txt    (works)
+ CALL :function | more      (fails)
+
+Additionally, the CALL command may not handle carets (^) within quoted strings correctly, requiring you to double them.
+
+
+Using CALL with Internal Commands
+While CALL is commonly used with batch files, it can also be used to execute internal commands (like SET or ECHO). However, this can result in slower execution due to disk search overhead, especially when used with loops or large variables.
+
+ @Echo Off
+ SETLOCAL
+ set _server=frodo
+ set _var=_server
+ CALL SET _result=%%%_var%%%
+ echo %_result%
+
+In this example, CALL expands the variables and executes the SET command, resulting in _result=frodo.
+
+For better performance, consider using Delayed Expansion.
+
+
+5. Advanced Usage
+
+Using CALL for Internal Commands
+
+You can also use CALL to run internal commands and expand variables dynamically. However, note that some operators like conditional execution and redirection may not work as expected.
+ CALL SET _result=%%%_var%%%
+
+This expands _result with the value of _server, but it's slower than using SET directly. Delayed Expansion can be more efficient:
+
+ @Echo Off
+ Setlocal EnableDelayedExpansion
+ Set _server=frodo
+ Set _var=_server
+ Set _result=!%_var%!
+ Echo %_result%
+
+Delayed Expansion is generally a more effective solution for working with dynamic variables.

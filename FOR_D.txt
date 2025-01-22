@@ -1,0 +1,71 @@
+FOR /D Command Guide with Examples
+
+The FOR /D command is used in batch files to perform an action on directories (folders) that match a specified pattern. It is similar to the regular FOR command but operates specifically on directories and supports wildcard patterns.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+FOR /D [/r] %%parameter IN (folder_set) DO command
+ folder_set: A set of one or more folders enclosed in parentheses (examples: folder1,folder2). You must use wildcards (example *, ?) in folder_set for consistent results.
+ command: The command to carry out on each directory. This can be a single command, or if enclosed in parentheses, multiple commands on separate lines.
+ %%parameter: A replaceable parameter used to represent each directory. In a batch file, this is typically %%G (on the command line, use %G).
+ /r: Recurse into subfolders. This option allows the FOR /D loop to search through all subdirectories.
+
+
+2. Key Notes
+Wildcard Usage: When using FOR /D, you must include a wildcard (example * or ?) in folder_set to ensure consistent results. For example, if you want to loop through directories to find the folder "January," you could use Janu?ry instead of typing "January" explicitly.
+
+Handling Spaces in Paths: If any path in folder_set includes spaces, you must enclose the path in double quotes. For example, "C:\My Folder".
+
+Full Path Usage: If specifying a full path to a folder, make sure to use backslashes (\) as path separators, not forward slashes (/).
+
+Undocumented Feature: The /r option is not well-documented, but it can be helpful when you want to recurse through all subdirectories. However, it only matches folder names, not filenames.
+
+
+3. Alternatives to FOR /D
+
+While FOR /D is powerful, you can also use the DIR command to list folders and subfolders:
+ dir /b /s /a:d "C:\Work\reports*"
+
+To loop through each folder programmatically, you can use FOR /F in combination with DIR:
+ for /f "tokens=*" %G in ('dir /b /s /a:d "C:\Work\reports*"') do echo Found %G
+
+In a batch file, use double percent signs (%%):
+ for /f "tokens=*" %%G in ('dir /b /s /a:d "C:\Work\reports*"') do echo Found %%G
+
+
+4. Special Considerations
+
+Period/Full Stop Issues: Although Win32 does not recognize file or directory names starting or ending with a period (.), you can still include a period in the middle of a directory name. This can cause issues with FOR /D because parameter expansion treats a period as a file extension. For example, with a directory name like "Sample 2.6.4", the %%~nG expansion would truncate the name to "Sample 2.6". To avoid this, use %%G or %%~nxG to get the full directory name.
+
+No Errorlevel Change: The FOR command itself does not set or clear the %ERRORLEVEL% variable. You may need to manually set it if necessary.
+
+Internal Command: FOR is an internal command, meaning it is executed within the Command Prompt and does not require any external tools.
+
+
+5. Example Usage
+
+Example 1: List Subdirectories Starting with "User"
+This command searches recursively (/r) in the C:\Work directory for folders that start with "User" and echoes their names.
+To list every subdirectory in C:\Work\ that starts with "User":
+ @Echo Off
+ CD \Work
+ FOR /D /r %%G in ("User*") DO Echo We found %%~nxG
+
+Example 2: Rename a Folder if It Matches "version 1"
+This command recursively checks every folder under C:\demo, and if the folder is named "version 1," it renames it to "version 2."
+To loop through all directories under C:\demo and rename any folder named "version 1" to "version 2":
+ @Echo Off
+ FOR /D /R %%a in (C:\demo) DO if "%~Na" equ "version 1" ren "%%a" "version 2"
+
+Example 3: List All Folders in a Directory (Without Recursion)
+This lists the directories in the current directory without searching subdirectories.
+To list all folders in the current directory (without recursion), you can omit the /r option:
+ @Echo Off
+ FOR /D %%G in (*) DO Echo %%~nxG
+
+
+[NOTES]
+
+The FOR /D command is a powerful tool for working with directories in batch scripts. By combining it with wildcards and recursion, you can automate various tasks, such as searching, renaming, and processing directories. Understanding how to properly use wildcards and handle paths with spaces or periods will ensure that your FOR /D commands work reliably in all scenarios.

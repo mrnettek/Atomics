@@ -1,0 +1,146 @@
+POWERCFG.exe Help File
+
+POWERCFG is a command-line utility used to control and configure power settings, such as sleep, hibernate, and standby modes. It allows users to modify, query, and delete power schemes, as well as manage device wake-up settings.
+
+
+[SYNTAX]
+POWERCFG [Options]
+
+[OPTIONS]
+
+General Commands
+
+Reports the sleep states available on the computer and attempts to provide reasons why certain sleep states are unavailable.
+ /AvailableSleepStates
+
+Displays all aliases and their corresponding GUIDs. These aliases can be used instead of GUIDs at the command prompt.
+ /Aliases
+
+Generates a report of battery usage.
+ /batteryreport
+
+Modify one of the following settings in the current power scheme:
+ /Change setting value
+  monitor-timeout-ac minutes
+  monitor-timeout-dc minutes
+  disk-timeout-ac minutes
+  disk-timeout-dc minutes
+  standby-timeout-ac minutes
+  standby-timeout-dc minutes
+  hibernate-timeout-ac minutes
+  hibernate-timeout-dc minutes
+  Setting any value to 0 will set the timeout to "Never."
+
+ AC settings are used when the system is on AC power.
+ DC settings are used when the system is on battery power.
+
+Modify the name of a power scheme and, optionally, the scheme description.
+ /ChangeName GUID PowerSchemeName [scheme_description]
+
+
+Delete the power scheme identified by the specified GUID.
+ /Delete GUID or /D GUID
+
+Delete a specific power setting.
+ /DeleteSetting Sub_GUID Setting_GUID
+
+Return a list of devices that meet the specified flags:
+ /DeviceQuery query_flags
+  wake_from_S1_supported – Wake from light sleep.
+  wake_from_S2_supported – Wake from deeper sleep.
+  wake_from_S3_supported – Wake from deepest sleep.
+  wake_from_any – Wake from any sleep state.
+  S1_supported – Supports light sleep.
+  S2_supported – Supports deeper sleep.
+  S3_supported – Supports deepest sleep.
+  S4_supported – Supports hibernation.
+  wake_programmable – Configurable to wake the computer.
+  wake_armed – Configured to wake the computer from any sleep state.
+  all_devices – All devices present.
+  all_devices_verbose – Verbose list of devices.
+
+Enable a device to wake the computer from a sleep state.
+ /DeviceEnableWake devicename 
+
+Disable a device from waking the computer from a sleep state.
+ /DeviceDisableWake devicename
+
+Duplicate a power scheme. The GUID of the new scheme will be displayed. If DestinationGUID is omitted, a new GUID will be created for the duplicated scheme.
+ /DuplicateScheme GUID [DestinationGUID]
+
+Generate an energy-report.html in the current directory.
+ /Energy
+
+Export a power scheme (specified by GUID) into a file. The GUID can be obtained by running powercfg /list.
+ /Export filename GUID
+
+Retrieve the currently active power scheme.
+ /GetActiveScheme
+
+Enable or disable the hibernate feature, which also disables Fast Startup (or hybrid sleep). Hibernate timeout is not supported on all computers.
+ /Hibernate [on|off] or /H [on|off]
+
+Import power settings from a file generated with powercfg /export. If no GUID is specified, a new GUID is created.
+ /Import filename [GUID]
+
+Report information about the last event that woke the computer.
+ /LastWake
+
+List all the current user’s power schemes (displayed by GUID).
+ /List or /L
+
+Display the contents of a power scheme.
+ /Query [Scheme_GUID] [Sub_GUID] or /q [Scheme_GUID] [Sub_GUID]
+
+Enumerate application and driver power requests.
+ /Requests
+
+Set a power request override for a particular process, service, or driver.
+ /Requestsoverride
+
+Set the specified power scheme as the active one.
+/SetActive Scheme_GUID
+
+
+[EXAMPLES]
+
+Example 1: Display all available sleep states.
+ powercfg /availableSleepStates
+
+Example 2: Generate a battery report.
+ powercfg /batteryreport
+
+Example 3: Change the monitor timeout on AC power to 10 minutes.
+ powercfg /change monitor-timeout-ac 10
+
+Example 4: List all power schemes.
+ powercfg /list
+
+Example 5: Set the active power scheme to a specific GUID.
+powercfg /setactive SCHEME_GUID
+
+Example 6: Export a power scheme to a file.
+ powercfg /export "C:\power_scheme.xml" SCHEME_GUID
+
+Example 7: Enable the hibernate feature.
+ powercfg /hibernate on
+
+Example 8: Disable a device from waking the computer from sleep.
+ powercfg /DeviceDisableWake "Network Adapter"
+
+Example 9: Generate an energy efficiency report.
+ powercfg /energy
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: Command executed successfully.
+ 1: Command failed due to incorrect syntax or parameters.
+
+
+[NOTES]
+
+POWERCFG is useful for managing power settings in Windows systems, including sleep and hibernation modes.
+
+To apply changes, a new command window or a restart may be required for the settings to take effect, especially for system-wide changes.

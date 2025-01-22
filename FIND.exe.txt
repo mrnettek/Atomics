@@ -1,0 +1,93 @@
+FIND Command Guide with Examples
+
+FIND is a command-line tool used to search for a text string in a file and display all the lines where it is found. Below is a brief guide with syntax and examples.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+Search for a String in a File
+FIND [/V] [/C] [/N] [/I] "string" [pathname(s)]
+
+[OPTIONS]
+"string" - The text string to search for (must be in quotes).
+ [pathname] - The drive and/or file(s) to search (wildcards accepted).
+ /V - Display all lines not containing the specified string.
+ /C - Count the number of lines containing the string.
+ /N - Display line numbers along with the matching lines.
+ /I - Ignore the case of characters when searching for the string.
+ /off[line] - Do not skip files that have the offline attribute set.
+
+If no pathname is specified, FIND will prompt for text input or accept text piped from another command (use CTRL-Z to end manual text input).
+
+If searching for a text string containing double quote characters (") in the string, escape the quotes by doubling them, "The ""main"" event".
+
+
+2. Example Usage
+
+Example 1: Search for a String in a File
+Suppose names.txt contains the following:
+ Alice
+ Bob
+ Charlie
+ Alice Bob
+
+To search for the string Alice:
+ FIND "Alice" nadmes.txt
+ 
+ |output|
+  ---------- names.txt
+  Alice
+  Alice Bob
+
+Example 2: Count the Number of Matching Lines
+To count the number of lines containing the string Alice:
+ FIND /C "Alice" names.txt
+
+ |output|
+  ---------- names.txt
+  ---------- Count = 2
+
+Example 3: Search for a String Ignoring Case
+To search for the string alice (case-insensitive):
+ FIND /I "alice" names.txt
+
+ |output|
+  ---------- names.txt
+  Alice
+  Alice Bob
+
+Example 4: Display Lines That Do Not Contain the String
+To display all lines not containing the string Alice:
+ FIND /V "Alice" names.txt
+
+ |output|
+  ---------- names.txt
+  Bob
+  Charlie
+
+Example 5: Search Multiple Files Using Wildcards
+To search for the string Alice in all .txt files in the current directory:
+ FIND "Alice" *.txt
+
+ |output|
+  ---------- names.txt
+  Alice
+  Alice Bob
+
+
+3. Limitations
+
+FIND does not support wildcards in the string search. For advanced searching with wildcards, use FINDSTR instead.
+
+FIND will not detect strings positioned more than 1070 characters along a single line with no carriage return. This makes it less useful for binary or XML files.
+
+Searching for an empty string ("") will normally match nothing, but using the /V flag will reverse the test to match everything (though it will fail for lines longer than 4091 characters).
+
+For lines longer than 4091 characters, use FINDSTR, which can handle up to 8191 characters per line.
+
+
+4. Errorlevel
+ 0 - String found in at least one of the files.
+ 1 - String not found.
+ 2 - If any files in the list do not exist, if no files match a wildcard mask, or if an invalid switch is given.

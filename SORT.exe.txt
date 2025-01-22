@@ -1,0 +1,101 @@
+SORT Command Help Guide
+
+The SORT command is used to sort the contents of a file or input, either from the command line or from a file redirected into the command. It will output the sorted lines in ascending order by default.
+
+
+1. Syntax
+SORT [options] [drive:][pathname]
+ 
+     [options]: A set of options that control the sorting behavior.
+     [drive:][pathname]: The file to be sorted. If not specified, the standard input is used.
+
+2. Options
+
+Sorting Control
+Sort the file starting from the nth character of each line. 
+ /+n
+
+Example: / +2 will start sorting from the second character of each line.
+
+Default is / +1, which starts from the first character of each line.
+
+Perform a case-sensitive sort (undocumented on Windows 7 and above).
+Sorting will be case-sensitive based on the locale settings. This is useful if you want uppercase letters to appear before lowercase ones.
+ /C[ASE_SENSITIVE]
+
+
+Specify a different locale for sorting. The default locale is used if not specified.
+Example: /L en-US to use English-US locale.
+
+The "C" locale is the fastest sorting method and is case-insensitive unless combined with /C[ASE_SENSITIVE].
+ /L[OCALE] locale
+
+
+Set the amount of memory to be used for sorting, in kilobytes.
+If not specified, the default memory usage is optimized for performance.
+
+The minimum value is 160 KB, and the memory allocation directly affects how efficiently the data can be sorted.
+ /M[EMORY] kilobytes
+
+
+Specify the maximum number of characters in a row or record.
+
+The default is 4096 characters, and the maximum allowed is 65535 characters.
+ /REC[ORD_MAXIMUM] characters
+
+Reverse the sort order (Z to A, 9 to 0). By default, sorting is done in ascending order.
+ /R[EVERSE]
+ 
+Specify the temporary directory for storing sorting data when it doesn't fit into RAM.
+By default, the system temporary directory is used (%temp%).
+ /T[EMPORARY] [drive:][path]
+
+Output the sorted data to a specified file.
+If not specified, the sorted output is written to standard output (console).
+ SORT /O sortedfile.txt input.txt.
+  /O[UTPUT] [drive:][pathname]
+
+Output the sorted data in Unicode format (undocumented in Windows 7 and above).
+ /U[NI_OUTPUT]
+
+Output only unique lines, removing duplicates (undocumented in Windows 10 and above).
+ /UNIQ[UE]
+
+
+3. Collation Behavior
+
+The sort order in SORT is locale-specific and follows the sorting rules of the locale you specify, or the system's default locale if none is specified. The sort order is different from Windows Explorer's sort order, which uses the StrCmpLogicalW function.
+
+In the default locale, sorting may include non-standard Unicode characters, such as Greek letters like 'Ξ' (Xi) or 'Ω' (Omega), which will be placed after 'Z' when sorted.
+
+
+4. File Sorting Examples
+
+Example 1: Sort a file by all characters.
+ SORT input.txt
+
+Example 2: Sort a file starting from the second character.
+ SORT /+2 input.txt
+
+Example 3: Sort a file in reverse order.
+ SORT /R input.txt
+
+Example 4: Sort a file and output to a new file.
+ SORT /O sortedfile.txt input.txt
+
+Example 5: Sort with case sensitivity.
+ SORT /C /L en-US input.txt
+
+Example 6: Sort a file with unique lines.
+ SORT /UNIQ input.txt
+
+Example 7: Sort using a specific amount of memory.
+ SORT /M 1024 input.txt
+
+Example 8: Sort the contents of a file in Unicode.
+ SORT /U input.txt
+
+
+[NOTES]
+
+The SORT command is a powerful tool for sorting file contents or any text input. You can modify how the sorting is done using various options like reverse sorting, case sensitivity, and using custom locales. For large datasets, you can also specify memory usage and customize the output format. This tool is especially useful for organizing files or directories based on their contents in a batch script or command line operation.

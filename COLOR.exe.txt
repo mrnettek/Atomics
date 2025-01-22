@@ -1,0 +1,82 @@
+COLOR Command Guide with Examples
+
+The COLOR command is used to set the default console foreground and background colors in the Command Prompt window. This allows you to customize the appearance of the console for better readability or to match personal preferences.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+COLOR [background][foreground]
+
+The color attributes are specified by 2 hex digits: the first digit sets the background color, and the second sets the foreground color. Each digit corresponds to a specific color code.
+
+[Available Colors]
+ 0 = Black
+ 1 = Blue
+ 2 = Green
+ 3 = Aqua
+ 4 = Red
+ 5 = Purple
+ 6 = Yellow
+ 7 = White
+ 8 = Gray
+ 9 = Light Blue
+ A = Light Green
+ B = Light Aqua
+ C = Light Red
+ D = Light Purple
+ E = Light Yellow
+ F = Bright White
+
+
+Default Console Color:
+ COLOR 07 – Black background (0) and white foreground (7).
+
+If no argument is given:
+ The COLOR command restores the console colors to the default settings when CMD.EXE started.
+
+
+2. New Default Color Schemes in Windows 10
+
+In Windows 10 clean-install versions greater than build 16257, the default color scheme has been updated to modernize the look of the Windows Console, making it more suitable for high-contrast LCD displays. You can also find samples of these new colors on the ANSI color page.
+
+For more advanced color customization, you can use ColorTool.exe to explore the new color values and themes.
+
+Full 24-bit Color Support: Windows 10 also introduced full 24-bit color support for the console, primarily for Linux compatibility. While the default Windows Console still uses 16 colors, you can take advantage of the 24-bit colors with ColorTool.exe or by using VT100 sequences, which allow you to display RGB colors in compatible consoles.
+
+
+3. Color Assignment Order
+The color value is assigned in the following order:
+ 1-The DefaultColor registry value.
+ 2-The CMD /T command-line switch.
+ 3-The current color settings when cmd.exe was launched.
+ 4-The COLOR command settings.
+
+
+4. Examples
+
+[EXAMPLES]
+
+Example 1: Set the Console Color to White on Blue
+To set the console background to blue (1) and the text to white (7):
+ COLOR 17
+
+Example 2: Set the Console Color to Green on Black
+To set the console background to black (0) and the text to green (2):
+ COLOR 02
+
+Example 3: Set the Console Color to Red on Yellow
+To set the console background to yellow (6) and the text to red (4):
+ COLOR 64
+
+
+5. Errorlevels
+ ERRORLEVEL = 0 – The color was successfully changed.
+ ERRORLEVEL = 1 – The foreground and background colors are the same (which will fail). For example, COLOR 00 will not work because the foreground and background are both black.
+
+
+[NOTES]
+
+ANSI Color Escapes: If you want to change the color of individual words, characters, or paragraphs, you can use ANSI color escapes. This feature is available in Windows versions greater than 1511.
+
+Command Extensions: If command extensions are disabled, the COLOR command will not function.

@@ -1,0 +1,131 @@
+EnableDelayedExpansion Command Guide with Examples
+
+EnableDelayedExpansion is a feature in batch scripting that allows variables to be expanded at execution time rather than at parse time. Below is a detailed guide with syntax and examples.
+
+
+1. Overview of Delayed Expansion
+
+Delayed Expansion enables real-time variable updates during script execution, particularly in loops and commands.
+
+Default Behavior: Variables (%variable%) are expanded at parse time.
+
+With Delayed Expansion: Variables (!variable!) are expanded at execution time.
+
+
+2. Syntax and Usage
+
+[SYNTAX]
+SETLOCAL EnableDelayedExpansion
+
+Variable Expansion: Use !variable_name! for execution-time expansion.
+ SET "var1=value1" & SET "var2=!var1!"
+
+
+3. Examples of Delayed Expansion
+
+Basic Example Without Delayed Expansion
+ @echo off
+ SETLOCAL
+ SET "_var=first"
+ SET "_var=second" & ECHO %_var%
+
+|output| first
+
+With Delayed Expansion
+ @echo off
+ SETLOCAL EnableDelayedExpansion
+ SET "_var=first"
+ SET "_var=second" & ECHO %_var% !_var!
+
+|output| first second
+
+
+4. Delayed Expansion in Loops
+
+Default Behavior Without Delayed Expansion
+ @echo off
+ SETLOCAL
+ SET _tst=0
+ FOR /L %%G IN (1,1,5) DO (ECHO [%_tst%] & SET /A _tst+=1)
+ ECHO Total = %_tst%
+
+|output|
+ [0]
+ [0]
+ [0]
+ [0]
+ [0]
+ Total = 5
+
+With Delayed Expansion
+ @echo off
+ SETLOCAL EnableDelayedExpansion
+ SET _tst=0
+ FOR /L %%G IN (1,1,5) DO (ECHO [!_tst!] & SET /A _tst+=1)
+ ECHO Total = %_tst%
+
+|output|
+ [0]
+ [1]
+ [2]
+ [3]
+ [4]
+ Total = 5
+
+
+5. Alternative Methods
+
+Using Subroutines to Avoid Delayed Expansion
+ @echo off
+ SETLOCAL
+ SET _tst=0
+ FOR /L %%G IN (1,1,5) DO (CALL :sub %%G)
+ ECHO Total = %_tst%
+ GOTO :EOF
+
+ :sub
+ ECHO [%1] & SET /A _tst+=1
+ GOTO :EOF
+
+|output|
+ [1]
+ [2]
+ [3]
+ [4]
+ [5]
+ Total = 5
+
+
+6. Working with Special Characters
+
+Without Delayed Expansion
+ @echo off
+ SETLOCAL
+ SET _html=Hello^>World
+ ECHO %_html%
+
+|output| A file named World is created due to redirection.
+
+With Delayed Expansion
+ @echo off
+ SETLOCAL EnableDelayedExpansion
+ SET _html=Hello^>World
+ ECHO !_html!
+
+|output| Hello>World
+
+
+7. Unexpected Behaviors
+File Names with !: Variables with ! in file names can cause errors in loops.
+Pipes: Variables within piped commands may not expand correctly.
+
+
+[NOTES]
+
+Delayed Expansion was introduced for compatibility with older scripts, where default immediate expansion was sufficient. Modern scripting tools like PowerShell provide more robust alternatives.
+
+Example in PowerShell:
+ $demo = "First"
+ $demo = "Second"; echo $demo
+
+|output| Second

@@ -1,0 +1,123 @@
+DSREGCMD.exe Command Guide with Examples
+
+DSREGCMD.exe is a command-line tool used to display the device join status and manage hybrid Azure AD join operations. It is used to query, join, leave, or refresh a device’s Azure AD status, among other tasks.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+Display and Manage Device Join Status
+ DSREGCMD options
+
+[KEY]
+ /status - Display the device join status.
+ /status_old - Display the device join status in the old format.
+ /join - Schedule and monitor the Autojoin task to Hybrid Join the device.
+ /leave - Perform a Hybrid Unjoin. Removes the device from Azure AD and re-joins on the next delta sync.
+ /forcerecovery - For Azure AD-joined devices, forces a sign out and sign back in.
+ /refreshprt - Refresh the Primary Refresh Token (PRT) in the cloudAP cache.
+ /debug - Display debug messages.
+ /refreshp2pcerts - Refresh P2P certificates. (Windows 11 option)
+ /cleanupaccounts - Delete all WAM accounts. (Windows 11 option)
+ /listaccounts - List all WAM accounts. (Windows 11 option)
+ /UpdateDevice - Update device attributes (e.g., a change in device name) to Azure AD. (Windows 11 option)
+ /help or /? - Display help information for the DSREGCMD command.
+
+
+2. Device State
+
+The DSREGCMD command displays the device state as follows:
+ AzureAdJoined	EnterpriseJoined	DomainJoined	Device State
+ YES	          NO	              NO	        Azure AD Joined
+ NO	           NO	              YES	       Domain Joined
+ YES	          NO	              YES	       Hybrid AD Joined
+ NO	           YES	             YES	       On-premises DRS Joined
+ 
+
+Device Details
+
+For Azure AD-joined or hybrid Azure AD-joined devices (not Azure AD-registered), the following details are displayed:
+ DeviceId
+ Thumbprint
+ DeviceCertificateValidity
+ KeyContainerId
+ KeyProvider
+ TpmProtected
+ DeviceAuthStatus (device health in Azure AD, available since 21H1)
+
+Tenant Details
+
+For Azure AD-joined or hybrid Azure AD-joined devices, the following tenant information is displayed:
+ TenantName
+ TenantId
+ Idp (Identity Provider)
+ Various URLs related to the tenant.
+
+User State
+The user state section shows the statuses of various attributes for users currently logged in to the device.
+
+
+3. Diagnostics
+
+Pre-join Diagnostics
+
+Displayed only if the device is domain-joined and unable to hybrid Azure AD-join. It performs various tests to diagnose join failures, including:
+ Error phase
+ Error code
+ Server request ID
+ Server response HTTP status
+ Server response error message
+ Post-join Diagnostics
+ Displayed for devices that are joined to the cloud. Includes output from sanity checks, such as:
+
+AadRecoveryEnabled: If YES, the device is marked for recovery and the next sign-in will trigger recovery flow and re-registration.
+
+KeySignTest: If PASSED, the device keys are in good health.
+
+NGC Prerequisites Check
+This diagnostics section performs a check for setting up Windows Hello for Business (WHFB).
+
+
+4. Azure AD Roles
+
+The following Azure AD roles may be displayed:
+ Global Administrator
+ Azure AD joined device local administrator
+
+
+5. Error Levels
+
+The DSREGCMD command returns an ERRORLEVEL to indicate the success or failure of an operation:
+ 0 – Success
+ Non-zero – Failure (specific error codes depend on the operation)
+
+
+6. Examples
+
+Example 1: Display Device Join Status
+To display the current device join status:
+ C:\> DSREGCMD /status
+ 
+Example 2: Display Device Join Status in the Old Format
+To display the device join status in the old format:
+ C:\> DSREGCMD /status_old
+
+Example 3: Hybrid Join the Device
+To schedule and monitor the Autojoin task to Hybrid Join the device:
+ C:\> DSREGCMD /join
+
+Example 4: Perform Hybrid Unjoin
+To unjoin the device from Azure AD and schedule a rejoin on the next delta sync:
+ C:\> DSREGCMD /leave
+
+Example 5: Force Recovery on an Azure AD Joined Device
+To force a sign out and sign back in for an Azure AD-joined device:
+ C:\> DSREGCMD /forcerecovery
+
+Example 6: Refresh the Primary Refresh Token (PRT)
+To refresh the PRT in the cloudAP cache:
+ C:\> DSREGCMD /refreshprt
+
+Example 7: Display Debug Messages
+To display detailed debug information for DSREGCMD:
+ C:\> DSREGCMD /debug

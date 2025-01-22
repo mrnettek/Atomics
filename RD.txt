@@ -1,0 +1,75 @@
+RD Command Guide with Examples
+
+RD (Remove Directory) is a command-line tool used to delete an empty directory or a directory along with its contents. This command can also be used to remove entire directory trees and folders.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+RD pathname
+ RD /S pathname
+ RD /S /Q pathname
+ pathname: The directory path to be deleted.
+ /S: Delete all files and subfolders in addition to the folder itself. Use this to remove an entire folder tree.
+ /Q: Quiet mode. Do not display a confirmation prompt (Y/N).
+
+
+2. Key Notes
+Without /S: RD will only delete an empty directory. If the directory is not empty, RD will silently fail without returning any errors unless /Q is specified.
+
+With /S: RD will delete all files and subfolders in the specified directory. This allows you to remove entire folder structures, including all nested directories and files.
+
+Quiet Mode (/Q): When using /Q, the command will not prompt for confirmation before deleting the directory or its contents. This is useful for automated scripts where user input is not desired.
+
+Junction Points: If the directory is a Junction Point (a type of symbolic link), RD without /S will remove the junction point itself, but it will not remove the target directory of the junction.
+
+Long Pathnames: If the directory path contains spaces, use double quotes to enclose the full pathname. For example:
+ RD "C:\My Folder"
+
+
+3. Deleting a Directory with a Trailing Space
+
+Windows Explorer may not allow the deletion of a directory that has a trailing space, displaying the error: "Could Not Find This Item". To bypass this and delete the directory, escape the closing quote, as shown below:
+ RD "this has a trailing space \"
+
+
+4. Example Usage
+
+Example 1: Delete an Empty Directory
+To delete an empty directory C:\docs\Jan:
+ RD C:\docs\Jan
+
+Example 2: Delete a Directory and Its Contents
+To delete a directory C:\docs\Jan along with all of its files and subdirectories:
+ RD /S C:\docs\Jan
+
+Example 3: Quiet Deletion (No Confirmation Prompt)
+To delete a directory and its contents without any confirmation prompt (DANGERZONE):
+ RD /S /Q C:\docs\Jan
+
+Example 4: Delete Multiple Directories
+To delete multiple directories in one command:
+ RD C:\docs\Jan "C:\My Documents\Mar"
+
+
+[RETURN CODES]
+
+RD does not return a standard error level to the shell, but it sets an exit code based on the result of the command.
+
+Errorlevels
+ 0: Directory deleted successfully.
+ 1: Invalid option.
+ 2: Directory not found.
+ 5: Access denied (permission issues).
+ 32: Directory in use (e.g., if the directory is open or being used by a process).
+ 145: Directory not empty.
+
+To detect non-zero exit codes and handle failures, you can use conditional execution, for example:
+ RD NonExistentFolder || Echo This failed!
+
+
+[NOTES]
+
+No Wildcards: The RD command does not support wildcards for directory names. You need to specify the exact directory name or path.
+
+Deleting System Folders: Be cautious when using RD with system or protected folders. Access may be denied if the required permissions are not granted.

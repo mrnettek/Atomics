@@ -1,0 +1,129 @@
+BITSADMIN.exe Help File
+
+BITSADMIN.exe is a command-line tool for managing the Background Intelligent Transfer Service (BITS), which is used for transferring large files over networks with minimal disruption. BITS supports features like throttling and asynchronous transfers and is used by services such as Windows Update, SUS, SMS, and third-party applications.
+
+[SYNTAX]
+BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
+
+[AVAILABLE COMMANDS]
+
+1. General Commands
+ /UTIL /?: Display utility commands available in BITSADMIN.
+ /PEERCACHING /?: Display commands for managing Peercaching.
+ /CACHE /?: Display commands for cache management.
+ /PEERS /?: Display commands for managing peers.
+
+2. Job Management Commands
+ /LIST: List all jobs.
+  Options:
+   /ALLUSERS: List jobs for all users.
+   /VERBOSE: Display detailed job information.
+ /MONITOR: Monitors the copy manager.
+  Options:
+   /ALLUSERS: Monitor jobs for all users.
+   /REFRESH sec: Set the refresh interval in seconds.
+   /RESET: Delete all jobs from the manager.
+
+3. Transfer Commands
+ /TRANSFER job_name [type] [options] remote_url local_name: Transfer files.
+  Options:
+   type: /DOWNLOAD (default) or /UPLOAD.
+   Multiple URL/file pairs can be specified.
+ /CREATE [type] job_name: Create a new job.
+  Options:
+   job_name: A unique name for the job (not a GUID).
+   type: /DOWNLOAD, /UPLOAD, or /UPLOAD-REPLY.
+
+4. File Management Commands
+ /INFO job: Displays information about a specific job.
+  Options:
+   /VERBOSE: Display detailed information.
+ /ADDFILE job remote_url local_name: Add a file to the job.
+ /ADDFILESET job textfile: Add multiple files to the job from a text file (each line contains remote URL and local path).
+ /ADDFILEWITHRANGES job remote_url local_name range_list: Add files with specified byte ranges (e.g., 0:100,2000:100,5000:eof).
+ /REPLACEREMOTEPREFIX job old_prefix new_prefix: Replace the remote URL prefix in the job.
+ /LISTFILES job: List the files in the job.
+
+5. Job Control Commands
+ /SUSPEND job: Suspend a job.
+ /RESUME job: Resume a suspended job.
+ /CANCEL job: Cancel a job.
+ /COMPLETE job: Mark a job as complete.
+ /GETTYPE job: Retrieve the job type.
+ /SETACLFLAGS job ACL_flags: Set the Access Control List (ACL) flags for the job.
+
+6. Advanced Configuration Commands
+
+ /SETPROXYSETTINGS job usage: Set the proxy usage for a job.
+  Options: PRECONFIG, AUTODETECT, NO_PROXY, OVERRIDE.
+ /GETPROXYUSAGE job: Retrieve the proxy usage setting for a job.
+ /GETPROXYLIST job: Retrieve the proxy list for a job.
+ /GETPROXYBYPASSLIST job: Retrieve the proxy bypass list for a job.
+ /TAKEOWNERSHIP job: Take ownership of the job.
+ /SETNOTIFYCMDLINE job program_name [program_parameters]: Set a program to execute for notifications.
+ /GETNOTIFYCMDLINE job: Retrieve the notification command line for a job.
+ /SETCREDENTIALS job target scheme username password: Add credentials to a job for authentication.
+  Options: BASIC, NTLM, DIGEST.
+ /REMOVECREDENTIALS job target scheme: Remove credentials from a job.
+ /GETCUSTOMHEADERS job: Retrieve custom HTTP headers for a job.
+ /SETCUSTOMHEADERS job header1 header2 ...: Set custom HTTP headers for a job.
+ /GETCLIENTCERTIFICATE job: Retrieve the client certificate information for a job.
+ /SETCLIENTCERTIFICATEBYID job store_location store_name hexa-decimal_cert_id: Set a client authentication certificate for a job.
+ /REMOVECLIENTCERTIFICATE job: Remove the client certificate information from the job.
+
+7. Peercaching Options
+ /SETPEERCACHINGFLAGS job value: Set flags for the job’s peercaching behavior.
+  Enable data download from peers:
+ /GETPEERCACHINGFLAGS job: Retrieve the flags for the job’s peercaching behavior.
+
+8. Upload-Reply Jobs
+ /GETREPLYFILENAME job: Retrieve the path of the file containing the server reply.
+ /SETREPLYFILENAME job path: Set the path of the file containing the server reply.
+ /GETREPLYPROGRESS job: Retrieve the size and progress of the server reply.
+ /GETREPLYDATA job: Dump the server’s reply data in hex format.
+
+General Options
+ /RAWRETURN: Return data suitable for parsing (removes new line characters).
+ /WRAP: Wrap output around the console (default).
+ /NOWRAP: Prevent output from wrapping.
+
+
+[EXAMPLES]
+
+Example 1: Creating a Job
+Create a download job:
+ bitsadmin /create /download MyDownloadJob
+
+Example 2: Adding Files to a Job
+Add a file to a job:
+ bitsadmin /addfile MyDownloadJob https://example.com/file.zip c:\downloads\file.zip
+
+Example 3: Suspending and Resuming Jobs
+Suspend a job:
+ bitsadmin /suspend MyDownloadJob
+
+Resume a job:
+ bitsadmin /resume MyDownloadJob
+
+Example 4: Setting Proxy Settings
+Set proxy settings for a job:
+ bitsadmin /setproxysettings MyJob PRECONFIG
+
+Example 5: Setting Notification Command Line
+Set notification command line for a job:
+ bitsadmin /SetNotifyCmdLine MyJob c:\windows\system32\notepad.exe NULL
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: Success
+ 1: General error
+ 2: Invalid parameter or incorrect command
+ 3010: Restart required to apply changes
+ 32768: Access denied (insufficient privileges)
+
+
+[NOTES]
+
+BITSADMIN is deprecated in Windows 7 and later. For modern usage, consider using PowerShell cmdlets for BITS administration.

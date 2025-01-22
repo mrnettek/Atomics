@@ -1,0 +1,145 @@
+SetACL Command Guide with Examples
+
+SetACL is a powerful command-line tool used to modify security descriptors for files, folders, registry keys, services, printers, and shares on local or remote systems. It allows for managing access control lists (ACLs), setting ownership, and configuring advanced permissions for users and groups.
+
+
+1. Overview
+
+SetACL allows users to:
+ Set or modify file system permissions (DACL).
+ Set or modify registry key permissions.
+ Configure permissions on printers, services, and shares.
+ Retrieve or set ownership and auditing for files, directories, and registry keys.
+ Perform these tasks locally or remotely.
+
+
+2. Basic Syntax
+
+[SYNTAX]
+SetACL.exe /[Operation] [Object] [Permissions] [Options]
+ Operation: The operation you want to perform (examples: /set, /get, /remove).
+ Object: The object to modify (examples: file path, registry path, printer, service, etc.).
+ Permissions: Specifies the permissions you want to set (examples: F for Full, R for Read).
+ Options: Additional options for specific commands (examples: /recursive to apply permissions to subfolders).
+
+
+3. Key Operations
+
+1. Managing File System Permissions
+You can modify file system permissions on a file or folder using SetACL.
+
+Set full control permissions on a file
+ SetACL.exe /file "C:\example\file.txt" /grant "Domain\User:F"
+
+Grants Full control (F) permission to Domain\User on file.txt.
+
+
+Remove all permissions for a user
+ SetACL.exe /file "C:\example\file.txt" /remove "Domain\User"
+
+Removes all permissions for Domain\User on file.txt.
+
+
+2. Managing Registry Permissions
+SetACL can be used to modify permissions on registry keys.
+
+Set read access on a registry key
+ SetACL.exe /reg "HKCU\Software\MySoftware" /grant "Domain\User:R"
+
+Grants read-only (R) access to Domain\User on the registry key HKCU\Software\MySoftware.
+
+
+Remove permissions on a registry key
+ SetACL.exe /reg "HKCU\Software\MySoftware" /remove "Domain\User"
+
+Removes all permissions for Domain\User on the registry key HKCU\Software\MySoftware.
+
+
+3. Managing Printer, Service, and Share Permissions
+
+SetACL can also modify permissions for printers, services, and shared folders.
+
+Grant full control over a shared folder
+ SetACL.exe /share "\\Server\SharedFolder" /grant "Domain\User:F"
+
+Grants Full control (F) permission to Domain\User on the shared folder \\Server\SharedFolder.
+
+
+Grant read access to a printer
+ SetACL.exe /printer "Printer1" /grant "Domain\User:R"
+
+Grants read-only (R) access to Domain\User on printer Printer1.
+
+
+4. Modifying Ownership
+SetACL can modify the ownership of files, folders, or registry keys.
+
+Example: Set ownership of a file
+ SetACL.exe /file "C:\example\file.txt" /setowner "Domain\User"
+
+Sets Domain\User as the owner of file.txt.
+
+
+4. Advanced Usage
+
+1. Recursively Apply Permissions
+
+To apply permissions to all files and subfolders within a directory, use the /recursive option.
+
+Set permissions recursively on a folder
+ SetACL.exe /file "C:\example\folder" /grant "Domain\User:F" /recursive
+
+Grants Full control (F) permission to Domain\User on all files and subfolders within folder.
+
+
+2. Modifying Multiple Files
+
+You can modify multiple files by using wildcards (*) or specifying multiple files.
+
+Set permissions on all .txt files in a directory
+ SetACL.exe /file "C:\example\*.txt" /grant "Domain\User:R"
+
+Grants read-only (R) permission to Domain\User on all .txt files in C:\example\.
+
+
+3. Using the COM Version of SetACL
+SetACL also provides a COM version (SetACL.dll), which allows you to interact with the tool programmatically from programs and scripts.
+
+Set permissions using C#
+ using SetACL;
+ SetACL.SetACL("C:\\example\\file.txt", "Domain\\User", "R");
+
+This example programmatically grants read-only (R) access to Domain\User on file.txt.
+
+
+5. Example Usage
+
+Example 1: Locking and Unlocking the Registry
+To lock a registry key so that it cannot be modified:
+ SetACL.exe /reg "HKCU\Software\MySoftware" /deny "Domain\User:F"
+
+Example 2: To unlock the registry key:
+ SetACL.exe /reg "HKCU\Software\MySoftware" /remove "Domain\User"
+
+Example 3: Migrating User Profiles During Domain Migration
+This script helps with domain migration by applying new permissions to user profiles:
+ for /d %%i in (C:\Users\*) do SetACL.exe /file "%%i" /grant "Domain\User:F"
+
+Applies Full control (F) permission to all user profiles under C:\Users\.
+
+
+6. Error Handling
+
+SetACL will return the following error codes:
+ 0: Success
+ 1: Invalid command or parameter
+ 5: Access denied
+ 9: Invalid file or registry path
+ 10: Invalid security descriptor 
+
+
+[NOTES]
+
+SetACL is a powerful tool, and using it without caution can affect system security. Always verify permissions before applying changes.
+
+Remote Operations: SetACL supports both local and remote operations. To apply changes remotely, use the /r (remote) option with the appropriate system name.

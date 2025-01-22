@@ -1,0 +1,114 @@
+NETSH.exe (Network Shell) Help File
+
+
+NETSH (Network Shell) is a command-line utility used for configuring network interfaces, Windows Firewall, routing, remote access, and other network-related settings. It provides a wide range of commands for managing networking features in Windows.
+
+
+[SYNTAX]
+NETSH [Context] [sub-Context] command
+
+ Where:
+
+ Context: The area of configuration (example firewall, routing).
+ sub-Context: The specific part of the context being modified (example configuring a specific service).
+ command: The action to be performed (example add, delete, show).
+
+
+Key Commands and Contexts
+
+General Commands
+
+ abort: Discard changes made while in offline mode.
+ add: Add a configuration entry to a list.
+  netsh add helper DllFileName — Install a specified helper DLL.
+
+ delete: Delete a configuration entry from a list.
+  netsh delete helper DllFileName — Remove a specified helper DLL from netsh.
+
+ commit: Commit changes made in offline mode.
+
+ exit: Exit the NETSH utility.
+
+ help: Display a list of NETSH commands.
+  netsh help — Display available commands.
+
+
+Firewall Context (advfirewall)
+advfirewall: Change the 'netsh advfirewall' context to configure firewall settings.
+ netsh advfirewall dump: Create a script that contains the current firewall configuration.
+ netsh advfirewall firewall add: Add a new inbound or outbound firewall rule.
+ netsh advfirewall firewall delete: Delete matching inbound rules.
+ netsh advfirewall firewall show: Display specific firewall rules.
+ netsh advfirewall reset: Reset the firewall configuration to default settings.
+
+Bridge Context
+bridge: Change to the 'netsh bridge' context for configuring network bridges.
+ netsh bridge install: Install the network bridge component.
+ netsh bridge show: Display information about the network bridge.
+
+DHCP Context
+dhcpclient: Change to the 'netsh dhcpclient' context for managing DHCP settings.
+ netsh dhcpclient trace enable: Enable tracing for DHCP client and DHCP QEC.
+ netsh dhcpclient trace disable: Disable DHCP client tracing.
+
+DNS Client Context (dnsclient)
+dnsclient: Change to the 'netsh dnsclient' context for configuring DNS client settings.
+ Routing Context (routing)
+ routing: Change to the 'netsh routing' context to configure routing protocols and settings. 
+
+HTTP Context
+http: Change to the 'netsh http' context for configuring HTTP services and settings.
+ netsh http show: Display information about the HTTP service.
+ netsh http show sslcert: Display SSL certificate bindings.
+
+Interface Context
+interface: Change to the 'netsh interface' context for configuring network interfaces.
+ netsh interface ipv4: Change to the 'netsh interface ipv4' context.
+ netsh interface show interface: Display the network interface status.
+
+Winsock Context (winsock)
+winsock: Change to the 'netsh winsock' context for configuring Winsock settings.
+ netsh winsock reset: Reset the Winsock catalog to a clean state.
+ Wireless LAN Context (wlan)
+ wlan: Change to the 'netsh wlan' context to configure wireless network settings.
+ netsh wlan connect: Connect to a wireless network.
+ netsh wlan show: Display information about wireless network settings.
+
+Trace Context
+trace: Change to the 'netsh trace' context to configure trace settings.
+ netsh trace start: Start a tracing session.
+ netsh trace stop: Stop the current trace session.
+
+RAS Context (ras)
+ ras: Change to the 'netsh ras' context for configuring Remote Access Service (RAS) settings.
+
+
+[EXAMPLES]
+
+Example 1: Configure a Firewall Rule
+This command adds a rule to allow inbound HTTP traffic on port 80.
+ netsh advfirewall firewall add rule name="Allow HTTP" protocol=TCP dir=in localport=80 action=allow
+
+Example 2: Reset Firewall to Default
+This command resets the firewall settings to their default configuration.
+ netsh advfirewall reset
+
+Example 3: Enable DHCP Client Tracing
+This command enables tracing for DHCP client operations.
+ netsh dhcpclient trace enable
+
+Example 4: View Wireless Network Configuration
+This command displays all wireless network profiles saved on the system.
+ netsh wlan show profiles
+
+
+Errorlevels
+ 0: Command was successful.
+ 1: Command failed due to incorrect syntax or parameters.
+
+
+[NOTES]
+
+NETSH can be run in interactive mode, which allows you to explore various contexts and sub-contexts by typing netsh and then using the help command.
+
+Some commands may require elevated privileges (administrator access) to execute properly. Ensure that you are running NETSH in an elevated Command Prompt or PowerShell window.

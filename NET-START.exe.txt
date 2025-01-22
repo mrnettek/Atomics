@@ -1,0 +1,53 @@
+NET START/STOP/PAUSE/CONTINUE Help File
+
+The NET START, NET STOP, NET PAUSE, and NET CONTINUE commands are used to manage services on a Windows machine. These commands allow you to start, stop, pause, or resume services that are listed in Control Panel > Services.
+
+
+[SYNTAX]
+NET START [service]
+NET STOP [service]
+NET PAUSE [service]
+NET CONTINUE [service]
+
+Service - The name of the service as it appears in Control Panel > Services. Service names are typically the same as the Service Name field (not the display name) in the Services window.
+
+[OPTIONS]
+
+Start a service that is stopped or disabled.
+Syntax: NET START [service]
+ NET START
+
+Stop a running service.
+Syntax: NET STOP [service]
+ NET STOP
+
+Temporarily pause a running service (if supported by the service).
+Syntax: NET PAUSE [service]
+ NET PAUSE
+
+Resume a paused service (if supported by the service).
+Syntax: NET CONTINUE [service]
+ NET CONTINUE
+
+
+[EXAMPLES]
+
+Example 1: List the basic services.
+ NET HELP SERVICES
+
+Example 2: List the running services.
+ NET START
+
+Example 3: Stop the print spooler service and restart it.
+ NET STOP spooler && NET START spooler
+
+Example 4: Stop a service with a long service name (use quotes).
+ NET STOP "HomeGroup Listener"
+
+
+Error/Return Codes
+ 0: The operation was successful.
+ 2: The system cannot find the specified service.
+ 5: Access is denied. You may not have the necessary permissions to manage the service.
+ 1061: The service cannot be paused because it is not in a paused state.
+ 1062: The service cannot be resumed because it is not in a paused state.

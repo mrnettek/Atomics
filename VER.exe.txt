@@ -1,0 +1,56 @@
+VER Command Help File
+
+The VER command is used to display the current version of the Windows Operating System. It outputs the major and minor version numbers, as well as the build number.
+
+
+[SYNTAX]
+VER
+
+[KEY INFORMATION]
+
+The VER command is very simple, providing the version information for the currently running Windows OS.
+
+It returns the version in the format:
+ Major version.Minor version.Build number
+
+This is often used in batch scripts to check the version of Windows and make decisions based on that.
+
+
+[LIMITATIONS]
+
+The VER command does not return the full version or release information like "Version ID" or "Release ID" as displayed in Settings > About.
+
+To get more detailed version information such as the "Release ID" or "DisplayVersion," you would need to use PowerShell commands or access the registry.
+
+PowerShell for Detailed Version Information
+
+
+You can use PowerShell to retrieve the more detailed version and release information. This is especially useful if you need to know the specific Windows 10 or 11 version. Here are examples of PowerShell commands to retrieve this data:
+
+For Windows 10 versions up to 2004:
+ $release = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name ReleaseId).ReleaseId
+
+For later versions (after 2004):
+ $ver = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name DisplayVersion).DisplayVersion
+ If ($release -lt '2009') {$release} Else {$ver}
+
+
+Microsoft Windows [Version 10.0.19041.1237]
+
+To pipe the version information to FIND for searching:
+ VER | FIND "6.1" > nul
+ IF %ERRORLEVEL% == 0 GOTO version_2008R2
+
+This checks if the version matches "6.1", useful for batch scripts.
+
+
+Errorlevels
+ 0: Success (Command executed successfully, version information displayed).
+ 1: Error (In case of an incorrect command or issues with the output).
+
+
+[NOTES]
+
+The VER command is primarily used for checking the version number of the operating system in scripts or command-line operations.
+
+For more detailed version information, such as the Release ID or Display Version, PowerShell is recommended.

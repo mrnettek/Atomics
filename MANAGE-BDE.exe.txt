@@ -1,0 +1,108 @@
+Manage-BDE.exe (BitLocker Drive Encryption: Configuration Tool)
+
+Manage-BDE is a command-line tool used to configure BitLocker Drive Encryption on disk volumes. It provides a set of commands for managing BitLocker encryption, including enabling or disabling encryption, managing recovery keys, and configuring automatic unlocking for data volumes.
+
+[SYNTAX]
+manage-bde [command] [arguments]
+
+[KEY PARAMETERS]
+Manage automatic unlocking of data volumes.
+ -autounlock
+
+Run the command on a remote computer.
+Example: "Computer64", "127.0.0.1"
+ -ComputerName or -cn
+
+Modify the startup key for a volume.
+ -changekey
+
+Modify the password for a data volume.
+ -changepassword
+
+Modify the PIN for a volume.
+ -changepin
+
+Force a BitLocker-protected operating system to enter recovery mode during restarts.
+ -ForceRecovery or -fr
+
+Generate a key package for a volume.
+ -KeyPackage or -kp
+
+Lock the BitLocker-encrypted data volume and prevent access.
+ -lock
+
+Unlock a BitLocker-encrypted data volume and allow access.
+ -unlock
+
+Encrypt the volume and enable BitLocker protection.
+ -on
+
+Decrypt the volume and disable BitLocker protection.
+ -off
+
+Pause encryption, decryption, or free space wipe operations.
+ -pause
+
+Manage protection methods for the encryption key (password, PIN, recovery key, etc.).
+ -protectors
+
+Resume encryption, decryption, or free space wipe operations after being paused.
+-resume
+
+Configure the identifier for a volume.
+ -SetIdentifier or -si
+
+Provide information about BitLocker-capable volumes, including encryption status.
+ -status
+
+Configure the computer’s Trusted Platform Module (TPM).
+ -tpm
+
+Upgrade the BitLocker version to the latest supported version.
+ -upgrade
+
+Wipe the free space on the volume to ensure encrypted data is not recoverable.
+ -WipeFreeSpace or -w
+
+Display brief help for the parameter.
+ -? or /?
+
+Display complete help with all available options for each command.
+ -Help or -h
+
+
+[EXAMPLES]
+
+Exampe 1: Display the status of all BitLocker-enabled volumes.
+ manage-bde -status
+
+Exampe 2: Enable BitLocker encryption on the C: drive with both a recovery password and recovery key.
+ manage-bde -on C: -RecoveryPassword -RecoveryKey F:\
+
+Exampe 3: Unlock the E: drive using a recovery key.
+ manage-bde -unlock E: -RecoveryKey F:\84E151C1...7A62067A512.bek
+
+Exampe 4: Pause the encryption process.
+ manage-bde -pause C:
+
+Exampe 5: Resume the encryption process.
+ manage-bde -resume C:
+
+Exampe 6: Disable BitLocker on the C: drive and decrypt the data.
+ manage-bde -off C:
+
+Exampe 7: Generate a recovery key for a drive using the key package.
+ manage-bde -KeyPackage C: -RecoveryKey F:\
+
+Exampe 8: Force recovery mode during the restart of a BitLocker-protected operating system.
+ manage-bde -ForceRecovery C: 
+
+
+[RETURN CODES]
+
+Error Handling
+ 0: Success
+ 1: General error
+ 2: Invalid parameter or incorrect command
+ 3010: Restart required to apply changes
+ 32768: Access denied (insufficient privileges)

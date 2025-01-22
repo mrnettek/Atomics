@@ -1,0 +1,73 @@
+TYPE Command Guide with Examples
+
+TYPE is a command-line utility used to display the contents of one or more text files in the command prompt. It is commonly used for viewing file contents, and in conjunction with redirection, can also be used for file manipulation.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+TYPE [drive:]pathname(s)
+[drive:]pathname(s): Specifies the file or files whose contents you want to display. Wildcards (*) can be used to match multiple files. If multiple files are specified, their filenames will be included in the output.
+
+If you use a wildcard to match files, the filenames are displayed even if only one file matches. The filenames are printed to the error stream and can be hidden by redirecting to NUL like so:
+ TYPE * 2>nul
+
+In Windows 1909 or newer, if the text file contains ANSI color escape codes, TYPE will decode and display the colors in the terminal.
+
+2. Error Levels
+ 0: The file(s) were successfully displayed.
+ 1: The file was not found, or invalid parameters were given.
+
+
+3. Key Notes
+
+Internal Command: TYPE is an internal command in Windows. It works directly within the command prompt and does not require any external executables.
+
+No Locking: TYPE does not lock the file while displaying its contents, making it useful for monitoring files (example: during a download) without interfering with the process.
+
+Text Encoding: When working with text files that require different encoding (example ASCII to Unicode), TYPE can be used in combination with other commands like CHCP and CMD.EXE to handle conversions.
+
+
+4. Example Usage
+
+Example 1: Redirect Output to a New File
+To display the contents of file.txt and redirect it into a new file Newfile.txt:
+ TYPE file.txt > Newfile.txt
+
+Example 2: Append Output to an Existing File
+To append the contents of file.txt to an existing file ExistingFile.txt:
+ TYPE file.txt >> ExistingFile.txt
+
+Example 3: Display Console Input and Save to File
+To capture user input and save it into a file, use the CON (console) input and redirect it into Newfile.txt. This will require you to type CTRL-Z to indicate the end of input:
+ TYPE CON > Newfile.txt
+
+Example 4: Using TYPE Implicitly with SORT
+When using the SORT command, TYPE is used internally to display the file contents:
+ SORT < MyFile.txt
+
+Example 5: Create an Empty File
+To create an empty (zero byte) file:
+ TYPE nul > filename.log
+
+Example 6: Monitor File Size During Download
+You can use TYPE to check the size of a file during a download, as it won't lock the file:
+ TYPE file_being_downloaded > NUL
+ DIR file_being_downloaded
+
+Example 7: Convert an ASCII File to Unicode
+To convert an ASCII (Windows-1252) file into a Unicode (UCS-2 little-endian) text file, use the following commands:
+ For /f "tokens=2 delims=:" %%G in ('CHCP') do Set _codepage=%%G
+ CHCP 1252 > NUL
+ CMD.EXE /D /A /C (SET/P=ÿþ) < NUL > unicode.txt 2>NUL
+ CMD.EXE /D /U /C TYPE ascii_file.txt >> unicode.txt
+ CHCP %_codepage%
+
+
+[NOTES]
+
+Handling Wildcards: Wildcards can be used to display the contents of multiple files in the directory. If no files match the wildcard, the command will return an error.
+
+Redirection: TYPE works well with output redirection, whether you're saving the contents of files to new files or appending them to existing files.
+
+ANSI Color Support: In Windows 1909 and newer, TYPE will interpret ANSI color escape sequences, displaying the content in color in the console if supported.

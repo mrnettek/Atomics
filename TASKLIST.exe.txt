@@ -1,0 +1,114 @@
+TASKLIST Command Guide with Examples
+
+TASKLIST is a command-line tool that provides a list of currently running processes on a local or remote machine. It displays information such as the process name, process ID (PID), memory usage, and more. Below is a brief guide with syntax and examples.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+Display a List of Running Processes
+ TASKLIST [/S system [/U username [/P [password]]]] [/M module] [/V] [/FI filter] [/FO format] [/NH] [/?]
+
+[KEY]
+ /S system - The name or IP address of a remote machine to query.
+ /U username - The user account to connect with (for remote systems).
+ /P password - The password associated with the user account (if required).
+ /M module - Displays all tasks that have a specific module (DLL) loaded.
+ /V - Displays detailed information about the processes, including memory usage, session, and user.
+ /FI filter - Filters the task list based on specified criteria (e.g., task name, PID, session name).
+ /FO format - Specifies the output format: TABLE, LIST, or CSV.
+ /NH - Suppresses the column header in the output.
+ /? - Displays help information about the command.
+
+
+2. Example Usage
+
+Example 1: Display All Running Processes
+To display a simple list of all running processes on the local machine:
+ TASKLIST
+
+|output|
+ Image Name                     PID Session Name        Session#    Mem Usage
+ ========================= ======== ================ =========== ============
+ svchost.exe                   1234 Services                   0      10,000 K
+ explorer.exe                  5678 Console                    1     150,000 K
+ cmd.exe                       4321 Console                    1       5,000 K
+
+
+Example 2: Display Processes on a Remote Machine
+To display the list of processes running on a remote machine named RemotePC:
+ TASKLIST /S RemotePC
+
+Example 3: Display Processes with a Specific Module Loaded
+To list all processes that have a specific DLL (kernel32.dll) loaded:
+ TASKLIST /M kernel32.dll
+
+Example 4: Filter Processes by Name
+To display only the processes named explorer.exe:
+ TASKLIST /FI "IMAGENAME eq explorer.exe"
+
+Example 5: Display Detailed Information
+To display detailed information, including memory usage and user information, for all processes:
+ TASKLIST /V
+
+|output|
+ Image Name                     PID Session Name        Session#    Mem Usage    Status          User Name
+ ========================= ======== ================ =========== ============ ============    ============
+ svchost.exe                   1234 Services                   0      10,000 K    Running        NT AUTHORITY\SYSTEM
+ explorer.exe                  5678 Console                    1     150,000 K    Running        User1
+ cmd.exe                       4321 Console                    1       5,000 K    Running        User2
+
+Example 6: Display Task List in CSV Format
+To display the task list in CSV format:
+ TASKLIST /FO CSV
+
+|output|
+ "Image Name","PID","Session Name","Session#","Mem Usage"
+ "svchost.exe","1234","Services","0","10,000 K"
+ "explorer.exe","5678","Console","1","150,000 K"
+ "cmd.exe","4321","Console","1","5,000 K"
+
+Example 7: Display Processes with No Column Header
+To display processes without the column header:
+ TASKLIST /NH
+
+
+3. Filters for /FI Option
+
+The /FI option allows filtering of processes based on various criteria. Some common filters include:
+ IMAGENAME eq processname - Filters by process name.
+ PID eq processid - Filters by process ID.
+ STATUS eq running - Filters by the running status of the process.
+ SESSIONNAME eq console - Filters by session name.
+ MEMUSAGE gt size - Filters by memory usage (greater than the specified size).
+
+Example:
+ TASKLIST /FI "MEMUSAGE gt 100000"
+
+This command will filter and display processes using more than 100,000 KB of memory.
+
+
+4. Output Formats (/FO)
+
+The /FO option allows you to specify the format of the output. The following formats are supported:
+ TABLE: A standard table format (default).
+ LIST: A list format, displaying each process in a list with detailed properties.
+ CSV: A comma-separated values format (useful for importing into Excel or other tools).
+
+Example:
+ TASKLIST /FO LIST
+
+|output|
+ Image Name:   svchost.exe
+ PID:          1234
+ Session Name: Services
+ Session#:     0
+ Mem Usage:    10,000 K
+ Status:       Running
+ User Name:    NT AUTHORITY\SYSTEM
+
+
+5. Errorlevel
+ 0 - Successfully listed the processes.
+ 1 - Invalid filter or an invalid command was issued.
+ 2 - A specified file or process could not be found (if the specified machine is unreachable).

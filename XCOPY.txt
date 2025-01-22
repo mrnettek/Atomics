@@ -1,0 +1,96 @@
+XCOPY Command Guide with Examples
+
+XCOPY is a command-line tool used to copy files and directory trees to another location. It provides more advanced options than the COPY command, including the ability to copy directories, subdirectories, and various attributes.
+
+
+1. Syntax and Usage
+
+[SYNTAX]
+XCOPY source [destination] [options]
+ source: Pathname for the file(s) to be copied. This can accept wildcards.
+ destination: Pathname for the new file(s) or directory. If omitted, the source files are copied to the current directory.
+ 
+ [OPTIONS] can be any combination of the following:
+
+2. Source Options
+ /A: Copy files with the archive attribute set (default is Y).
+ /M: Copy files with the archive attribute set and turn off the archive attribute. Use this for regular backups.
+ /H: Copy hidden and system files and folders (default is N).
+ /D:mm-dd-yyyy: Copy files that were modified on or after the specified date. If no date is provided, only newer files than the destination will be copied.
+ /U: Copy only files that already exist in the destination.
+ /S: Copy directories and subdirectories, except empty ones.
+ /E: Copy all directories and subdirectories, including empty ones. Can be used with /T to copy an empty folder structure.
+ /EXCLUDE:file1[+file3]...: Exclude files matching the pattern(s) specified in the file(s). The file should contain one or more full or partial pathnames to be excluded.
+
+3. Copy Options
+ /B: Copy the symbolic link itself, not the target of the file.
+ /C: Continue copying even if errors occur.
+ /F: Display full source and destination file names while copying.
+ /G: Allow copying encrypted files to a destination that does not support encryption.
+ /L: List only, display files that would be copied without actually copying them.
+ /Q: Do not display file names while copying.
+ /V: Verify that the new files are readable after being copied.
+ /W: Prompt before starting the copy process.
+ /P: Prompt before creating each file.
+ /Y: Suppress prompt to confirm overwriting a file. Can be preset with COPYCMD=/Y.
+ /-Y: Enable confirmation prompt when overwriting files.
+
+4. Performance Tweaks
+ /COMPRESS: Request SMB network compression during file transfer, if applicable.
+ /J: Use unbuffered I/O for faster copying, recommended for very large files.
+ /Z: Copy files in restartable mode. If the copy process is interrupted, it will resume from where it left off. This option significantly reduces copy performance due to additional logging.
+
+5. Destination Options
+ /I: If the destination is a folder, assume the destination is a folder if it's ambiguous.
+ /R: Overwrite read-only files.
+ /T: Create a folder structure without copying files. Does not include empty folders unless /E is used.
+ /K: Copy file attributes. Without this, XCOPY will reset read-only attributes.
+ /N: Use short filenames (8.3 format) when possible. This is useful for copying between disks with different file systems (NTFS to VFAT).
+ /O: Copy file ownership and ACL information.
+ /X: Copy file audit settings (implies /O).
+
+
+6. Examples
+
+Example 1: Copy a Single File
+To copy a file from one location to another:
+ XCOPY C:\source\file1.txt D:\destination\
+
+Example 2: Copy Multiple Files and Subdirectories
+To copy multiple files and subdirectories (excluding empty ones):
+ XCOPY C:\source\*.* D:\destination\ /S
+
+Example 3: Copy All Files Including Empty Subdirectories
+To copy files and include empty subdirectories:
+ XCOPY C:\source\*.* D:\destination\ /E
+
+Example 4: Copy Files Modified After a Specific Date
+To copy only files modified after a specific date:
+ XCOPY C:\source\*.* D:\destination\ /D:12-25-2023
+
+Example 5: Exclude Specific Files During Copy
+To exclude specific files from being copied:
+ XCOPY C:\source\*.* D:\destination\ /EXCLUDE:C:\exclude.txt
+
+Example 6: Copy a Folder Structure Only (No Files)
+To create the folder structure but not copy any files:
+ XCOPY C:\source\*.* D:\destination\ /T
+
+Example 7: Overwrite Files Without Prompting
+To copy files and suppress the overwrite prompt:
+ XCOPY C:\source\*.* D:\destination\ /Y
+
+Example 8: Use Network Compression During Copy
+To enable SMB network compression while copying:
+ XCOPY C:\source\*.* D:\destination\ /COMPRESS
+
+
+[NOTES]
+
+Symbolic Links: If the source directory contains symbolic links, XCOPY will create a corresponding directory in the destination on the first run. However, all subsequent XCOPY operations will fail with error code 4. For this task, use Robocopy instead.
+
+Copying from CDROM: XCOPY is especially useful for copying files from CD-ROM to a hard drive as it automatically removes the read-only attribute from the files.
+
+Date/Time Granularity: The timestamp granularity is 2 seconds for FAT volumes and 0.1 microsecond for NTFS volumes.
+
+Overwrite Prompts: The default behavior is to prompt for overwriting files unless running from a batch script. Use COPYCMD=/Y to suppress this prompt.

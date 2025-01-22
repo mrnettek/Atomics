@@ -1,0 +1,120 @@
+DISM.exe (Deployment Image Servicing and Management)
+
+The DISM.exe (Deployment Image Servicing and Management) tool is used to service Windows images, including the installation, configuration, and updating of features, drivers, and packages. It can be used to manage both online and offline Windows images.
+
+[SYNTAX]
+DISM.exe [dism_options] {Imaging_command} [Imaging_arguments]
+DISM.exe {/Image:path_to_offline_image | /Online} [dism_options] {servicing_command} [servicing_arguments]
+
+[KEY]
+ /Online: Target the running operating system.
+ /Image: Specify the path to the root directory of an offline Windows image.
+ 
+Generic Imaging Options
+ /Apply-Image: Apply an image.
+ /Split-Image: Split an existing .wim file into multiple read-only split WIM (SWM) files.
+ /Get-ImageInfo: Display information about images in a WIM, VHD, or FFU file.
+ /Get-MountedImageInfo: Display information about mounted WIM and VHD images.
+ /Commit-Image: Save changes to a mounted WIM or VHD image.
+ /Mount-Image: Mount an image from a WIM or VHD file.
+ /Unmount-Image: Unmount a mounted WIM or VHD image.
+ /Remount-Image: Recover an orphaned image mount directory.
+ /Cleanup-Mountpoints: Delete resources associated with corrupted mounted images.
+
+Image Specifications 
+ /Online: Target the running Operating System.
+ /Image: Specify the path to the root directory of an offline Windows image.
+
+WIM Options
+ /Apply-CustomDataImage: Dehydrate files contained in the custom data image.
+ /Capture-CustomImage: Capture customizations into a delta WIM file on a WIMBoot system.
+ /Get-WIMBootEntry: Display WIMBoot configuration entries for the specified disk volume.
+ /Update-WIMBootEntry: Update WIMBoot configuration entry for the specified disk volume.
+ /Append-Image: Add another image to a WIM file.
+ /List-Image: Display a list of the files and folders in a specified image.
+ /Export-Image: Export a copy of the specified image to another file.
+ /Delete-Image: Delete a volume image from a WIM file that has multiple volume images.
+ /Capture-Image: Capture an image of a drive into a new WIM file.
+ /Get-MountedWimInfo: Display information about mounted WIM images.
+ /Get-WimInfo: Display information about images in a WIM file.
+ /Commit-Wim: Save changes to a mounted WIM image.
+ /Mount-Wim: Mount an image from a WIM file.
+ /Unmount-Wim: Unmount a mounted WIM image.
+ /Remount-Wim: Recover an orphaned WIM mount directory.
+ /Cleanup-Wim: Delete resources associated with mounted WIM images that are corrupt.
+
+Full Flash Update (FFU) Options 
+ /Apply-Ffu: Apply an .ffu image.
+ /Capture-Ffu: Capture a physical disk image into a new FFU file.
+ /Optimize-FFU: Optimize an FFU image to be faster to deploy, and more easily deployed to differently-sized disks.
+ /Split-Ffu: Split an existing .ffu file into multiple read-only split FFU files.
+
+DISM (Deployment Image Servicing and Management) Options
+ /English: Display command line output in English.
+ /Format: Specify the report output format.
+ /LogPath: Specify the logfile path.
+ /LogLevel: Specify the output level shown in the log (1-4).
+ /NoRestart: Suppress automatic reboots and reboot prompts.
+ /Quiet: Suppress all output except for error messages.
+ /ScratchDir: Specify the path to a scratch directory.
+ /SysDriveDir: Specify the path to the system-loader file named BootMgr.
+ /WinDir: Specify the path to the Windows directory.
+
+OS Uninstall Servicing Options
+ /Set-OSUninstallWindow: Set the OS Uninstall Window.
+ /Get-OSUninstallWindow: Get the OS Uninstall Window.
+ /Remove-OSUninstall: Remove the OS Uninstall.
+ /Initiate-OSUninstall: Initiate the OS Uninstall.
+
+Windows Edition Servicing Options
+ /Optimize-Image: Configure an offline image.
+ /Apply-SiloedPackage: Apply one or more siloed provisioning packages (SPPs) to a specified image.
+ /Set-ProductKey: Set the product key of the offline image.
+ /Get-TargetEditions: Display a list of Windows editions that an image can be upgraded to.
+ /Get-CurrentEdition: Display the edition of the current image.
+ /Set-Edition: Upgrade an image to a higher edition.
+
+Default Associations Options
+ /Remove-DefaultAppAssociations: Remove the default application associations from a Windows image.
+ /Import-DefaultAppAssociations: Import a set of default application associations to a Windows image.
+ /Get-DefaultAppAssociations: Display the list of default application associations from a Windows image.
+ /Export-DefaultAppAssociations: Export the default application associations from a running Operating System.
+
+ Example: Dism /Online /Export-DefaultAppAssociations:C:\demo\AppAssoc.xml
+
+Provisioning Package Servicing Options
+ /Get-ProvisioningPackageInfo: Get information about a provisioning package.
+ /Add-ProvisioningPackage: Add a provisioning package.
+
+ AppX Servicing Options
+ /Get-NonRemovableAppPolicy: List the package families configured to be nonremovable by enterprise policy.
+ /Set-NonRemovableAppPolicy: Set the enterprise nonremovable policy for a given package family.
+ /Optimize-ProvisionedAppxPackages: Optimize provisioned appx footprint by hard-linking identical files across appx packages.
+ /Set-ProvisionedAppxDataFile: Place custom data into the specified app package (.appx or .appxbundle).
+ /Remove-ProvisionedAppxPackage: Remove app packages (.appx or .appxbundle) from the image.
+
+
+[EXAMPLES]
+
+Example 1: List Available Options
+ DISM.exe /Online /Get-ImageInfo
+
+Example 2: Apply a WIM Image
+ DISM.exe /Apply-Image /Image: "C:\Image" /Apply-Image /Destination:C:\Mounted
+
+Example 3: Capture an Image of a Drive
+ DISM.exe /Capture-Image /Capture-Image /Source:C: /Destination:D:\Backup.wim
+
+Example 4: Get Information About Mounted WIM
+ DISM.exe /Get-MountedImageInfo
+
+Example 5: Optimize Image By Removing Unused Components
+ DISM.exe /Online /Cleanup-Image /StartComponentCleanup
+
+
+Return Codes
+ 0: Successful execution.
+ 1: Error occurred during execution.
+ 3010: Restart required.
+ 50: Invalid image path.
+ 87: Invalid command.
