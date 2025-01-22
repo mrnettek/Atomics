@@ -7,8 +7,6 @@ POPD is a command used to change the current directory back to the path most rec
 
 [Syntax]
  POPD
- 
-POPD will pop the topmost directory from the stack and change the current directory to that location.
 
 
 2. Key Notes
