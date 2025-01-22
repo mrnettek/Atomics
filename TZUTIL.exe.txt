@@ -44,6 +44,8 @@ Example 3: Set the current time zone to Pacific Standard Time and disable Daylig
  tzutil /s "Pacific Standard Time_dstoff"
 
 
+[RETURN CODES]
+
 Errorlevels
  0: The operation was successful.
  1: Invalid time zone value or incorrect command syntax.
