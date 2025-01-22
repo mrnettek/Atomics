@@ -112,7 +112,7 @@ Set permissions using C#
 This example programmatically grants read-only (R) access to Domain\User on file.txt.
 
 
-5. Example Usage
+[EXAMPLES]
 
 Example 1: Locking and Unlocking the Registry
 To lock a registry key so that it cannot be modified:
@@ -128,9 +128,9 @@ This script helps with domain migration by applying new permissions to user prof
 Applies Full control (F) permission to all user profiles under C:\Users\.
 
 
-6. Error Handling
+[RETURN CODES]
 
-SetACL will return the following error codes:
+Errorlevels
  0: Success
  1: Invalid command or parameter
  5: Access denied
