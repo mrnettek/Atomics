@@ -48,7 +48,7 @@ Imagename: Filters by the image name of the process.
 If you use /FI, the image name must include the file extension, or a wildcard *. If multiple processes match the filter, all matching processes will be terminated.
 
 
-3. Example Use
+[EXAMPLES]
 
 Example 1: Kill a Single Process by Image Name
 To forcefully kill all instances of notepad.exe:
@@ -80,7 +80,10 @@ To kill all processes started by the user JohnDoe:
  TASKKILL /FI "Username eq JohnDoe" /F
 
 
-4. Error Levels
+
+[RETURN CODES]
+
+Errorlevels
   0: The command completed successfully.
   128: Invalid or incorrect command syntax.
   5: Access denied (due to insufficient permissions).
