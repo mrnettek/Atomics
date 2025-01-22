@@ -92,14 +92,7 @@ Example:
  GOTO :non_existent_label || Echo This line will run
 
 
-5. Errorlevels
-
-Successful Jump: %ERRORLEVEL% remains unchanged after a successful GOTO jump, typically set to 0.
-
-Non-existent Label: If the label specified by GOTO does not exist, %ERRORLEVEL% will be set to 1.
-
-
-6. Examples
+[EXAMPLES]
 
 Exampe 1: Simple Jump to Label.
  @echo off
@@ -133,3 +126,10 @@ Exampe 3: Example with Conditional Execution.
  :success
   echo "The condition was true!"
   GOTO :eof
+
+
+[RETURN CODES]
+
+Successful Jump: %ERRORLEVEL% remains unchanged after a successful GOTO jump, typically set to 0.
+
+Non-existent Label: If the label specified by GOTO does not exist, %ERRORLEVEL% will be set to 1.
