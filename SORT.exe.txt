@@ -69,7 +69,7 @@ The sort order in SORT is locale-specific and follows the sorting rules of the l
 In the default locale, sorting may include non-standard Unicode characters, such as Greek letters like 'Ξ' (Xi) or 'Ω' (Omega), which will be placed after 'Z' when sorted.
 
 
-4. File Sorting Examples
+[EXAMPLES]
 
 Example 1: Sort a file by all characters.
  SORT input.txt
