@@ -40,7 +40,33 @@ QUERY SESSION provides the following information for each session:
  DEVICE - The device name assigned to the session, which is not present for console or network-connected sessions.
 
 
-3. Examples
+3. Session States and Permissions
+
+SESSION STATE: The session state can be active, idle, listen, etc. The > symbol is displayed before the current session.
+
+Session ID or Session Name: Either the session ID or name can be used in the Reset Session and LOGOFF commands to disconnect or log off a session from the server.
+
+User Access Permissions: The following special permissions are granted under User Access:
+ Query Information: Allows a user to query information about a session.
+ Logon: Allows a user to log on to a session.
+ Connect: Allows a user to connect to another session.
+ Send Messages: Allows a user to send messages to other sessions.
+ These permissions are set in Terminal Services Configuration ➞ Connections ➞ Properties ➞ Permissions ➞ Advanced ➞ Permissions.
+
+
+4. Sample Output
+
+Here is an example of the output when querying the sessions:
+ C:\>query session
+   SESSIONNAME  USERNAME       ID  STATE   TYPE     DEVICE
+   >console     Administrator1 0   active  wdcon
+    rdp-tcp#1   User1          1   active  wdtshare
+    rdp-tcp                    2   listen  wdtshare
+                               4   idle
+                               5   idle
+
+
+[EXAMPLES]
 
 Example 1: Display All Active Sessions on the Current Server
 To display information about all active sessions on the local machine:
@@ -79,29 +105,3 @@ To display information on the total number of sessions created, disconnected, an
 Example 9: Display Help Information
 To display help information for the QUERY SESSION command:
  QUERY SESSION /?
-
-
-4. Session States and Permissions
-
-SESSION STATE: The session state can be active, idle, listen, etc. The > symbol is displayed before the current session.
-
-Session ID or Session Name: Either the session ID or name can be used in the Reset Session and LOGOFF commands to disconnect or log off a session from the server.
-
-User Access Permissions: The following special permissions are granted under User Access:
- Query Information: Allows a user to query information about a session.
- Logon: Allows a user to log on to a session.
- Connect: Allows a user to connect to another session.
- Send Messages: Allows a user to send messages to other sessions.
- These permissions are set in Terminal Services Configuration ➞ Connections ➞ Properties ➞ Permissions ➞ Advanced ➞ Permissions.
-
-
-5. Sample Output
-
-Here is an example of the output when querying the sessions:
- C:\>query session
-   SESSIONNAME  USERNAME       ID  STATE   TYPE     DEVICE
-   >console     Administrator1 0   active  wdcon
-    rdp-tcp#1   User1          1   active  wdtshare
-    rdp-tcp                    2   listen  wdtshare
-                               4   idle
-                               5   idle

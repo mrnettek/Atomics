@@ -44,6 +44,8 @@ To pipe the version information to FIND for searching:
 This checks if the version matches "6.1", useful for batch scripts.
 
 
+[RETURN CODES]
+
 Errorlevels
  0: Success (Command executed successfully, version information displayed).
  1: Error (In case of an incorrect command or issues with the output).

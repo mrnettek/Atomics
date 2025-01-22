@@ -33,7 +33,7 @@ Windows Explorer may not allow the deletion of a directory that has a trailing s
  RD "this has a trailing space \"
 
 
-4. Example Usage
+[EXAMPLES]
 
 Example 1: Delete an Empty Directory
 To delete an empty directory C:\docs\Jan:

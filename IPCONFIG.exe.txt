@@ -66,7 +66,7 @@ Displays help information for the IPCONFIG command, listing all available option
 /?
 
 
-[Important Notes]
+[IMPORTANT]
 
 Adapter names with spaces: If the adapter name contains spaces, it must be enclosed in quotes (example "Local Area Connection").
 
@@ -105,13 +105,15 @@ This command sets the DHCP class ID to "TEST" for the "Local Area Connection" ad
  C:\> ipconfig /setclassid "Local Area Connection" TEST
 
 
-Errorlevels
- 0: The command was successful.
- 1: An error occurred during the operation.
-
-
 [NOTES]
 
 Network Troubleshooting: ipconfig is commonly used to view and manage network configurations, troubleshoot connectivity issues, or reset network settings.
 
 DHCP Configuration: setclassid can be used to adjust DHCP class IDs for devices, allowing customization of network settings based on different groups.
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: The command was successful.
+ 1: An error occurred during the operation.

@@ -39,7 +39,20 @@ If no specific user, session name, or session ID is provided, QUERY USER will re
 When querying multiple users, a > symbol is used to indicate the current session.
 
 
-3. Examples
+3. Permissions Required
+
+Querying the Session: A user can always query the session to which they are currently logged on.
+
+Querying Other Sessions: To query other sessions, the user must have the Query Information special access permission.
+
+User Access Permissions grant the following special permissions:
+ Query Information: Allows a user to query information about a session.
+ Logon: Allows a user to log on to a session.
+ Connect: Allows a user to connect to another session.
+ Send Messages: Allows a user to send messages to other user sessions.
+
+
+[EXAMPLES]
 
 Example 1: Query All User Sessions on the Current Server
 To display all user sessions on the current server:
@@ -62,16 +75,3 @@ To display information about sessions on a remote server, replace ServerName wit
 Example 5: Display Help Information
 To display help information for the QUERY USER command:
  QUERY USER /?
-
-
-4. Permissions Required
-
-Querying the Session: A user can always query the session to which they are currently logged on.
-
-Querying Other Sessions: To query other sessions, the user must have the Query Information special access permission.
-
-User Access Permissions grant the following special permissions:
- Query Information: Allows a user to query information about a session.
- Logon: Allows a user to log on to a session.
- Connect: Allows a user to connect to another session.
- Send Messages: Allows a user to send messages to other user sessions.

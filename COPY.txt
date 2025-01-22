@@ -57,8 +57,6 @@ By default, COPY will prompt you before overwriting an existing file in the dest
  SET COPYCMD=/Y
 
 
-6. Examples
-
 [EXAMPLES]
 
 Example 1: Copy a File in the Current Folder
@@ -86,11 +84,11 @@ To copy a file and automatically overwrite the destination without prompting:
  COPY /Y file1.txt file2.txt
 
 
-7. Error Levels
+[RETURN CODES]
 
-The COPY command sets an ERRORLEVEL based on the success or failure of the operation:
- 0 – The file(s) were successfully copied.
- 1 – The file was not found or invalid parameters were given.
+Errorlevels
+ 0: The file(s) were successfully copied.
+ 1: The file was not found or invalid parameters were given.
 
 COPY prints error messages to STDOUT instead of STDERR. To log errors, you can filter the output by looking for the parenthesis character:
  COPY file1 file2 | FIND /v "(" > errlog.txt

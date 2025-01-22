@@ -102,8 +102,6 @@ signtool [command] [options] [file_name | ...]
   /p7: Verifies PKCS #7 files.
 
 
-2. Example Usage
-
 [EXAMPLES]
 
  Example 1: Verify the signature of a file.
@@ -116,7 +114,7 @@ signtool [command] [options] [file_name | ...]
   signtool verify /c MyCatalog.cat SystemFile.dll
 
 
-3. Error Handling
+[RETURN CODES]
 
 Errorlevels
  0: Execution was successful.

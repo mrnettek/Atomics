@@ -105,7 +105,7 @@ Logname: The event log to get information for.
  MANIFEST: The event manifest to uninstall.
 
 
-4. Example Usage
+[EXAMPLES]
 
 Example 1: Archive a Log
 To archive the Application log:
@@ -133,7 +133,9 @@ To install an event manifest from a file mymanifest.xml:
 WEVTUTIL install-manifest mymanifest.xml
 
 
-5. Error Levels
+[RETURN CODES]
+
+Errorlevels
  0: Command completed successfully.
  1: Invalid syntax or missing parameters.
  2: The specified event log or manifest does not exist.

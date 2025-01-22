@@ -139,7 +139,7 @@ Running SC query provides detailed information about a service, like this:
 This shows that the "messenger" service is running, and also provides additional information such as exit codes, checkpoint, and wait hint.
 
 
-7. Common SC Command Examples
+[EXAMPLES]
 
 Start a service:
  SC start MyService

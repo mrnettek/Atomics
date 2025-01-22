@@ -45,7 +45,9 @@ Example 4: Stop a service with a long service name (use quotes).
  NET STOP "HomeGroup Listener"
 
 
-Error/Return Codes
+[RETURN CODES]
+
+Errorlevels
  0: The operation was successful.
  2: The system cannot find the specified service.
  5: Access is denied. You may not have the necessary permissions to manage the service.

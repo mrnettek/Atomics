@@ -10,7 +10,7 @@ COLOR [background][foreground]
 
 The color attributes are specified by 2 hex digits: the first digit sets the background color, and the second sets the foreground color. Each digit corresponds to a specific color code.
 
-[Available Colors]
+[AVAILABLE COLORS]
  0 = Black
  1 = Blue
  2 = Green
@@ -53,8 +53,6 @@ The color value is assigned in the following order:
  4-The COLOR command settings.
 
 
-4. Examples
-
 [EXAMPLES]
 
 Example 1: Set the Console Color to White on Blue
@@ -70,9 +68,11 @@ To set the console background to yellow (6) and the text to red (4):
  COLOR 64
 
 
-5. Errorlevels
- ERRORLEVEL = 0 – The color was successfully changed.
- ERRORLEVEL = 1 – The foreground and background colors are the same (which will fail). For example, COLOR 00 will not work because the foreground and background are both black.
+[RETURN CODES]
+
+Errorlevels
+ 0: The color was successfully changed.
+ 1: The foreground and background colors are the same (which will fail). For example, COLOR 00 will not work because the foreground and background are both black.
 
 
 [NOTES]

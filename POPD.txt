@@ -6,9 +6,7 @@ POPD is a command used to change the current directory back to the path most rec
 1. Syntax and Usage
 
 [Syntax]
- POPD
- 
-POPD will pop the topmost directory from the stack and change the current directory to that location.
+POPD
 
 
 2. Key Notes
@@ -16,12 +14,7 @@ Stack Principle: PUSHD and POPD operate on a stack (LIFO principle). This means 
 Temporary Drive Mapping: If a UNC path (\\server\share) is used with PUSHD, a temporary drive map is created. POPD will remove that temporary drive mapping once you return to the previous directory.
 
 
-3. Error Levels
- 0: The directory change was successful and the temporary drive mapping (if applicable) was removed.
- 1: The stack is empty, or the previous directory cannot be accessed.
-
-
-4. Example Usage
+[EXAMPLES]
 
 Example 1: Basic Directory Navigation
 Use PUSHD to change to C:\utils:
@@ -42,6 +35,13 @@ Use PUSHD to map a UNC path temporarily (\\server\share):
 
 Use POPD to return to the previous directory, removing the temporary drive mapping:
  POPD
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: The directory change was successful and the temporary drive mapping (if applicable) was removed.
+ 1: The stack is empty, or the previous directory cannot be accessed.
 
 
 [NOTES]

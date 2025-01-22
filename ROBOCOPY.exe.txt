@@ -124,7 +124,7 @@ File and Directory Exclusion:
  /LFSM: Operate in "low free space" mode, allowing pause and resume.
 
 
-11. Example Usage
+[EXAMPLES]
 
 Example 1: Copy a Folder and Its Subdirectories
 To copy the source directory to destination, including all subdirectories and empty folders:

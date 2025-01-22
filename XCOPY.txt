@@ -50,7 +50,7 @@ XCOPY source [destination] [options]
  /X: Copy file audit settings (implies /O).
 
 
-6. Examples
+[EXAMPLES]
 
 Example 1: Copy a Single File
 To copy a file from one location to another:

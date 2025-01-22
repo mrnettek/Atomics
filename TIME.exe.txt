@@ -14,12 +14,24 @@ Set the System Time
  TIME [time_now]
 
 
-2. Examples
+2. Default Output by Locale
+The output format of TIME /T depends on the system’s region settings. Below are examples for different locales:
+
+Country/Locale	Format	Example
+
+United States	  hh:mm   AM/PM	12:30 PM
+United Kingdom	 HH:mm	  12:30
+Japan	          HH:mm	  12:30
+Germany	        HH:mm	  12:30
+France	         HH:mm	  12:30
+
+
+[EXAMPLES]
 
 Example 1: Display the Current Time
  TIME /T
 
-[Output] 12:25 PM
+| output | 12:25 PM
 
 Example 2: Set the Time Interactively
  TIME
@@ -31,20 +43,8 @@ Example 3: Set the Time Directly
  TIME 13:45:00 
 
 
-[Output]
+| output |
  The current time is: 13:45:00.00
-
-
-3. Default Output by Locale
-The output format of TIME /T depends on the system’s region settings. Below are examples for different locales:
-
-Country/Locale	Format	Example
-
-United States	  hh:mm   AM/PM	12:30 PM
-United Kingdom	 HH:mm	  12:30
-Japan	          HH:mm	  12:30
-Germany	        HH:mm	  12:30
-France	         HH:mm	  12:30
 
 
 [NOTES]

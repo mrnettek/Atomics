@@ -44,10 +44,11 @@ This ensures that the command will not overwrite the destination file.
  Echo n|MOVE /-y c:\file1.txt c:\dir\file1.txt
 
 
-3. Error Handling and Return Codes
+[RETURN CODES]
 
-%ERRORLEVEL% = 0: The file(s) were successfully moved or renamed.
-%ERRORLEVEL% = 1: The file was not found, could not be moved/renamed, or bad parameters were used.
+Errorlevels
+ 0: The file(s) were successfully moved or renamed.
+ 1: The file was not found, could not be moved/renamed, or bad parameters were used.
 
 
 [NOTES]
