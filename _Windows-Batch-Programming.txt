@@ -1,6 +1,3 @@
-Below is the original content with additional explanations, tips, and examples—all in plain text.
-
---------------------------------------------------------------------------------
 This content explains how to use the default Microsoft command interpreter, cmd.exe, on Windows NT-based operating systems. It covers both the built-in commands provided by Microsoft and the process of writing Windows batch scripts.
 
 Note that this book focuses on 32-bit Windows commands applicable to modern, NT-based Windows versions. It does not address commands exclusive to DOS environments (examples: Windows 95/98/Me), whose built-in command interpreters are actually DOS programs, not Win32 executables.
