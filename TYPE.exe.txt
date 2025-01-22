@@ -14,10 +14,6 @@ If you use a wildcard to match files, the filenames are displayed even if only o
 
 In Windows 1909 or newer, if the text file contains ANSI color escape codes, TYPE will decode and display the colors in the terminal.
 
-2. Error Levels
- 0: The file(s) were successfully displayed.
- 1: The file was not found, or invalid parameters were given.
-
 
 3. Key Notes
 
@@ -28,7 +24,7 @@ No Locking: TYPE does not lock the file while displaying its contents, making it
 Text Encoding: When working with text files that require different encoding (example ASCII to Unicode), TYPE can be used in combination with other commands like CHCP and CMD.EXE to handle conversions.
 
 
-4. Example Usage
+[EXAMPLES]
 
 Example 1: Redirect Output to a New File
 To display the contents of file.txt and redirect it into a new file Newfile.txt:
@@ -62,6 +58,13 @@ To convert an ASCII (Windows-1252) file into a Unicode (UCS-2 little-endian) tex
  CMD.EXE /D /A /C (SET/P=ÿþ) < NUL > unicode.txt 2>NUL
  CMD.EXE /D /U /C TYPE ascii_file.txt >> unicode.txt
  CHCP %_codepage%
+
+
+[RETURN CODES]
+
+Errorlevels
+ 0: The file(s) were successfully displayed.
+ 1: The file was not found, or invalid parameters were given.
 
 
 [NOTES]
