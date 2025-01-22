@@ -51,8 +51,6 @@ Uncheck Display file icon on thumbnails.
 For a permanent fix, you can disable thumbnail caching via the registry.
 
 
-3. Example Usage
-
 [EXAMPLES]
 
 Example 1: Delete a Single File
