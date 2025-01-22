@@ -1,0 +1,68 @@
+IF Command Guide with Examples
+
+The IF statement in Batch scripting allows you to execute a command or a block of commands if a given condition evaluates to true. It is a fundamental part of decision-making in scripts, allowing for conditional execution based on file checks, variable comparisons, or system properties.
+
+
+[SYNTAX]
+
+IF condition (
+    command_to_execute_if_true
+)
+
+    condition: The expression to test, which can be a comparison, a check for file existence, or an environment variable check.
+    command_to_execute_if_true: This command is executed if the condition evaluates to true.
+
+
+[EXAMPLES]
+
+Comparison Operators:
+
+You can use operators like ==, NEQ, LSS, LEQ, GTR, and GEQ for comparisons. Example:
+
+IF %variable% == value (
+    echo Variable matches value.
+)
+
+
+File Existence:
+
+The EXIST keyword checks whether a file or directory exists:
+
+IF EXIST "C:\myfolder" (
+    echo Folder exists.
+)
+
+String Comparison:
+
+The IF statement can be used for string comparisons:
+
+IF "%variable%" == "value" (
+    echo String matches.
+)
+
+
+Case Sensitivity:
+
+Batch scripting is case-insensitive for strings. However, to perform a case-sensitive comparison, you can use IF /I:
+
+IF /I "%variable%" == "VALUE" (
+    echo Case-insensitive match.
+)
+
+
+Nested IF Statements:
+
+You can nest IF statements inside each other for more complex conditions:
+
+IF %var1% == value (
+    IF %var2% == another_value (
+        echo Both conditions are true.
+    )
+)
+
+
+[NOTES]
+
+File and Directory Checks: You can use EXIST to check for files and directories.
+
+Variable and String Comparison: Use double quotes around string comparisons to ensure accurate matching, especially if the string contains spaces or special characters.
