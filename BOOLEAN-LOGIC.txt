@@ -1,0 +1,274 @@
+POWERSELL BOOLEAN LOGIC HELP FILE
+
+This document provides a comprehensive overview of Boolean logic in PowerShell, covering fundamental concepts, operators, examples, and best practices for using Boolean expressions in scripts and command-line operations.
+
+
+
+INTRODUCTION
+
+Boolean logic deals with expressions that evaluate to one of two values: $true or $false. In PowerShell, Boolean expressions are used throughout the language—for conditional checks, loops, and filtering data. Knowing how Boolean operators work is essential for writing clear, correct, and efficient scripts.
+
+
+
+BASIC BOOLEAN VALUES
+
+$true indicates a condition is satisfied.
+$false indicates a condition is not satisfied.
+These special values are of type [System.Boolean] in .NET (the underlying platform for PowerShell).
+
+
+[EXAMPLES]
+
+$var = $true
+if ($var) { "Value is true." }
+
+$var = $false
+if ($var) { "Will not print." } else { "Value is false." }
+
+
+
+COMPARISON OPERATORS
+
+Comparison operators return $true or $false based on how two values relate to each other. Common comparison operators include:
+
+-eq: Equal to
+-ne: Not equal to
+-gt: Greater than
+-ge: Greater than or equal to
+-lt: Less than
+-le: Less than or equal to
+-like: Wildcard pattern match
+-notlike: Wildcard pattern mismatch
+-match: Regex match
+-notmatch: Regex mismatch
+-contains: Checks if a collection contains a value
+-notcontains: Checks if a collection does not contain a value
+-in: Checks if a value is in a collection
+-notin: Checks if a value is not in a collection
+
+
+Examples:
+
+1 -eq 1                # True
+
+"apple" -ne "banana"   # True
+
+10 -gt 5               # True
+
+10 -lt 5               # False
+
+"Hello" -like "H*"     # True (Wildcard pattern)
+
+"Hello" -match "^H\w+" # True (Regex match)
+
+
+
+LOGICAL OPERATORS
+
+PowerShell provides logical operators to combine or invert Boolean expressions.
+
+
+4.1) -and
+
+Evaluates to $true if both operands are $true, otherwise $false.
+
+($true -and $true)    # True
+($true -and $false)   # False
+(1 -eq 1 -and 2 -eq 2)   # True
+
+
+
+4.2) -or
+
+Evaluates to $true if either operand is $true, otherwise $false.
+
+($false -or $true)    # True
+(1 -eq 2 -or 2 -eq 2) # True
+
+
+
+4.3) -xor
+
+Evaluates to $true if exactly one operand is $true, otherwise $false.
+
+
+($true -xor $true)    # False
+($true -xor $false)   # True
+($false -xor $false)  # False
+
+
+
+4.4) -not or !
+
+Inverts a Boolean value: $true becomes $false, $false becomes $true.
+
+-not $true    # False
+!($false)     # True
+
+
+
+OPERATOR PRECEDENCE
+
+When multiple logical operators appear in a single expression, PowerShell applies the following precedence (from highest to lowest):
+
+Parentheses ( ... )
+-not or !
+-and
+-or
+-xor
+
+
+To avoid confusion, you can group expressions using parentheses to explicitly define evaluation order:
+
+# Without parentheses, -and will bind before -or
+# This can cause unexpected results if you don't plan carefully.
+
+($true -or $false) -and $false  # Evaluates to False
+
+# With parentheses to alter precedence:
+$true -or ($false -and $false)  # Evaluates to True
+
+
+
+BOOLEAN EXPRESSIONS IN CONDITIONALS
+
+
+6.1) if / elseif / else
+
+
+if (Test-Path "C:\Temp") {
+    "Path exists."
+} elseif (Test-Path "D:\Temp") {
+    "Using D:\Temp instead."
+} else {
+    "No valid path found."
+}
+
+
+
+6.2) switch
+
+switch ($someValue) {
+    1 { "Value is 1"; break }
+    2 { "Value is 2"; break }
+    default { "Value is something else." }
+}
+
+
+When using switch -Regex, each case is a regular expression check that returns $true or $false for each line or value:
+
+switch -Regex ("Warning: Low disk space", "Error: File not found") {
+    "^Error:"   { "Handle error" }
+    "^Warning:" { "Handle warning" }
+}
+
+
+
+6.3) Ternary-Like Operation
+PowerShell 7 introduces a ternary-like ? : operator:
+
+$condition = $true
+$result = $condition ? "Yes" : "No"
+SHORT-CIRCUIT BEHAVIOR
+Like many languages, PowerShell short-circuits certain Boolean operations:
+
+-and stops evaluating the second operand if the first operand is $false.
+-or stops evaluating the second operand if the first operand is $true.
+This can be helpful for performance or for avoiding errors, such as calling a method on $null only if an object is not $null.
+
+
+Example:
+
+($false -and (Do-Something))   # Do-Something is never called
+($true -or (Do-Something))     # Do-Something is never called
+CONVERTING VALUES TO BOOLEAN
+When non-Boolean values appear in a Boolean context, PowerShell automatically converts them to [bool].
+
+Non-empty strings (e.g. "Hello") convert to $true.
+Empty strings ("") convert to $false.
+Non-zero numbers (e.g. 5) convert to $true.
+Zero (0) converts to $false.
+$null also converts to $false.
+
+
+Examples:
+
+if ("Hello") { "Non-empty string is true." }
+if (0) { "Never prints." } else { "Zero is false." }
+if ($null) { "Never prints." }
+You can force a Boolean conversion explicitly:
+
+[bool]"Some text"   # True
+[bool]"            " # True (string is not empty, even if it has spaces)
+[bool]0            # False
+
+
+
+ADVANCED USAGE EXAMPLES
+
+9.1) Combining Multiple Conditions
+
+if ((Get-Process 'notepad' -ErrorAction SilentlyContinue) -and (Get-Service 'Spooler' -ErrorAction SilentlyContinue)) {
+    "Notepad process is running AND Spooler service is found."
+}
+
+
+
+9.2) Validating Input
+
+# Check if user input is numeric and within a specific range
+$userInput = Read-Host "Enter a number"
+if ($userInput -match '^\d+$' -and [int]$userInput -ge 1 -and [int]$userInput -le 10) {
+    "Valid input."
+} else {
+    "Invalid input."
+}
+
+
+
+9.3) Using Boolean Return in Functions
+
+function Test-FileExists($path) {
+    return Test-Path $path  # This returns $true or $false
+}
+
+if (Test-FileExists "C:\file.txt") {
+    "File found."
+} else {
+    "File not found."
+}
+
+
+
+BITWISE OPERATORS (FOR COMPLETENESS)
+
+Though not purely Boolean operators, PowerShell also has bitwise operators. These operate on the binary representations of numbers:
+
+-band (bitwise AND)
+-bor (bitwise OR)
+-bxor (bitwise XOR)
+-bnot (bitwise NOT)
+
+
+Example:
+
+8 -band 4   # 8 in binary: 1000, 4 in binary: 0100, result = 0
+8 -bor 4    # 1000 OR 0100 = 1100 (decimal 12)
+
+These are different from -and, -or, and -xor, which evaluate Boolean logic on entire expressions, not individual bits.
+
+
+
+SUMMARY
+
+Boolean Values: $true / $false.
+
+Comparison Operators: -eq, -ne, -gt, -lt, etc., returning $true or $false.
+
+Logical Operators: -and, -or, -xor, -not combine or invert Boolean expressions.
+
+Operator Precedence: Parentheses > -not > -and > -or > -xor.
+
+Short-Circuiting: Certain logical operators skip evaluating the second expression if the first determines the outcome.
+
+Implicit Conversions: PowerShell converts many types to Boolean, with non-empty / non-zero values as $true, zero / $null / empty as $false.
