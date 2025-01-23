@@ -1,0 +1,103 @@
+FOR /L Command Guide with Examples
+
+The FOR /L command in Windows batch scripts allows you to loop over a specific range of integer values. You can use a start value, step value, and an end value to generate a sequence of numbers, and then perform a specified command (or set of commands) for each number in that sequence.
+
+
+[SYNTAX]
+FOR /L %%parameter IN (start,step,end) DO command
+
+start: The initial number in the sequence.
+step: The amount by which to increment (or decrement) the sequence.
+end: The last number for the sequence. (If step is positive, the loop iterates until the current value exceeds end. If step is negative, the loop iterates until the current value is less than end.)
+command: The command to execute for each iteration, including any parameters. Multiple commands can be grouped within parentheses.
+%%parameter: A replaceable parameter (e.g., %%A) used to represent the current value in the sequence.
+Within batch files: %%A, %%B, %%C, etc.
+On the command line: %A, %B, %C, etc.
+
+Note: Refer to the main FOR command documentation for a complete explanation of how the replaceable %%parameter works in all variations of the FOR command.
+
+
+SEQUENCE EXAMPLES
+(1,1,5) generates 1 2 3 4 5
+(0,5,20) generates 0 5 10 15 20
+(0,5,19) generates 0 5 10 15
+(-20,5,0) generates -20 -15 -10 -5 0
+(20,-5,10) generates 20 15 10
+(5,1,5) generates 5 (the loop runs once)
+(5,1,3) does not loop at all (start is already greater than end and step is positive)
+(0) will loop indefinitely (no step or end specified, effectively unbounded)
+
+All numbers in the sequence must fit within the 32-bit signed integer range: -2,147,483,648 through 2,147,483,647.
+
+[EXAMPLES]
+
+Simple Loop Display
+
+@echo off
+FOR /L %%A IN (1,1,5) DO (
+    ECHO Current value is %%A
+)
+
+| output |
+Current value is 1
+Current value is 2
+Current value is 3
+Current value is 4
+Current value is 5
+
+Looping Backwards
+
+@echo off
+FOR /L %%B IN (10,-2,4) DO (
+    ECHO Value: %%B
+)
+
+Here, the loop starts at 10 and decrements by 2 until it reaches 4 or below. 
+
+| output |
+Value: 10
+Value: 8
+Value: 6
+Value: 4
+
+
+Running Multiple Commands
+
+@echo off
+FOR /L %%C IN (1,1,3) DO (
+    ECHO Iteration %%C
+    DIR
+    ECHO ----------------
+)
+
+Encloses commands within parentheses, executing each in every iteration.
+
+
+Performing Arithmetic
+
+
+@echo off
+SET /A sum=0
+FOR /L %%D IN (1,1,5) DO (
+    SET /A sum=sum+%%D
+)
+ECHO The total sum is %sum%
+Sums up the numbers from 1 to 5 (resulting in 15).
+Infinite Loop
+
+
+@echo off
+REM Warning: This loop will never end unless you break out manually (Ctrl+C) or use another condition.
+FOR /L %%X IN (0) DO (
+    ECHO Running endlessly...
+    REM Insert a timeout to avoid rapid flooding of output
+    TIMEOUT /T 1 >NUL
+)
+
+
+[NOTES]
+
+When looping with a negative step, ensure that end is less than or equal to start; otherwise, the loop will not run.
+Enclose your loop commands within parentheses if you need more than one command per iteration or if the command itself uses parentheses.
+Make sure numbers are within the 32-bit signed integer range to avoid overflow or unexpected behavior.
+Use caution with the infinite loop pattern (0): provide a manual break strategy or a condition that can exit the loop from within.
