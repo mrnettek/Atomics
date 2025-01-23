@@ -1,6 +1,7 @@
 This content explains how to use the default Microsoft command interpreter, cmd.exe, on Windows NT-based operating systems. It covers both the built-in commands provided by Microsoft and the process of writing Windows batch scripts.
 
-Note that this book focuses on 32-bit Windows commands applicable to modern, NT-based Windows versions. It does not address commands exclusive to DOS environments (examples: Windows 95/98/Me), whose built-in command interpreters are actually DOS programs, not Win32 executables.
+Note that this content focuses on 32-bit Windows commands applicable to modern, NT-based Windows versions. It does not address commands exclusive to DOS environments (examples: Windows 95/98/Me), whose built-in command interpreters are actually DOS programs, not Win32 executables.
+
 
 To check your operating system version, use the VER command.
 
@@ -13,6 +14,7 @@ To display help on a specific command, type:
 The subject matter here is often referred to as "batch programming," "batch file programming," or "Windows shell scripting," though "batch" historically refers to scripting in both MS-DOS and Windows environments. While cmd.exe is considered a legacy technology for Windows scripting, it remains useful for straightforward tasks due to its concise syntax and faster startup time, as well as its traditional character-stream-based pipelining (familiar from other operating systems). In contrast, PowerShell, a modern alternative based on .NET, offers object-based pipelining, floating-point arithmetic, large integer support, GUI capabilities through .NET classes, and more extensive language features.
 
 Other scripting options on Windows include popular cross-platform tools like Python (with pywin32 and wmi libraries), though these typically require separate installation.
+
 
 --------------------------------------------------------------------------------
 Using the Windows Command Interpreter
