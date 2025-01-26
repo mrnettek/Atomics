@@ -8,7 +8,6 @@ You can learn more about flowchart design, best practices, and software tools fr
 
 https://creately.com/guides/flowchart-guide-flowchart-tutorial/
 https://www.geeksforgeeks.org/an-introduction-to-flowcharts/
-https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software
 https://en.wikipedia.org/wiki/Flowchart
 https://www.visual-paradigm.com/tutorials/flowchart-tutorial/
 
