@@ -1,0 +1,166 @@
+Flowchart Help File
+
+
+
+Additional Resources
+
+You can learn more about flowchart design, best practices, and software tools from the following websites:
+
+https://creately.com/guides/flowchart-guide-flowchart-tutorial/
+https://www.geeksforgeeks.org/an-introduction-to-flowcharts/
+https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software
+https://en.wikipedia.org/wiki/Flowchart
+https://www.visual-paradigm.com/tutorials/flowchart-tutorial/
+
+
+
+1. Introduction
+
+Flowcharts are a visual representation of a process or workflow. They use standardized symbols to map out each step in a logical order. Programmers and system designers commonly use flowcharts to plan and structure code before they begin writing it. This helps clarify logic, avoid mistakes, and communicate concepts more effectively.
+
+
+2. Common Flowchart Symbols
+
+Below are the most frequently used symbols in flowcharts, along with a brief description of each:
+
+Start/End (Terminator)
+
+Symbol: Usually an oval shape or sometimes a rounded rectangle.
+Usage: Marks the start and end points of the flowchart.
+Process (Action or Statement)
+
+Symbol: A rectangle.
+Usage: Represents any process or action that needs to be carried out, such as “initialize a variable,” “assign a value,” or “execute a command.”
+Decision (Branch)
+
+Symbol: A diamond shape.
+Usage: Shows a decision point, such as an if condition (Yes/No or True/False). The flowchart paths split based on the result.
+Input/Output
+
+Symbol: A parallelogram (though sometimes an angled rectangle).
+Usage: Depicts data input (ex: prompt user input) or data output (ex: display result, print to console).
+Connector
+
+Symbol: A small circle (on-page connector) or a home plate/pentagon shape (off-page connector).
+Usage: Helps connect flowchart sections to avoid clutter or to continue the flow on another page.
+On-page connector: Used to jump from one point to another point on the same page.
+Off-page connector: Used when the diagram continues on a different page.
+Arrow (Flow Line)
+
+Symbol: Usually arrows or lines with arrowheads.
+Usage: Indicates the direction of the flow from one step to the next.
+Subprocess (Predefined Process)
+
+Symbol: A rectangle with double borders or a rectangle with lines on the side.
+Usage: Represents a subroutine or a separate process that has its own flowchart. It helps simplify complex diagrams.
+These symbols can be combined to form any type of workflow—from simple linear processes to complex conditional branches and loops.
+
+
+3. General Guidelines for Designing Flowcharts
+
+Define the process scope: Identify the start and end of the process or code you’re describing.
+
+Lay out the main steps: Write down the major tasks or processes in order; place them logically from top to bottom or left to right.
+
+Add decisions: For each point where a branch may occur in your code logic (ex: IF...THEN statements), use a diamond. Indicate possible outcomes with labeled arrows.
+
+Keep it simple: Flowcharts can become cluttered if too many symbols are packed together. Break complex logic into subprocesses or separate flowcharts when needed.
+
+Label connectors and lines: Clearly indicate the direction of flow. If a decision splits into multiple paths, label each path (ex: Yes or No, True or False).
+
+Maintain consistency: Use consistent notation and style for all symbols (i.e., do not mix different arrow types or shapes inconsistently).
+
+
+4. Example Flowchart for a Simple Batch File
+
+Below is a text-only representation of how a flowchart might look for a Batch script that asks for user input and performs an action:
+
+  [Start]
+     |
+     v
+[Display message: "Enter a number (1-5)"]
+     |
+     v
+[User Input -> number]
+     |
+     v
+[Decision: number == 3?]
+   /      \
+  /Yes      \No
+ v          v
+[Display    [Display "Number 
+ "Number    is not 3"]
+ is 3"]
+   |          |
+   v          v
+ [End]      [End]
+Pseudocode / Batch file snippet:
+
+@echo off
+:START
+echo Enter a number (1-5):
+set /p number=
+
+if %number%==3 (
+    echo Number is 3
+) else (
+    echo Number is not 3
+)
+
+echo.
+echo Press any key to exit...
+pause > nul
+
+
+Explanation of Flow:
+
+Start: The script begins by displaying a message prompting the user for a number.
+Input: The user enters a number.
+Decision: The script checks if the number is 3.
+
+Branch:
+Yes: Output “Number is 3”.
+No: Output “Number is not 3”.
+End: The script waits for a key press and then ends.
+
+
+5. Example Flowchart for a Simple PowerShell Script
+
+A simple PowerShell script that checks if a file exists and reads its content might look like this in text-based flowchart form:
+
+
+   [Start]
+      |
+      v
+[Check if file exists? (C:\temp\test.txt)]
+       /       \
+      /Yes      \No
+     v          v
+[Read file]    [Display "File not found"]
+     |
+     v
+[Output file contents]
+     |
+     v
+   [End]
+
+
+$filePath = "C:\temp\test.txt"
+
+if (Test-Path $filePath) {
+    $content = Get-Content $filePath
+    Write-Host "File content:"
+    Write-Host $content
+} else {
+    Write-Host "File not found"
+}
+
+
+Explanation of Flow:
+
+Start: Script execution starts.
+Decision: Checks if the file C:\temp\test.txt exists.
+Yes: If the file exists, read its contents with Get-Content.
+No: Display a “File not found” message.
+Output: Display the file contents or the “File not found” message.
+End: Script finishes.
