@@ -1,0 +1,354 @@
+: (Colon)
+Used to define a label in a batch file. Labels are used as reference points for GOTO commands.
+
+@ (At Symbol)
+Suppresses the display of the command being executed. Commonly used as @echo off to disable command echoing.
+
+Arp
+Displays and modifies the IP-to-Physical address translation tables used by the Address Resolution Protocol (ARP).
+
+Assoc
+Displays or modifies file extension associations, mapping file extensions to specific programs.
+
+Attrib
+Displays or changes file attributes, such as read-only, hidden, system, or archive.
+
+Bcdedit
+Manages Boot Configuration Data (BCD) store for modifying boot options at startup.
+
+BitsAdmin
+Used for managing the Background Intelligent Transfer Service (BITS), which transfers files asynchronously.
+
+Break
+Sets or clears extended CTRL+C checking in the Command Prompt.
+
+Boolean Logic
+Used in batch files to handle conditions that evaluate to true or false.
+
+Call
+Calls a batch file or subroutine within another batch file.
+
+Cacls
+Displays or modifies Access Control Lists (ACLs) of files and folders (older utility; consider iCacls instead).
+
+CertUtil
+Manages certificates, certificate authorities, and related configurations.
+
+Chcp
+Displays or changes the active code page number, which determines the character encoding in the Command Prompt.
+
+Chdir (Cd)
+Displays or changes the current directory.
+
+Chkdsk
+Checks a disk and displays a status report. Can also fix errors on the disk with additional flags.
+
+Choice
+Prompts the user to select one item from a set of choices and returns the index of the selected choice.
+
+Clip
+Redirects the output of a command to the Windows clipboard.
+
+Cls
+Clears all content from the Command Prompt screen.
+
+Cmd
+Starts a new instance of the Command Prompt.
+
+Color
+Changes the Command Prompt foreground and background colors.
+
+Compact
+Displays or alters the compression of files and folders on NTFS partitions.
+
+Comp
+Compares the contents of two files or sets of files byte by byte.
+
+Copy
+Copies one or more files to another location.
+
+Curl
+Transfers data from or to a server using supported protocols like HTTP, FTP, and HTTPS.
+
+Date
+Displays or sets the system date.
+
+Del
+Deletes one or more files.
+
+Dir
+Displays a list of files and subdirectories in a directory.
+
+Diskpart
+Manages partitions, volumes, and virtual disks.
+
+Dism
+Used to service Windows images (online or offline), including the installation, configuration, and updating of features, drivers, and packages.
+
+Doskey
+Edits command lines, recalls previously entered commands, and creates command-line macros.
+
+DriverQuery
+Displays a list of installed device drivers and their properties.
+
+DsRegCmd
+Displays device join status and manages hybrid Azure AD join operations. Can query, join, leave, or refresh a device’s Azure AD status.
+
+Echo
+Displays messages or toggles command echoing in the Command Prompt.
+
+Endlocal
+Ends localization of environment changes in a batch file (reverses the effect of Setlocal).
+
+Erase
+Deletes one or more files (similar to Del).
+
+Exit
+Exits the Command Prompt or a batch file.
+
+Expand
+Decompresses or extracts one or more compressed cabinet (.cab) files.
+
+Fc (File Compare)
+Compares two files or sets of files and displays the differences.
+
+Find
+Searches for a text string in a file or files.
+
+Finger
+Displays information about users on a network or remote system (largely obsolete now).
+
+Findstr
+Searches for strings in files using regular expressions.
+
+For
+Loops through a set of files or commands. Commonly used for iteration in batch files.
+
+ForFiles
+Selects files (based on criteria) and executes a command for each file. Useful for batch processing, such as renaming or cleanup.
+
+Ftp
+Transfers files to and from a remote computer running an FTP service.
+
+Goto
+Directs the batch file to jump to a labeled line.
+
+Gpresult
+Displays the Resultant Set of Policy (RSoP) for a user or computer, showing applied Group Policy settings.
+
+Gpupdate
+Refreshes local and Active Directory-based Group Policy settings, including security settings.
+
+Help
+Displays brief information about built-in commands. Usage: help <command>.
+
+Hostname
+Displays the host name of the local computer.
+
+iCacls
+Displays or modifies Access Control Lists (ACLs) for files and folders. An improved version of cacls.
+
+If
+Performs conditional processing in a batch file.
+
+If-Else Condition
+Executes different commands based on whether a condition is true or false. Used for decision-making in scripts.
+
+IpConfig
+Displays and manages the IP configuration of the system (IP addresses, subnet masks, gateways, etc.).
+
+Label
+Creates, changes, or deletes the volume label of a disk.
+
+Manage-Bde
+Configures BitLocker Drive Encryption on disk volumes. Includes enabling/disabling encryption, managing recovery keys, etc.
+
+Mkdir (Md)
+Creates a new directory.
+
+More
+Displays output one screen at a time (often used with the pipe symbol, e.g., dir | more).
+
+Move
+Moves files from one directory to another.
+
+Nbtstat
+Displays NetBIOS over TCP/IP protocol statistics, NetBIOS name tables, and name cache.
+
+Net
+Performs a wide range of network-related commands:
+
+Net Use: Connects/disconnects from a shared resource.
+Net Share: Creates or displays network shares.
+Net Start / Net Stop: Starts/stops a network service.
+Net User: Creates, deletes, or modifies user accounts.
+Netsh
+Configures and manages the network environment (e.g., IP addresses, firewall, routing, etc.).
+
+Netstat
+Displays active TCP/IP connections, ports, Ethernet statistics, and the IP routing table.
+
+Nslookup
+Queries DNS servers to resolve domain name or IP address mappings.
+
+NtRights
+Edits user account privileges in Windows (grant or revoke logon rights, admin privileges, etc.).
+
+Openfiles
+Displays or disconnects files opened remotely via local shares on a system.
+
+PathPing
+Combines Ping and Tracert to help locate network latency and packet loss over multiple hops.
+
+Pause
+Pauses the execution of a batch file and displays "Press any key to continue...".
+
+Ping
+Sends ICMP echo requests to test network connectivity.
+
+Popd
+Restores the previous directory saved by the Pushd command.
+
+PowerCfg
+Controls and configures power settings, such as sleep, hibernate, and standby modes.
+
+Print
+Sends a text file to a printer.
+
+Prompt
+Changes the Command Prompt text displayed to the user.
+
+Pushd
+Saves the current directory and changes to a new one.
+
+QUser
+Displays information about user sessions on a Terminal Server or an RD Session Host. Shows session state, idle time, etc.
+
+QWinsta
+Displays information about all sessions on a Terminal Server or RD Session Host (active, idle, disconnected, etc.).
+
+Rd (Rmdir)
+Removes a directory.
+
+Reg
+Reads, sets, deletes, and manages the Windows registry directly from the command line.
+
+Regedit
+Opens the GUI-based Registry Editor (not commonly used in batch scripts, but still part of Windows).
+
+Rem
+Adds a comment in a batch file. Ignored during execution.
+
+Ren (Rename)
+Renames a file or files.
+
+Regsvr32
+Registers or unregisters DLLs and ActiveX controls in the registry.
+
+Robocopy
+Copies files and directories (including subdirectories) with robust options for mirroring, retrying, and logging.
+
+Route
+Displays and modifies the local IP routing table.
+
+Sc (Service Control)
+Communicates with the Service Control Manager to create, start, stop, and configure Windows services.
+
+SchTasks
+Creates, modifies, deletes, or queries scheduled tasks. Works on local or remote systems.
+
+Set
+Displays, sets, or removes environment variables in the Command Prompt.
+
+SetAcl
+Modifies security descriptors for files, folders, registry keys, services, printers, and shares, managing ACLs and ownership.
+
+SetX
+Sets environment variables permanently in the registry (for the current user or the system).
+
+Setlocal
+Begins localization of environment changes in a batch file (undone by Endlocal).
+
+Sfc (System File Checker)
+Scans and repairs protected system files.
+
+Shift
+Shifts the positional parameters (%0, %1, %2, etc.) in a batch file, useful when dealing with multiple command-line args.
+
+Shutdown
+Shuts down, restarts, or logs off the computer.
+
+Sort
+Sorts input and outputs the results.
+
+Start
+Starts a new process, application, or Command Prompt window.
+
+Subst
+Associates a drive letter with a folder path for easier access.
+
+Systeminfo
+Displays detailed configuration info about the computer and its operating system (OS version, hotfixes, etc.).
+
+TakeOwn
+Takes ownership of a file or folder, allowing the new owner to manage permissions or delete it.
+
+Taskkill
+Terminates tasks or processes by PID or image name (e.g., taskkill /PID 1234).
+
+Tasklist
+Displays a list of currently running processes.
+
+Telnet
+Communicates with other computers running a Telnet server. Not installed by default on many modern Windows systems.
+
+Time
+Displays or sets the system time.
+
+Timeout
+Pauses a script or batch file for a specified duration (or until a key is pressed).
+
+Tftp
+Transfers files to/from a remote TFTP server, if installed.
+
+Title
+Sets the title of the Command Prompt window.
+
+Tracert
+Traces the route that packets take to reach a remote system.
+
+Tree
+Displays a graphical representation of the directory structure.
+
+Type
+Displays the contents of a text file.
+
+Ver
+Displays the current Windows version.
+
+Verify
+Tells Windows whether to verify that files are written correctly to disk.
+
+Vol
+Displays the volume label and serial number of a disk.
+
+W32tm
+Diagnoses or configures the Windows Time service, synchronizing the system clock with remote time servers.
+
+WEvtUtil
+Manages Windows Event Logs and Event Publishers, allowing queries, clearing logs, archiving, and more.
+
+WaitFor
+Sends or waits for a signal on the local or a remote system, allowing synchronization in scripts.
+
+Where
+Searches the current directory and the PATH for files matching a given pattern.
+
+Whoami
+Displays user, group, and privileges information for the current user session.
+
+Wmic
+Retrieves a wide range of info about local or remote computers, manages system components, and performs administrative tasks via WMI.
+
+Xcopy
+Copies files and directories, including subdirectories, with advanced options.
