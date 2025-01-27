@@ -7,10 +7,12 @@ Additional Resources
 You can learn more about flowchart design, best practices, and software tools from the following websites:
 
 https://creately.com/guides/flowchart-guide-flowchart-tutorial/
+https://www.lucidchart.com/pages/what-is-a-flowchart-tutorial
 https://www.geeksforgeeks.org/an-introduction-to-flowcharts/
 https://en.wikipedia.org/wiki/Flowchart
 https://www.visual-paradigm.com/tutorials/flowchart-tutorial/
 http://www.flowgorithm.org/ (free)
+https://www.amazon.com/Flowchart-Algorithm-Basics-Art-Programming/dp/1683925378
 
 
 
