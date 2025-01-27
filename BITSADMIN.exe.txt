@@ -1,6 +1,7 @@
 BITSADMIN.exe Help File
 
-BITSADMIN.exe is a command-line tool for managing the Background Intelligent Transfer Service (BITS), which is used for transferring large files over networks with minimal disruption. BITS supports features like throttling and asynchronous transfers and is used by services such as Windows Update, SUS, SMS, and third-party applications.
+BITSADMIN.exe is a command-line tool for managing the Background Intelligent Transfer Service (BITS), which is used for transferring large files over networks with minimal disruption. 
+BITS supports features like throttling and asynchronous transfers and is used by services such as Windows Update, SUS, SMS, and third-party applications.
 
 [SYNTAX]
 BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
