@@ -87,13 +87,13 @@ Below is a text-only representation of how a flowchart might look for a Batch sc
 [Decision: number == 3?]
    /      \
   /Yes      \No
- v          v
-[Display    [Display "Number 
- "Number    is not 3"]
+ v           v
+[Display     [Display "Number 
+ "Number     is not 3"]
  is 3"]
-   |          |
-   v          v
- [End]      [End]
+   |           |
+   v           v
+ [End]       [End]
 Pseudocode / Batch file snippet:
 
 @echo off
@@ -135,8 +135,8 @@ A simple PowerShell script that checks if a file exists and reads its content mi
 [Check if file exists? (C:\temp\test.txt)]
        /       \
       /Yes      \No
-     v          v
-[Read file]    [Display "File not found"]
+     v           v
+[Read file]     [Display "File not found"]
      |
      v
 [Output file contents]
