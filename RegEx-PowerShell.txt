@@ -1,3 +1,13 @@
+What is a Regular Expression (Regex)?
+
+A regular expression (regex) is a sequence of characters that defines a search pattern. It is used to match, find, and manipulate text in programming.
+Basic Uses of Regex
+
+    Pattern Matching → Find specific text patterns in a string.
+    Validation → Check if input meets specific rules (e.g., email, phone numbers).
+    Search & Replace → Modify text by replacing matched patterns.
+
+
 --------------------------------------------------------------------------------
 POWERSELL REGEX EXAMPLES
 --------------------------------------------------------------------------------
